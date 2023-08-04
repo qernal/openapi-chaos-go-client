@@ -1,0 +1,1128 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: support@qernal.com
+  description: Central Management API - publicly exposed set of APIs for managing
+    deployments
+  title: Chaos
+  version: 1.0.0
+  x-logo:
+    url: /assets/components/chaos.png
+    backgroundColor: '#FFFFFF'
+    altText: Qernal Chaos
+servers:
+- description: Production
+  url: https://chaos.qernal.com/v1
+tags:
+- description: "Project operations, projects belong to an organisation"
+  name: projects
+- description: "Organisations are a hierarchy top-level for a user, they allow for\
+    \ organising of projects"
+  name: organisations
+paths:
+  /organisations:
+    get:
+      description: List organisations
+      operationId: get-organisations
+      parameters:
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/get_organisations_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-organisations:
+                  value:
+                    meta:
+                      results: 200
+                      start: 20
+                      end: 40
+                      pages: 20
+                      links:
+                        prev: "/{url}?page[before]=20&page[size]=20"
+                        next: "/{url}?page[after]=40&page[size]=20"
+                    data:
+                    - id: "2443"
+                      user_id: "8796"
+                      name: my org
+                    - id: "2444"
+                      user_id: "2587"
+                      name: api dev org
+              schema:
+                $ref: '#/components/schemas/ListOrganisationResponse'
+          description: List organisations
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: List organisations
+      tags:
+      - organisations
+    post:
+      description: Create an organisation
+      operationId: post-organisations
+      requestBody:
+        $ref: '#/components/requestBodies/OrganisationBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-organisations:
+                  value:
+                    id: "2443"
+                    user_id: "8796"
+                    name: my org
+              schema:
+                $ref: '#/components/schemas/OrganisationResponse'
+          description: Get organisation
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Create organisations
+      tags:
+      - organisations
+  /organisations/{organisation_id}:
+    delete:
+      description: "Delete organisation, this will also delete all the resources within\
+        \ the organisation"
+      operationId: delete-organisations-orgId
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Delete an organisation
+      tags:
+      - organisations
+    get:
+      description: Get a single organisation
+      operationId: get-organisations-orgId
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-organisations:
+                  value:
+                    id: "2443"
+                    user_id: "8796"
+                    name: my org
+              schema:
+                $ref: '#/components/schemas/OrganisationResponse'
+          description: Get organisation
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Get an organisation
+      tags:
+      - organisations
+    put:
+      description: Update an organisation
+      operationId: put-organisations-orgId
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/OrganisationBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-organisations:
+                  value:
+                    id: "2443"
+                    user_id: "8796"
+                    name: my org
+              schema:
+                $ref: '#/components/schemas/OrganisationResponse'
+          description: Get organisation
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Update an organisation
+      tags:
+      - organisations
+  /organisations/{organisation_id}/projects:
+    get:
+      description: Get all the projects linked to a specific organisation
+      operationId: get-organisations-orgId-projects
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/get_organisations_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-projects:
+                  value:
+                    meta:
+                      results: 200
+                      start: 20
+                      end: 40
+                      pages: 20
+                      links:
+                        prev: "/{url}?page[before]=20&page[size]=20"
+                        next: "/{url}?page[after]=40&page[size]=20"
+                    data:
+                    - id: "2443"
+                      org_id: "8796"
+                      name: my project
+                    - id: "2444"
+                      org_id: "8796"
+                      name: first api
+              schema:
+                $ref: '#/components/schemas/ListProjectResponse'
+          description: List projects
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Get all projects within an organisation
+      tags:
+      - projects
+  /projects:
+    get:
+      description: "Get all projects for this user, paginated"
+      operationId: get-projects
+      parameters:
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/get_organisations_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                paginated-projects:
+                  value:
+                    meta:
+                      results: 200
+                      start: 20
+                      end: 40
+                      pages: 20
+                      links:
+                        prev: "/{url}?page[before]=20&page[size]=20"
+                        next: "/{url}?page[after]=40&page[size]=20"
+                    data:
+                    - id: "2443"
+                      org_id: "8796"
+                      name: my project
+                    - id: "2444"
+                      org_id: "8796"
+                      name: first api
+              schema:
+                $ref: '#/components/schemas/ListProjectResponse'
+          description: List projects
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: List projects
+      tags:
+      - projects
+    post:
+      description: Create a new project
+      operationId: post-projects
+      requestBody:
+        $ref: '#/components/requestBodies/ProjectBody'
+      responses:
+        "201":
+          content:
+            application/json:
+              examples:
+                project:
+                  value:
+                    id: "2443"
+                    org_id: "8796"
+                    name: first api
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+          description: Get project
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Create project
+      tags:
+      - projects
+  /projects/{project_id}:
+    delete:
+      description: "Delete project, this will also delete all the resources within\
+        \ the project"
+      operationId: delete-projects-projectId
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Delete project
+      tags:
+      - projects
+    get:
+      description: Get a specific project
+      operationId: get-projects-projectId
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                project:
+                  value:
+                    id: "2443"
+                    org_id: "8796"
+                    name: first api
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+          description: Get project
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Get project
+      tags:
+      - projects
+    put:
+      description: Update project
+      operationId: put-projects-projectId
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/ProjectBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                project:
+                  value:
+                    id: "2443"
+                    org_id: "8796"
+                    name: first api
+              schema:
+                $ref: '#/components/schemas/ProjectResponse'
+          description: Get project
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - JWT: []
+      summary: Update project
+      tags:
+      - projects
+components:
+  parameters:
+    pagination_page:
+      description: Query parameters for pagination
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        $ref: '#/components/schemas/get_organisations_page_parameter'
+      style: deepObject
+    organisation_id:
+      description: Organisation ID reference
+      explode: false
+      in: path
+      name: organisation_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
+    project_id:
+      description: Project ID reference
+      explode: false
+      in: path
+      name: project_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
+  requestBodies:
+    OrganisationBody:
+      content:
+        application/json:
+          examples:
+            organisation-create:
+              value:
+                name: API Dev
+          schema:
+            $ref: '#/components/schemas/OrganisationBody'
+      description: Create/Update any field
+    ProjectBody:
+      content:
+        application/json:
+          examples:
+            project-create:
+              value:
+                org_id: "8796"
+                name: first api
+          schema:
+            $ref: '#/components/schemas/ProjectBody'
+      description: Create/Update any field
+  responses:
+    NoContent:
+      description: The resources were updated successfully
+    Unauthorised:
+      content:
+        application/json:
+          examples:
+            generic-unauthorised-response:
+              value:
+                message: Unauthorised
+          schema:
+            $ref: '#/components/schemas/UnauthorisedResponse'
+      description: Unauthorised
+    ResourceNotFound:
+      content:
+        application/json:
+          examples:
+            generic-not-found-response:
+              value:
+                message: Resource not found
+          schema:
+            $ref: '#/components/schemas/NotFoundResponse'
+      description: Resource Not Found
+    ResourceConflict:
+      content:
+        application/json:
+          examples:
+            generic-conflict-response:
+              value:
+                message: "Conflict, Resource already exists"
+          schema:
+            $ref: '#/components/schemas/ConflictResponse'
+      description: Resource Conflict
+    ResourceDeleted:
+      content:
+        application/json:
+          examples:
+            generic-deleted-response:
+              value:
+                message: Resource deleted
+          schema:
+            $ref: '#/components/schemas/DeletedResponse'
+      description: Resource deleted
+    BadRequest:
+      content:
+        application/json:
+          examples:
+            user-bad-request-response:
+              value:
+                message: Missing fields
+                fields:
+                  email: Valid email required
+            project-bad-request-response:
+              value:
+                message: Missing fields
+                fields:
+                  org_id: Valid organisation required
+                  name: Valid name required
+            organisation-bad-request-response:
+              value:
+                message: Missing fields
+                fields:
+                  name: Name required
+          schema:
+            $ref: '#/components/schemas/BadRequestResponse'
+      description: Resource Bad Request
+    ListOrganisations:
+      content:
+        application/json:
+          examples:
+            paginated-organisations:
+              value:
+                meta:
+                  results: 200
+                  start: 20
+                  end: 40
+                  pages: 20
+                  links:
+                    prev: "/{url}?page[before]=20&page[size]=20"
+                    next: "/{url}?page[after]=40&page[size]=20"
+                data:
+                - id: "2443"
+                  user_id: "8796"
+                  name: my org
+                - id: "2444"
+                  user_id: "2587"
+                  name: api dev org
+          schema:
+            $ref: '#/components/schemas/ListOrganisationResponse'
+      description: List organisations
+    Organisation:
+      content:
+        application/json:
+          examples:
+            paginated-organisations:
+              value:
+                id: "2443"
+                user_id: "8796"
+                name: my org
+          schema:
+            $ref: '#/components/schemas/OrganisationResponse'
+      description: Get organisation
+    ListProjects:
+      content:
+        application/json:
+          examples:
+            paginated-projects:
+              value:
+                meta:
+                  results: 200
+                  start: 20
+                  end: 40
+                  pages: 20
+                  links:
+                    prev: "/{url}?page[before]=20&page[size]=20"
+                    next: "/{url}?page[after]=40&page[size]=20"
+                data:
+                - id: "2443"
+                  org_id: "8796"
+                  name: my project
+                - id: "2444"
+                  org_id: "8796"
+                  name: first api
+          schema:
+            $ref: '#/components/schemas/ListProjectResponse'
+      description: List projects
+    Project:
+      content:
+        application/json:
+          examples:
+            project:
+              value:
+                id: "2443"
+                org_id: "8796"
+                name: first api
+          schema:
+            $ref: '#/components/schemas/ProjectResponse'
+      description: Get project
+  schemas:
+    NotFoundResponse:
+      description: Resource not found
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+    UnauthorisedResponse:
+      description: Unauthorised
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+    BadRequestResponse:
+      description: Bad request
+      properties:
+        message:
+          type: string
+        fields:
+          $ref: '#/components/schemas/BadRequestResponse_fields'
+      required:
+      - fields
+      - message
+      type: object
+    ConflictResponse:
+      description: Conflict Response
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+    DeletedResponse:
+      description: Deleted Response
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+      required:
+      - message
+      type: object
+    PaginationMeta:
+      description: Meta object for pagination use
+      example:
+        pages: 5.962133916683182
+        start: 6.027456183070403
+        end: 1.4658129805029452
+        links:
+          next: next
+          prev: prev
+        results: 0.8008281904610115
+      properties:
+        results:
+          type: number
+        start:
+          type: number
+        end:
+          type: number
+        pages:
+          type: number
+        links:
+          $ref: '#/components/schemas/PaginationLinks'
+      required:
+      - end
+      - links
+      - pages
+      - results
+      - start
+      type: object
+    PaginationLinks:
+      description: Links object for pagination use
+      example:
+        next: next
+        prev: prev
+      properties:
+        prev:
+          minLength: 1
+          type: string
+        next:
+          minLength: 1
+          type: string
+      required:
+      - next
+      - prev
+      type: object
+    OrganisationResponse:
+      description: Organisation response
+      example:
+        user_id: user_id
+        name: name
+        id: id
+      properties:
+        id:
+          description: Organisation id
+          minLength: 1
+          type: string
+        user_id:
+          description: User id
+          minLength: 1
+          type: string
+        name:
+          description: Organisation name
+          minLength: 1
+          type: string
+      required:
+      - id
+      - name
+      - user_id
+      type: object
+    ListOrganisationResponse:
+      description: List organisations schema
+      example:
+        data:
+        - user_id: user_id
+          name: name
+          id: id
+        - user_id: user_id
+          name: name
+          id: id
+        meta:
+          pages: 5.962133916683182
+          start: 6.027456183070403
+          end: 1.4658129805029452
+          links:
+            next: next
+            prev: prev
+          results: 0.8008281904610115
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/OrganisationResponse'
+          type: array
+      type: object
+    OrganisationBody:
+      description: Organisation body
+      example:
+        name: name
+      properties:
+        name:
+          description: Organisation name
+          minLength: 1
+          type: string
+      required:
+      - name
+      type: object
+    ListProjectResponse:
+      description: List of projects
+      example:
+        data:
+        - org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        meta:
+          pages: 5.962133916683182
+          start: 6.027456183070403
+          end: 1.4658129805029452
+          links:
+            next: next
+            prev: prev
+          results: 0.8008281904610115
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/ProjectResponse'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
+    ProjectResponse:
+      description: Project response
+      example:
+        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: Project id
+          format: uuid
+          minLength: 1
+          type: string
+        org_id:
+          description: Organisation id
+          format: uuid
+          minLength: 1
+          type: string
+        name:
+          description: Project name
+          minLength: 1
+          type: string
+      required:
+      - id
+      - name
+      - org_id
+      type: object
+    ProjectBody:
+      description: Project body
+      example:
+        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        org_id:
+          description: Organisation id
+          format: uuid
+          minLength: 1
+          type: string
+        name:
+          description: Project name
+          minLength: 1
+          type: string
+      required:
+      - name
+      - org_id
+      type: object
+    get_organisations_page_parameter:
+      properties:
+        before:
+          description: Offset
+          example: 20
+          type: integer
+        after:
+          description: Offset
+          example: 20
+          type: integer
+        size:
+          description: Limit
+          example: 20
+          type: integer
+      type: object
+    BadRequestResponse_fields:
+      properties:
+        email:
+          type: string
+      type: object
+  securitySchemes:
+    JWT:
+      scheme: bearer
+      type: http
