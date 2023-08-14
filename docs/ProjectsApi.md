@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 
@@ -345,7 +345,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 
@@ -417,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[JWT](../README.md#JWT)
+[cookie](../README.md#cookie), [token](../README.md#token)
 
 ### HTTP request headers
 

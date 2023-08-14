@@ -113,16 +113,21 @@ Class | Method | HTTP request | Description
 
 
 Authentication schemes defined for the API:
-### JWT
+### token
 
-- **Type**: HTTP Bearer token authentication
+- **Type**: API key
+- **API key parameter name**: QERNAL-AUTH-TOKEN
+- **Location**: HTTP header
 
-Example
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: QERNAL-AUTH-TOKEN and passed in as the auth context for each request.
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
-r, err := client.Service.Operation(auth, args)
-```
+### cookie
+
+- **Type**: API key
+- **API key parameter name**: qernal_kratos_session
+- **Location**: 
+
+Note, each API key must be added to a map of `map[string]APIKey` where the key is: qernal_kratos_session and passed in as the auth context for each request.
 
 
 ## Documentation for Utility Methods

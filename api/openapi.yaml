@@ -13,6 +13,9 @@ info:
 servers:
 - description: Production
   url: https://chaos.qernal.com/v1
+security:
+- token: []
+- cookie: []
 tags:
 - description: "Project operations, projects belong to an organisation"
   name: projects
@@ -69,7 +72,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: List organisations
       tags:
       - organisations
@@ -125,7 +129,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Create organisations
       tags:
       - organisations
@@ -177,7 +182,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Delete an organisation
       tags:
       - organisations
@@ -229,7 +235,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Get an organisation
       tags:
       - organisations
@@ -306,7 +313,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Update an organisation
       tags:
       - organisations
@@ -379,7 +387,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Get all projects within an organisation
       tags:
       - projects
@@ -432,7 +441,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: List projects
       tags:
       - projects
@@ -498,7 +508,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Create project
       tags:
       - projects
@@ -550,7 +561,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Delete project
       tags:
       - projects
@@ -602,7 +614,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Get project
       tags:
       - projects
@@ -679,7 +692,8 @@ paths:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
       security:
-      - JWT: []
+      - token: []
+      - cookie: []
       summary: Update project
       tags:
       - projects
@@ -1123,6 +1137,11 @@ components:
           type: string
       type: object
   securitySchemes:
-    JWT:
-      scheme: bearer
-      type: http
+    token:
+      in: header
+      name: QERNAL-AUTH-TOKEN
+      type: apiKey
+    cookie:
+      in: cookie
+      name: qernal_kratos_session
+      type: apiKey
