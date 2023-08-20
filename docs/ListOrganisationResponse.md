@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Meta** | Pointer to [**PaginationMeta**](PaginationMeta.md) |  | [optional] 
-**Data** | Pointer to [**[]OrganisationResponse**](OrganisationResponse.md) |  | [optional] 
+**Meta** | [**PaginationMeta**](PaginationMeta.md) |  | 
+**Data** | [**[]OrganisationResponse**](OrganisationResponse.md) |  | 
 
 ## Methods
 
 ### NewListOrganisationResponse
 
-`func NewListOrganisationResponse() *ListOrganisationResponse`
+`func NewListOrganisationResponse(meta PaginationMeta, data []OrganisationResponse, ) *ListOrganisationResponse`
 
 NewListOrganisationResponse instantiates a new ListOrganisationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetMeta sets Meta field to given value.
 
-### HasMeta
-
-`func (o *ListOrganisationResponse) HasMeta() bool`
-
-HasMeta returns a boolean if a field has been set.
 
 ### GetData
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetData sets Data field to given value.
 
-### HasData
-
-`func (o *ListOrganisationResponse) HasData() bool`
-
-HasData returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

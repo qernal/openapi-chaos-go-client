@@ -20,16 +20,18 @@ var _ MappedNullable = &ListOrganisationResponse{}
 
 // ListOrganisationResponse List organisations schema
 type ListOrganisationResponse struct {
-	Meta *PaginationMeta `json:"meta,omitempty"`
-	Data []OrganisationResponse `json:"data,omitempty"`
+	Meta PaginationMeta `json:"meta"`
+	Data []OrganisationResponse `json:"data"`
 }
 
 // NewListOrganisationResponse instantiates a new ListOrganisationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListOrganisationResponse() *ListOrganisationResponse {
+func NewListOrganisationResponse(meta PaginationMeta, data []OrganisationResponse) *ListOrganisationResponse {
 	this := ListOrganisationResponse{}
+	this.Meta = meta
+	this.Data = data
 	return &this
 }
 
@@ -41,66 +43,50 @@ func NewListOrganisationResponseWithDefaults() *ListOrganisationResponse {
 	return &this
 }
 
-// GetMeta returns the Meta field value if set, zero value otherwise.
+// GetMeta returns the Meta field value
 func (o *ListOrganisationResponse) GetMeta() PaginationMeta {
-	if o == nil || IsNil(o.Meta) {
+	if o == nil {
 		var ret PaginationMeta
 		return ret
 	}
-	return *o.Meta
+
+	return o.Meta
 }
 
-// GetMetaOk returns a tuple with the Meta field value if set, nil otherwise
+// GetMetaOk returns a tuple with the Meta field value
 // and a boolean to check if the value has been set.
 func (o *ListOrganisationResponse) GetMetaOk() (*PaginationMeta, bool) {
-	if o == nil || IsNil(o.Meta) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Meta, true
+	return &o.Meta, true
 }
 
-// HasMeta returns a boolean if a field has been set.
-func (o *ListOrganisationResponse) HasMeta() bool {
-	if o != nil && !IsNil(o.Meta) {
-		return true
-	}
-
-	return false
-}
-
-// SetMeta gets a reference to the given PaginationMeta and assigns it to the Meta field.
+// SetMeta sets field value
 func (o *ListOrganisationResponse) SetMeta(v PaginationMeta) {
-	o.Meta = &v
+	o.Meta = v
 }
 
-// GetData returns the Data field value if set, zero value otherwise.
+// GetData returns the Data field value
 func (o *ListOrganisationResponse) GetData() []OrganisationResponse {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		var ret []OrganisationResponse
 		return ret
 	}
+
 	return o.Data
 }
 
-// GetDataOk returns a tuple with the Data field value if set, nil otherwise
+// GetDataOk returns a tuple with the Data field value
 // and a boolean to check if the value has been set.
 func (o *ListOrganisationResponse) GetDataOk() ([]OrganisationResponse, bool) {
-	if o == nil || IsNil(o.Data) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Data, true
 }
 
-// HasData returns a boolean if a field has been set.
-func (o *ListOrganisationResponse) HasData() bool {
-	if o != nil && !IsNil(o.Data) {
-		return true
-	}
-
-	return false
-}
-
-// SetData gets a reference to the given []OrganisationResponse and assigns it to the Data field.
+// SetData sets field value
 func (o *ListOrganisationResponse) SetData(v []OrganisationResponse) {
 	o.Data = v
 }
@@ -115,12 +101,8 @@ func (o ListOrganisationResponse) MarshalJSON() ([]byte, error) {
 
 func (o ListOrganisationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Meta) {
-		toSerialize["meta"] = o.Meta
-	}
-	if !IsNil(o.Data) {
-		toSerialize["data"] = o.Data
-	}
+	toSerialize["meta"] = o.Meta
+	toSerialize["data"] = o.Data
 	return toSerialize, nil
 }
 

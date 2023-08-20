@@ -20,10 +20,10 @@ var _ MappedNullable = &PaginationMeta{}
 
 // PaginationMeta Meta object for pagination use
 type PaginationMeta struct {
-	Results float32 `json:"results"`
-	Start float32 `json:"start"`
-	End float32 `json:"end"`
-	Pages float32 `json:"pages"`
+	Results int32 `json:"results"`
+	Start int32 `json:"start"`
+	End int32 `json:"end"`
+	Pages int32 `json:"pages"`
 	Links PaginationLinks `json:"links"`
 }
 
@@ -31,7 +31,7 @@ type PaginationMeta struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPaginationMeta(results float32, start float32, end float32, pages float32, links PaginationLinks) *PaginationMeta {
+func NewPaginationMeta(results int32, start int32, end int32, pages int32, links PaginationLinks) *PaginationMeta {
 	this := PaginationMeta{}
 	this.Results = results
 	this.Start = start
@@ -50,9 +50,9 @@ func NewPaginationMetaWithDefaults() *PaginationMeta {
 }
 
 // GetResults returns the Results field value
-func (o *PaginationMeta) GetResults() float32 {
+func (o *PaginationMeta) GetResults() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *PaginationMeta) GetResults() float32 {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *PaginationMeta) GetResultsOk() (*float32, bool) {
+func (o *PaginationMeta) GetResultsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,14 +69,14 @@ func (o *PaginationMeta) GetResultsOk() (*float32, bool) {
 }
 
 // SetResults sets field value
-func (o *PaginationMeta) SetResults(v float32) {
+func (o *PaginationMeta) SetResults(v int32) {
 	o.Results = v
 }
 
 // GetStart returns the Start field value
-func (o *PaginationMeta) GetStart() float32 {
+func (o *PaginationMeta) GetStart() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *PaginationMeta) GetStart() float32 {
 
 // GetStartOk returns a tuple with the Start field value
 // and a boolean to check if the value has been set.
-func (o *PaginationMeta) GetStartOk() (*float32, bool) {
+func (o *PaginationMeta) GetStartOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,14 +93,14 @@ func (o *PaginationMeta) GetStartOk() (*float32, bool) {
 }
 
 // SetStart sets field value
-func (o *PaginationMeta) SetStart(v float32) {
+func (o *PaginationMeta) SetStart(v int32) {
 	o.Start = v
 }
 
 // GetEnd returns the End field value
-func (o *PaginationMeta) GetEnd() float32 {
+func (o *PaginationMeta) GetEnd() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -109,7 +109,7 @@ func (o *PaginationMeta) GetEnd() float32 {
 
 // GetEndOk returns a tuple with the End field value
 // and a boolean to check if the value has been set.
-func (o *PaginationMeta) GetEndOk() (*float32, bool) {
+func (o *PaginationMeta) GetEndOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -117,14 +117,14 @@ func (o *PaginationMeta) GetEndOk() (*float32, bool) {
 }
 
 // SetEnd sets field value
-func (o *PaginationMeta) SetEnd(v float32) {
+func (o *PaginationMeta) SetEnd(v int32) {
 	o.End = v
 }
 
 // GetPages returns the Pages field value
-func (o *PaginationMeta) GetPages() float32 {
+func (o *PaginationMeta) GetPages() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -133,7 +133,7 @@ func (o *PaginationMeta) GetPages() float32 {
 
 // GetPagesOk returns a tuple with the Pages field value
 // and a boolean to check if the value has been set.
-func (o *PaginationMeta) GetPagesOk() (*float32, bool) {
+func (o *PaginationMeta) GetPagesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -141,7 +141,7 @@ func (o *PaginationMeta) GetPagesOk() (*float32, bool) {
 }
 
 // SetPages sets field value
-func (o *PaginationMeta) SetPages(v float32) {
+func (o *PaginationMeta) SetPages(v int32) {
 	o.Pages = v
 }
 

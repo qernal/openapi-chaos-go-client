@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the GetOrganisationsPageParameter type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GetOrganisationsPageParameter{}
+// checks if the OrganisationsListPageParameter type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganisationsListPageParameter{}
 
-// GetOrganisationsPageParameter struct for GetOrganisationsPageParameter
-type GetOrganisationsPageParameter struct {
+// OrganisationsListPageParameter struct for OrganisationsListPageParameter
+type OrganisationsListPageParameter struct {
 	// Offset
 	Before *int32 `json:"before,omitempty"`
 	// Offset
@@ -28,25 +28,25 @@ type GetOrganisationsPageParameter struct {
 	Size *int32 `json:"size,omitempty"`
 }
 
-// NewGetOrganisationsPageParameter instantiates a new GetOrganisationsPageParameter object
+// NewOrganisationsListPageParameter instantiates a new OrganisationsListPageParameter object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGetOrganisationsPageParameter() *GetOrganisationsPageParameter {
-	this := GetOrganisationsPageParameter{}
+func NewOrganisationsListPageParameter() *OrganisationsListPageParameter {
+	this := OrganisationsListPageParameter{}
 	return &this
 }
 
-// NewGetOrganisationsPageParameterWithDefaults instantiates a new GetOrganisationsPageParameter object
+// NewOrganisationsListPageParameterWithDefaults instantiates a new OrganisationsListPageParameter object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewGetOrganisationsPageParameterWithDefaults() *GetOrganisationsPageParameter {
-	this := GetOrganisationsPageParameter{}
+func NewOrganisationsListPageParameterWithDefaults() *OrganisationsListPageParameter {
+	this := OrganisationsListPageParameter{}
 	return &this
 }
 
 // GetBefore returns the Before field value if set, zero value otherwise.
-func (o *GetOrganisationsPageParameter) GetBefore() int32 {
+func (o *OrganisationsListPageParameter) GetBefore() int32 {
 	if o == nil || IsNil(o.Before) {
 		var ret int32
 		return ret
@@ -56,7 +56,7 @@ func (o *GetOrganisationsPageParameter) GetBefore() int32 {
 
 // GetBeforeOk returns a tuple with the Before field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetOrganisationsPageParameter) GetBeforeOk() (*int32, bool) {
+func (o *OrganisationsListPageParameter) GetBeforeOk() (*int32, bool) {
 	if o == nil || IsNil(o.Before) {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *GetOrganisationsPageParameter) GetBeforeOk() (*int32, bool) {
 }
 
 // HasBefore returns a boolean if a field has been set.
-func (o *GetOrganisationsPageParameter) HasBefore() bool {
+func (o *OrganisationsListPageParameter) HasBefore() bool {
 	if o != nil && !IsNil(o.Before) {
 		return true
 	}
@@ -73,12 +73,12 @@ func (o *GetOrganisationsPageParameter) HasBefore() bool {
 }
 
 // SetBefore gets a reference to the given int32 and assigns it to the Before field.
-func (o *GetOrganisationsPageParameter) SetBefore(v int32) {
+func (o *OrganisationsListPageParameter) SetBefore(v int32) {
 	o.Before = &v
 }
 
 // GetAfter returns the After field value if set, zero value otherwise.
-func (o *GetOrganisationsPageParameter) GetAfter() int32 {
+func (o *OrganisationsListPageParameter) GetAfter() int32 {
 	if o == nil || IsNil(o.After) {
 		var ret int32
 		return ret
@@ -88,7 +88,7 @@ func (o *GetOrganisationsPageParameter) GetAfter() int32 {
 
 // GetAfterOk returns a tuple with the After field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetOrganisationsPageParameter) GetAfterOk() (*int32, bool) {
+func (o *OrganisationsListPageParameter) GetAfterOk() (*int32, bool) {
 	if o == nil || IsNil(o.After) {
 		return nil, false
 	}
@@ -96,7 +96,7 @@ func (o *GetOrganisationsPageParameter) GetAfterOk() (*int32, bool) {
 }
 
 // HasAfter returns a boolean if a field has been set.
-func (o *GetOrganisationsPageParameter) HasAfter() bool {
+func (o *OrganisationsListPageParameter) HasAfter() bool {
 	if o != nil && !IsNil(o.After) {
 		return true
 	}
@@ -105,12 +105,12 @@ func (o *GetOrganisationsPageParameter) HasAfter() bool {
 }
 
 // SetAfter gets a reference to the given int32 and assigns it to the After field.
-func (o *GetOrganisationsPageParameter) SetAfter(v int32) {
+func (o *OrganisationsListPageParameter) SetAfter(v int32) {
 	o.After = &v
 }
 
 // GetSize returns the Size field value if set, zero value otherwise.
-func (o *GetOrganisationsPageParameter) GetSize() int32 {
+func (o *OrganisationsListPageParameter) GetSize() int32 {
 	if o == nil || IsNil(o.Size) {
 		var ret int32
 		return ret
@@ -120,7 +120,7 @@ func (o *GetOrganisationsPageParameter) GetSize() int32 {
 
 // GetSizeOk returns a tuple with the Size field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *GetOrganisationsPageParameter) GetSizeOk() (*int32, bool) {
+func (o *OrganisationsListPageParameter) GetSizeOk() (*int32, bool) {
 	if o == nil || IsNil(o.Size) {
 		return nil, false
 	}
@@ -128,7 +128,7 @@ func (o *GetOrganisationsPageParameter) GetSizeOk() (*int32, bool) {
 }
 
 // HasSize returns a boolean if a field has been set.
-func (o *GetOrganisationsPageParameter) HasSize() bool {
+func (o *OrganisationsListPageParameter) HasSize() bool {
 	if o != nil && !IsNil(o.Size) {
 		return true
 	}
@@ -137,11 +137,11 @@ func (o *GetOrganisationsPageParameter) HasSize() bool {
 }
 
 // SetSize gets a reference to the given int32 and assigns it to the Size field.
-func (o *GetOrganisationsPageParameter) SetSize(v int32) {
+func (o *OrganisationsListPageParameter) SetSize(v int32) {
 	o.Size = &v
 }
 
-func (o GetOrganisationsPageParameter) MarshalJSON() ([]byte, error) {
+func (o OrganisationsListPageParameter) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -149,7 +149,7 @@ func (o GetOrganisationsPageParameter) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o GetOrganisationsPageParameter) ToMap() (map[string]interface{}, error) {
+func (o OrganisationsListPageParameter) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Before) {
 		toSerialize["before"] = o.Before
@@ -163,38 +163,38 @@ func (o GetOrganisationsPageParameter) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableGetOrganisationsPageParameter struct {
-	value *GetOrganisationsPageParameter
+type NullableOrganisationsListPageParameter struct {
+	value *OrganisationsListPageParameter
 	isSet bool
 }
 
-func (v NullableGetOrganisationsPageParameter) Get() *GetOrganisationsPageParameter {
+func (v NullableOrganisationsListPageParameter) Get() *OrganisationsListPageParameter {
 	return v.value
 }
 
-func (v *NullableGetOrganisationsPageParameter) Set(val *GetOrganisationsPageParameter) {
+func (v *NullableOrganisationsListPageParameter) Set(val *OrganisationsListPageParameter) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetOrganisationsPageParameter) IsSet() bool {
+func (v NullableOrganisationsListPageParameter) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetOrganisationsPageParameter) Unset() {
+func (v *NullableOrganisationsListPageParameter) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetOrganisationsPageParameter(val *GetOrganisationsPageParameter) *NullableGetOrganisationsPageParameter {
-	return &NullableGetOrganisationsPageParameter{value: val, isSet: true}
+func NewNullableOrganisationsListPageParameter(val *OrganisationsListPageParameter) *NullableOrganisationsListPageParameter {
+	return &NullableOrganisationsListPageParameter{value: val, isSet: true}
 }
 
-func (v NullableGetOrganisationsPageParameter) MarshalJSON() ([]byte, error) {
+func (v NullableOrganisationsListPageParameter) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetOrganisationsPageParameter) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganisationsListPageParameter) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

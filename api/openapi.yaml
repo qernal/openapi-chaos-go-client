@@ -26,7 +26,7 @@ paths:
   /organisations:
     get:
       description: List organisations
-      operationId: get-organisations
+      operationId: organisations-list
       parameters:
       - description: Query parameters for pagination
         explode: true
@@ -34,7 +34,7 @@ paths:
         name: page
         required: false
         schema:
-          $ref: '#/components/schemas/get_organisations_page_parameter'
+          $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
       responses:
         "200":
@@ -79,7 +79,7 @@ paths:
       - organisations
     post:
       description: Create an organisation
-      operationId: post-organisations
+      operationId: organisations-create
       requestBody:
         $ref: '#/components/requestBodies/OrganisationBody'
       responses:
@@ -138,7 +138,7 @@ paths:
     delete:
       description: "Delete organisation, this will also delete all the resources within\
         \ the organisation"
-      operationId: delete-organisations-orgId
+      operationId: organisations-delete
       parameters:
       - description: Organisation ID reference
         explode: false
@@ -189,7 +189,7 @@ paths:
       - organisations
     get:
       description: Get a single organisation
-      operationId: get-organisations-orgId
+      operationId: organisations-get
       parameters:
       - description: Organisation ID reference
         explode: false
@@ -242,7 +242,7 @@ paths:
       - organisations
     put:
       description: Update an organisation
-      operationId: put-organisations-orgId
+      operationId: organisations-update
       parameters:
       - description: Organisation ID reference
         explode: false
@@ -321,7 +321,7 @@ paths:
   /organisations/{organisation_id}/projects:
     get:
       description: Get all the projects linked to a specific organisation
-      operationId: get-organisations-orgId-projects
+      operationId: organisations-projects-list
       parameters:
       - description: Organisation ID reference
         explode: false
@@ -339,7 +339,7 @@ paths:
         name: page
         required: false
         schema:
-          $ref: '#/components/schemas/get_organisations_page_parameter'
+          $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
       responses:
         "200":
@@ -395,7 +395,7 @@ paths:
   /projects:
     get:
       description: "Get all projects for this user, paginated"
-      operationId: get-projects
+      operationId: projects-list
       parameters:
       - description: Query parameters for pagination
         explode: true
@@ -403,7 +403,7 @@ paths:
         name: page
         required: false
         schema:
-          $ref: '#/components/schemas/get_organisations_page_parameter'
+          $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
       responses:
         "200":
@@ -448,7 +448,7 @@ paths:
       - projects
     post:
       description: Create a new project
-      operationId: post-projects
+      operationId: projects-create
       requestBody:
         $ref: '#/components/requestBodies/ProjectBody'
       responses:
@@ -517,7 +517,7 @@ paths:
     delete:
       description: "Delete project, this will also delete all the resources within\
         \ the project"
-      operationId: delete-projects-projectId
+      operationId: projects-delete
       parameters:
       - description: Project ID reference
         explode: false
@@ -568,7 +568,7 @@ paths:
       - projects
     get:
       description: Get a specific project
-      operationId: get-projects-projectId
+      operationId: projects-get
       parameters:
       - description: Project ID reference
         explode: false
@@ -621,7 +621,7 @@ paths:
       - projects
     put:
       description: Update project
-      operationId: put-projects-projectId
+      operationId: projects-update
       parameters:
       - description: Project ID reference
         explode: false
@@ -634,7 +634,7 @@ paths:
           type: string
         style: simple
       requestBody:
-        $ref: '#/components/requestBodies/ProjectBody'
+        $ref: '#/components/requestBodies/ProjectBodyPatch'
       responses:
         "200":
           content:
@@ -706,7 +706,7 @@ components:
       name: page
       required: false
       schema:
-        $ref: '#/components/schemas/get_organisations_page_parameter'
+        $ref: '#/components/schemas/organisations_list_page_parameter'
       style: deepObject
     organisation_id:
       description: Organisation ID reference
@@ -752,6 +752,12 @@ components:
           schema:
             $ref: '#/components/schemas/ProjectBody'
       description: Create/Update any field
+    ProjectBodyPatch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ProjectBodyPatch'
+      description: Update any field
   responses:
     NoContent:
       description: The resources were updated successfully
@@ -939,22 +945,22 @@ components:
     PaginationMeta:
       description: Meta object for pagination use
       example:
-        pages: 5.962133916683182
-        start: 6.027456183070403
-        end: 1.4658129805029452
+        pages: 5
+        start: 6
+        end: 1
         links:
           next: next
           prev: prev
-        results: 0.8008281904610115
+        results: 0
       properties:
         results:
-          type: number
+          type: integer
         start:
-          type: number
+          type: integer
         end:
-          type: number
+          type: integer
         pages:
-          type: number
+          type: integer
         links:
           $ref: '#/components/schemas/PaginationLinks'
       required:
@@ -983,16 +989,18 @@ components:
     OrganisationResponse:
       description: Organisation response
       example:
-        user_id: user_id
+        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        id: id
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
           description: Organisation id
+          format: uuid
           minLength: 1
           type: string
         user_id:
           description: User id
+          format: uuid
           minLength: 1
           type: string
         name:
@@ -1008,20 +1016,20 @@ components:
       description: List organisations schema
       example:
         data:
-        - user_id: user_id
+        - user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          id: id
-        - user_id: user_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          id: id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta:
-          pages: 5.962133916683182
-          start: 6.027456183070403
-          end: 1.4658129805029452
+          pages: 5
+          start: 6
+          end: 1
           links:
             next: next
             prev: prev
-          results: 0.8008281904610115
+          results: 0
       properties:
         meta:
           $ref: '#/components/schemas/PaginationMeta'
@@ -1029,6 +1037,9 @@ components:
           items:
             $ref: '#/components/schemas/OrganisationResponse'
           type: array
+      required:
+      - data
+      - meta
       type: object
     OrganisationBody:
       description: Organisation body
@@ -1053,13 +1064,13 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta:
-          pages: 5.962133916683182
-          start: 6.027456183070403
-          end: 1.4658129805029452
+          pages: 5
+          start: 6
+          end: 1
           links:
             next: next
             prev: prev
-          results: 0.8008281904610115
+          results: 0
       properties:
         meta:
           $ref: '#/components/schemas/PaginationMeta'
@@ -1116,7 +1127,23 @@ components:
       - name
       - org_id
       type: object
-    get_organisations_page_parameter:
+    ProjectBodyPatch:
+      description: Project patch fields
+      example:
+        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        org_id:
+          description: Organisation id
+          format: uuid
+          minLength: 1
+          type: string
+        name:
+          description: Project name
+          minLength: 1
+          type: string
+      type: object
+    organisations_list_page_parameter:
       properties:
         before:
           description: Offset

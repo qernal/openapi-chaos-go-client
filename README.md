@@ -77,17 +77,17 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*OrganisationsApi* | [**DeleteOrganisationsOrgId**](docs/OrganisationsApi.md#deleteorganisationsorgid) | **Delete** /organisations/{organisation_id} | Delete an organisation
-*OrganisationsApi* | [**GetOrganisations**](docs/OrganisationsApi.md#getorganisations) | **Get** /organisations | List organisations
-*OrganisationsApi* | [**GetOrganisationsOrgId**](docs/OrganisationsApi.md#getorganisationsorgid) | **Get** /organisations/{organisation_id} | Get an organisation
-*OrganisationsApi* | [**PostOrganisations**](docs/OrganisationsApi.md#postorganisations) | **Post** /organisations | Create organisations
-*OrganisationsApi* | [**PutOrganisationsOrgId**](docs/OrganisationsApi.md#putorganisationsorgid) | **Put** /organisations/{organisation_id} | Update an organisation
-*ProjectsApi* | [**DeleteProjectsProjectId**](docs/ProjectsApi.md#deleteprojectsprojectid) | **Delete** /projects/{project_id} | Delete project
-*ProjectsApi* | [**GetOrganisationsOrgIdProjects**](docs/ProjectsApi.md#getorganisationsorgidprojects) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
-*ProjectsApi* | [**GetProjects**](docs/ProjectsApi.md#getprojects) | **Get** /projects | List projects
-*ProjectsApi* | [**GetProjectsProjectId**](docs/ProjectsApi.md#getprojectsprojectid) | **Get** /projects/{project_id} | Get project
-*ProjectsApi* | [**PostProjects**](docs/ProjectsApi.md#postprojects) | **Post** /projects | Create project
-*ProjectsApi* | [**PutProjectsProjectId**](docs/ProjectsApi.md#putprojectsprojectid) | **Put** /projects/{project_id} | Update project
+*OrganisationsApi* | [**OrganisationsCreate**](docs/OrganisationsApi.md#organisationscreate) | **Post** /organisations | Create organisations
+*OrganisationsApi* | [**OrganisationsDelete**](docs/OrganisationsApi.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
+*OrganisationsApi* | [**OrganisationsGet**](docs/OrganisationsApi.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation
+*OrganisationsApi* | [**OrganisationsList**](docs/OrganisationsApi.md#organisationslist) | **Get** /organisations | List organisations
+*OrganisationsApi* | [**OrganisationsUpdate**](docs/OrganisationsApi.md#organisationsupdate) | **Put** /organisations/{organisation_id} | Update an organisation
+*ProjectsApi* | [**OrganisationsProjectsList**](docs/ProjectsApi.md#organisationsprojectslist) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
+*ProjectsApi* | [**ProjectsCreate**](docs/ProjectsApi.md#projectscreate) | **Post** /projects | Create project
+*ProjectsApi* | [**ProjectsDelete**](docs/ProjectsApi.md#projectsdelete) | **Delete** /projects/{project_id} | Delete project
+*ProjectsApi* | [**ProjectsGet**](docs/ProjectsApi.md#projectsget) | **Get** /projects/{project_id} | Get project
+*ProjectsApi* | [**ProjectsList**](docs/ProjectsApi.md#projectslist) | **Get** /projects | List projects
+*ProjectsApi* | [**ProjectsUpdate**](docs/ProjectsApi.md#projectsupdate) | **Put** /projects/{project_id} | Update project
 
 
 ## Documentation For Models
@@ -96,15 +96,16 @@ Class | Method | HTTP request | Description
  - [BadRequestResponseFields](docs/BadRequestResponseFields.md)
  - [ConflictResponse](docs/ConflictResponse.md)
  - [DeletedResponse](docs/DeletedResponse.md)
- - [GetOrganisationsPageParameter](docs/GetOrganisationsPageParameter.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
  - [NotFoundResponse](docs/NotFoundResponse.md)
  - [OrganisationBody](docs/OrganisationBody.md)
  - [OrganisationResponse](docs/OrganisationResponse.md)
+ - [OrganisationsListPageParameter](docs/OrganisationsListPageParameter.md)
  - [PaginationLinks](docs/PaginationLinks.md)
  - [PaginationMeta](docs/PaginationMeta.md)
  - [ProjectBody](docs/ProjectBody.md)
+ - [ProjectBodyPatch](docs/ProjectBodyPatch.md)
  - [ProjectResponse](docs/ProjectResponse.md)
  - [UnauthorisedResponse](docs/UnauthorisedResponse.md)
 
