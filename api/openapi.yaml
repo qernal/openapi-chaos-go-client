@@ -83,7 +83,7 @@ paths:
       requestBody:
         $ref: '#/components/requestBodies/OrganisationBody'
       responses:
-        "200":
+        "201":
           content:
             application/json:
               examples:
@@ -747,7 +747,7 @@ components:
           examples:
             project-create:
               value:
-                org_id: "8796"
+                org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                 name: first api
           schema:
             $ref: '#/components/schemas/ProjectBody'
