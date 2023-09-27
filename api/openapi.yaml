@@ -22,6 +22,8 @@ tags:
 - description: "Organisations are a hierarchy top-level for a user, they allow for\
     \ organising of projects"
   name: organisations
+- description: "Secret operations for certificates, environment and container registry"
+  name: secrets
 paths:
   /organisations:
     get:
@@ -52,11 +54,11 @@ paths:
                         prev: "/{url}?page[before]=20&page[size]=20"
                         next: "/{url}?page[after]=40&page[size]=20"
                     data:
-                    - id: "2443"
-                      user_id: "8796"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: my org
-                    - id: "2444"
-                      user_id: "2587"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: api dev org
               schema:
                 $ref: '#/components/schemas/ListOrganisationResponse'
@@ -89,8 +91,8 @@ paths:
               examples:
                 paginated-organisations:
                   value:
-                    id: "2443"
-                    user_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
@@ -128,6 +130,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
+        "409":
+          content:
+            application/json:
+              examples:
+                generic-conflict-response:
+                  value:
+                    message: "Conflict, Resource already exists"
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: Resource Conflict
       security:
       - token: []
       - cookie: []
@@ -208,8 +220,8 @@ paths:
               examples:
                 paginated-organisations:
                   value:
-                    id: "2443"
-                    user_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
@@ -263,8 +275,8 @@ paths:
               examples:
                 paginated-organisations:
                   value:
-                    id: "2443"
-                    user_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
@@ -357,11 +369,11 @@ paths:
                         prev: "/{url}?page[before]=20&page[size]=20"
                         next: "/{url}?page[after]=40&page[size]=20"
                     data:
-                    - id: "2443"
-                      org_id: "8796"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: my project
-                    - id: "2444"
-                      org_id: "8796"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: first api
               schema:
                 $ref: '#/components/schemas/ListProjectResponse'
@@ -421,11 +433,11 @@ paths:
                         prev: "/{url}?page[before]=20&page[size]=20"
                         next: "/{url}?page[after]=40&page[size]=20"
                     data:
-                    - id: "2443"
-                      org_id: "8796"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: my project
-                    - id: "2444"
-                      org_id: "8796"
+                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                       name: first api
               schema:
                 $ref: '#/components/schemas/ListProjectResponse'
@@ -458,8 +470,8 @@ paths:
               examples:
                 project:
                   value:
-                    id: "2443"
-                    org_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
@@ -507,6 +519,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/UnauthorisedResponse'
           description: Unauthorised
+        "409":
+          content:
+            application/json:
+              examples:
+                generic-conflict-response:
+                  value:
+                    message: "Conflict, Resource already exists"
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: Resource Conflict
       security:
       - token: []
       - cookie: []
@@ -587,8 +609,8 @@ paths:
               examples:
                 project:
                   value:
-                    id: "2443"
-                    org_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
@@ -642,8 +664,8 @@ paths:
               examples:
                 project:
                   value:
-                    id: "2443"
-                    org_id: "8796"
+                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                     name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
@@ -697,6 +719,385 @@ paths:
       summary: Update project
       tags:
       - projects
+  /projects/{project_id}/secrets:
+    get:
+      description: List project secrets of a specific type
+      operationId: projects-secrets-list
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
+      - description: Type of secret to filter on
+        explode: true
+        in: query
+        name: secret_type
+        required: false
+        schema:
+          $ref: '#/components/schemas/SecretMetaType'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListSecretResponse'
+          description: List secrets
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List project secrets of a specific type
+      tags:
+      - secrets
+    post:
+      description: Create a new project secret
+      operationId: projects-secrets-create
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/SecretBody'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecretResponse'
+          description: Get secret
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+        "409":
+          content:
+            application/json:
+              examples:
+                generic-conflict-response:
+                  value:
+                    message: "Conflict, Resource already exists"
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: Resource Conflict
+      security:
+      - token: []
+      - cookie: []
+      summary: Create project secret
+      tags:
+      - secrets
+  /projects/{project_id}/secrets/{secret_name}:
+    delete:
+      description: "Delete project secret, if the secret is still linked to an active/deployed\
+        \ function - it cannot be removed"
+      operationId: projects-secrets-delete
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique secret name
+        explode: false
+        in: path
+        name: secret_name
+        required: true
+        schema:
+          example: MY_SECRET
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Delete project secret
+      tags:
+      - secrets
+    get:
+      description: Get a specific project
+      operationId: projects-secrets-get
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique secret name
+        explode: false
+        in: path
+        name: secret_name
+        required: true
+        schema:
+          example: MY_SECRET
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                secret-meta-registry:
+                  value:
+                    name: FIRST_SECRET
+                    type: registry
+                    payload:
+                      registry: ghcr.io
+                    date:
+                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+                secret-meta-certificate:
+                  value:
+                    name: FIRST_SECRET
+                    type: certificate
+                    payload:
+                      domain: ghcr.io
+                    date:
+                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+                secret-meta-environment:
+                  value:
+                    name: FIRST_SECRET
+                    type: enviornment
+                    payload:
+                      env: MY_SECRET_NAME
+                    date:
+                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+              schema:
+                $ref: '#/components/schemas/SecretMetaResponse'
+          description: Get secret metadata
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Get project secret
+      tags:
+      - secrets
+    put:
+      description: Update project
+      operationId: projects-secrets-update
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Unique secret name
+        explode: false
+        in: path
+        name: secret_name
+        required: true
+        schema:
+          example: MY_SECRET
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/SecretBodyPatch'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SecretResponse'
+          description: Get secret
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                user-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      email: Valid email required
+                project-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      org_id: Valid organisation required
+                      name: Valid name required
+                organisation-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      name: Name required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Update project secret
+      tags:
+      - secrets
 components:
   parameters:
     pagination_page:
@@ -730,6 +1131,27 @@ components:
         format: uuid
         type: string
       style: simple
+    secret_type:
+      description: Type of secret to filter on
+      explode: true
+      in: query
+      name: secret_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/SecretMetaType'
+      style: form
+    secret_name:
+      description: Unique secret name
+      explode: false
+      in: path
+      name: secret_name
+      required: true
+      schema:
+        example: MY_SECRET
+        minLength: 1
+        pattern: "^[A-Z_]+$"
+        type: string
+      style: simple
   requestBodies:
     OrganisationBody:
       content:
@@ -758,6 +1180,42 @@ components:
           schema:
             $ref: '#/components/schemas/ProjectBodyPatch'
       description: Update any field
+    SecretBody:
+      content:
+        application/json:
+          examples:
+            secret-registry-create:
+              value:
+                name: FIRST_API
+                type: registry
+                payload:
+                  registry: ghcr.io
+                  secret: VGhpcyBzaG91bGQgYmUgYSBzZWN1cmUgc2VjcmV0LCBnZW5lcmF0ZSBsZW5ndGh5IGNyZWRlbnRpYWxzCg==
+            secret-certificate-create:
+              value:
+                name: FIRST_API
+                type: certificate
+                payload:
+                  domain: my-app.com
+                  secret: VGhpcyB3b3VsZCBiZSB5b3VyIGNlcnRpZmljYXRlCg==
+            secret-environment-create:
+              value:
+                name: FIRST_API
+                type: environment
+                payload:
+                  env: MY_FIRST_SECRET
+                  secret: bXkgc2VjcmV0IHZhbHVlCg==
+          schema:
+            $ref: '#/components/schemas/SecretBody'
+      description: Create/Update any field
+      required: true
+    SecretBodyPatch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SecretBodyPatch'
+      description: Update any field
+      required: true
   responses:
     NoContent:
       description: The resources were updated successfully
@@ -839,11 +1297,11 @@ components:
                     prev: "/{url}?page[before]=20&page[size]=20"
                     next: "/{url}?page[after]=40&page[size]=20"
                 data:
-                - id: "2443"
-                  user_id: "8796"
+                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                  user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                   name: my org
-                - id: "2444"
-                  user_id: "2587"
+                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                  user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                   name: api dev org
           schema:
             $ref: '#/components/schemas/ListOrganisationResponse'
@@ -854,8 +1312,8 @@ components:
           examples:
             paginated-organisations:
               value:
-                id: "2443"
-                user_id: "8796"
+                id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                 name: my org
           schema:
             $ref: '#/components/schemas/OrganisationResponse'
@@ -875,11 +1333,11 @@ components:
                     prev: "/{url}?page[before]=20&page[size]=20"
                     next: "/{url}?page[after]=40&page[size]=20"
                 data:
-                - id: "2443"
-                  org_id: "8796"
+                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                  org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                   name: my project
-                - id: "2444"
-                  org_id: "8796"
+                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                  org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                   name: first api
           schema:
             $ref: '#/components/schemas/ListProjectResponse'
@@ -890,12 +1348,58 @@ components:
           examples:
             project:
               value:
-                id: "2443"
-                org_id: "8796"
+                id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+                org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
                 name: first api
           schema:
             $ref: '#/components/schemas/ProjectResponse'
       description: Get project
+    ListSecrets:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListSecretResponse'
+      description: List secrets
+    Secret:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/SecretResponse'
+      description: Get secret
+    SecretMeta:
+      content:
+        application/json:
+          examples:
+            secret-meta-registry:
+              value:
+                name: FIRST_SECRET
+                type: registry
+                payload:
+                  registry: ghcr.io
+                date:
+                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            secret-meta-certificate:
+              value:
+                name: FIRST_SECRET
+                type: certificate
+                payload:
+                  domain: ghcr.io
+                date:
+                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            secret-meta-environment:
+              value:
+                name: FIRST_SECRET
+                type: enviornment
+                payload:
+                  env: MY_SECRET_NAME
+                date:
+                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
+                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          schema:
+            $ref: '#/components/schemas/SecretMetaResponse'
+      description: Get secret metadata
   schemas:
     NotFoundResponse:
       description: Resource not found
@@ -945,21 +1449,25 @@ components:
     PaginationMeta:
       description: Meta object for pagination use
       example:
-        pages: 5
-        start: 6
-        end: 1
+        pages: 20
+        start: 20
+        end: 40
         links:
-          next: next
-          prev: prev
-        results: 0
+          next: "/{url}?page[after]=40&page[size]=20"
+          prev: "/{url}?page[before]=20&page[size]=20"
+        results: 200
       properties:
         results:
+          example: 200
           type: integer
         start:
+          example: 20
           type: integer
         end:
+          example: 40
           type: integer
         pages:
+          example: 20
           type: integer
         links:
           $ref: '#/components/schemas/PaginationLinks'
@@ -973,13 +1481,15 @@ components:
     PaginationLinks:
       description: Links object for pagination use
       example:
-        next: next
-        prev: prev
+        next: "/{url}?page[after]=40&page[size]=20"
+        prev: "/{url}?page[before]=20&page[size]=20"
       properties:
         prev:
+          example: "/{url}?page[before]=20&page[size]=20"
           minLength: 1
           type: string
         next:
+          example: "/{url}?page[after]=40&page[size]=20"
           minLength: 1
           type: string
       required:
@@ -1023,13 +1533,13 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta:
-          pages: 5
-          start: 6
-          end: 1
+          pages: 20
+          start: 20
+          end: 40
           links:
-            next: next
-            prev: prev
-          results: 0
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
       properties:
         meta:
           $ref: '#/components/schemas/PaginationMeta'
@@ -1064,13 +1574,13 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         meta:
-          pages: 5
-          start: 6
-          end: 1
+          pages: 20
+          start: 20
+          end: 40
           links:
-            next: next
-            prev: prev
-          results: 0
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
       properties:
         meta:
           $ref: '#/components/schemas/PaginationMeta'
@@ -1143,6 +1653,257 @@ components:
           minLength: 1
           type: string
       type: object
+    ListSecretResponse:
+      description: List of secrets
+      example:
+        data:
+        - date:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+          payload: null
+          name: name
+          type: registry
+          revision: 23
+        - date:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+          payload: null
+          name: name
+          type: registry
+          revision: 23
+        meta:
+          pages: 20
+          start: 20
+          end: 40
+          links:
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/SecretMetaResponse'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
+    SecretResponse:
+      description: Secret response
+      example:
+        date:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+        payload: null
+        name: name
+        type: registry
+        revision: 32
+      properties:
+        name:
+          description: Secret name
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        type:
+          $ref: '#/components/schemas/SecretCreateType'
+        payload:
+          $ref: '#/components/schemas/SecretResponse_payload'
+        revision:
+          description: Secret revision
+          example: 32
+          type: integer
+        date:
+          $ref: '#/components/schemas/SecretResponse_date'
+      required:
+      - date
+      - name
+      - revision
+      - type
+      type: object
+    SecretMetaType:
+      description: "Secrets types: registry, certificate, environment, dek"
+      enum:
+      - registry
+      - certificate
+      - environment
+      - dek
+      example: registry
+      type: string
+    SecretMetaResponse:
+      description: Secret metadata response
+      example:
+        date:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+        payload: null
+        name: name
+        type: registry
+        revision: 23
+      properties:
+        name:
+          description: Project name
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        type:
+          $ref: '#/components/schemas/SecretMetaType'
+        payload:
+          $ref: '#/components/schemas/SecretMetaResponse_payload'
+        revision:
+          description: Secret revision
+          example: 23
+          type: integer
+        date:
+          $ref: '#/components/schemas/SecretResponse_date'
+      required:
+      - date
+      - name
+      - revision
+      - type
+      type: object
+    SecretMetaResponseCertificatePayload:
+      description: Secret metadata certificate payload
+      properties:
+        certificate:
+          description: Public SSL certificate
+          example: <x509 content>
+          format: string
+          minLength: 1
+          type: string
+      required:
+      - certificate
+      type: object
+    SecretMetaResponseRegistryPayload:
+      description: Secret metadata registry payload
+      properties:
+        registry:
+          description: Registry domain
+          example: ghcr.io
+          format: string
+          minLength: 1
+          type: string
+      required:
+      - registry
+      type: object
+    SecretMetaResponseDek:
+      description: "DEK secret, `type: dek`"
+      properties:
+        public:
+          description: Base64 encoded DEK public key
+          type: string
+      required:
+      - public
+      type: object
+    SecretCreatePayload:
+      description: Payload for secret
+      oneOf:
+      - $ref: '#/components/schemas/SecretRegistry'
+      - $ref: '#/components/schemas/SecretEnvironment'
+      - $ref: '#/components/schemas/SecretCertificate'
+      type: object
+    SecretCreateType:
+      description: "Secrets types: registry, certificate, environment"
+      enum:
+      - registry
+      - certificate
+      - environment
+      example: registry
+      type: string
+    SecretEnvironment:
+      description: "Encrypted ENV secret, `type: environment`"
+      properties:
+        environment_value:
+          description: "Encrypted environment pairs (key - env key, value - env value)"
+          example: SGVsbG8gd29ybGQ=
+          format: base64
+          type: string
+      required:
+      - environment_value
+      type: object
+    SecretCertificate:
+      description: "Encrypted SSL private key and plain certificate. Certificate expected\
+        \ in x509 pem format, key expected in pkcs8 or pkcs1 pem format. `type: certificate`"
+      properties:
+        certificate:
+          description: Public certificate
+          example: <x509 certificate pem format>
+          type: string
+        certificate_value:
+          description: Encrypted certificate private key
+          example: <base64 encrypted pkcs8 or pkcs1 pem format>
+          format: base64
+          type: string
+      required:
+      - certificate
+      - certificate_value
+      type: object
+    SecretRegistry:
+      description: "Encrypted private container registry, `type: registry`"
+      properties:
+        registry:
+          description: Url to private container repository (for docker registry use
+            https://index.docker.io/v1/)
+          example: https://index.docker.io/v1/
+          format: url
+          type: string
+        registry_value:
+          description: Token used for auth to the registry
+          example: SGVsbG8gd29ybGQ=
+          format: base64
+          type: string
+      required:
+      - registry
+      - registry_value
+      type: object
+    SecretBody:
+      description: Secret body
+      example:
+        encryption: keys/dek/123
+        payload: null
+        name: name
+        type: registry
+      properties:
+        name:
+          description: Secret name
+          minLength: 1
+          pattern: "^[A-Z_]+$"
+          type: string
+        type:
+          $ref: '#/components/schemas/SecretCreateType'
+        payload:
+          $ref: '#/components/schemas/SecretCreatePayload'
+        encryption:
+          description: Encryption entity
+          example: keys/dek/123
+          type: string
+      required:
+      - encryption
+      - name
+      - payload
+      - type
+      type: object
+    SecretBodyPatch:
+      description: Secret body patch fields
+      example:
+        encryption: keys/dek/123
+        payload: null
+        type: registry
+      properties:
+        type:
+          $ref: '#/components/schemas/SecretCreateType'
+        payload:
+          $ref: '#/components/schemas/SecretCreatePayload'
+        encryption:
+          description: Encryption entity
+          example: keys/dek/123
+          type: string
+      required:
+      - encryption
+      - payload
+      - type
+      type: object
     organisations_list_page_parameter:
       properties:
         before:
@@ -1163,6 +1924,30 @@ components:
         email:
           type: string
       type: object
+    SecretResponse_payload:
+      oneOf:
+      - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
+      - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
+    SecretResponse_date:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - updated_at
+      type: object
+    SecretMetaResponse_payload:
+      oneOf:
+      - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
+      - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
+      - $ref: '#/components/schemas/SecretMetaResponseDek'
   securitySchemes:
     token:
       in: header

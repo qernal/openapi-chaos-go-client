@@ -21,60 +21,67 @@ import (
 )
 
 
-// OrganisationsApiService OrganisationsApi service
-type OrganisationsApiService service
+// SecretsApiService SecretsApi service
+type SecretsApiService service
 
-type ApiOrganisationsCreateRequest struct {
+type ApiProjectsSecretsCreateRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
-	organisationBody *OrganisationBody
+	ApiService *SecretsApiService
+	projectId string
+	secretBody *SecretBody
 }
 
 // Create/Update any field
-func (r ApiOrganisationsCreateRequest) OrganisationBody(organisationBody OrganisationBody) ApiOrganisationsCreateRequest {
-	r.organisationBody = &organisationBody
+func (r ApiProjectsSecretsCreateRequest) SecretBody(secretBody SecretBody) ApiProjectsSecretsCreateRequest {
+	r.secretBody = &secretBody
 	return r
 }
 
-func (r ApiOrganisationsCreateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
-	return r.ApiService.OrganisationsCreateExecute(r)
+func (r ApiProjectsSecretsCreateRequest) Execute() (*SecretResponse, *http.Response, error) {
+	return r.ApiService.ProjectsSecretsCreateExecute(r)
 }
 
 /*
-OrganisationsCreate Create organisations
+ProjectsSecretsCreate Create project secret
 
-Create an organisation
+Create a new project secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrganisationsCreateRequest
+ @param projectId Project ID reference
+ @return ApiProjectsSecretsCreateRequest
 */
-func (a *OrganisationsApiService) OrganisationsCreate(ctx context.Context) ApiOrganisationsCreateRequest {
-	return ApiOrganisationsCreateRequest{
+func (a *SecretsApiService) ProjectsSecretsCreate(ctx context.Context, projectId string) ApiProjectsSecretsCreateRequest {
+	return ApiProjectsSecretsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return SecretResponse
+func (a *SecretsApiService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *SecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organisations"
+	localVarPath := localBasePath + "/projects/{project_id}/secrets"
+	localVarPath = strings.Replace(localVarPath, "{"+"project_id"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.secretBody == nil {
+		return localVarReturnValue, nil, reportError("secretBody is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -94,7 +101,7 @@ func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsC
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationBody
+	localVarPostBody = r.secretBody
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -130,6 +137,17 @@ func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsC
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
 			var v BadRequestResponse
@@ -178,36 +196,39 @@ func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsDeleteRequest struct {
+type ApiProjectsSecretsDeleteRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
-	organisationId string
+	ApiService *SecretsApiService
+	projectId string
+	secretName string
 }
 
-func (r ApiOrganisationsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
-	return r.ApiService.OrganisationsDeleteExecute(r)
+func (r ApiProjectsSecretsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+	return r.ApiService.ProjectsSecretsDeleteExecute(r)
 }
 
 /*
-OrganisationsDelete Delete an organisation
+ProjectsSecretsDelete Delete project secret
 
-Delete organisation, this will also delete all the resources within the organisation
+Delete project secret, if the secret is still linked to an active/deployed function - it cannot be removed
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organisationId Organisation ID reference
- @return ApiOrganisationsDeleteRequest
+ @param projectId Project ID reference
+ @param secretName Unique secret name
+ @return ApiProjectsSecretsDeleteRequest
 */
-func (a *OrganisationsApiService) OrganisationsDelete(ctx context.Context, organisationId string) ApiOrganisationsDeleteRequest {
-	return ApiOrganisationsDeleteRequest{
+func (a *SecretsApiService) ProjectsSecretsDelete(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsDeleteRequest {
+	return ApiProjectsSecretsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
-		organisationId: organisationId,
+		projectId: projectId,
+		secretName: secretName,
 	}
 }
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *SecretsApiService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -215,17 +236,21 @@ func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsD
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organisations/{organisation_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organisation_id"+"}", url.PathEscape(parameterValueToString(r.organisationId, "organisationId")), -1)
+	localVarPath := localBasePath + "/projects/{project_id}/secrets/{secret_name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"project_id"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secret_name"+"}", url.PathEscape(parameterValueToString(r.secretName, "secretName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if strlen(r.secretName) < 1 {
+		return localVarReturnValue, nil, reportError("secretName must have at least 1 elements")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -316,54 +341,61 @@ func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsGetRequest struct {
+type ApiProjectsSecretsGetRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
-	organisationId string
+	ApiService *SecretsApiService
+	projectId string
+	secretName string
 }
 
-func (r ApiOrganisationsGetRequest) Execute() (*OrganisationResponse, *http.Response, error) {
-	return r.ApiService.OrganisationsGetExecute(r)
+func (r ApiProjectsSecretsGetRequest) Execute() (*SecretMetaResponse, *http.Response, error) {
+	return r.ApiService.ProjectsSecretsGetExecute(r)
 }
 
 /*
-OrganisationsGet Get an organisation
+ProjectsSecretsGet Get project secret
 
-Get a single organisation
+Get a specific project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organisationId Organisation ID reference
- @return ApiOrganisationsGetRequest
+ @param projectId Project ID reference
+ @param secretName Unique secret name
+ @return ApiProjectsSecretsGetRequest
 */
-func (a *OrganisationsApiService) OrganisationsGet(ctx context.Context, organisationId string) ApiOrganisationsGetRequest {
-	return ApiOrganisationsGetRequest{
+func (a *SecretsApiService) ProjectsSecretsGet(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsGetRequest {
+	return ApiProjectsSecretsGetRequest{
 		ApiService: a,
 		ctx: ctx,
-		organisationId: organisationId,
+		projectId: projectId,
+		secretName: secretName,
 	}
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsGetExecute(r ApiOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return SecretMetaResponse
+func (a *SecretsApiService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *SecretMetaResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organisations/{organisation_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organisation_id"+"}", url.PathEscape(parameterValueToString(r.organisationId, "organisationId")), -1)
+	localVarPath := localBasePath + "/projects/{project_id}/secrets/{secret_name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"project_id"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secret_name"+"}", url.PathEscape(parameterValueToString(r.secretName, "secretName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if strlen(r.secretName) < 1 {
+		return localVarReturnValue, nil, reportError("secretName must have at least 1 elements")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -454,53 +486,64 @@ func (a *OrganisationsApiService) OrganisationsGetExecute(r ApiOrganisationsGetR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsListRequest struct {
+type ApiProjectsSecretsListRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *SecretsApiService
+	projectId string
 	page *OrganisationsListPageParameter
+	secretType *SecretMetaType
 }
 
 // Query parameters for pagination
-func (r ApiOrganisationsListRequest) Page(page OrganisationsListPageParameter) ApiOrganisationsListRequest {
+func (r ApiProjectsSecretsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsSecretsListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiOrganisationsListRequest) Execute() (*ListOrganisationResponse, *http.Response, error) {
-	return r.ApiService.OrganisationsListExecute(r)
+// Type of secret to filter on
+func (r ApiProjectsSecretsListRequest) SecretType(secretType SecretMetaType) ApiProjectsSecretsListRequest {
+	r.secretType = &secretType
+	return r
+}
+
+func (r ApiProjectsSecretsListRequest) Execute() (*ListSecretResponse, *http.Response, error) {
+	return r.ApiService.ProjectsSecretsListExecute(r)
 }
 
 /*
-OrganisationsList List organisations
+ProjectsSecretsList List project secrets of a specific type
 
-List organisations
+List project secrets of a specific type
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrganisationsListRequest
+ @param projectId Project ID reference
+ @return ApiProjectsSecretsListRequest
 */
-func (a *OrganisationsApiService) OrganisationsList(ctx context.Context) ApiOrganisationsListRequest {
-	return ApiOrganisationsListRequest{
+func (a *SecretsApiService) ProjectsSecretsList(ctx context.Context, projectId string) ApiProjectsSecretsListRequest {
+	return ApiProjectsSecretsListRequest{
 		ApiService: a,
 		ctx: ctx,
+		projectId: projectId,
 	}
 }
 
 // Execute executes the request
-//  @return ListOrganisationResponse
-func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
+//  @return ListSecretResponse
+func (a *SecretsApiService) ProjectsSecretsListExecute(r ApiProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListOrganisationResponse
+		localVarReturnValue  *ListSecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organisations"
+	localVarPath := localBasePath + "/projects/{project_id}/secrets"
+	localVarPath = strings.Replace(localVarPath, "{"+"project_id"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -509,6 +552,9 @@ func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsLis
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
 	}
+	if r.secretType != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secret_type", r.secretType, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -562,6 +608,17 @@ func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsLis
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
+		if localVarHTTPResponse.StatusCode == 404 {
+			var v NotFoundResponse
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+			return localVarReturnValue, localVarHTTPResponse, newErr
+		}
 		if localVarHTTPResponse.StatusCode == 403 {
 			var v UnauthorisedResponse
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
@@ -587,61 +644,71 @@ func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsUpdateRequest struct {
+type ApiProjectsSecretsUpdateRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
-	organisationId string
-	organisationBody *OrganisationBody
+	ApiService *SecretsApiService
+	projectId string
+	secretName string
+	secretBodyPatch *SecretBodyPatch
 }
 
-// Create/Update any field
-func (r ApiOrganisationsUpdateRequest) OrganisationBody(organisationBody OrganisationBody) ApiOrganisationsUpdateRequest {
-	r.organisationBody = &organisationBody
+// Update any field
+func (r ApiProjectsSecretsUpdateRequest) SecretBodyPatch(secretBodyPatch SecretBodyPatch) ApiProjectsSecretsUpdateRequest {
+	r.secretBodyPatch = &secretBodyPatch
 	return r
 }
 
-func (r ApiOrganisationsUpdateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
-	return r.ApiService.OrganisationsUpdateExecute(r)
+func (r ApiProjectsSecretsUpdateRequest) Execute() (*SecretResponse, *http.Response, error) {
+	return r.ApiService.ProjectsSecretsUpdateExecute(r)
 }
 
 /*
-OrganisationsUpdate Update an organisation
+ProjectsSecretsUpdate Update project secret
 
-Update an organisation
+Update project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organisationId Organisation ID reference
- @return ApiOrganisationsUpdateRequest
+ @param projectId Project ID reference
+ @param secretName Unique secret name
+ @return ApiProjectsSecretsUpdateRequest
 */
-func (a *OrganisationsApiService) OrganisationsUpdate(ctx context.Context, organisationId string) ApiOrganisationsUpdateRequest {
-	return ApiOrganisationsUpdateRequest{
+func (a *SecretsApiService) ProjectsSecretsUpdate(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsUpdateRequest {
+	return ApiProjectsSecretsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
-		organisationId: organisationId,
+		projectId: projectId,
+		secretName: secretName,
 	}
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsUpdateExecute(r ApiOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return SecretResponse
+func (a *SecretsApiService) ProjectsSecretsUpdateExecute(r ApiProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *SecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organisations/{organisation_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"organisation_id"+"}", url.PathEscape(parameterValueToString(r.organisationId, "organisationId")), -1)
+	localVarPath := localBasePath + "/projects/{project_id}/secrets/{secret_name}"
+	localVarPath = strings.Replace(localVarPath, "{"+"project_id"+"}", url.PathEscape(parameterValueToString(r.projectId, "projectId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"secret_name"+"}", url.PathEscape(parameterValueToString(r.secretName, "secretName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if strlen(r.secretName) < 1 {
+		return localVarReturnValue, nil, reportError("secretName must have at least 1 elements")
+	}
+	if r.secretBodyPatch == nil {
+		return localVarReturnValue, nil, reportError("secretBodyPatch is required and must be specified")
+	}
 
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
@@ -661,7 +728,7 @@ func (a *OrganisationsApiService) OrganisationsUpdateExecute(r ApiOrganisationsU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organisationBody
+	localVarPostBody = r.secretBodyPatch
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

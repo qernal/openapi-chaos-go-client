@@ -88,6 +88,11 @@ Class | Method | HTTP request | Description
 *ProjectsApi* | [**ProjectsGet**](docs/ProjectsApi.md#projectsget) | **Get** /projects/{project_id} | Get project
 *ProjectsApi* | [**ProjectsList**](docs/ProjectsApi.md#projectslist) | **Get** /projects | List projects
 *ProjectsApi* | [**ProjectsUpdate**](docs/ProjectsApi.md#projectsupdate) | **Put** /projects/{project_id} | Update project
+*SecretsApi* | [**ProjectsSecretsCreate**](docs/SecretsApi.md#projectssecretscreate) | **Post** /projects/{project_id}/secrets | Create project secret
+*SecretsApi* | [**ProjectsSecretsDelete**](docs/SecretsApi.md#projectssecretsdelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
+*SecretsApi* | [**ProjectsSecretsGet**](docs/SecretsApi.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
+*SecretsApi* | [**ProjectsSecretsList**](docs/SecretsApi.md#projectssecretslist) | **Get** /projects/{project_id}/secrets | List project secrets of a specific type
+*SecretsApi* | [**ProjectsSecretsUpdate**](docs/SecretsApi.md#projectssecretsupdate) | **Put** /projects/{project_id}/secrets/{secret_name} | Update project secret
 
 
 ## Documentation For Models
@@ -98,6 +103,7 @@ Class | Method | HTTP request | Description
  - [DeletedResponse](docs/DeletedResponse.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
+ - [ListSecretResponse](docs/ListSecretResponse.md)
  - [NotFoundResponse](docs/NotFoundResponse.md)
  - [OrganisationBody](docs/OrganisationBody.md)
  - [OrganisationResponse](docs/OrganisationResponse.md)
@@ -107,6 +113,22 @@ Class | Method | HTTP request | Description
  - [ProjectBody](docs/ProjectBody.md)
  - [ProjectBodyPatch](docs/ProjectBodyPatch.md)
  - [ProjectResponse](docs/ProjectResponse.md)
+ - [SecretBody](docs/SecretBody.md)
+ - [SecretBodyPatch](docs/SecretBodyPatch.md)
+ - [SecretCertificate](docs/SecretCertificate.md)
+ - [SecretCreatePayload](docs/SecretCreatePayload.md)
+ - [SecretCreateType](docs/SecretCreateType.md)
+ - [SecretEnvironment](docs/SecretEnvironment.md)
+ - [SecretMetaResponse](docs/SecretMetaResponse.md)
+ - [SecretMetaResponseCertificatePayload](docs/SecretMetaResponseCertificatePayload.md)
+ - [SecretMetaResponseDek](docs/SecretMetaResponseDek.md)
+ - [SecretMetaResponsePayload](docs/SecretMetaResponsePayload.md)
+ - [SecretMetaResponseRegistryPayload](docs/SecretMetaResponseRegistryPayload.md)
+ - [SecretMetaType](docs/SecretMetaType.md)
+ - [SecretRegistry](docs/SecretRegistry.md)
+ - [SecretResponse](docs/SecretResponse.md)
+ - [SecretResponseDate](docs/SecretResponseDate.md)
+ - [SecretResponsePayload](docs/SecretResponsePayload.md)
  - [UnauthorisedResponse](docs/UnauthorisedResponse.md)
 
 
