@@ -26,14 +26,14 @@ type SecretMetaResponse struct {
 	Payload *SecretMetaResponsePayload `json:"payload,omitempty"`
 	// Secret revision
 	Revision int32 `json:"revision"`
-	Date SecretResponseDate `json:"date"`
+	Date Date `json:"date"`
 }
 
 // NewSecretMetaResponse instantiates a new SecretMetaResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretMetaResponse(name string, type_ SecretMetaType, revision int32, date SecretResponseDate) *SecretMetaResponse {
+func NewSecretMetaResponse(name string, type_ SecretMetaType, revision int32, date Date) *SecretMetaResponse {
 	this := SecretMetaResponse{}
 	this.Name = name
 	this.Type = type_
@@ -155,9 +155,9 @@ func (o *SecretMetaResponse) SetRevision(v int32) {
 }
 
 // GetDate returns the Date field value
-func (o *SecretMetaResponse) GetDate() SecretResponseDate {
+func (o *SecretMetaResponse) GetDate() Date {
 	if o == nil {
-		var ret SecretResponseDate
+		var ret Date
 		return ret
 	}
 
@@ -166,7 +166,7 @@ func (o *SecretMetaResponse) GetDate() SecretResponseDate {
 
 // GetDateOk returns a tuple with the Date field value
 // and a boolean to check if the value has been set.
-func (o *SecretMetaResponse) GetDateOk() (*SecretResponseDate, bool) {
+func (o *SecretMetaResponse) GetDateOk() (*Date, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -174,7 +174,7 @@ func (o *SecretMetaResponse) GetDateOk() (*SecretResponseDate, bool) {
 }
 
 // SetDate sets field value
-func (o *SecretMetaResponse) SetDate(v SecretResponseDate) {
+func (o *SecretMetaResponse) SetDate(v Date) {
 	o.Date = v
 }
 

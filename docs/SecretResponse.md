@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Type** | [**SecretCreateType**](SecretCreateType.md) |  | 
 **Payload** | Pointer to [**SecretResponsePayload**](SecretResponsePayload.md) |  | [optional] 
 **Revision** | **int32** | Secret revision | 
-**Date** | [**SecretResponseDate**](SecretResponseDate.md) |  | 
+**Date** | [**Date**](Date.md) |  | 
 
 ## Methods
 
 ### NewSecretResponse
 
-`func NewSecretResponse(name string, type_ SecretCreateType, revision int32, date SecretResponseDate, ) *SecretResponse`
+`func NewSecretResponse(name string, type_ SecretCreateType, revision int32, date Date, ) *SecretResponse`
 
 NewSecretResponse instantiates a new SecretResponse object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetRevision sets Revision field to given value.
 
 ### GetDate
 
-`func (o *SecretResponse) GetDate() SecretResponseDate`
+`func (o *SecretResponse) GetDate() Date`
 
 GetDate returns the Date field if non-nil, zero value otherwise.
 
 ### GetDateOk
 
-`func (o *SecretResponse) GetDateOk() (*SecretResponseDate, bool)`
+`func (o *SecretResponse) GetDateOk() (*Date, bool)`
 
 GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDate
 
-`func (o *SecretResponse) SetDate(v SecretResponseDate)`
+`func (o *SecretResponse) SetDate(v Date)`
 
 SetDate sets Date field to given value.
 

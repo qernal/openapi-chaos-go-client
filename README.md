@@ -93,14 +93,25 @@ Class | Method | HTTP request | Description
 *SecretsApi* | [**ProjectsSecretsGet**](docs/SecretsApi.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
 *SecretsApi* | [**ProjectsSecretsList**](docs/SecretsApi.md#projectssecretslist) | **Get** /projects/{project_id}/secrets | List project secrets of a specific type
 *SecretsApi* | [**ProjectsSecretsUpdate**](docs/SecretsApi.md#projectssecretsupdate) | **Put** /projects/{project_id}/secrets/{secret_name} | Update project secret
+*TokensApi* | [**AuthTokensCreate**](docs/TokensApi.md#authtokenscreate) | **Post** /auth/tokens | Create new auth token
+*TokensApi* | [**AuthTokensDelete**](docs/TokensApi.md#authtokensdelete) | **Delete** /auth/tokens/{token_id} | Delete token
+*TokensApi* | [**AuthTokensGet**](docs/TokensApi.md#authtokensget) | **Get** /auth/tokens/{token_id} | Get token information
+*TokensApi* | [**AuthTokensList**](docs/TokensApi.md#authtokenslist) | **Get** /auth/tokens | List all user auth tokens
+*TokensApi* | [**AuthTokensUpdate**](docs/TokensApi.md#authtokensupdate) | **Put** /auth/tokens/{token_id} | Update token
 
 
 ## Documentation For Models
 
+ - [AuthToken](docs/AuthToken.md)
+ - [AuthTokenBody](docs/AuthTokenBody.md)
+ - [AuthTokenMeta](docs/AuthTokenMeta.md)
+ - [AuthTokenPatch](docs/AuthTokenPatch.md)
  - [BadRequestResponse](docs/BadRequestResponse.md)
  - [BadRequestResponseFields](docs/BadRequestResponseFields.md)
  - [ConflictResponse](docs/ConflictResponse.md)
+ - [Date](docs/Date.md)
  - [DeletedResponse](docs/DeletedResponse.md)
+ - [ListAuthTokens](docs/ListAuthTokens.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
  - [ListSecretResponse](docs/ListSecretResponse.md)
@@ -127,7 +138,6 @@ Class | Method | HTTP request | Description
  - [SecretMetaType](docs/SecretMetaType.md)
  - [SecretRegistry](docs/SecretRegistry.md)
  - [SecretResponse](docs/SecretResponse.md)
- - [SecretResponseDate](docs/SecretResponseDate.md)
  - [SecretResponsePayload](docs/SecretResponsePayload.md)
  - [UnauthorisedResponse](docs/UnauthorisedResponse.md)
 

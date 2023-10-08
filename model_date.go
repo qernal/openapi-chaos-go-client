@@ -13,41 +13,42 @@ package openapi-chaos-client
 
 import (
 	"encoding/json"
-	"time"
 )
 
-// checks if the SecretResponseDate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretResponseDate{}
+// checks if the Date type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Date{}
 
-// SecretResponseDate struct for SecretResponseDate
-type SecretResponseDate struct {
-	CreatedAt time.Time `json:"created_at"`
-	UpdatedAt time.Time `json:"updated_at"`
+// Date Object date information
+type Date struct {
+	// UTC creation datetime (ISO 8601 date format)
+	CreatedAt string `json:"created_at"`
+	// UTC update datetime (ISO 8601 date format)
+	UpdatedAt string `json:"updated_at"`
 }
 
-// NewSecretResponseDate instantiates a new SecretResponseDate object
+// NewDate instantiates a new Date object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretResponseDate(createdAt time.Time, updatedAt time.Time) *SecretResponseDate {
-	this := SecretResponseDate{}
+func NewDate(createdAt string, updatedAt string) *Date {
+	this := Date{}
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	return &this
 }
 
-// NewSecretResponseDateWithDefaults instantiates a new SecretResponseDate object
+// NewDateWithDefaults instantiates a new Date object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretResponseDateWithDefaults() *SecretResponseDate {
-	this := SecretResponseDate{}
+func NewDateWithDefaults() *Date {
+	this := Date{}
 	return &this
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *SecretResponseDate) GetCreatedAt() time.Time {
+func (o *Date) GetCreatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -56,7 +57,7 @@ func (o *SecretResponseDate) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponseDate) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Date) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,14 +65,14 @@ func (o *SecretResponseDate) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *SecretResponseDate) SetCreatedAt(v time.Time) {
+func (o *Date) SetCreatedAt(v string) {
 	o.CreatedAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *SecretResponseDate) GetUpdatedAt() time.Time {
+func (o *Date) GetUpdatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
@@ -80,7 +81,7 @@ func (o *SecretResponseDate) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponseDate) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *Date) GetUpdatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -88,11 +89,11 @@ func (o *SecretResponseDate) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *SecretResponseDate) SetUpdatedAt(v time.Time) {
+func (o *Date) SetUpdatedAt(v string) {
 	o.UpdatedAt = v
 }
 
-func (o SecretResponseDate) MarshalJSON() ([]byte, error) {
+func (o Date) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -100,45 +101,45 @@ func (o SecretResponseDate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretResponseDate) ToMap() (map[string]interface{}, error) {
+func (o Date) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
 }
 
-type NullableSecretResponseDate struct {
-	value *SecretResponseDate
+type NullableDate struct {
+	value *Date
 	isSet bool
 }
 
-func (v NullableSecretResponseDate) Get() *SecretResponseDate {
+func (v NullableDate) Get() *Date {
 	return v.value
 }
 
-func (v *NullableSecretResponseDate) Set(val *SecretResponseDate) {
+func (v *NullableDate) Set(val *Date) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretResponseDate) IsSet() bool {
+func (v NullableDate) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretResponseDate) Unset() {
+func (v *NullableDate) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretResponseDate(val *SecretResponseDate) *NullableSecretResponseDate {
-	return &NullableSecretResponseDate{value: val, isSet: true}
+func NewNullableDate(val *Date) *NullableDate {
+	return &NullableDate{value: val, isSet: true}
 }
 
-func (v NullableSecretResponseDate) MarshalJSON() ([]byte, error) {
+func (v NullableDate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretResponseDate) UnmarshalJSON(src []byte) error {
+func (v *NullableDate) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

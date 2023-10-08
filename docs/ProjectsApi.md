@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-    projectBody := *openapiclient.NewProjectBody("OrgId_example", "Name_example") // ProjectBody | Create/Update any field (optional)
+    projectBody := *openapiclient.NewProjectBody("3069614e-adc8-47cb-a69c-decf9c5f90fc", "first api") // ProjectBody | Create/Update any field (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -8,13 +8,13 @@ Name | Type | Description | Notes
 **Type** | [**SecretMetaType**](SecretMetaType.md) |  | 
 **Payload** | Pointer to [**SecretMetaResponsePayload**](SecretMetaResponsePayload.md) |  | [optional] 
 **Revision** | **int32** | Secret revision | 
-**Date** | [**SecretResponseDate**](SecretResponseDate.md) |  | 
+**Date** | [**Date**](Date.md) |  | 
 
 ## Methods
 
 ### NewSecretMetaResponse
 
-`func NewSecretMetaResponse(name string, type_ SecretMetaType, revision int32, date SecretResponseDate, ) *SecretMetaResponse`
+`func NewSecretMetaResponse(name string, type_ SecretMetaType, revision int32, date Date, ) *SecretMetaResponse`
 
 NewSecretMetaResponse instantiates a new SecretMetaResponse object
 This constructor will assign default values to properties that have it defined,
@@ -116,20 +116,20 @@ SetRevision sets Revision field to given value.
 
 ### GetDate
 
-`func (o *SecretMetaResponse) GetDate() SecretResponseDate`
+`func (o *SecretMetaResponse) GetDate() Date`
 
 GetDate returns the Date field if non-nil, zero value otherwise.
 
 ### GetDateOk
 
-`func (o *SecretMetaResponse) GetDateOk() (*SecretResponseDate, bool)`
+`func (o *SecretMetaResponse) GetDateOk() (*Date, bool)`
 
 GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDate
 
-`func (o *SecretMetaResponse) SetDate(v SecretResponseDate)`
+`func (o *SecretMetaResponse) SetDate(v Date)`
 
 SetDate sets Date field to given value.
 

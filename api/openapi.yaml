@@ -24,6 +24,8 @@ tags:
   name: organisations
 - description: "Secret operations for certificates, environment and container registry"
   name: secrets
+- description: Auth tokens for third party clients
+  name: tokens
 paths:
   /organisations:
     get:
@@ -42,24 +44,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                paginated-organisations:
-                  value:
-                    meta:
-                      results: 200
-                      start: 20
-                      end: 40
-                      pages: 20
-                      links:
-                        prev: "/{url}?page[before]=20&page[size]=20"
-                        next: "/{url}?page[after]=40&page[size]=20"
-                    data:
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: my org
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: api dev org
               schema:
                 $ref: '#/components/schemas/ListOrganisationResponse'
           description: List organisations
@@ -88,12 +72,6 @@ paths:
         "201":
           content:
             application/json:
-              examples:
-                paginated-organisations:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
           description: Get organisation
@@ -101,22 +79,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -217,12 +184,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                paginated-organisations:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
           description: Get organisation
@@ -272,12 +233,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                paginated-organisations:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: my org
               schema:
                 $ref: '#/components/schemas/OrganisationResponse'
           description: Get organisation
@@ -295,22 +250,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -357,24 +301,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                paginated-projects:
-                  value:
-                    meta:
-                      results: 200
-                      start: 20
-                      end: 40
-                      pages: 20
-                      links:
-                        prev: "/{url}?page[before]=20&page[size]=20"
-                        next: "/{url}?page[after]=40&page[size]=20"
-                    data:
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: my project
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: first api
               schema:
                 $ref: '#/components/schemas/ListProjectResponse'
           description: List projects
@@ -421,24 +347,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                paginated-projects:
-                  value:
-                    meta:
-                      results: 200
-                      start: 20
-                      end: 40
-                      pages: 20
-                      links:
-                        prev: "/{url}?page[before]=20&page[size]=20"
-                        next: "/{url}?page[after]=40&page[size]=20"
-                    data:
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: my project
-                    - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                      name: first api
               schema:
                 $ref: '#/components/schemas/ListProjectResponse'
           description: List projects
@@ -467,12 +375,6 @@ paths:
         "201":
           content:
             application/json:
-              examples:
-                project:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
           description: Get project
@@ -490,22 +392,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -606,12 +497,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                project:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
           description: Get project
@@ -661,12 +546,6 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                project:
-                  value:
-                    id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                    name: first api
               schema:
                 $ref: '#/components/schemas/ProjectResponse'
           description: Get project
@@ -684,22 +563,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -820,22 +688,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -1063,22 +920,11 @@ paths:
           content:
             application/json:
               examples:
-                user-bad-request-response:
+                generic-bad-request-response:
                   value:
                     message: Missing fields
                     fields:
-                      email: Valid email required
-                project-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      org_id: Valid organisation required
-                      name: Valid name required
-                organisation-bad-request-response:
-                  value:
-                    message: Missing fields
-                    fields:
-                      name: Name required
+                      generic_field: Valid field required
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
@@ -1098,6 +944,218 @@ paths:
       summary: Update project secret
       tags:
       - secrets
+  /auth/tokens:
+    get:
+      operationId: auth-tokens-list
+      parameters:
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAuthTokens'
+          description: List of auth token meta
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      summary: List all user auth tokens
+      tags:
+      - tokens
+    post:
+      description: Create new OAuth client which can be used to access user private
+        data
+      operationId: auth-tokens-create
+      requestBody:
+        $ref: '#/components/requestBodies/AuthTokenBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: OAuth2 with client id and client secret
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      summary: Create new auth token
+      tags:
+      - tokens
+  /auth/tokens/{token_id}:
+    delete:
+      operationId: auth-tokens-delete
+      parameters:
+      - description: Token ID reference
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      summary: Delete token
+      tags:
+      - tokens
+    get:
+      operationId: auth-tokens-get
+      parameters:
+      - description: Token ID reference
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthTokenMeta'
+          description: Token meta information
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      summary: Get token information
+      tags:
+      - tokens
+    put:
+      operationId: auth-tokens-update
+      parameters:
+      - description: Token ID reference
+        explode: false
+        in: path
+        name: token_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AuthTokenPatch'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: OAuth2 with client id and client secret
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      summary: Update token
+      tags:
+      - tokens
 components:
   parameters:
     pagination_page:
@@ -1152,25 +1210,39 @@ components:
         pattern: "^[A-Z_]+$"
         type: string
       style: simple
+    token_id:
+      description: Token ID reference
+      explode: false
+      in: path
+      name: token_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
   requestBodies:
+    AuthTokenBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthTokenBody'
+      required: true
+    AuthTokenPatch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthTokenPatch'
+      required: true
     OrganisationBody:
       content:
         application/json:
-          examples:
-            organisation-create:
-              value:
-                name: API Dev
           schema:
             $ref: '#/components/schemas/OrganisationBody'
       description: Create/Update any field
     ProjectBody:
       content:
         application/json:
-          examples:
-            project-create:
-              value:
-                org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                name: first api
           schema:
             $ref: '#/components/schemas/ProjectBody'
       description: Create/Update any field
@@ -1263,94 +1335,53 @@ components:
       content:
         application/json:
           examples:
-            user-bad-request-response:
+            generic-bad-request-response:
               value:
                 message: Missing fields
                 fields:
-                  email: Valid email required
-            project-bad-request-response:
-              value:
-                message: Missing fields
-                fields:
-                  org_id: Valid organisation required
-                  name: Valid name required
-            organisation-bad-request-response:
-              value:
-                message: Missing fields
-                fields:
-                  name: Name required
+                  generic_field: Valid field required
           schema:
             $ref: '#/components/schemas/BadRequestResponse'
       description: Resource Bad Request
+    AuthToken:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthToken'
+      description: OAuth2 with client id and client secret
+    AuthTokenMeta:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AuthTokenMeta'
+      description: Token meta information
+    AuthTokenList:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListAuthTokens'
+      description: List of auth token meta
     ListOrganisations:
       content:
         application/json:
-          examples:
-            paginated-organisations:
-              value:
-                meta:
-                  results: 200
-                  start: 20
-                  end: 40
-                  pages: 20
-                  links:
-                    prev: "/{url}?page[before]=20&page[size]=20"
-                    next: "/{url}?page[after]=40&page[size]=20"
-                data:
-                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  name: my org
-                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  name: api dev org
           schema:
             $ref: '#/components/schemas/ListOrganisationResponse'
       description: List organisations
     Organisation:
       content:
         application/json:
-          examples:
-            paginated-organisations:
-              value:
-                id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                name: my org
           schema:
             $ref: '#/components/schemas/OrganisationResponse'
       description: Get organisation
     ListProjects:
       content:
         application/json:
-          examples:
-            paginated-projects:
-              value:
-                meta:
-                  results: 200
-                  start: 20
-                  end: 40
-                  pages: 20
-                  links:
-                    prev: "/{url}?page[before]=20&page[size]=20"
-                    next: "/{url}?page[after]=40&page[size]=20"
-                data:
-                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  name: my project
-                - id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                  name: first api
           schema:
             $ref: '#/components/schemas/ListProjectResponse'
       description: List projects
     Project:
       content:
         application/json:
-          examples:
-            project:
-              value:
-                id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-                name: first api
           schema:
             $ref: '#/components/schemas/ProjectResponse'
       description: Get project
@@ -1446,6 +1477,170 @@ components:
       required:
       - message
       type: object
+    Date:
+      description: Object date information
+      example:
+        updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+        created_at: 2023-07-22T14:50:13Z20230722T145013Z
+      properties:
+        created_at:
+          description: UTC creation datetime (ISO 8601 date format)
+          example: 2023-07-22T14:50:13Z20230722T145013Z
+          format: datetime
+          type: string
+        updated_at:
+          description: UTC update datetime (ISO 8601 date format)
+          example: 2023-07-22T14:50:13Z20230722T145013Z
+          format: datetime
+          type: string
+      required:
+      - created_at
+      - updated_at
+      type: object
+    AuthTokenBody:
+      description: API auth token create
+      example:
+        name: Build token
+        expiry_duration: 0
+      properties:
+        name:
+          description: Token name
+          example: Build token
+          type: string
+        expiry_duration:
+          description: Token expiration duration in days. 0 - token will never expire
+          type: integer
+      required:
+      - expiry_duration
+      - name
+      type: object
+    AuthTokenPatch:
+      description: API auth token patch
+      example:
+        name: My updated token
+        expiry_duration: 0
+      properties:
+        name:
+          description: Token name
+          example: My updated token
+          type: string
+        expiry_duration:
+          description: Token expiration duration in days. 0 - token will never expire
+          type: integer
+    AuthToken:
+      description: API auth token
+      example:
+        date:
+          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          created_at: 2023-07-22T14:50:13Z20230722T145013Z
+        user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+        name: Build token
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
+        token: 51687d2f-07b0-4260-8ecb-f5098305fdd4@T.KcV~_96jfOoD5ixFP8qu0Spm
+      properties:
+        id:
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        user_id:
+          description: User
+          example: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+          format: uuid
+          type: string
+        name:
+          description: Token name
+          example: Build token
+          type: string
+        expiry_at:
+          example: 2023-07-22T14:50:13Z20230722T145013Z
+          format: datetime
+          type: string
+        token:
+          description: OAuth2 client id and client secret used to generate API access
+            token. Client secret can't be created and must be saved on user side
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4@T.KcV~_96jfOoD5ixFP8qu0Spm
+          type: string
+        date:
+          $ref: '#/components/schemas/Date'
+      required:
+      - date
+      - id
+      - name
+      - user_id
+      type: object
+    AuthTokenMeta:
+      description: API auth token meta
+      example:
+        date:
+          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          created_at: 2023-07-22T14:50:13Z20230722T145013Z
+        user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+        name: Build token
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
+      properties:
+        id:
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        user_id:
+          description: User
+          example: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+          format: uuid
+          type: string
+        name:
+          example: Build token
+          type: string
+        expiry_at:
+          example: 2023-07-22T14:50:13Z20230722T145013Z
+          format: datetime
+          type: string
+        date:
+          $ref: '#/components/schemas/Date'
+      required:
+      - date
+      - id
+      - name
+      - user_id
+      type: object
+    ListAuthTokens:
+      description: List of auth tokens
+      example:
+        data:
+        - date:
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
+          user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+          name: Build token
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
+        - date:
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
+          user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
+          name: Build token
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
+        meta:
+          pages: 20
+          start: 20
+          end: 40
+          links:
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/AuthTokenMeta'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
     PaginationMeta:
       description: Meta object for pagination use
       example:
@@ -1499,22 +1694,25 @@ components:
     OrganisationResponse:
       description: Organisation response
       example:
-        user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        name: my org
+        id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
       properties:
         id:
           description: Organisation id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         user_id:
           description: User id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         name:
           description: Organisation name
+          example: my org
           minLength: 1
           type: string
       required:
@@ -1526,12 +1724,12 @@ components:
       description: List organisations schema
       example:
         data:
-        - user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - user_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          name: my org
+          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        - user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          name: my org
+          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         meta:
           pages: 20
           start: 20
@@ -1554,10 +1752,11 @@ components:
     OrganisationBody:
       description: Organisation body
       example:
-        name: name
+        name: my org
       properties:
         name:
           description: Organisation name
+          example: my org
           minLength: 1
           type: string
       required:
@@ -1567,12 +1766,12 @@ components:
       description: List of projects
       example:
         data:
-        - org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          name: my project
+          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        - org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          name: my project
+          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         meta:
           pages: 20
           start: 20
@@ -1595,22 +1794,25 @@ components:
     ProjectResponse:
       description: Project response
       example:
-        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        name: my project
+        id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
       properties:
         id:
           description: Project id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         org_id:
           description: Organisation id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         name:
           description: Project name
+          example: my project
           minLength: 1
           type: string
       required:
@@ -1621,16 +1823,18 @@ components:
     ProjectBody:
       description: Project body
       example:
-        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
+        org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        name: first api
       properties:
         org_id:
           description: Organisation id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         name:
           description: Project name
+          example: first api
           minLength: 1
           type: string
       required:
@@ -1658,15 +1862,15 @@ components:
       example:
         data:
         - date:
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            created_at: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
           payload: null
           name: name
           type: registry
           revision: 23
         - date:
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            created_at: 2000-01-23T04:56:07.000+00:00
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
           payload: null
           name: name
           type: registry
@@ -1694,8 +1898,8 @@ components:
       description: Secret response
       example:
         date:
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          created_at: 2000-01-23T04:56:07.000+00:00
+          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          created_at: 2023-07-22T14:50:13Z20230722T145013Z
         payload: null
         name: name
         type: registry
@@ -1715,7 +1919,7 @@ components:
           example: 32
           type: integer
         date:
-          $ref: '#/components/schemas/SecretResponse_date'
+          $ref: '#/components/schemas/Date'
       required:
       - date
       - name
@@ -1735,8 +1939,8 @@ components:
       description: Secret metadata response
       example:
         date:
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          created_at: 2000-01-23T04:56:07.000+00:00
+          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          created_at: 2023-07-22T14:50:13Z20230722T145013Z
         payload: null
         name: name
         type: registry
@@ -1756,7 +1960,7 @@ components:
           example: 23
           type: integer
         date:
-          $ref: '#/components/schemas/SecretResponse_date'
+          $ref: '#/components/schemas/Date'
       required:
       - date
       - name
@@ -1928,21 +2132,6 @@ components:
       oneOf:
       - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
       - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
-    SecretResponse_date:
-      example:
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        created_at: 2000-01-23T04:56:07.000+00:00
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-      required:
-      - created_at
-      - updated_at
-      type: object
     SecretMetaResponse_payload:
       oneOf:
       - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
