@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    authTokenBody := *openapiclient.NewAuthTokenBody("Build token", int32(123)) // AuthTokenBody | 
+    authTokenBody := *openapiclient.NewAuthTokenBody("TF token", int32(90)) // AuthTokenBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

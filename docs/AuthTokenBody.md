@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Token name | 
+**Name** | **string** | Name of token | 
 **ExpiryDuration** | **int32** | Token expiration duration in days. 0 - token will never expire | 
 
 ## Methods

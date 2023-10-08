@@ -20,7 +20,7 @@ var _ MappedNullable = &AuthTokenBody{}
 
 // AuthTokenBody API auth token create
 type AuthTokenBody struct {
-	// Token name
+	// Name of token
 	Name string `json:"name"`
 	// Token expiration duration in days. 0 - token will never expire
 	ExpiryDuration int32 `json:"expiry_duration"`

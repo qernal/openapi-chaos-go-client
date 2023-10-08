@@ -23,6 +23,7 @@ type AuthTokenMeta struct {
 	Id string `json:"id"`
 	// User
 	UserId string `json:"user_id"`
+	// Name of token
 	Name string `json:"name"`
 	ExpiryAt *string `json:"expiry_at,omitempty"`
 	Date Date `json:"date"`

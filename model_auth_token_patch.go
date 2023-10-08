@@ -20,7 +20,7 @@ var _ MappedNullable = &AuthTokenPatch{}
 
 // AuthTokenPatch API auth token patch
 type AuthTokenPatch struct {
-	// Token name
+	// Name of token
 	Name *string `json:"name,omitempty"`
 	// Token expiration duration in days. 0 - token will never expire
 	ExpiryDuration *int32 `json:"expiry_duration,omitempty"`

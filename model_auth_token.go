@@ -20,13 +20,14 @@ var _ MappedNullable = &AuthToken{}
 
 // AuthToken API auth token
 type AuthToken struct {
+	// Auth token uuid
 	Id string `json:"id"`
 	// User
 	UserId string `json:"user_id"`
-	// Token name
+	// Name of token
 	Name string `json:"name"`
 	ExpiryAt *string `json:"expiry_at,omitempty"`
-	// OAuth2 client id and client secret used to generate API access token. Client secret can't be created and must be saved on user side
+	// Combined token required for requesting an access token, this field is only returned once on creation or update (during regeneration).
 	Token *string `json:"token,omitempty"`
 	Date Date `json:"date"`
 }

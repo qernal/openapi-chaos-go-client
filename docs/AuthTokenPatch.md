@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** | Token name | [optional] 
+**Name** | Pointer to **string** | Name of token | [optional] 
 **ExpiryDuration** | Pointer to **int32** | Token expiration duration in days. 0 - token will never expire | [optional] 
 
 ## Methods

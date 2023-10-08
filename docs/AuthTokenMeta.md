@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **UserId** | **string** | User | 
-**Name** | **string** |  | 
+**Name** | **string** | Name of token | 
 **ExpiryAt** | Pointer to **string** |  | [optional] 
 **Date** | [**Date**](Date.md) |  | 
 

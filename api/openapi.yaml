@@ -989,8 +989,11 @@ paths:
       tags:
       - tokens
     post:
-      description: Create new OAuth client which can be used to access user private
-        data
+      description: |
+        Create new auth token for use with the CLI and TF Provider
+
+        ### Warning
+        The `token` field is only shown once and can't be retrieved again without generating a new token. Securely save this once the response has been received.
       operationId: auth-tokens-create
       requestBody:
         $ref: '#/components/requestBodies/AuthTokenBody'
@@ -1000,7 +1003,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthToken'
-          description: OAuth2 with client id and client secret
+          description: Generated token response
         "404":
           content:
             application/json:
@@ -1130,7 +1133,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AuthToken'
-          description: OAuth2 with client id and client secret
+          description: Generated token response
         "404":
           content:
             application/json:
@@ -1348,7 +1351,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/AuthToken'
-      description: OAuth2 with client id and client secret
+      description: Generated token response
     AuthTokenMeta:
       content:
         application/json:
@@ -1500,15 +1503,16 @@ components:
     AuthTokenBody:
       description: API auth token create
       example:
-        name: Build token
-        expiry_duration: 0
+        name: TF token
+        expiry_duration: 90
       properties:
         name:
-          description: Token name
-          example: Build token
+          description: Name of token
+          example: TF token
           type: string
         expiry_duration:
           description: Token expiration duration in days. 0 - token will never expire
+          example: 90
           type: integer
       required:
       - expiry_duration
@@ -1518,14 +1522,15 @@ components:
       description: API auth token patch
       example:
         name: My updated token
-        expiry_duration: 0
+        expiry_duration: 90
       properties:
         name:
-          description: Token name
+          description: Name of token
           example: My updated token
           type: string
         expiry_duration:
           description: Token expiration duration in days. 0 - token will never expire
+          example: 90
           type: integer
     AuthToken:
       description: API auth token
@@ -1534,12 +1539,13 @@ components:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-        name: Build token
+        name: TF Token
         id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
         token: 51687d2f-07b0-4260-8ecb-f5098305fdd4@T.KcV~_96jfOoD5ixFP8qu0Spm
       properties:
         id:
+          description: Auth token uuid
           example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           format: uuid
           type: string
@@ -1549,16 +1555,16 @@ components:
           format: uuid
           type: string
         name:
-          description: Token name
-          example: Build token
+          description: Name of token
+          example: TF Token
           type: string
         expiry_at:
           example: 2023-07-22T14:50:13Z20230722T145013Z
           format: datetime
           type: string
         token:
-          description: OAuth2 client id and client secret used to generate API access
-            token. Client secret can't be created and must be saved on user side
+          description: "Combined token required for requesting an access token, this\
+            \ field is only returned once on creation or update (during regeneration)."
           example: 51687d2f-07b0-4260-8ecb-f5098305fdd4@T.KcV~_96jfOoD5ixFP8qu0Spm
           type: string
         date:
@@ -1576,7 +1582,7 @@ components:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-        name: Build token
+        name: TF Token
         id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
       properties:
@@ -1590,7 +1596,8 @@ components:
           format: uuid
           type: string
         name:
-          example: Build token
+          description: Name of token
+          example: TF Token
           type: string
         expiry_at:
           example: 2023-07-22T14:50:13Z20230722T145013Z
@@ -1612,14 +1619,14 @@ components:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-          name: Build token
+          name: TF Token
           id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
         - date:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-          name: Build token
+          name: TF Token
           id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
         meta:
@@ -2139,9 +2146,8 @@ components:
       - $ref: '#/components/schemas/SecretMetaResponseDek'
   securitySchemes:
     token:
-      in: header
-      name: QERNAL-AUTH-TOKEN
-      type: apiKey
+      scheme: bearer
+      type: http
     cookie:
       in: cookie
       name: qernal_kratos_session

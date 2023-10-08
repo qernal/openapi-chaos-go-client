@@ -148,11 +148,14 @@ Class | Method | HTTP request | Description
 Authentication schemes defined for the API:
 ### token
 
-- **Type**: API key
-- **API key parameter name**: QERNAL-AUTH-TOKEN
-- **Location**: HTTP header
+- **Type**: HTTP Bearer token authentication
 
-Note, each API key must be added to a map of `map[string]APIKey` where the key is: QERNAL-AUTH-TOKEN and passed in as the auth context for each request.
+Example
+
+```golang
+auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+r, err := client.Service.Operation(auth, args)
+```
 
 ### cookie
 

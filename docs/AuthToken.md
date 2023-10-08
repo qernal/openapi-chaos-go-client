@@ -4,11 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | **string** | Auth token uuid | 
 **UserId** | **string** | User | 
-**Name** | **string** | Token name | 
+**Name** | **string** | Name of token | 
 **ExpiryAt** | Pointer to **string** |  | [optional] 
-**Token** | Pointer to **string** | OAuth2 client id and client secret used to generate API access token. Client secret can&#39;t be created and must be saved on user side | [optional] 
+**Token** | Pointer to **string** | Combined token required for requesting an access token, this field is only returned once on creation or update (during regeneration). | [optional] 
 **Date** | [**Date**](Date.md) |  | 
 
 ## Methods
