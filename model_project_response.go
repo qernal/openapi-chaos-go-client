@@ -26,17 +26,19 @@ type ProjectResponse struct {
 	OrgId string `json:"org_id"`
 	// Project name
 	Name string `json:"name"`
+	Date Date `json:"date"`
 }
 
 // NewProjectResponse instantiates a new ProjectResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectResponse(id string, orgId string, name string) *ProjectResponse {
+func NewProjectResponse(id string, orgId string, name string, date Date) *ProjectResponse {
 	this := ProjectResponse{}
 	this.Id = id
 	this.OrgId = orgId
 	this.Name = name
+	this.Date = date
 	return &this
 }
 
@@ -120,6 +122,30 @@ func (o *ProjectResponse) SetName(v string) {
 	o.Name = v
 }
 
+// GetDate returns the Date field value
+func (o *ProjectResponse) GetDate() Date {
+	if o == nil {
+		var ret Date
+		return ret
+	}
+
+	return o.Date
+}
+
+// GetDateOk returns a tuple with the Date field value
+// and a boolean to check if the value has been set.
+func (o *ProjectResponse) GetDateOk() (*Date, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Date, true
+}
+
+// SetDate sets field value
+func (o *ProjectResponse) SetDate(v Date) {
+	o.Date = v
+}
+
 func (o ProjectResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +159,7 @@ func (o ProjectResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["org_id"] = o.OrgId
 	toSerialize["name"] = o.Name
+	toSerialize["date"] = o.Date
 	return toSerialize, nil
 }
 

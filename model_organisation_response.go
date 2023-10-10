@@ -26,17 +26,19 @@ type OrganisationResponse struct {
 	UserId string `json:"user_id"`
 	// Organisation name
 	Name string `json:"name"`
+	Date Date `json:"date"`
 }
 
 // NewOrganisationResponse instantiates a new OrganisationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganisationResponse(id string, userId string, name string) *OrganisationResponse {
+func NewOrganisationResponse(id string, userId string, name string, date Date) *OrganisationResponse {
 	this := OrganisationResponse{}
 	this.Id = id
 	this.UserId = userId
 	this.Name = name
+	this.Date = date
 	return &this
 }
 
@@ -120,6 +122,30 @@ func (o *OrganisationResponse) SetName(v string) {
 	o.Name = v
 }
 
+// GetDate returns the Date field value
+func (o *OrganisationResponse) GetDate() Date {
+	if o == nil {
+		var ret Date
+		return ret
+	}
+
+	return o.Date
+}
+
+// GetDateOk returns a tuple with the Date field value
+// and a boolean to check if the value has been set.
+func (o *OrganisationResponse) GetDateOk() (*Date, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Date, true
+}
+
+// SetDate sets field value
+func (o *OrganisationResponse) SetDate(v Date) {
+	o.Date = v
+}
+
 func (o OrganisationResponse) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -133,6 +159,7 @@ func (o OrganisationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["user_id"] = o.UserId
 	toSerialize["name"] = o.Name
+	toSerialize["date"] = o.Date
 	return toSerialize, nil
 }
 

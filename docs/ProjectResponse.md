@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Id** | **string** | Project id | 
 **OrgId** | **string** | Organisation id | 
 **Name** | **string** | Project name | 
+**Date** | [**Date**](Date.md) |  | 
 
 ## Methods
 
 ### NewProjectResponse
 
-`func NewProjectResponse(id string, orgId string, name string, ) *ProjectResponse`
+`func NewProjectResponse(id string, orgId string, name string, date Date, ) *ProjectResponse`
 
 NewProjectResponse instantiates a new ProjectResponse object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *ProjectResponse) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetDate
+
+`func (o *ProjectResponse) GetDate() Date`
+
+GetDate returns the Date field if non-nil, zero value otherwise.
+
+### GetDateOk
+
+`func (o *ProjectResponse) GetDateOk() (*Date, bool)`
+
+GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDate
+
+`func (o *ProjectResponse) SetDate(v Date)`
+
+SetDate sets Date field to given value.
 
 
 

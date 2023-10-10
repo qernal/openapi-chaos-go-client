@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Id** | **string** | Organisation id | 
 **UserId** | **string** | User id | 
 **Name** | **string** | Organisation name | 
+**Date** | [**Date**](Date.md) |  | 
 
 ## Methods
 
 ### NewOrganisationResponse
 
-`func NewOrganisationResponse(id string, userId string, name string, ) *OrganisationResponse`
+`func NewOrganisationResponse(id string, userId string, name string, date Date, ) *OrganisationResponse`
 
 NewOrganisationResponse instantiates a new OrganisationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *OrganisationResponse) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetDate
+
+`func (o *OrganisationResponse) GetDate() Date`
+
+GetDate returns the Date field if non-nil, zero value otherwise.
+
+### GetDateOk
+
+`func (o *OrganisationResponse) GetDateOk() (*Date, bool)`
+
+GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDate
+
+`func (o *OrganisationResponse) SetDate(v Date)`
+
+SetDate sets Date field to given value.
 
 
 
