@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_hosts.go
 api_organisations.go
 api_projects.go
 api_secrets.go
@@ -18,7 +19,12 @@ docs/BadRequestResponseFields.md
 docs/ConflictResponse.md
 docs/Date.md
 docs/DeletedResponse.md
+docs/Host.md
+docs/HostBody.md
+docs/HostBodyPatch.md
+docs/HostsApi.md
 docs/ListAuthTokens.md
+docs/ListHosts.md
 docs/ListOrganisationResponse.md
 docs/ListProjectResponse.md
 docs/ListSecretResponse.md
@@ -63,7 +69,11 @@ model_bad_request_response_fields.go
 model_conflict_response.go
 model_date.go
 model_deleted_response.go
+model_host.go
+model_host_body.go
+model_host_body_patch.go
 model_list_auth_tokens.go
+model_list_hosts.go
 model_list_organisation_response.go
 model_list_project_response.go
 model_list_secret_response.go
@@ -93,6 +103,7 @@ model_secret_response.go
 model_secret_response_payload.go
 model_unauthorised_response.go
 response.go
+test/api_hosts_test.go
 test/api_organisations_test.go
 test/api_projects_test.go
 test/api_secrets_test.go

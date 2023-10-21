@@ -77,6 +77,11 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*HostsApi* | [**ProjectsHostsCreate**](docs/HostsApi.md#projectshostscreate) | **Post** /projects/{project_id}/hosts | Create host for project
+*HostsApi* | [**ProjectsHostsDelete**](docs/HostsApi.md#projectshostsdelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
+*HostsApi* | [**ProjectsHostsGet**](docs/HostsApi.md#projectshostsget) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
+*HostsApi* | [**ProjectsHostsList**](docs/HostsApi.md#projectshostslist) | **Get** /projects/{project_id}/hosts | List hosts for project
+*HostsApi* | [**ProjectsHostsUpdate**](docs/HostsApi.md#projectshostsupdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
 *OrganisationsApi* | [**OrganisationsCreate**](docs/OrganisationsApi.md#organisationscreate) | **Post** /organisations | Create organisations
 *OrganisationsApi* | [**OrganisationsDelete**](docs/OrganisationsApi.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
 *OrganisationsApi* | [**OrganisationsGet**](docs/OrganisationsApi.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation
@@ -111,7 +116,11 @@ Class | Method | HTTP request | Description
  - [ConflictResponse](docs/ConflictResponse.md)
  - [Date](docs/Date.md)
  - [DeletedResponse](docs/DeletedResponse.md)
+ - [Host](docs/Host.md)
+ - [HostBody](docs/HostBody.md)
+ - [HostBodyPatch](docs/HostBodyPatch.md)
  - [ListAuthTokens](docs/ListAuthTokens.md)
+ - [ListHosts](docs/ListHosts.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
  - [ListSecretResponse](docs/ListSecretResponse.md)

@@ -944,6 +944,257 @@ paths:
       summary: Update project secret
       tags:
       - secrets
+  /projects/{project_id}/hosts:
+    get:
+      operationId: projects-hosts-list
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListHosts'
+          description: List of project hosts
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: List hosts for project
+      tags:
+      - hosts
+    post:
+      description: |
+        Assign a host/domain to a project - hosts are globally unique and require verification, so a host cannot be assigned to multiple projects.
+
+        A host can be a valid domain, either a root domain or a subdomain.
+      operationId: projects-hosts-create
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/HostBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+          description: Porject host
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "409":
+          content:
+            application/json:
+              examples:
+                generic-conflict-response:
+                  value:
+                    message: "Conflict, Resource already exists"
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: Resource Conflict
+      security:
+      - token: []
+      - cookie: []
+      summary: Create host for project
+      tags:
+      - hosts
+  /projects/{project_id}/hosts/{hostname}:
+    delete:
+      operationId: projects-hosts-delete
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Hostname
+        explode: false
+        in: path
+        name: hostname
+        required: true
+        schema:
+          example: example-domain.com
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Delete specific host by hostname
+      tags:
+      - hosts
+    get:
+      operationId: projects-hosts-get
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Hostname
+        explode: false
+        in: path
+        name: hostname
+        required: true
+        schema:
+          example: example-domain.com
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+          description: Porject host
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Get specific host by hostname
+      tags:
+      - hosts
+    put:
+      operationId: projects-hosts-update
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Hostname
+        explode: false
+        in: path
+        name: hostname
+        required: true
+        schema:
+          example: example-domain.com
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/HostBodyPatch'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+          description: Porject host
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Update specific host by hostname
+      tags:
+      - hosts
   /auth/tokens:
     get:
       operationId: auth-tokens-list
@@ -1224,7 +1475,29 @@ components:
         format: uuid
         type: string
       style: simple
+    hostname:
+      description: Hostname
+      explode: false
+      in: path
+      name: hostname
+      required: true
+      schema:
+        example: example-domain.com
+        type: string
+      style: simple
   requestBodies:
+    HostBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HostBody'
+      required: true
+    HostBodyPatch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/HostBodyPatch'
+      required: true
     AuthTokenBody:
       content:
         application/json:
@@ -1346,6 +1619,18 @@ components:
           schema:
             $ref: '#/components/schemas/BadRequestResponse'
       description: Resource Bad Request
+    Host:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Host'
+      description: Porject host
+    ListHosts:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListHosts'
+      description: List of project hosts
     AuthToken:
       content:
         application/json:
@@ -1499,6 +1784,157 @@ components:
       required:
       - created_at
       - updated_at
+      type: object
+    Host:
+      description: Host response
+      example:
+        date:
+          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+          created_at: 2023-07-22T14:50:13Z20230722T145013Z
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        read_only: true
+        verified_at: 2023-07-22T14:50:13Z20230722T145013Z
+        host: example-domain.com
+        certificate: projects:secrets/MY_CERT
+        disabled: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+      properties:
+        id:
+          description: Host id
+          format: uuid
+          type: string
+        host:
+          description: "Hostname, this can be a root or a subdomain"
+          example: example-domain.com
+          minLength: 1
+          type: string
+        certificate:
+          description: The secret reference to the certificate
+          example: projects:secrets/MY_CERT
+          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          type: string
+        project_id:
+          description: Project ID this is attached to
+          format: uuid
+          minLength: 1
+          type: string
+        read_only:
+          description: "If the host is read only and cannot be removed, primarily\
+            \ used for *.qrnl.app domains"
+          type: boolean
+        disabled:
+          description: If the host is disabled and so won't be routable
+          type: boolean
+        txt_verification:
+          description: "TXT record of host to verify ownership - if this record is\
+            \ removed, it may become unverified as this is checked periodically to\
+            \ continually verify ownership"
+          example: qernal=my.app=KSjfasiqwePdsakm12kdas3
+          type: string
+        verified_at:
+          description: UTC datetime when the host was verified (ISO 8601 date format).
+          example: 2023-07-22T14:50:13Z20230722T145013Z
+          format: datetime
+          type: string
+        date:
+          $ref: '#/components/schemas/Date'
+      required:
+      - date
+      - disabled
+      - host
+      - id
+      - project_id
+      - read_only
+      - txt_verification
+      type: object
+    ListHosts:
+      description: List of projects hosts
+      example:
+        data:
+        - date:
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          read_only: true
+          verified_at: 2023-07-22T14:50:13Z20230722T145013Z
+          host: example-domain.com
+          certificate: projects:secrets/MY_CERT
+          disabled: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+        - date:
+            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
+            created_at: 2023-07-22T14:50:13Z20230722T145013Z
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          read_only: true
+          verified_at: 2023-07-22T14:50:13Z20230722T145013Z
+          host: example-domain.com
+          certificate: projects:secrets/MY_CERT
+          disabled: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+        meta:
+          pages: 20
+          start: 20
+          end: 40
+          links:
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/Host'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
+    HostBody:
+      description: Host body
+      example:
+        host: host
+        certificate: projects:secrets/MY_CERT
+        disabled: true
+      properties:
+        host:
+          description: Hostname
+          minLength: 1
+          type: string
+        certificate:
+          description: Reference to secret certificate path
+          example: projects:secrets/MY_CERT
+          minLength: 1
+          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          type: string
+        disabled:
+          description: "If the host is disabled, then this host won't be accessible\
+            \ and so the deployments will not be routable on this host"
+          type: boolean
+      required:
+      - certificate
+      - disabled
+      - host
+      type: object
+    HostBodyPatch:
+      description: Host body update
+      example:
+        certificate: projects:secrets/MY_CERT
+        disabled: true
+      properties:
+        certificate:
+          description: Reference to secret certificate path
+          example: projects:secrets/MY_CERT
+          minLength: 1
+          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          type: string
+        disabled:
+          description: "If the host is disabled, then this host won't be accessible\
+            \ and so the deployments will not work on this host"
+          type: boolean
       type: object
     AuthTokenBody:
       description: API auth token create
