@@ -22,6 +22,7 @@ docs/DeletedResponse.md
 docs/Host.md
 docs/HostBody.md
 docs/HostBodyPatch.md
+docs/HostVerificationStatus.md
 docs/HostsApi.md
 docs/ListAuthTokens.md
 docs/ListHosts.md
@@ -72,6 +73,7 @@ model_deleted_response.go
 model_host.go
 model_host_body.go
 model_host_body_patch.go
+model_host_verification_status.go
 model_list_auth_tokens.go
 model_list_hosts.go
 model_list_organisation_response.go

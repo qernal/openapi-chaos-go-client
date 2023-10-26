@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **TxtVerification** | **string** | TXT record of host to verify ownership - if this record is removed, it may become unverified as this is checked periodically to continually verify ownership | 
 **VerifiedAt** | Pointer to **string** | UTC datetime when the host was verified (ISO 8601 date format). | [optional] 
 **Date** | [**Date**](Date.md) |  | 
+**VerificationStatus** | [**HostVerificationStatus**](HostVerificationStatus.md) |  | 
 
 ## Methods
 
 ### NewHost
 
-`func NewHost(id string, host string, projectId string, readOnly bool, disabled bool, txtVerification string, date Date, ) *Host`
+`func NewHost(id string, host string, projectId string, readOnly bool, disabled bool, txtVerification string, date Date, verificationStatus HostVerificationStatus, ) *Host`
 
 NewHost instantiates a new Host object
 This constructor will assign default values to properties that have it defined,
@@ -221,6 +222,26 @@ and a boolean to check if the value has been set.
 `func (o *Host) SetDate(v Date)`
 
 SetDate sets Date field to given value.
+
+
+### GetVerificationStatus
+
+`func (o *Host) GetVerificationStatus() HostVerificationStatus`
+
+GetVerificationStatus returns the VerificationStatus field if non-nil, zero value otherwise.
+
+### GetVerificationStatusOk
+
+`func (o *Host) GetVerificationStatusOk() (*HostVerificationStatus, bool)`
+
+GetVerificationStatusOk returns a tuple with the VerificationStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerificationStatus
+
+`func (o *Host) SetVerificationStatus(v HostVerificationStatus)`
+
+SetVerificationStatus sets VerificationStatus field to given value.
 
 
 

@@ -1785,6 +1785,14 @@ components:
       - created_at
       - updated_at
       type: object
+    HostVerificationStatus:
+      description: Host verification status
+      enum:
+      - pending
+      - completed
+      - failed
+      example: pending
+      type: string
     Host:
       description: Host response
       example:
@@ -1799,6 +1807,7 @@ components:
         disabled: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+        verification_status: pending
       properties:
         id:
           description: Host id
@@ -1839,6 +1848,8 @@ components:
           type: string
         date:
           $ref: '#/components/schemas/Date'
+        verification_status:
+          $ref: '#/components/schemas/HostVerificationStatus'
       required:
       - date
       - disabled
@@ -1847,6 +1858,7 @@ components:
       - project_id
       - read_only
       - txt_verification
+      - verification_status
       type: object
     ListHosts:
       description: List of projects hosts
@@ -1863,6 +1875,7 @@ components:
           disabled: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+          verification_status: pending
         - date:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -1874,6 +1887,7 @@ components:
           disabled: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
+          verification_status: pending
         meta:
           pages: 20
           start: 20

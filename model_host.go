@@ -37,13 +37,14 @@ type Host struct {
 	// UTC datetime when the host was verified (ISO 8601 date format).
 	VerifiedAt *string `json:"verified_at,omitempty"`
 	Date Date `json:"date"`
+	VerificationStatus HostVerificationStatus `json:"verification_status"`
 }
 
 // NewHost instantiates a new Host object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHost(id string, host string, projectId string, readOnly bool, disabled bool, txtVerification string, date Date) *Host {
+func NewHost(id string, host string, projectId string, readOnly bool, disabled bool, txtVerification string, date Date, verificationStatus HostVerificationStatus) *Host {
 	this := Host{}
 	this.Id = id
 	this.Host = host
@@ -52,6 +53,7 @@ func NewHost(id string, host string, projectId string, readOnly bool, disabled b
 	this.Disabled = disabled
 	this.TxtVerification = txtVerification
 	this.Date = date
+	this.VerificationStatus = verificationStatus
 	return &this
 }
 
@@ -295,6 +297,30 @@ func (o *Host) SetDate(v Date) {
 	o.Date = v
 }
 
+// GetVerificationStatus returns the VerificationStatus field value
+func (o *Host) GetVerificationStatus() HostVerificationStatus {
+	if o == nil {
+		var ret HostVerificationStatus
+		return ret
+	}
+
+	return o.VerificationStatus
+}
+
+// GetVerificationStatusOk returns a tuple with the VerificationStatus field value
+// and a boolean to check if the value has been set.
+func (o *Host) GetVerificationStatusOk() (*HostVerificationStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.VerificationStatus, true
+}
+
+// SetVerificationStatus sets field value
+func (o *Host) SetVerificationStatus(v HostVerificationStatus) {
+	o.VerificationStatus = v
+}
+
 func (o Host) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -318,6 +344,7 @@ func (o Host) ToMap() (map[string]interface{}, error) {
 		toSerialize["verified_at"] = o.VerifiedAt
 	}
 	toSerialize["date"] = o.Date
+	toSerialize["verification_status"] = o.VerificationStatus
 	return toSerialize, nil
 }
 
