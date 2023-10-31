@@ -21,10 +21,10 @@ type SecretMetaType string
 
 // List of SecretMetaType
 const (
-	REGISTRY SecretMetaType = "registry"
-	CERTIFICATE SecretMetaType = "certificate"
-	ENVIRONMENT SecretMetaType = "environment"
-	DEK SecretMetaType = "dek"
+	SECRETMETATYPE_REGISTRY SecretMetaType = "registry"
+	SECRETMETATYPE_CERTIFICATE SecretMetaType = "certificate"
+	SECRETMETATYPE_ENVIRONMENT SecretMetaType = "environment"
+	SECRETMETATYPE_DEK SecretMetaType = "dek"
 )
 
 // All allowed values of SecretMetaType enum

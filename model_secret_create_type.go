@@ -21,9 +21,9 @@ type SecretCreateType string
 
 // List of SecretCreateType
 const (
-	REGISTRY SecretCreateType = "registry"
-	CERTIFICATE SecretCreateType = "certificate"
-	ENVIRONMENT SecretCreateType = "environment"
+	SECRETCREATETYPE_REGISTRY SecretCreateType = "registry"
+	SECRETCREATETYPE_CERTIFICATE SecretCreateType = "certificate"
+	SECRETCREATETYPE_ENVIRONMENT SecretCreateType = "environment"
 )
 
 // All allowed values of SecretCreateType enum

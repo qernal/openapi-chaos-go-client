@@ -21,9 +21,9 @@ type HostVerificationStatus string
 
 // List of HostVerificationStatus
 const (
-	PENDING HostVerificationStatus = "pending"
-	COMPLETED HostVerificationStatus = "completed"
-	FAILED HostVerificationStatus = "failed"
+	HOSTVERIFICATIONSTATUS_PENDING HostVerificationStatus = "pending"
+	HOSTVERIFICATIONSTATUS_COMPLETED HostVerificationStatus = "completed"
+	HOSTVERIFICATIONSTATUS_FAILED HostVerificationStatus = "failed"
 )
 
 // All allowed values of HostVerificationStatus enum
