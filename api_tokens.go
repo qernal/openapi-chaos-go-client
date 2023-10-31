@@ -21,12 +21,12 @@ import (
 )
 
 
-// TokensApiService TokensApi service
-type TokensApiService service
+// TokensAPIService TokensAPI service
+type TokensAPIService service
 
 type ApiAuthTokensCreateRequest struct {
 	ctx context.Context
-	ApiService *TokensApiService
+	ApiService *TokensAPIService
 	authTokenBody *AuthTokenBody
 }
 
@@ -51,7 +51,7 @@ The `token` field is only shown once and can't be retrieved again without genera
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthTokensCreateRequest
 */
-func (a *TokensApiService) AuthTokensCreate(ctx context.Context) ApiAuthTokensCreateRequest {
+func (a *TokensAPIService) AuthTokensCreate(ctx context.Context) ApiAuthTokensCreateRequest {
 	return ApiAuthTokensCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,7 +60,7 @@ func (a *TokensApiService) AuthTokensCreate(ctx context.Context) ApiAuthTokensCr
 
 // Execute executes the request
 //  @return AuthToken
-func (a *TokensApiService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest) (*AuthToken, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -68,7 +68,7 @@ func (a *TokensApiService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest)
 		localVarReturnValue  *AuthToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensApiService.AuthTokensCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -161,7 +161,7 @@ func (a *TokensApiService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest)
 
 type ApiAuthTokensDeleteRequest struct {
 	ctx context.Context
-	ApiService *TokensApiService
+	ApiService *TokensAPIService
 	tokenId string
 }
 
@@ -176,7 +176,7 @@ AuthTokensDelete Delete token
  @param tokenId Token ID reference
  @return ApiAuthTokensDeleteRequest
 */
-func (a *TokensApiService) AuthTokensDelete(ctx context.Context, tokenId string) ApiAuthTokensDeleteRequest {
+func (a *TokensAPIService) AuthTokensDelete(ctx context.Context, tokenId string) ApiAuthTokensDeleteRequest {
 	return ApiAuthTokensDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -186,7 +186,7 @@ func (a *TokensApiService) AuthTokensDelete(ctx context.Context, tokenId string)
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *TokensApiService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -194,7 +194,7 @@ func (a *TokensApiService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest)
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensApiService.AuthTokensDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -272,7 +272,7 @@ func (a *TokensApiService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest)
 
 type ApiAuthTokensGetRequest struct {
 	ctx context.Context
-	ApiService *TokensApiService
+	ApiService *TokensAPIService
 	tokenId string
 }
 
@@ -287,7 +287,7 @@ AuthTokensGet Get token information
  @param tokenId Token ID reference
  @return ApiAuthTokensGetRequest
 */
-func (a *TokensApiService) AuthTokensGet(ctx context.Context, tokenId string) ApiAuthTokensGetRequest {
+func (a *TokensAPIService) AuthTokensGet(ctx context.Context, tokenId string) ApiAuthTokensGetRequest {
 	return ApiAuthTokensGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -297,7 +297,7 @@ func (a *TokensApiService) AuthTokensGet(ctx context.Context, tokenId string) Ap
 
 // Execute executes the request
 //  @return AuthTokenMeta
-func (a *TokensApiService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*AuthTokenMeta, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*AuthTokenMeta, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -305,7 +305,7 @@ func (a *TokensApiService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*Aut
 		localVarReturnValue  *AuthTokenMeta
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensApiService.AuthTokensGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -394,7 +394,7 @@ func (a *TokensApiService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*Aut
 
 type ApiAuthTokensListRequest struct {
 	ctx context.Context
-	ApiService *TokensApiService
+	ApiService *TokensAPIService
 	page *OrganisationsListPageParameter
 }
 
@@ -414,7 +414,7 @@ AuthTokensList List all user auth tokens
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiAuthTokensListRequest
 */
-func (a *TokensApiService) AuthTokensList(ctx context.Context) ApiAuthTokensListRequest {
+func (a *TokensAPIService) AuthTokensList(ctx context.Context) ApiAuthTokensListRequest {
 	return ApiAuthTokensListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -423,7 +423,7 @@ func (a *TokensApiService) AuthTokensList(ctx context.Context) ApiAuthTokensList
 
 // Execute executes the request
 //  @return ListAuthTokens
-func (a *TokensApiService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*ListAuthTokens, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*ListAuthTokens, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -431,7 +431,7 @@ func (a *TokensApiService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*L
 		localVarReturnValue  *ListAuthTokens
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensApiService.AuthTokensList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -522,7 +522,7 @@ func (a *TokensApiService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*L
 
 type ApiAuthTokensUpdateRequest struct {
 	ctx context.Context
-	ApiService *TokensApiService
+	ApiService *TokensAPIService
 	tokenId string
 	authTokenPatch *AuthTokenPatch
 }
@@ -543,7 +543,7 @@ AuthTokensUpdate Update token
  @param tokenId Token ID reference
  @return ApiAuthTokensUpdateRequest
 */
-func (a *TokensApiService) AuthTokensUpdate(ctx context.Context, tokenId string) ApiAuthTokensUpdateRequest {
+func (a *TokensAPIService) AuthTokensUpdate(ctx context.Context, tokenId string) ApiAuthTokensUpdateRequest {
 	return ApiAuthTokensUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -553,7 +553,7 @@ func (a *TokensApiService) AuthTokensUpdate(ctx context.Context, tokenId string)
 
 // Execute executes the request
 //  @return AuthToken
-func (a *TokensApiService) AuthTokensUpdateExecute(r ApiAuthTokensUpdateRequest) (*AuthToken, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensUpdateExecute(r ApiAuthTokensUpdateRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -561,7 +561,7 @@ func (a *TokensApiService) AuthTokensUpdateExecute(r ApiAuthTokensUpdateRequest)
 		localVarReturnValue  *AuthToken
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensApiService.AuthTokensUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -23,7 +23,7 @@ docs/Host.md
 docs/HostBody.md
 docs/HostBodyPatch.md
 docs/HostVerificationStatus.md
-docs/HostsApi.md
+docs/HostsAPI.md
 docs/ListAuthTokens.md
 docs/ListHosts.md
 docs/ListOrganisationResponse.md
@@ -32,14 +32,14 @@ docs/ListSecretResponse.md
 docs/NotFoundResponse.md
 docs/OrganisationBody.md
 docs/OrganisationResponse.md
-docs/OrganisationsApi.md
+docs/OrganisationsAPI.md
 docs/OrganisationsListPageParameter.md
 docs/PaginationLinks.md
 docs/PaginationMeta.md
 docs/ProjectBody.md
 docs/ProjectBodyPatch.md
 docs/ProjectResponse.md
-docs/ProjectsApi.md
+docs/ProjectsAPI.md
 docs/SecretBody.md
 docs/SecretBodyPatch.md
 docs/SecretCertificate.md
@@ -55,8 +55,8 @@ docs/SecretMetaType.md
 docs/SecretRegistry.md
 docs/SecretResponse.md
 docs/SecretResponsePayload.md
-docs/SecretsApi.md
-docs/TokensApi.md
+docs/SecretsAPI.md
+docs/TokensAPI.md
 docs/UnauthorisedResponse.md
 git_push.sh
 go.mod

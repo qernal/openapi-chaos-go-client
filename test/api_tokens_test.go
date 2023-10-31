@@ -1,7 +1,7 @@
 /*
 Chaos
 
-Testing TokensApiService
+Testing TokensAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
-func Test_openapi_chaos_client_TokensApiService(t *testing.T) {
+func Test_openapi_chaos_client_TokensAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TokensApiService AuthTokensCreate", func(t *testing.T) {
+	t.Run("Test TokensAPIService AuthTokensCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TokensApi.AuthTokensCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TokensAPI.AuthTokensCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_openapi_chaos_client_TokensApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TokensApiService AuthTokensDelete", func(t *testing.T) {
+	t.Run("Test TokensAPIService AuthTokensDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var tokenId string
 
-		resp, httpRes, err := apiClient.TokensApi.AuthTokensDelete(context.Background(), tokenId).Execute()
+		resp, httpRes, err := apiClient.TokensAPI.AuthTokensDelete(context.Background(), tokenId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_openapi_chaos_client_TokensApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TokensApiService AuthTokensGet", func(t *testing.T) {
+	t.Run("Test TokensAPIService AuthTokensGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var tokenId string
 
-		resp, httpRes, err := apiClient.TokensApi.AuthTokensGet(context.Background(), tokenId).Execute()
+		resp, httpRes, err := apiClient.TokensAPI.AuthTokensGet(context.Background(), tokenId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_openapi_chaos_client_TokensApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TokensApiService AuthTokensList", func(t *testing.T) {
+	t.Run("Test TokensAPIService AuthTokensList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.TokensApi.AuthTokensList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.TokensAPI.AuthTokensList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func Test_openapi_chaos_client_TokensApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test TokensApiService AuthTokensUpdate", func(t *testing.T) {
+	t.Run("Test TokensAPIService AuthTokensUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var tokenId string
 
-		resp, httpRes, err := apiClient.TokensApi.AuthTokensUpdate(context.Background(), tokenId).Execute()
+		resp, httpRes, err := apiClient.TokensAPI.AuthTokensUpdate(context.Background(), tokenId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

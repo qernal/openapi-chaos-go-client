@@ -1,7 +1,7 @@
 /*
 Chaos
 
-Testing SecretsApiService
+Testing SecretsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
-func Test_openapi_chaos_client_SecretsApiService(t *testing.T) {
+func Test_openapi_chaos_client_SecretsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test SecretsApiService ProjectsSecretsCreate", func(t *testing.T) {
+	t.Run("Test SecretsAPIService ProjectsSecretsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 
-		resp, httpRes, err := apiClient.SecretsApi.ProjectsSecretsCreate(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.SecretsAPI.ProjectsSecretsCreate(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,14 +36,14 @@ func Test_openapi_chaos_client_SecretsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecretsApiService ProjectsSecretsDelete", func(t *testing.T) {
+	t.Run("Test SecretsAPIService ProjectsSecretsDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var secretName string
 
-		resp, httpRes, err := apiClient.SecretsApi.ProjectsSecretsDelete(context.Background(), projectId, secretName).Execute()
+		resp, httpRes, err := apiClient.SecretsAPI.ProjectsSecretsDelete(context.Background(), projectId, secretName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,14 +51,14 @@ func Test_openapi_chaos_client_SecretsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecretsApiService ProjectsSecretsGet", func(t *testing.T) {
+	t.Run("Test SecretsAPIService ProjectsSecretsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var secretName string
 
-		resp, httpRes, err := apiClient.SecretsApi.ProjectsSecretsGet(context.Background(), projectId, secretName).Execute()
+		resp, httpRes, err := apiClient.SecretsAPI.ProjectsSecretsGet(context.Background(), projectId, secretName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,13 +66,13 @@ func Test_openapi_chaos_client_SecretsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecretsApiService ProjectsSecretsList", func(t *testing.T) {
+	t.Run("Test SecretsAPIService ProjectsSecretsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 
-		resp, httpRes, err := apiClient.SecretsApi.ProjectsSecretsList(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.SecretsAPI.ProjectsSecretsList(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,14 +80,14 @@ func Test_openapi_chaos_client_SecretsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test SecretsApiService ProjectsSecretsUpdate", func(t *testing.T) {
+	t.Run("Test SecretsAPIService ProjectsSecretsUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var secretName string
 
-		resp, httpRes, err := apiClient.SecretsApi.ProjectsSecretsUpdate(context.Background(), projectId, secretName).Execute()
+		resp, httpRes, err := apiClient.SecretsAPI.ProjectsSecretsUpdate(context.Background(), projectId, secretName).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

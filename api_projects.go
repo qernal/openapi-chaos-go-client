@@ -21,12 +21,12 @@ import (
 )
 
 
-// ProjectsApiService ProjectsApi service
-type ProjectsApiService service
+// ProjectsAPIService ProjectsAPI service
+type ProjectsAPIService service
 
 type ApiOrganisationsProjectsListRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	organisationId string
 	page *OrganisationsListPageParameter
 }
@@ -50,7 +50,7 @@ Get all the projects linked to a specific organisation
  @param organisationId Organisation ID reference
  @return ApiOrganisationsProjectsListRequest
 */
-func (a *ProjectsApiService) OrganisationsProjectsList(ctx context.Context, organisationId string) ApiOrganisationsProjectsListRequest {
+func (a *ProjectsAPIService) OrganisationsProjectsList(ctx context.Context, organisationId string) ApiOrganisationsProjectsListRequest {
 	return ApiOrganisationsProjectsListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,7 +60,7 @@ func (a *ProjectsApiService) OrganisationsProjectsList(ctx context.Context, orga
 
 // Execute executes the request
 //  @return ListProjectResponse
-func (a *ProjectsApiService) OrganisationsProjectsListExecute(r ApiOrganisationsProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ApiOrganisationsProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -68,7 +68,7 @@ func (a *ProjectsApiService) OrganisationsProjectsListExecute(r ApiOrganisations
 		localVarReturnValue  *ListProjectResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.OrganisationsProjectsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.OrganisationsProjectsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -160,7 +160,7 @@ func (a *ProjectsApiService) OrganisationsProjectsListExecute(r ApiOrganisations
 
 type ApiProjectsCreateRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	projectBody *ProjectBody
 }
 
@@ -182,7 +182,7 @@ Create a new project
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProjectsCreateRequest
 */
-func (a *ProjectsApiService) ProjectsCreate(ctx context.Context) ApiProjectsCreateRequest {
+func (a *ProjectsAPIService) ProjectsCreate(ctx context.Context) ApiProjectsCreateRequest {
 	return ApiProjectsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -191,7 +191,7 @@ func (a *ProjectsApiService) ProjectsCreate(ctx context.Context) ApiProjectsCrea
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsApiService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -199,7 +199,7 @@ func (a *ProjectsApiService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (
 		localVarReturnValue  *ProjectResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ProjectsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -311,7 +311,7 @@ func (a *ProjectsApiService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (
 
 type ApiProjectsDeleteRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	projectId string
 }
 
@@ -328,7 +328,7 @@ Delete project, this will also delete all the resources within the project
  @param projectId Project ID reference
  @return ApiProjectsDeleteRequest
 */
-func (a *ProjectsApiService) ProjectsDelete(ctx context.Context, projectId string) ApiProjectsDeleteRequest {
+func (a *ProjectsAPIService) ProjectsDelete(ctx context.Context, projectId string) ApiProjectsDeleteRequest {
 	return ApiProjectsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -338,7 +338,7 @@ func (a *ProjectsApiService) ProjectsDelete(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *ProjectsApiService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -346,7 +346,7 @@ func (a *ProjectsApiService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ProjectsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -435,7 +435,7 @@ func (a *ProjectsApiService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (
 
 type ApiProjectsGetRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	projectId string
 }
 
@@ -452,7 +452,7 @@ Get a specific project
  @param projectId Project ID reference
  @return ApiProjectsGetRequest
 */
-func (a *ProjectsApiService) ProjectsGet(ctx context.Context, projectId string) ApiProjectsGetRequest {
+func (a *ProjectsAPIService) ProjectsGet(ctx context.Context, projectId string) ApiProjectsGetRequest {
 	return ApiProjectsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -462,7 +462,7 @@ func (a *ProjectsApiService) ProjectsGet(ctx context.Context, projectId string) 
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsApiService) ProjectsGetExecute(r ApiProjectsGetRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsGetExecute(r ApiProjectsGetRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -470,7 +470,7 @@ func (a *ProjectsApiService) ProjectsGetExecute(r ApiProjectsGetRequest) (*Proje
 		localVarReturnValue  *ProjectResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ProjectsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -559,7 +559,7 @@ func (a *ProjectsApiService) ProjectsGetExecute(r ApiProjectsGetRequest) (*Proje
 
 type ApiProjectsListRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	page *OrganisationsListPageParameter
 }
 
@@ -581,7 +581,7 @@ Get all projects for this user, paginated
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiProjectsListRequest
 */
-func (a *ProjectsApiService) ProjectsList(ctx context.Context) ApiProjectsListRequest {
+func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ApiProjectsListRequest {
 	return ApiProjectsListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -590,7 +590,7 @@ func (a *ProjectsApiService) ProjectsList(ctx context.Context) ApiProjectsListRe
 
 // Execute executes the request
 //  @return ListProjectResponse
-func (a *ProjectsApiService) ProjectsListExecute(r ApiProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -598,7 +598,7 @@ func (a *ProjectsApiService) ProjectsListExecute(r ApiProjectsListRequest) (*Lis
 		localVarReturnValue  *ListProjectResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ProjectsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -678,7 +678,7 @@ func (a *ProjectsApiService) ProjectsListExecute(r ApiProjectsListRequest) (*Lis
 
 type ApiProjectsUpdateRequest struct {
 	ctx context.Context
-	ApiService *ProjectsApiService
+	ApiService *ProjectsAPIService
 	projectId string
 	projectBodyPatch *ProjectBodyPatch
 }
@@ -702,7 +702,7 @@ Update project
  @param projectId Project ID reference
  @return ApiProjectsUpdateRequest
 */
-func (a *ProjectsApiService) ProjectsUpdate(ctx context.Context, projectId string) ApiProjectsUpdateRequest {
+func (a *ProjectsAPIService) ProjectsUpdate(ctx context.Context, projectId string) ApiProjectsUpdateRequest {
 	return ApiProjectsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -712,7 +712,7 @@ func (a *ProjectsApiService) ProjectsUpdate(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsApiService) ProjectsUpdateExecute(r ApiProjectsUpdateRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsUpdateExecute(r ApiProjectsUpdateRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -720,7 +720,7 @@ func (a *ProjectsApiService) ProjectsUpdateExecute(r ApiProjectsUpdateRequest) (
 		localVarReturnValue  *ProjectResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsApiService.ProjectsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

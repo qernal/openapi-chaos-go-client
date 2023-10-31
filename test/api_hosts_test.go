@@ -1,7 +1,7 @@
 /*
 Chaos
 
-Testing HostsApiService
+Testing HostsAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
-func Test_openapi_chaos_client_HostsApiService(t *testing.T) {
+func Test_openapi_chaos_client_HostsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test HostsApiService ProjectsHostsCreate", func(t *testing.T) {
+	t.Run("Test HostsAPIService ProjectsHostsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 
-		resp, httpRes, err := apiClient.HostsApi.ProjectsHostsCreate(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.HostsAPI.ProjectsHostsCreate(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,14 +36,14 @@ func Test_openapi_chaos_client_HostsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostsApiService ProjectsHostsDelete", func(t *testing.T) {
+	t.Run("Test HostsAPIService ProjectsHostsDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var hostname string
 
-		resp, httpRes, err := apiClient.HostsApi.ProjectsHostsDelete(context.Background(), projectId, hostname).Execute()
+		resp, httpRes, err := apiClient.HostsAPI.ProjectsHostsDelete(context.Background(), projectId, hostname).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -51,14 +51,14 @@ func Test_openapi_chaos_client_HostsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostsApiService ProjectsHostsGet", func(t *testing.T) {
+	t.Run("Test HostsAPIService ProjectsHostsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var hostname string
 
-		resp, httpRes, err := apiClient.HostsApi.ProjectsHostsGet(context.Background(), projectId, hostname).Execute()
+		resp, httpRes, err := apiClient.HostsAPI.ProjectsHostsGet(context.Background(), projectId, hostname).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -66,13 +66,13 @@ func Test_openapi_chaos_client_HostsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostsApiService ProjectsHostsList", func(t *testing.T) {
+	t.Run("Test HostsAPIService ProjectsHostsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 
-		resp, httpRes, err := apiClient.HostsApi.ProjectsHostsList(context.Background(), projectId).Execute()
+		resp, httpRes, err := apiClient.HostsAPI.ProjectsHostsList(context.Background(), projectId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -80,14 +80,14 @@ func Test_openapi_chaos_client_HostsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test HostsApiService ProjectsHostsUpdate", func(t *testing.T) {
+	t.Run("Test HostsAPIService ProjectsHostsUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var projectId string
 		var hostname string
 
-		resp, httpRes, err := apiClient.HostsApi.ProjectsHostsUpdate(context.Background(), projectId, hostname).Execute()
+		resp, httpRes, err := apiClient.HostsAPI.ProjectsHostsUpdate(context.Background(), projectId, hostname).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

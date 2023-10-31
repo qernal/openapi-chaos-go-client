@@ -1,15 +1,15 @@
-# \ProjectsApi
+# \ProjectsAPI
 
 All URIs are relative to *https://chaos.qernal.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OrganisationsProjectsList**](ProjectsApi.md#OrganisationsProjectsList) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
-[**ProjectsCreate**](ProjectsApi.md#ProjectsCreate) | **Post** /projects | Create project
-[**ProjectsDelete**](ProjectsApi.md#ProjectsDelete) | **Delete** /projects/{project_id} | Delete project
-[**ProjectsGet**](ProjectsApi.md#ProjectsGet) | **Get** /projects/{project_id} | Get project
-[**ProjectsList**](ProjectsApi.md#ProjectsList) | **Get** /projects | List projects
-[**ProjectsUpdate**](ProjectsApi.md#ProjectsUpdate) | **Put** /projects/{project_id} | Update project
+[**OrganisationsProjectsList**](ProjectsAPI.md#OrganisationsProjectsList) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
+[**ProjectsCreate**](ProjectsAPI.md#ProjectsCreate) | **Post** /projects | Create project
+[**ProjectsDelete**](ProjectsAPI.md#ProjectsDelete) | **Delete** /projects/{project_id} | Delete project
+[**ProjectsGet**](ProjectsAPI.md#ProjectsGet) | **Get** /projects/{project_id} | Get project
+[**ProjectsList**](ProjectsAPI.md#ProjectsList) | **Get** /projects | List projects
+[**ProjectsUpdate**](ProjectsAPI.md#ProjectsUpdate) | **Put** /projects/{project_id} | Update project
 
 
 
@@ -35,17 +35,17 @@ import (
 
 func main() {
     organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
-    page := map[string][]openapiclient.OrganisationsListPageParameter{"key": map[string]interface{}{ ... }} // OrganisationsListPageParameter | Query parameters for pagination (optional)
+    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.OrganisationsProjectsList(context.Background(), organisationId).Page(page).Execute()
+    resp, r, err := apiClient.ProjectsAPI.OrganisationsProjectsList(context.Background(), organisationId).Page(page).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.OrganisationsProjectsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.OrganisationsProjectsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `OrganisationsProjectsList`: ListProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.OrganisationsProjectsList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.OrganisationsProjectsList`: %v\n", resp)
 }
 ```
 
@@ -110,13 +110,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.ProjectsCreate(context.Background()).ProjectBody(projectBody).Execute()
+    resp, r, err := apiClient.ProjectsAPI.ProjectsCreate(context.Background()).ProjectBody(projectBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ProjectsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ProjectsCreate`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ProjectsCreate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsCreate`: %v\n", resp)
 }
 ```
 
@@ -176,13 +176,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.ProjectsDelete(context.Background(), projectId).Execute()
+    resp, r, err := apiClient.ProjectsAPI.ProjectsDelete(context.Background(), projectId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ProjectsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ProjectsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ProjectsDelete`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsDelete`: %v\n", resp)
 }
 ```
 
@@ -246,13 +246,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.ProjectsGet(context.Background(), projectId).Execute()
+    resp, r, err := apiClient.ProjectsAPI.ProjectsGet(context.Background(), projectId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ProjectsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ProjectsGet`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ProjectsGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsGet`: %v\n", resp)
 }
 ```
 
@@ -312,17 +312,17 @@ import (
 )
 
 func main() {
-    page := map[string][]openapiclient.OrganisationsListPageParameter{"key": map[string]interface{}{ ... }} // OrganisationsListPageParameter | Query parameters for pagination (optional)
+    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.ProjectsList(context.Background()).Page(page).Execute()
+    resp, r, err := apiClient.ProjectsAPI.ProjectsList(context.Background()).Page(page).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ProjectsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ProjectsList`: ListProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ProjectsList`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsList`: %v\n", resp)
 }
 ```
 
@@ -383,13 +383,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsApi.ProjectsUpdate(context.Background(), projectId).ProjectBodyPatch(projectBodyPatch).Execute()
+    resp, r, err := apiClient.ProjectsAPI.ProjectsUpdate(context.Background(), projectId).ProjectBodyPatch(projectBodyPatch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsApi.ProjectsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ProjectsUpdate`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsApi.ProjectsUpdate`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsUpdate`: %v\n", resp)
 }
 ```
 

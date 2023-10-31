@@ -1,22 +1,22 @@
-# \SecretsApi
+# \HostsAPI
 
 All URIs are relative to *https://chaos.qernal.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ProjectsSecretsCreate**](SecretsApi.md#ProjectsSecretsCreate) | **Post** /projects/{project_id}/secrets | Create project secret
-[**ProjectsSecretsDelete**](SecretsApi.md#ProjectsSecretsDelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
-[**ProjectsSecretsGet**](SecretsApi.md#ProjectsSecretsGet) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
-[**ProjectsSecretsList**](SecretsApi.md#ProjectsSecretsList) | **Get** /projects/{project_id}/secrets | List project secrets of a specific type
-[**ProjectsSecretsUpdate**](SecretsApi.md#ProjectsSecretsUpdate) | **Put** /projects/{project_id}/secrets/{secret_name} | Update project secret
+[**ProjectsHostsCreate**](HostsAPI.md#ProjectsHostsCreate) | **Post** /projects/{project_id}/hosts | Create host for project
+[**ProjectsHostsDelete**](HostsAPI.md#ProjectsHostsDelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
+[**ProjectsHostsGet**](HostsAPI.md#ProjectsHostsGet) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
+[**ProjectsHostsList**](HostsAPI.md#ProjectsHostsList) | **Get** /projects/{project_id}/hosts | List hosts for project
+[**ProjectsHostsUpdate**](HostsAPI.md#ProjectsHostsUpdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
 
 
 
-## ProjectsSecretsCreate
+## ProjectsHostsCreate
 
-> SecretResponse ProjectsSecretsCreate(ctx, projectId).SecretBody(secretBody).Execute()
+> Host ProjectsHostsCreate(ctx, projectId).HostBody(hostBody).Execute()
 
-Create project secret
+Create host for project
 
 
 
@@ -34,17 +34,17 @@ import (
 
 func main() {
     projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretBody := *openapiclient.NewSecretBody("Name_example", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field
+    hostBody := *openapiclient.NewHostBody("Host_example", "projects:secrets/MY_CERT", false) // HostBody | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsApi.ProjectsSecretsCreate(context.Background(), projectId).SecretBody(secretBody).Execute()
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsCreate(context.Background(), projectId).HostBody(hostBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsApi.ProjectsSecretsCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProjectsSecretsCreate`: SecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsApi.ProjectsSecretsCreate`: %v\n", resp)
+    // response from `ProjectsHostsCreate`: Host
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsCreate`: %v\n", resp)
 }
 ```
 
@@ -58,17 +58,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProjectsSecretsCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProjectsHostsCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **secretBody** | [**SecretBody**](SecretBody.md) | Create/Update any field | 
+ **hostBody** | [**HostBody**](HostBody.md) |  | 
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Host**](Host.md)
 
 ### Authorization
 
@@ -84,13 +84,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProjectsSecretsDelete
+## ProjectsHostsDelete
 
-> DeletedResponse ProjectsSecretsDelete(ctx, projectId, secretName).Execute()
+> DeletedResponse ProjectsHostsDelete(ctx, projectId, hostname).Execute()
 
-Delete project secret
-
-
+Delete specific host by hostname
 
 ### Example
 
@@ -106,17 +104,17 @@ import (
 
 func main() {
     projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
+    hostname := "example-domain.com" // string | Hostname
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsApi.ProjectsSecretsDelete(context.Background(), projectId, secretName).Execute()
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsDelete(context.Background(), projectId, hostname).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsApi.ProjectsSecretsDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProjectsSecretsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsApi.ProjectsSecretsDelete`: %v\n", resp)
+    // response from `ProjectsHostsDelete`: DeletedResponse
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsDelete`: %v\n", resp)
 }
 ```
 
@@ -127,11 +125,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **projectId** | **string** | Project ID reference | 
-**secretName** | **string** | Unique secret name | 
+**hostname** | **string** | Hostname | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProjectsSecretsDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProjectsHostsDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -157,13 +155,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProjectsSecretsGet
+## ProjectsHostsGet
 
-> SecretMetaResponse ProjectsSecretsGet(ctx, projectId, secretName).Execute()
+> Host ProjectsHostsGet(ctx, projectId, hostname).Execute()
 
-Get project secret
-
-
+Get specific host by hostname
 
 ### Example
 
@@ -179,17 +175,17 @@ import (
 
 func main() {
     projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
+    hostname := "example-domain.com" // string | Hostname
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsApi.ProjectsSecretsGet(context.Background(), projectId, secretName).Execute()
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsGet(context.Background(), projectId, hostname).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsApi.ProjectsSecretsGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProjectsSecretsGet`: SecretMetaResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsApi.ProjectsSecretsGet`: %v\n", resp)
+    // response from `ProjectsHostsGet`: Host
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsGet`: %v\n", resp)
 }
 ```
 
@@ -200,11 +196,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **projectId** | **string** | Project ID reference | 
-**secretName** | **string** | Unique secret name | 
+**hostname** | **string** | Hostname | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProjectsSecretsGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProjectsHostsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -214,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretMetaResponse**](SecretMetaResponse.md)
+[**Host**](Host.md)
 
 ### Authorization
 
@@ -230,13 +226,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProjectsSecretsList
+## ProjectsHostsList
 
-> ListSecretResponse ProjectsSecretsList(ctx, projectId).Page(page).SecretType(secretType).Execute()
+> ListHosts ProjectsHostsList(ctx, projectId).Page(page).Execute()
 
-List project secrets of a specific type
-
-
+List hosts for project
 
 ### Example
 
@@ -252,18 +246,17 @@ import (
 
 func main() {
     projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    page := map[string][]openapiclient.OrganisationsListPageParameter{"key": map[string]interface{}{ ... }} // OrganisationsListPageParameter | Query parameters for pagination (optional)
-    secretType := openapiclient.SecretMetaType("registry") // SecretMetaType | Type of secret to filter on (optional)
+    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsApi.ProjectsSecretsList(context.Background(), projectId).Page(page).SecretType(secretType).Execute()
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsList(context.Background(), projectId).Page(page).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsApi.ProjectsSecretsList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProjectsSecretsList`: ListSecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsApi.ProjectsSecretsList`: %v\n", resp)
+    // response from `ProjectsHostsList`: ListHosts
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsList`: %v\n", resp)
 }
 ```
 
@@ -277,18 +270,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProjectsSecretsListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProjectsHostsListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **page** | [**OrganisationsListPageParameter**](OrganisationsListPageParameter.md) | Query parameters for pagination | 
- **secretType** | [**SecretMetaType**](SecretMetaType.md) | Type of secret to filter on | 
 
 ### Return type
 
-[**ListSecretResponse**](ListSecretResponse.md)
+[**ListHosts**](ListHosts.md)
 
 ### Authorization
 
@@ -304,13 +296,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ProjectsSecretsUpdate
+## ProjectsHostsUpdate
 
-> SecretResponse ProjectsSecretsUpdate(ctx, projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
+> Host ProjectsHostsUpdate(ctx, projectId, hostname).HostBodyPatch(hostBodyPatch).Execute()
 
-Update project secret
-
-
+Update specific host by hostname
 
 ### Example
 
@@ -326,18 +316,18 @@ import (
 
 func main() {
     projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
-    secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
+    hostname := "example-domain.com" // string | Hostname
+    hostBodyPatch := *openapiclient.NewHostBodyPatch() // HostBodyPatch | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsApi.ProjectsSecretsUpdate(context.Background(), projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsUpdate(context.Background(), projectId, hostname).HostBodyPatch(hostBodyPatch).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsApi.ProjectsSecretsUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ProjectsSecretsUpdate`: SecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsApi.ProjectsSecretsUpdate`: %v\n", resp)
+    // response from `ProjectsHostsUpdate`: Host
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsUpdate`: %v\n", resp)
 }
 ```
 
@@ -348,22 +338,22 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **projectId** | **string** | Project ID reference | 
-**secretName** | **string** | Unique secret name | 
+**hostname** | **string** | Hostname | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProjectsSecretsUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProjectsHostsUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
- **secretBodyPatch** | [**SecretBodyPatch**](SecretBodyPatch.md) | Update any field | 
+ **hostBodyPatch** | [**HostBodyPatch**](HostBodyPatch.md) |  | 
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Host**](Host.md)
 
 ### Authorization
 

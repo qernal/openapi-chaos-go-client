@@ -21,12 +21,12 @@ import (
 )
 
 
-// HostsApiService HostsApi service
-type HostsApiService service
+// HostsAPIService HostsAPI service
+type HostsAPIService service
 
 type ApiProjectsHostsCreateRequest struct {
 	ctx context.Context
-	ApiService *HostsApiService
+	ApiService *HostsAPIService
 	projectId string
 	hostBody *HostBody
 }
@@ -52,7 +52,7 @@ A host can be a valid domain, either a root domain or a subdomain.
  @param projectId Project ID reference
  @return ApiProjectsHostsCreateRequest
 */
-func (a *HostsApiService) ProjectsHostsCreate(ctx context.Context, projectId string) ApiProjectsHostsCreateRequest {
+func (a *HostsAPIService) ProjectsHostsCreate(ctx context.Context, projectId string) ApiProjectsHostsCreateRequest {
 	return ApiProjectsHostsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -62,7 +62,7 @@ func (a *HostsApiService) ProjectsHostsCreate(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return Host
-func (a *HostsApiService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -70,7 +70,7 @@ func (a *HostsApiService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateReq
 		localVarReturnValue  *Host
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsApiService.ProjectsHostsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -175,7 +175,7 @@ func (a *HostsApiService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateReq
 
 type ApiProjectsHostsDeleteRequest struct {
 	ctx context.Context
-	ApiService *HostsApiService
+	ApiService *HostsAPIService
 	projectId string
 	hostname string
 }
@@ -192,7 +192,7 @@ ProjectsHostsDelete Delete specific host by hostname
  @param hostname Hostname
  @return ApiProjectsHostsDeleteRequest
 */
-func (a *HostsApiService) ProjectsHostsDelete(ctx context.Context, projectId string, hostname string) ApiProjectsHostsDeleteRequest {
+func (a *HostsAPIService) ProjectsHostsDelete(ctx context.Context, projectId string, hostname string) ApiProjectsHostsDeleteRequest {
 	return ApiProjectsHostsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -203,7 +203,7 @@ func (a *HostsApiService) ProjectsHostsDelete(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *HostsApiService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -211,7 +211,7 @@ func (a *HostsApiService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteReq
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsApiService.ProjectsHostsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -290,7 +290,7 @@ func (a *HostsApiService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteReq
 
 type ApiProjectsHostsGetRequest struct {
 	ctx context.Context
-	ApiService *HostsApiService
+	ApiService *HostsAPIService
 	projectId string
 	hostname string
 }
@@ -307,7 +307,7 @@ ProjectsHostsGet Get specific host by hostname
  @param hostname Hostname
  @return ApiProjectsHostsGetRequest
 */
-func (a *HostsApiService) ProjectsHostsGet(ctx context.Context, projectId string, hostname string) ApiProjectsHostsGetRequest {
+func (a *HostsAPIService) ProjectsHostsGet(ctx context.Context, projectId string, hostname string) ApiProjectsHostsGetRequest {
 	return ApiProjectsHostsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -318,7 +318,7 @@ func (a *HostsApiService) ProjectsHostsGet(ctx context.Context, projectId string
 
 // Execute executes the request
 //  @return Host
-func (a *HostsApiService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -326,7 +326,7 @@ func (a *HostsApiService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) 
 		localVarReturnValue  *Host
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsApiService.ProjectsHostsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -405,7 +405,7 @@ func (a *HostsApiService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) 
 
 type ApiProjectsHostsListRequest struct {
 	ctx context.Context
-	ApiService *HostsApiService
+	ApiService *HostsAPIService
 	projectId string
 	page *OrganisationsListPageParameter
 }
@@ -427,7 +427,7 @@ ProjectsHostsList List hosts for project
  @param projectId Project ID reference
  @return ApiProjectsHostsListRequest
 */
-func (a *HostsApiService) ProjectsHostsList(ctx context.Context, projectId string) ApiProjectsHostsListRequest {
+func (a *HostsAPIService) ProjectsHostsList(ctx context.Context, projectId string) ApiProjectsHostsListRequest {
 	return ApiProjectsHostsListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -437,7 +437,7 @@ func (a *HostsApiService) ProjectsHostsList(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return ListHosts
-func (a *HostsApiService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest) (*ListHosts, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest) (*ListHosts, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -445,7 +445,7 @@ func (a *HostsApiService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest
 		localVarReturnValue  *ListHosts
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsApiService.ProjectsHostsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -526,7 +526,7 @@ func (a *HostsApiService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest
 
 type ApiProjectsHostsUpdateRequest struct {
 	ctx context.Context
-	ApiService *HostsApiService
+	ApiService *HostsAPIService
 	projectId string
 	hostname string
 	hostBodyPatch *HostBodyPatch
@@ -549,7 +549,7 @@ ProjectsHostsUpdate Update specific host by hostname
  @param hostname Hostname
  @return ApiProjectsHostsUpdateRequest
 */
-func (a *HostsApiService) ProjectsHostsUpdate(ctx context.Context, projectId string, hostname string) ApiProjectsHostsUpdateRequest {
+func (a *HostsAPIService) ProjectsHostsUpdate(ctx context.Context, projectId string, hostname string) ApiProjectsHostsUpdateRequest {
 	return ApiProjectsHostsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -560,7 +560,7 @@ func (a *HostsApiService) ProjectsHostsUpdate(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return Host
-func (a *HostsApiService) ProjectsHostsUpdateExecute(r ApiProjectsHostsUpdateRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsUpdateExecute(r ApiProjectsHostsUpdateRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -568,7 +568,7 @@ func (a *HostsApiService) ProjectsHostsUpdateExecute(r ApiProjectsHostsUpdateReq
 		localVarReturnValue  *Host
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsApiService.ProjectsHostsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

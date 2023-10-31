@@ -21,12 +21,12 @@ import (
 )
 
 
-// SecretsApiService SecretsApi service
-type SecretsApiService service
+// SecretsAPIService SecretsAPI service
+type SecretsAPIService service
 
 type ApiProjectsSecretsCreateRequest struct {
 	ctx context.Context
-	ApiService *SecretsApiService
+	ApiService *SecretsAPIService
 	projectId string
 	secretBody *SecretBody
 }
@@ -50,7 +50,7 @@ Create a new project secret
  @param projectId Project ID reference
  @return ApiProjectsSecretsCreateRequest
 */
-func (a *SecretsApiService) ProjectsSecretsCreate(ctx context.Context, projectId string) ApiProjectsSecretsCreateRequest {
+func (a *SecretsAPIService) ProjectsSecretsCreate(ctx context.Context, projectId string) ApiProjectsSecretsCreateRequest {
 	return ApiProjectsSecretsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -60,7 +60,7 @@ func (a *SecretsApiService) ProjectsSecretsCreate(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *SecretsApiService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -68,7 +68,7 @@ func (a *SecretsApiService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCre
 		localVarReturnValue  *SecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -184,7 +184,7 @@ func (a *SecretsApiService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCre
 
 type ApiProjectsSecretsDeleteRequest struct {
 	ctx context.Context
-	ApiService *SecretsApiService
+	ApiService *SecretsAPIService
 	projectId string
 	secretName string
 }
@@ -203,7 +203,7 @@ Delete project secret, if the secret is still linked to an active/deployed funct
  @param secretName Unique secret name
  @return ApiProjectsSecretsDeleteRequest
 */
-func (a *SecretsApiService) ProjectsSecretsDelete(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsDeleteRequest {
+func (a *SecretsAPIService) ProjectsSecretsDelete(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsDeleteRequest {
 	return ApiProjectsSecretsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -214,7 +214,7 @@ func (a *SecretsApiService) ProjectsSecretsDelete(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *SecretsApiService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -222,7 +222,7 @@ func (a *SecretsApiService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDel
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -315,7 +315,7 @@ func (a *SecretsApiService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDel
 
 type ApiProjectsSecretsGetRequest struct {
 	ctx context.Context
-	ApiService *SecretsApiService
+	ApiService *SecretsAPIService
 	projectId string
 	secretName string
 }
@@ -334,7 +334,7 @@ Get a specific project
  @param secretName Unique secret name
  @return ApiProjectsSecretsGetRequest
 */
-func (a *SecretsApiService) ProjectsSecretsGet(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsGetRequest {
+func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsGetRequest {
 	return ApiProjectsSecretsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -345,7 +345,7 @@ func (a *SecretsApiService) ProjectsSecretsGet(ctx context.Context, projectId st
 
 // Execute executes the request
 //  @return SecretMetaResponse
-func (a *SecretsApiService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -353,7 +353,7 @@ func (a *SecretsApiService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetReq
 		localVarReturnValue  *SecretMetaResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -446,7 +446,7 @@ func (a *SecretsApiService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetReq
 
 type ApiProjectsSecretsListRequest struct {
 	ctx context.Context
-	ApiService *SecretsApiService
+	ApiService *SecretsAPIService
 	projectId string
 	page *OrganisationsListPageParameter
 	secretType *SecretMetaType
@@ -477,7 +477,7 @@ List project secrets of a specific type
  @param projectId Project ID reference
  @return ApiProjectsSecretsListRequest
 */
-func (a *SecretsApiService) ProjectsSecretsList(ctx context.Context, projectId string) ApiProjectsSecretsListRequest {
+func (a *SecretsAPIService) ProjectsSecretsList(ctx context.Context, projectId string) ApiProjectsSecretsListRequest {
 	return ApiProjectsSecretsListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -487,7 +487,7 @@ func (a *SecretsApiService) ProjectsSecretsList(ctx context.Context, projectId s
 
 // Execute executes the request
 //  @return ListSecretResponse
-func (a *SecretsApiService) ProjectsSecretsListExecute(r ApiProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsListExecute(r ApiProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -495,7 +495,7 @@ func (a *SecretsApiService) ProjectsSecretsListExecute(r ApiProjectsSecretsListR
 		localVarReturnValue  *ListSecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -590,7 +590,7 @@ func (a *SecretsApiService) ProjectsSecretsListExecute(r ApiProjectsSecretsListR
 
 type ApiProjectsSecretsUpdateRequest struct {
 	ctx context.Context
-	ApiService *SecretsApiService
+	ApiService *SecretsAPIService
 	projectId string
 	secretName string
 	secretBodyPatch *SecretBodyPatch
@@ -616,7 +616,7 @@ Update project
  @param secretName Unique secret name
  @return ApiProjectsSecretsUpdateRequest
 */
-func (a *SecretsApiService) ProjectsSecretsUpdate(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsUpdateRequest {
+func (a *SecretsAPIService) ProjectsSecretsUpdate(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsUpdateRequest {
 	return ApiProjectsSecretsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -627,7 +627,7 @@ func (a *SecretsApiService) ProjectsSecretsUpdate(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *SecretsApiService) ProjectsSecretsUpdateExecute(r ApiProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsUpdateExecute(r ApiProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -635,7 +635,7 @@ func (a *SecretsApiService) ProjectsSecretsUpdateExecute(r ApiProjectsSecretsUpd
 		localVarReturnValue  *SecretResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsApiService.ProjectsSecretsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

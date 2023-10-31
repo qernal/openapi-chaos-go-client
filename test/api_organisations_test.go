@@ -1,7 +1,7 @@
 /*
 Chaos
 
-Testing OrganisationsApiService
+Testing OrganisationsAPIService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
-func Test_openapi_chaos_client_OrganisationsApiService(t *testing.T) {
+func Test_openapi_chaos_client_OrganisationsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test OrganisationsApiService OrganisationsCreate", func(t *testing.T) {
+	t.Run("Test OrganisationsAPIService OrganisationsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrganisationsApi.OrganisationsCreate(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganisationsAPI.OrganisationsCreate(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,13 +34,13 @@ func Test_openapi_chaos_client_OrganisationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganisationsApiService OrganisationsDelete", func(t *testing.T) {
+	t.Run("Test OrganisationsAPIService OrganisationsDelete", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var organisationId string
 
-		resp, httpRes, err := apiClient.OrganisationsApi.OrganisationsDelete(context.Background(), organisationId).Execute()
+		resp, httpRes, err := apiClient.OrganisationsAPI.OrganisationsDelete(context.Background(), organisationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_openapi_chaos_client_OrganisationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganisationsApiService OrganisationsGet", func(t *testing.T) {
+	t.Run("Test OrganisationsAPIService OrganisationsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var organisationId string
 
-		resp, httpRes, err := apiClient.OrganisationsApi.OrganisationsGet(context.Background(), organisationId).Execute()
+		resp, httpRes, err := apiClient.OrganisationsAPI.OrganisationsGet(context.Background(), organisationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,11 +62,11 @@ func Test_openapi_chaos_client_OrganisationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganisationsApiService OrganisationsList", func(t *testing.T) {
+	t.Run("Test OrganisationsAPIService OrganisationsList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.OrganisationsApi.OrganisationsList(context.Background()).Execute()
+		resp, httpRes, err := apiClient.OrganisationsAPI.OrganisationsList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -74,13 +74,13 @@ func Test_openapi_chaos_client_OrganisationsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OrganisationsApiService OrganisationsUpdate", func(t *testing.T) {
+	t.Run("Test OrganisationsAPIService OrganisationsUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var organisationId string
 
-		resp, httpRes, err := apiClient.OrganisationsApi.OrganisationsUpdate(context.Background(), organisationId).Execute()
+		resp, httpRes, err := apiClient.OrganisationsAPI.OrganisationsUpdate(context.Background(), organisationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

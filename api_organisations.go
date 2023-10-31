@@ -21,12 +21,12 @@ import (
 )
 
 
-// OrganisationsApiService OrganisationsApi service
-type OrganisationsApiService service
+// OrganisationsAPIService OrganisationsAPI service
+type OrganisationsAPIService service
 
 type ApiOrganisationsCreateRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *OrganisationsAPIService
 	organisationBody *OrganisationBody
 }
 
@@ -48,7 +48,7 @@ Create an organisation
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOrganisationsCreateRequest
 */
-func (a *OrganisationsApiService) OrganisationsCreate(ctx context.Context) ApiOrganisationsCreateRequest {
+func (a *OrganisationsAPIService) OrganisationsCreate(ctx context.Context) ApiOrganisationsCreateRequest {
 	return ApiOrganisationsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -57,7 +57,7 @@ func (a *OrganisationsApiService) OrganisationsCreate(ctx context.Context) ApiOr
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsCreateExecute(r ApiOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -65,7 +65,7 @@ func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsC
 		localVarReturnValue  *OrganisationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsCreate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsCreate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -166,7 +166,7 @@ func (a *OrganisationsApiService) OrganisationsCreateExecute(r ApiOrganisationsC
 
 type ApiOrganisationsDeleteRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *OrganisationsAPIService
 	organisationId string
 }
 
@@ -183,7 +183,7 @@ Delete organisation, this will also delete all the resources within the organisa
  @param organisationId Organisation ID reference
  @return ApiOrganisationsDeleteRequest
 */
-func (a *OrganisationsApiService) OrganisationsDelete(ctx context.Context, organisationId string) ApiOrganisationsDeleteRequest {
+func (a *OrganisationsAPIService) OrganisationsDelete(ctx context.Context, organisationId string) ApiOrganisationsDeleteRequest {
 	return ApiOrganisationsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -193,7 +193,7 @@ func (a *OrganisationsApiService) OrganisationsDelete(ctx context.Context, organ
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsDeleteExecute(r ApiOrganisationsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -201,7 +201,7 @@ func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsD
 		localVarReturnValue  *DeletedResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsDelete")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsDelete")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -290,7 +290,7 @@ func (a *OrganisationsApiService) OrganisationsDeleteExecute(r ApiOrganisationsD
 
 type ApiOrganisationsGetRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *OrganisationsAPIService
 	organisationId string
 }
 
@@ -307,7 +307,7 @@ Get a single organisation
  @param organisationId Organisation ID reference
  @return ApiOrganisationsGetRequest
 */
-func (a *OrganisationsApiService) OrganisationsGet(ctx context.Context, organisationId string) ApiOrganisationsGetRequest {
+func (a *OrganisationsAPIService) OrganisationsGet(ctx context.Context, organisationId string) ApiOrganisationsGetRequest {
 	return ApiOrganisationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -317,7 +317,7 @@ func (a *OrganisationsApiService) OrganisationsGet(ctx context.Context, organisa
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsGetExecute(r ApiOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsGetExecute(r ApiOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -325,7 +325,7 @@ func (a *OrganisationsApiService) OrganisationsGetExecute(r ApiOrganisationsGetR
 		localVarReturnValue  *OrganisationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -414,7 +414,7 @@ func (a *OrganisationsApiService) OrganisationsGetExecute(r ApiOrganisationsGetR
 
 type ApiOrganisationsListRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *OrganisationsAPIService
 	page *OrganisationsListPageParameter
 }
 
@@ -436,7 +436,7 @@ List organisations
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @return ApiOrganisationsListRequest
 */
-func (a *OrganisationsApiService) OrganisationsList(ctx context.Context) ApiOrganisationsListRequest {
+func (a *OrganisationsAPIService) OrganisationsList(ctx context.Context) ApiOrganisationsListRequest {
 	return ApiOrganisationsListRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -445,7 +445,7 @@ func (a *OrganisationsApiService) OrganisationsList(ctx context.Context) ApiOrga
 
 // Execute executes the request
 //  @return ListOrganisationResponse
-func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsListExecute(r ApiOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -453,7 +453,7 @@ func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsLis
 		localVarReturnValue  *ListOrganisationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsList")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -533,7 +533,7 @@ func (a *OrganisationsApiService) OrganisationsListExecute(r ApiOrganisationsLis
 
 type ApiOrganisationsUpdateRequest struct {
 	ctx context.Context
-	ApiService *OrganisationsApiService
+	ApiService *OrganisationsAPIService
 	organisationId string
 	organisationBody *OrganisationBody
 }
@@ -557,7 +557,7 @@ Update an organisation
  @param organisationId Organisation ID reference
  @return ApiOrganisationsUpdateRequest
 */
-func (a *OrganisationsApiService) OrganisationsUpdate(ctx context.Context, organisationId string) ApiOrganisationsUpdateRequest {
+func (a *OrganisationsAPIService) OrganisationsUpdate(ctx context.Context, organisationId string) ApiOrganisationsUpdateRequest {
 	return ApiOrganisationsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
@@ -567,7 +567,7 @@ func (a *OrganisationsApiService) OrganisationsUpdate(ctx context.Context, organ
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsApiService) OrganisationsUpdateExecute(r ApiOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsUpdateExecute(r ApiOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -575,7 +575,7 @@ func (a *OrganisationsApiService) OrganisationsUpdateExecute(r ApiOrganisationsU
 		localVarReturnValue  *OrganisationResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsApiService.OrganisationsUpdate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsUpdate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

@@ -1,22 +1,22 @@
-# \TokensApi
+# \OrganisationsAPI
 
 All URIs are relative to *https://chaos.qernal.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthTokensCreate**](TokensApi.md#AuthTokensCreate) | **Post** /auth/tokens | Create new auth token
-[**AuthTokensDelete**](TokensApi.md#AuthTokensDelete) | **Delete** /auth/tokens/{token_id} | Delete token
-[**AuthTokensGet**](TokensApi.md#AuthTokensGet) | **Get** /auth/tokens/{token_id} | Get token information
-[**AuthTokensList**](TokensApi.md#AuthTokensList) | **Get** /auth/tokens | List all user auth tokens
-[**AuthTokensUpdate**](TokensApi.md#AuthTokensUpdate) | **Put** /auth/tokens/{token_id} | Update token
+[**OrganisationsCreate**](OrganisationsAPI.md#OrganisationsCreate) | **Post** /organisations | Create organisations
+[**OrganisationsDelete**](OrganisationsAPI.md#OrganisationsDelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
+[**OrganisationsGet**](OrganisationsAPI.md#OrganisationsGet) | **Get** /organisations/{organisation_id} | Get an organisation
+[**OrganisationsList**](OrganisationsAPI.md#OrganisationsList) | **Get** /organisations | List organisations
+[**OrganisationsUpdate**](OrganisationsAPI.md#OrganisationsUpdate) | **Put** /organisations/{organisation_id} | Update an organisation
 
 
 
-## AuthTokensCreate
+## OrganisationsCreate
 
-> AuthToken AuthTokensCreate(ctx).AuthTokenBody(authTokenBody).Execute()
+> OrganisationResponse OrganisationsCreate(ctx).OrganisationBody(organisationBody).Execute()
 
-Create new auth token
+Create organisations
 
 
 
@@ -33,17 +33,17 @@ import (
 )
 
 func main() {
-    authTokenBody := *openapiclient.NewAuthTokenBody("TF token", int32(90)) // AuthTokenBody | 
+    organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensApi.AuthTokensCreate(context.Background()).AuthTokenBody(authTokenBody).Execute()
+    resp, r, err := apiClient.OrganisationsAPI.OrganisationsCreate(context.Background()).OrganisationBody(organisationBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.AuthTokensCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthTokensCreate`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.AuthTokensCreate`: %v\n", resp)
+    // response from `OrganisationsCreate`: OrganisationResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsCreate`: %v\n", resp)
 }
 ```
 
@@ -53,16 +53,16 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokensCreateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganisationsCreateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **authTokenBody** | [**AuthTokenBody**](AuthTokenBody.md) |  | 
+ **organisationBody** | [**OrganisationBody**](OrganisationBody.md) | Create/Update any field | 
 
 ### Return type
 
-[**AuthToken**](AuthToken.md)
+[**OrganisationResponse**](OrganisationResponse.md)
 
 ### Authorization
 
@@ -78,11 +78,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokensDelete
+## OrganisationsDelete
 
-> DeletedResponse AuthTokensDelete(ctx, tokenId).Execute()
+> DeletedResponse OrganisationsDelete(ctx, organisationId).Execute()
 
-Delete token
+Delete an organisation
+
+
 
 ### Example
 
@@ -97,17 +99,17 @@ import (
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
+    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensApi.AuthTokensDelete(context.Background(), tokenId).Execute()
+    resp, r, err := apiClient.OrganisationsAPI.OrganisationsDelete(context.Background(), organisationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.AuthTokensDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthTokensDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.AuthTokensDelete`: %v\n", resp)
+    // response from `OrganisationsDelete`: DeletedResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsDelete`: %v\n", resp)
 }
 ```
 
@@ -117,11 +119,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tokenId** | **string** | Token ID reference | 
+**organisationId** | **string** | Organisation ID reference | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokensDeleteRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganisationsDeleteRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -146,11 +148,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokensGet
+## OrganisationsGet
 
-> AuthTokenMeta AuthTokensGet(ctx, tokenId).Execute()
+> OrganisationResponse OrganisationsGet(ctx, organisationId).Execute()
 
-Get token information
+Get an organisation
+
+
 
 ### Example
 
@@ -165,17 +169,17 @@ import (
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
+    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensApi.AuthTokensGet(context.Background(), tokenId).Execute()
+    resp, r, err := apiClient.OrganisationsAPI.OrganisationsGet(context.Background(), organisationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.AuthTokensGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthTokensGet`: AuthTokenMeta
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.AuthTokensGet`: %v\n", resp)
+    // response from `OrganisationsGet`: OrganisationResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsGet`: %v\n", resp)
 }
 ```
 
@@ -185,11 +189,11 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tokenId** | **string** | Token ID reference | 
+**organisationId** | **string** | Organisation ID reference | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokensGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganisationsGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -198,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AuthTokenMeta**](AuthTokenMeta.md)
+[**OrganisationResponse**](OrganisationResponse.md)
 
 ### Authorization
 
@@ -214,11 +218,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokensList
+## OrganisationsList
 
-> ListAuthTokens AuthTokensList(ctx).Page(page).Execute()
+> ListOrganisationResponse OrganisationsList(ctx).Page(page).Execute()
 
-List all user auth tokens
+List organisations
+
+
 
 ### Example
 
@@ -233,17 +239,17 @@ import (
 )
 
 func main() {
-    page := map[string][]openapiclient.OrganisationsListPageParameter{"key": map[string]interface{}{ ... }} // OrganisationsListPageParameter | Query parameters for pagination (optional)
+    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensApi.AuthTokensList(context.Background()).Page(page).Execute()
+    resp, r, err := apiClient.OrganisationsAPI.OrganisationsList(context.Background()).Page(page).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.AuthTokensList``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsList``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthTokensList`: ListAuthTokens
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.AuthTokensList`: %v\n", resp)
+    // response from `OrganisationsList`: ListOrganisationResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsList`: %v\n", resp)
 }
 ```
 
@@ -253,7 +259,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokensListRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganisationsListRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -262,7 +268,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListAuthTokens**](ListAuthTokens.md)
+[**ListOrganisationResponse**](ListOrganisationResponse.md)
 
 ### Authorization
 
@@ -278,11 +284,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## AuthTokensUpdate
+## OrganisationsUpdate
 
-> AuthToken AuthTokensUpdate(ctx, tokenId).AuthTokenPatch(authTokenPatch).Execute()
+> OrganisationResponse OrganisationsUpdate(ctx, organisationId).OrganisationBody(organisationBody).Execute()
 
-Update token
+Update an organisation
+
+
 
 ### Example
 
@@ -297,18 +305,18 @@ import (
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
-    authTokenPatch := *openapiclient.NewAuthTokenPatch() // AuthTokenPatch | 
+    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+    organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensApi.AuthTokensUpdate(context.Background(), tokenId).AuthTokenPatch(authTokenPatch).Execute()
+    resp, r, err := apiClient.OrganisationsAPI.OrganisationsUpdate(context.Background(), organisationId).OrganisationBody(organisationBody).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensApi.AuthTokensUpdate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsUpdate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `AuthTokensUpdate`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `TokensApi.AuthTokensUpdate`: %v\n", resp)
+    // response from `OrganisationsUpdate`: OrganisationResponse
+    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsUpdate`: %v\n", resp)
 }
 ```
 
@@ -318,21 +326,21 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tokenId** | **string** | Token ID reference | 
+**organisationId** | **string** | Organisation ID reference | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiAuthTokensUpdateRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiOrganisationsUpdateRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **authTokenPatch** | [**AuthTokenPatch**](AuthTokenPatch.md) |  | 
+ **organisationBody** | [**OrganisationBody**](OrganisationBody.md) | Create/Update any field | 
 
 ### Return type
 
-[**AuthToken**](AuthToken.md)
+[**OrganisationResponse**](OrganisationResponse.md)
 
 ### Authorization
 

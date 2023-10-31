@@ -77,32 +77,32 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*HostsApi* | [**ProjectsHostsCreate**](docs/HostsApi.md#projectshostscreate) | **Post** /projects/{project_id}/hosts | Create host for project
-*HostsApi* | [**ProjectsHostsDelete**](docs/HostsApi.md#projectshostsdelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
-*HostsApi* | [**ProjectsHostsGet**](docs/HostsApi.md#projectshostsget) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
-*HostsApi* | [**ProjectsHostsList**](docs/HostsApi.md#projectshostslist) | **Get** /projects/{project_id}/hosts | List hosts for project
-*HostsApi* | [**ProjectsHostsUpdate**](docs/HostsApi.md#projectshostsupdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
-*OrganisationsApi* | [**OrganisationsCreate**](docs/OrganisationsApi.md#organisationscreate) | **Post** /organisations | Create organisations
-*OrganisationsApi* | [**OrganisationsDelete**](docs/OrganisationsApi.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
-*OrganisationsApi* | [**OrganisationsGet**](docs/OrganisationsApi.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation
-*OrganisationsApi* | [**OrganisationsList**](docs/OrganisationsApi.md#organisationslist) | **Get** /organisations | List organisations
-*OrganisationsApi* | [**OrganisationsUpdate**](docs/OrganisationsApi.md#organisationsupdate) | **Put** /organisations/{organisation_id} | Update an organisation
-*ProjectsApi* | [**OrganisationsProjectsList**](docs/ProjectsApi.md#organisationsprojectslist) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
-*ProjectsApi* | [**ProjectsCreate**](docs/ProjectsApi.md#projectscreate) | **Post** /projects | Create project
-*ProjectsApi* | [**ProjectsDelete**](docs/ProjectsApi.md#projectsdelete) | **Delete** /projects/{project_id} | Delete project
-*ProjectsApi* | [**ProjectsGet**](docs/ProjectsApi.md#projectsget) | **Get** /projects/{project_id} | Get project
-*ProjectsApi* | [**ProjectsList**](docs/ProjectsApi.md#projectslist) | **Get** /projects | List projects
-*ProjectsApi* | [**ProjectsUpdate**](docs/ProjectsApi.md#projectsupdate) | **Put** /projects/{project_id} | Update project
-*SecretsApi* | [**ProjectsSecretsCreate**](docs/SecretsApi.md#projectssecretscreate) | **Post** /projects/{project_id}/secrets | Create project secret
-*SecretsApi* | [**ProjectsSecretsDelete**](docs/SecretsApi.md#projectssecretsdelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
-*SecretsApi* | [**ProjectsSecretsGet**](docs/SecretsApi.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
-*SecretsApi* | [**ProjectsSecretsList**](docs/SecretsApi.md#projectssecretslist) | **Get** /projects/{project_id}/secrets | List project secrets of a specific type
-*SecretsApi* | [**ProjectsSecretsUpdate**](docs/SecretsApi.md#projectssecretsupdate) | **Put** /projects/{project_id}/secrets/{secret_name} | Update project secret
-*TokensApi* | [**AuthTokensCreate**](docs/TokensApi.md#authtokenscreate) | **Post** /auth/tokens | Create new auth token
-*TokensApi* | [**AuthTokensDelete**](docs/TokensApi.md#authtokensdelete) | **Delete** /auth/tokens/{token_id} | Delete token
-*TokensApi* | [**AuthTokensGet**](docs/TokensApi.md#authtokensget) | **Get** /auth/tokens/{token_id} | Get token information
-*TokensApi* | [**AuthTokensList**](docs/TokensApi.md#authtokenslist) | **Get** /auth/tokens | List all user auth tokens
-*TokensApi* | [**AuthTokensUpdate**](docs/TokensApi.md#authtokensupdate) | **Put** /auth/tokens/{token_id} | Update token
+*HostsAPI* | [**ProjectsHostsCreate**](docs/HostsAPI.md#projectshostscreate) | **Post** /projects/{project_id}/hosts | Create host for project
+*HostsAPI* | [**ProjectsHostsDelete**](docs/HostsAPI.md#projectshostsdelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
+*HostsAPI* | [**ProjectsHostsGet**](docs/HostsAPI.md#projectshostsget) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
+*HostsAPI* | [**ProjectsHostsList**](docs/HostsAPI.md#projectshostslist) | **Get** /projects/{project_id}/hosts | List hosts for project
+*HostsAPI* | [**ProjectsHostsUpdate**](docs/HostsAPI.md#projectshostsupdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
+*OrganisationsAPI* | [**OrganisationsCreate**](docs/OrganisationsAPI.md#organisationscreate) | **Post** /organisations | Create organisations
+*OrganisationsAPI* | [**OrganisationsDelete**](docs/OrganisationsAPI.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
+*OrganisationsAPI* | [**OrganisationsGet**](docs/OrganisationsAPI.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation
+*OrganisationsAPI* | [**OrganisationsList**](docs/OrganisationsAPI.md#organisationslist) | **Get** /organisations | List organisations
+*OrganisationsAPI* | [**OrganisationsUpdate**](docs/OrganisationsAPI.md#organisationsupdate) | **Put** /organisations/{organisation_id} | Update an organisation
+*ProjectsAPI* | [**OrganisationsProjectsList**](docs/ProjectsAPI.md#organisationsprojectslist) | **Get** /organisations/{organisation_id}/projects | Get all projects within an organisation
+*ProjectsAPI* | [**ProjectsCreate**](docs/ProjectsAPI.md#projectscreate) | **Post** /projects | Create project
+*ProjectsAPI* | [**ProjectsDelete**](docs/ProjectsAPI.md#projectsdelete) | **Delete** /projects/{project_id} | Delete project
+*ProjectsAPI* | [**ProjectsGet**](docs/ProjectsAPI.md#projectsget) | **Get** /projects/{project_id} | Get project
+*ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /projects | List projects
+*ProjectsAPI* | [**ProjectsUpdate**](docs/ProjectsAPI.md#projectsupdate) | **Put** /projects/{project_id} | Update project
+*SecretsAPI* | [**ProjectsSecretsCreate**](docs/SecretsAPI.md#projectssecretscreate) | **Post** /projects/{project_id}/secrets | Create project secret
+*SecretsAPI* | [**ProjectsSecretsDelete**](docs/SecretsAPI.md#projectssecretsdelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
+*SecretsAPI* | [**ProjectsSecretsGet**](docs/SecretsAPI.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
+*SecretsAPI* | [**ProjectsSecretsList**](docs/SecretsAPI.md#projectssecretslist) | **Get** /projects/{project_id}/secrets | List project secrets of a specific type
+*SecretsAPI* | [**ProjectsSecretsUpdate**](docs/SecretsAPI.md#projectssecretsupdate) | **Put** /projects/{project_id}/secrets/{secret_name} | Update project secret
+*TokensAPI* | [**AuthTokensCreate**](docs/TokensAPI.md#authtokenscreate) | **Post** /auth/tokens | Create new auth token
+*TokensAPI* | [**AuthTokensDelete**](docs/TokensAPI.md#authtokensdelete) | **Delete** /auth/tokens/{token_id} | Delete token
+*TokensAPI* | [**AuthTokensGet**](docs/TokensAPI.md#authtokensget) | **Get** /auth/tokens/{token_id} | Get token information
+*TokensAPI* | [**AuthTokensList**](docs/TokensAPI.md#authtokenslist) | **Get** /auth/tokens | List all user auth tokens
+*TokensAPI* | [**AuthTokensUpdate**](docs/TokensAPI.md#authtokensupdate) | **Put** /auth/tokens/{token_id} | Update token
 
 
 ## Documentation For Models
@@ -174,6 +174,19 @@ r, err := client.Service.Operation(auth, args)
 - **Location**: 
 
 Note, each API key must be added to a map of `map[string]APIKey` where the key is: qernal_kratos_session and passed in as the auth context for each request.
+
+Example
+
+```golang
+auth := context.WithValue(
+		context.Background(),
+		sw.ContextAPIKeys,
+		map[string]sw.APIKey{
+			"qernal_kratos_session": {Key: "API_KEY_STRING"},
+		},
+	)
+r, err := client.Service.Operation(auth, args)
+```
 
 
 ## Documentation for Utility Methods
