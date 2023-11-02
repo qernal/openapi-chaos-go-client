@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**ProjectsHostsGet**](HostsAPI.md#ProjectsHostsGet) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
 [**ProjectsHostsList**](HostsAPI.md#ProjectsHostsList) | **Get** /projects/{project_id}/hosts | List hosts for project
 [**ProjectsHostsUpdate**](HostsAPI.md#ProjectsHostsUpdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
+[**ProjectsHostsVerifyCreate**](HostsAPI.md#ProjectsHostsVerifyCreate) | **Post** /projects/{project_id}/hosts/{hostname}/verify | Schedule host verification task
 
 
 
@@ -362,6 +363,77 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProjectsHostsVerifyCreate
+
+> Host ProjectsHostsVerifyCreate(ctx, projectId, hostname).Execute()
+
+Schedule host verification task
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+    hostname := "example-domain.com" // string | Hostname
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HostsAPI.ProjectsHostsVerifyCreate(context.Background(), projectId, hostname).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsVerifyCreate``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ProjectsHostsVerifyCreate`: Host
+    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsVerifyCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** | Project ID reference | 
+**hostname** | **string** | Hostname | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProjectsHostsVerifyCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**Host**](Host.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

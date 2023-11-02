@@ -82,6 +82,7 @@ Class | Method | HTTP request | Description
 *HostsAPI* | [**ProjectsHostsGet**](docs/HostsAPI.md#projectshostsget) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
 *HostsAPI* | [**ProjectsHostsList**](docs/HostsAPI.md#projectshostslist) | **Get** /projects/{project_id}/hosts | List hosts for project
 *HostsAPI* | [**ProjectsHostsUpdate**](docs/HostsAPI.md#projectshostsupdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
+*HostsAPI* | [**ProjectsHostsVerifyCreate**](docs/HostsAPI.md#projectshostsverifycreate) | **Post** /projects/{project_id}/hosts/{hostname}/verify | Schedule host verification task
 *OrganisationsAPI* | [**OrganisationsCreate**](docs/OrganisationsAPI.md#organisationscreate) | **Post** /organisations | Create organisations
 *OrganisationsAPI* | [**OrganisationsDelete**](docs/OrganisationsAPI.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
 *OrganisationsAPI* | [**OrganisationsGet**](docs/OrganisationsAPI.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation

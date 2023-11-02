@@ -1195,6 +1195,64 @@ paths:
       summary: Update specific host by hostname
       tags:
       - hosts
+  /projects/{project_id}/hosts/{hostname}/verify:
+    post:
+      operationId: projects-hosts-verify-create
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Hostname
+        explode: false
+        in: path
+        name: hostname
+        required: true
+        schema:
+          example: example-domain.com
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Host'
+          description: Porject host
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
+      summary: Schedule host verification task
+      tags:
+      - hosts
   /auth/tokens:
     get:
       operationId: auth-tokens-list
