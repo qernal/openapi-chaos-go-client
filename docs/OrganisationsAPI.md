@@ -26,24 +26,24 @@ Create organisations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
+	organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationsAPI.OrganisationsCreate(context.Background()).OrganisationBody(organisationBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsCreate`: OrganisationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsCreate(context.Background()).OrganisationBody(organisationBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsCreate`: OrganisationResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsCreate`: %v\n", resp)
 }
 ```
 
@@ -92,24 +92,24 @@ Delete an organisation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationsAPI.OrganisationsDelete(context.Background(), organisationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsDelete(context.Background(), organisationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsDelete`: DeletedResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsDelete`: %v\n", resp)
 }
 ```
 
@@ -162,24 +162,24 @@ Get an organisation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationsAPI.OrganisationsGet(context.Background(), organisationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsGet`: OrganisationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsGet(context.Background(), organisationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsGet`: OrganisationResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsGet`: %v\n", resp)
 }
 ```
 
@@ -232,24 +232,24 @@ List organisations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationsAPI.OrganisationsList(context.Background()).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsList`: ListOrganisationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsList(context.Background()).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsList`: ListOrganisationResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsList`: %v\n", resp)
 }
 ```
 
@@ -298,25 +298,25 @@ Update an organisation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
-    organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+	organisationBody := *openapiclient.NewOrganisationBody("my org") // OrganisationBody | Create/Update any field (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganisationsAPI.OrganisationsUpdate(context.Background(), organisationId).OrganisationBody(organisationBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsUpdate`: OrganisationResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsUpdate(context.Background(), organisationId).OrganisationBody(organisationBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsUpdate`: OrganisationResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsUpdate`: %v\n", resp)
 }
 ```
 

@@ -13,6 +13,8 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the SecretCertificate type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type SecretCertificate struct {
 	// Encrypted certificate private key
 	CertificateValue string `json:"certificate_value"`
 }
+
+type _SecretCertificate SecretCertificate
 
 // NewSecretCertificate instantiates a new SecretCertificate object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o SecretCertificate) ToMap() (map[string]interface{}, error) {
 	toSerialize["certificate"] = o.Certificate
 	toSerialize["certificate_value"] = o.CertificateValue
 	return toSerialize, nil
+}
+
+func (o *SecretCertificate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"certificate",
+		"certificate_value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSecretCertificate := _SecretCertificate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSecretCertificate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SecretCertificate(varSecretCertificate)
+
+	return err
 }
 
 type NullableSecretCertificate struct {

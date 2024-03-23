@@ -26,25 +26,25 @@ Create project secret
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretBody := *openapiclient.NewSecretBody("Name_example", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	secretBody := *openapiclient.NewSecretBody("Name_example", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ProjectsSecretsCreate(context.Background(), projectId).SecretBody(secretBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsSecretsCreate`: SecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SecretsAPI.ProjectsSecretsCreate(context.Background(), projectId).SecretBody(secretBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsSecretsCreate`: SecretResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsCreate`: %v\n", resp)
 }
 ```
 
@@ -98,25 +98,25 @@ Delete project secret
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	secretName := "MY_SECRET" // string | Unique secret name
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ProjectsSecretsDelete(context.Background(), projectId, secretName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsSecretsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SecretsAPI.ProjectsSecretsDelete(context.Background(), projectId, secretName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsSecretsDelete`: DeletedResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsDelete`: %v\n", resp)
 }
 ```
 
@@ -171,25 +171,25 @@ Get project secret
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	secretName := "MY_SECRET" // string | Unique secret name
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ProjectsSecretsGet(context.Background(), projectId, secretName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsSecretsGet`: SecretMetaResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SecretsAPI.ProjectsSecretsGet(context.Background(), projectId, secretName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsSecretsGet`: SecretMetaResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsGet`: %v\n", resp)
 }
 ```
 
@@ -244,26 +244,26 @@ List project secrets of a specific type
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
-    secretType := openapiclient.SecretMetaType("registry") // SecretMetaType | Type of secret to filter on (optional)
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	secretType := openapiclient.SecretMetaType("registry") // SecretMetaType | Type of secret to filter on (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ProjectsSecretsList(context.Background(), projectId).Page(page).SecretType(secretType).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsSecretsList`: ListSecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SecretsAPI.ProjectsSecretsList(context.Background(), projectId).Page(page).SecretType(secretType).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsSecretsList`: ListSecretResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsList`: %v\n", resp)
 }
 ```
 
@@ -318,26 +318,26 @@ Update project secret
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    secretName := "MY_SECRET" // string | Unique secret name
-    secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	secretName := "MY_SECRET" // string | Unique secret name
+	secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.SecretsAPI.ProjectsSecretsUpdate(context.Background(), projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsSecretsUpdate`: SecretResponse
-    fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.SecretsAPI.ProjectsSecretsUpdate(context.Background(), projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsSecretsUpdate`: SecretResponse
+	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsUpdate`: %v\n", resp)
 }
 ```
 

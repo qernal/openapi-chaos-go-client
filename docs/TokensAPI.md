@@ -26,24 +26,24 @@ Create new auth token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    authTokenBody := *openapiclient.NewAuthTokenBody("TF token", int32(90)) // AuthTokenBody | 
+	authTokenBody := *openapiclient.NewAuthTokenBody("TF token", int32(90)) // AuthTokenBody | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensAPI.AuthTokensCreate(context.Background()).AuthTokenBody(authTokenBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensCreate`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.AuthTokensCreate(context.Background()).AuthTokenBody(authTokenBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensCreate`: AuthToken
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensCreate`: %v\n", resp)
 }
 ```
 
@@ -90,24 +90,24 @@ Delete token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
+	tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensAPI.AuthTokensDelete(context.Background(), tokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.AuthTokensDelete(context.Background(), tokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensDelete`: DeletedResponse
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensDelete`: %v\n", resp)
 }
 ```
 
@@ -158,24 +158,24 @@ Get token information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
+	tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensAPI.AuthTokensGet(context.Background(), tokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensGet`: AuthTokenMeta
-    fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.AuthTokensGet(context.Background(), tokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensGet`: AuthTokenMeta
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensGet`: %v\n", resp)
 }
 ```
 
@@ -226,24 +226,24 @@ List all user auth tokens
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensAPI.AuthTokensList(context.Background()).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensList`: ListAuthTokens
-    fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.AuthTokensList(context.Background()).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensList`: ListAuthTokens
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensList`: %v\n", resp)
 }
 ```
 
@@ -290,25 +290,25 @@ Update token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
-    authTokenPatch := *openapiclient.NewAuthTokenPatch() // AuthTokenPatch | 
+	tokenId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Token ID reference
+	authTokenPatch := *openapiclient.NewAuthTokenPatch() // AuthTokenPatch | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.TokensAPI.AuthTokensUpdate(context.Background(), tokenId).AuthTokenPatch(authTokenPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AuthTokensUpdate`: AuthToken
-    fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TokensAPI.AuthTokensUpdate(context.Background(), tokenId).AuthTokenPatch(authTokenPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AuthTokensUpdate`: AuthToken
+	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensUpdate`: %v\n", resp)
 }
 ```
 

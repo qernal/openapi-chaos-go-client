@@ -27,25 +27,25 @@ Get all projects within an organisation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.OrganisationsProjectsList(context.Background(), organisationId).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.OrganisationsProjectsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `OrganisationsProjectsList`: ListProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.OrganisationsProjectsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.OrganisationsProjectsList(context.Background(), organisationId).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.OrganisationsProjectsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsProjectsList`: ListProjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.OrganisationsProjectsList`: %v\n", resp)
 }
 ```
 
@@ -99,24 +99,24 @@ Create project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectBody := *openapiclient.NewProjectBody("3069614e-adc8-47cb-a69c-decf9c5f90fc", "first api") // ProjectBody | Create/Update any field (optional)
+	projectBody := *openapiclient.NewProjectBody("3069614e-adc8-47cb-a69c-decf9c5f90fc", "first api") // ProjectBody | Create/Update any field (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.ProjectsCreate(context.Background()).ProjectBody(projectBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsCreate`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsCreate(context.Background()).ProjectBody(projectBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsCreate`: ProjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsCreate`: %v\n", resp)
 }
 ```
 
@@ -165,24 +165,24 @@ Delete project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.ProjectsDelete(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsDelete(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsDelete`: DeletedResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsDelete`: %v\n", resp)
 }
 ```
 
@@ -235,24 +235,24 @@ Get project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.ProjectsGet(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsGet`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsGet(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsGet`: ProjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsGet`: %v\n", resp)
 }
 ```
 
@@ -305,24 +305,24 @@ List projects
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.ProjectsList(context.Background()).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsList`: ListProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsList(context.Background()).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsList`: ListProjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsList`: %v\n", resp)
 }
 ```
 
@@ -371,25 +371,25 @@ Update project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    projectBodyPatch := *openapiclient.NewProjectBodyPatch() // ProjectBodyPatch | Update any field (optional)
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	projectBodyPatch := *openapiclient.NewProjectBodyPatch() // ProjectBodyPatch | Update any field (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectsAPI.ProjectsUpdate(context.Background(), projectId).ProjectBodyPatch(projectBodyPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsUpdate`: ProjectResponse
-    fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsUpdate(context.Background(), projectId).ProjectBodyPatch(projectBodyPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsUpdate`: ProjectResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsUpdate`: %v\n", resp)
 }
 ```
 

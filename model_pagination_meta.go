@@ -13,6 +13,8 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the PaginationMeta type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type PaginationMeta struct {
 	Pages int32 `json:"pages"`
 	Links PaginationLinks `json:"links"`
 }
+
+type _PaginationMeta PaginationMeta
 
 // NewPaginationMeta instantiates a new PaginationMeta object
 // This constructor will assign default values to properties that have it defined,
@@ -185,6 +189,47 @@ func (o PaginationMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize["pages"] = o.Pages
 	toSerialize["links"] = o.Links
 	return toSerialize, nil
+}
+
+func (o *PaginationMeta) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"results",
+		"start",
+		"end",
+		"pages",
+		"links",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginationMeta := _PaginationMeta{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginationMeta)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginationMeta(varPaginationMeta)
+
+	return err
 }
 
 type NullablePaginationMeta struct {

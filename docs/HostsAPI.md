@@ -27,25 +27,25 @@ Create host for project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    hostBody := *openapiclient.NewHostBody("Host_example", "projects:secrets/MY_CERT", false) // HostBody | 
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	hostBody := *openapiclient.NewHostBody("Host_example", "projects:secrets/MY_CERT", false) // HostBody | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsCreate(context.Background(), projectId).HostBody(hostBody).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsCreate`: Host
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsCreate(context.Background(), projectId).HostBody(hostBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsCreate`: Host
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsCreate`: %v\n", resp)
 }
 ```
 
@@ -97,25 +97,25 @@ Delete specific host by hostname
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    hostname := "example-domain.com" // string | Hostname
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	hostname := "example-domain.com" // string | Hostname
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsDelete(context.Background(), projectId, hostname).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsDelete``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsDelete`: DeletedResponse
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsDelete`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsDelete(context.Background(), projectId, hostname).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsDelete``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsDelete`: DeletedResponse
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsDelete`: %v\n", resp)
 }
 ```
 
@@ -168,25 +168,25 @@ Get specific host by hostname
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    hostname := "example-domain.com" // string | Hostname
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	hostname := "example-domain.com" // string | Hostname
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsGet(context.Background(), projectId, hostname).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsGet``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsGet`: Host
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsGet`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsGet(context.Background(), projectId, hostname).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsGet`: Host
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsGet`: %v\n", resp)
 }
 ```
 
@@ -239,25 +239,25 @@ List hosts for project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsList(context.Background(), projectId).Page(page).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsList``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsList`: ListHosts
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsList`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsList(context.Background(), projectId).Page(page).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsList`: ListHosts
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsList`: %v\n", resp)
 }
 ```
 
@@ -309,26 +309,26 @@ Update specific host by hostname
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    hostname := "example-domain.com" // string | Hostname
-    hostBodyPatch := *openapiclient.NewHostBodyPatch() // HostBodyPatch | 
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	hostname := "example-domain.com" // string | Hostname
+	hostBodyPatch := *openapiclient.NewHostBodyPatch() // HostBodyPatch | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsUpdate(context.Background(), projectId, hostname).HostBodyPatch(hostBodyPatch).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsUpdate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsUpdate`: Host
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsUpdate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsUpdate(context.Background(), projectId, hostname).HostBodyPatch(hostBodyPatch).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsUpdate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsUpdate`: Host
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsUpdate`: %v\n", resp)
 }
 ```
 
@@ -382,25 +382,25 @@ Schedule host verification task
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qernal/openapi-chaos-go-client"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
 )
 
 func main() {
-    projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-    hostname := "example-domain.com" // string | Hostname
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	hostname := "example-domain.com" // string | Hostname
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HostsAPI.ProjectsHostsVerifyCreate(context.Background(), projectId, hostname).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsVerifyCreate``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ProjectsHostsVerifyCreate`: Host
-    fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsVerifyCreate`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HostsAPI.ProjectsHostsVerifyCreate(context.Background(), projectId, hostname).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsVerifyCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsHostsVerifyCreate`: Host
+	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsVerifyCreate`: %v\n", resp)
 }
 ```
 

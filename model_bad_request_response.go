@@ -13,6 +13,8 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the BadRequestResponse type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type BadRequestResponse struct {
 	Message string `json:"message"`
 	Fields BadRequestResponseFields `json:"fields"`
 }
+
+type _BadRequestResponse BadRequestResponse
 
 // NewBadRequestResponse instantiates a new BadRequestResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o BadRequestResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["message"] = o.Message
 	toSerialize["fields"] = o.Fields
 	return toSerialize, nil
+}
+
+func (o *BadRequestResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"message",
+		"fields",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBadRequestResponse := _BadRequestResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBadRequestResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BadRequestResponse(varBadRequestResponse)
+
+	return err
 }
 
 type NullableBadRequestResponse struct {

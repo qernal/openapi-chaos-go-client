@@ -13,6 +13,8 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ConflictResponse type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ var _ MappedNullable = &ConflictResponse{}
 type ConflictResponse struct {
 	Message string `json:"message"`
 }
+
+type _ConflictResponse ConflictResponse
 
 // NewConflictResponse instantiates a new ConflictResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o ConflictResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["message"] = o.Message
 	return toSerialize, nil
+}
+
+func (o *ConflictResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varConflictResponse := _ConflictResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varConflictResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ConflictResponse(varConflictResponse)
+
+	return err
 }
 
 type NullableConflictResponse struct {

@@ -13,6 +13,8 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the Date type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type Date struct {
 	// UTC update datetime (ISO 8601 date format)
 	UpdatedAt string `json:"updated_at"`
 }
+
+type _Date Date
 
 // NewDate instantiates a new Date object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o Date) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["updated_at"] = o.UpdatedAt
 	return toSerialize, nil
+}
+
+func (o *Date) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"created_at",
+		"updated_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDate := _Date{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Date(varDate)
+
+	return err
 }
 
 type NullableDate struct {
