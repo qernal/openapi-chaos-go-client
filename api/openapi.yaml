@@ -7,7 +7,7 @@ info:
   title: Chaos
   version: 1.0.0
   x-logo:
-    url: /assets/components/chaos.png
+    url: /assets/components/Chaos.png
     backgroundColor: '#FFFFFF'
     altText: Qernal Chaos
 servers:
@@ -26,6 +26,14 @@ tags:
   name: secrets
 - description: Auth tokens for third party clients
   name: tokens
+- description: "Function operations, allows deployment of containers via the function\
+    \ endpoints"
+  name: functions
+- description: List of providers you can use to deploy functions into and their available
+    locations - this includes any private providers attached to your organisation
+  name: providers
+- description: Hosts attached to the project so make functions routeable via the internet
+  name: hosts
 paths:
   /organisations:
     get:
@@ -1294,6 +1302,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
       summary: List all user auth tokens
       tags:
       - tokens
@@ -1335,6 +1346,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
       summary: Create new auth token
       tags:
       - tokens
@@ -1373,6 +1387,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
           description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
       summary: Delete token
       tags:
       - tokens
@@ -1418,6 +1435,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
       summary: Get token information
       tags:
       - tokens
@@ -1465,9 +1485,311 @@ paths:
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
           description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
       summary: Update token
       tags:
       - tokens
+  /projects/{project_id}/functions:
+    get:
+      description: List all functions
+      operationId: projects-functions-list
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFunction'
+          description: List all functions (paginated)
+      security:
+      - token: []
+      - cookie: []
+      summary: List all functions within a project
+      tags:
+      - functions
+    post:
+      description: Create a new function
+      operationId: projects-functions-create
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/FunctionBody'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Function'
+          description: Get specific function
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+      security:
+      - token: []
+      - cookie: []
+      summary: Create function
+      tags:
+      - functions
+  /functions/{function_id}:
+    delete:
+      description: Delete a function (and all revisions)
+      operationId: functions-delete
+      parameters:
+      - description: Function ID reference
+        explode: false
+        in: path
+        name: function_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Delete function
+      tags:
+      - functions
+    get:
+      description: Get a specific function (latest revision)
+      operationId: functions-get
+      parameters:
+      - description: Function ID reference
+        explode: false
+        in: path
+        name: function_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Function'
+          description: Get specific function
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Get function (latest revision)
+      tags:
+      - functions
+    put:
+      description: Update a function (creates a new revision)
+      operationId: functions-update
+      parameters:
+      - description: Function ID reference
+        explode: false
+        in: path
+        name: function_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/FunctionBodyPatch'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Function'
+          description: Get specific function
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+      security:
+      - token: []
+      - cookie: []
+      summary: Update function
+      tags:
+      - functions
+  /functions/{function_id}/revisions:
+    get:
+      description: List all revisions for a function
+      operationId: functions-revisions-list
+      parameters:
+      - description: Function ID reference
+        explode: false
+        in: path
+        name: function_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFunction'
+          description: List all functions (paginated)
+      security:
+      - token: []
+      - cookie: []
+      summary: List all revisions for a function
+      tags:
+      - functions
+  /functions/{function_id}/revisions/{function_revision_id}:
+    get:
+      description: Get a specific revision of a function
+      operationId: functions-revisions-get
+      parameters:
+      - description: Function ID reference
+        explode: false
+        in: path
+        name: function_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - description: Function revision ID reference
+        explode: false
+        in: path
+        name: function_revision_id
+        required: true
+        schema:
+          example: 0069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Function'
+          description: Get specific function
+      security:
+      - token: []
+      - cookie: []
+      summary: Get a specific revision of a function
+      tags:
+      - functions
+  /providers:
+    get:
+      description: Retrieve a list of all providers with their respective deployed
+        regions and cities.
+      operationId: providers-get
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Provider'
+          description: List providers
+      security:
+      - token: []
+      - cookie: []
+      summary: Get available providers
+      tags:
+      - providers
 components:
   parameters:
     pagination_page:
@@ -1541,6 +1863,28 @@ components:
       required: true
       schema:
         example: example-domain.com
+        type: string
+      style: simple
+    function_id:
+      description: Function ID reference
+      explode: false
+      in: path
+      name: function_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
+    function_revision_id:
+      description: Function revision ID reference
+      explode: false
+      in: path
+      name: function_revision_id
+      required: true
+      schema:
+        example: 0069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
         type: string
       style: simple
   requestBodies:
@@ -1620,6 +1964,20 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/SecretBodyPatch'
+      description: Update any field
+      required: true
+    FunctionBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/FunctionBody'
+      description: Create/Update any field
+      required: true
+    FunctionBodyPatch:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Function'
       description: Update any field
       required: true
   responses:
@@ -1777,6 +2135,24 @@ components:
           schema:
             $ref: '#/components/schemas/SecretMetaResponse'
       description: Get secret metadata
+    ListFunction:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListFunction'
+      description: List all functions (paginated)
+    Function:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Function'
+      description: Get specific function
+    Provider:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Provider'
+      description: List providers
   schemas:
     NotFoundResponse:
       description: Resource not found
@@ -2670,6 +3046,654 @@ components:
       - payload
       - type
       type: object
+    Location:
+      description: Location of allowed clusters
+      example:
+        continent: EU
+        country: GB
+        city: London
+        provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        provider_id:
+          description: UUID of provider to deploy into
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        continent:
+          description: Deployment continent
+          example: EU
+          type: string
+        country:
+          description: Deployment country
+          example: GB
+          type: string
+        city:
+          description: Deployment city
+          example: London
+          type: string
+      required:
+      - provider_id
+      type: object
+    FunctionScaling:
+      description: Scaling logic
+      example:
+        high: 60
+        low: 30
+        type: cpu
+      properties:
+        type:
+          description: CPU or Memory supported
+          enum:
+          - cpu
+          - memory
+          example: cpu
+          type: string
+        low:
+          description: For type to drop below before scale down
+          example: 30
+          minLength: 1
+          type: integer
+        high:
+          description: For type to go above before scale up
+          example: 60
+          minLength: 1
+          type: integer
+      required:
+      - high
+      - low
+      - type
+      type: object
+    FunctionReplicas:
+      description: Balancing logic
+      example:
+        min: 1
+        max: 5
+        affinity:
+          cloud: true
+          cluster: true
+      properties:
+        min:
+          description: Minimum number of replicas to have
+          example: 1
+          minLength: 1
+          type: integer
+        max:
+          description: Maximum number of replicas to have
+          example: 5
+          minLength: 1
+          type: integer
+        affinity:
+          $ref: '#/components/schemas/FunctionReplicas_affinity'
+      required:
+      - affinity
+      - max
+      - min
+      type: object
+    FunctionEnv:
+      description: Environment variable for function
+      example:
+        reference: project_id/secret_id
+        name: MY_ENV_VAR
+      properties:
+        name:
+          description: Key name
+          example: MY_ENV_VAR
+          type: string
+        reference:
+          description: Reference to the secret to use
+          example: project_id/secret_id
+          type: string
+      required:
+      - name
+      - reference
+      type: object
+    FunctionCompliance:
+      description: |
+        Tagged requirements for compliance;
+        soc2 = SOC2 compliant data centers
+        ipv6 = Function can work within an ipv6 *only* cluster
+      enum:
+      - soc2
+      - ipv6
+      type: string
+    FunctionType:
+      description: "Type of function, worker types are not exposed to ingress routes"
+      enum:
+      - http
+      - worker
+      example: http
+      type: string
+    FunctionSize:
+      description: "Size of function, required CPU and Memory"
+      example:
+        memory: 128
+        cpu: 128
+      properties:
+        cpu:
+          description: |
+            CPU in 0.1 vCPU increments, for a whole vCPU specify 1024
+            Must be in multiples of 128, with the same multiplier as memory
+          example: 128
+          type: integer
+        memory:
+          description: |
+            Memory in 128 MB increments, values are integer always in MB
+            Must be in multiples of 128, with the same multiplier as CPU
+          example: 128
+          type: integer
+      required:
+      - cpu
+      - memory
+      type: object
+    FunctionDeployment:
+      example:
+        replicas:
+          min: 1
+          max: 5
+          affinity:
+            cloud: true
+            cluster: true
+        location:
+          continent: EU
+          country: GB
+          city: London
+          provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        id:
+          description: ID of the deployment
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        location:
+          $ref: '#/components/schemas/Location'
+        replicas:
+          $ref: '#/components/schemas/FunctionReplicas'
+      required:
+      - location
+      - replicas
+      type: object
+    FunctionDeploymentBody:
+      example:
+        replicas:
+          min: 1
+          max: 5
+          affinity:
+            cloud: true
+            cluster: true
+        location:
+          continent: EU
+          country: GB
+          city: London
+          provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        location:
+          $ref: '#/components/schemas/Location'
+        replicas:
+          $ref: '#/components/schemas/FunctionReplicas'
+      required:
+      - location
+      - replicas
+      type: object
+    FunctionRoute:
+      example:
+        path: "/hello/{0-9+}"
+        methods:
+        - GET
+        - POST
+        weight: 50
+      properties:
+        path:
+          description: Can be a regular expression
+          example: "/hello/{0-9+}"
+          minLength: 1
+          type: string
+        methods:
+          description: HTTP Verb(s) for this function
+          example:
+          - GET
+          - POST
+          items:
+            example: GET
+            type: string
+          type: array
+        weight:
+          description: The route weight for consideration
+          example: 50
+          minLength: 1
+          type: integer
+      required:
+      - methods
+      - path
+      - weight
+      type: object
+    Function:
+      description: Function
+      example:
+        image: docker.io/my-image:latest
+        scaling:
+          high: 60
+          low: 30
+          type: cpu
+        description: My function does this
+        type: http
+        version: 1.0.0
+        secrets:
+        - reference: project_id/secret_id
+          name: MY_ENV_VAR
+        - reference: project_id/secret_id
+          name: MY_ENV_VAR
+        revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        routes:
+        - path: "/hello/{0-9+}"
+          methods:
+          - GET
+          - POST
+          weight: 50
+        - path: "/hello/{0-9+}"
+          methods:
+          - GET
+          - POST
+          weight: 50
+        deployments:
+        - replicas:
+            min: 1
+            max: 5
+            affinity:
+              cloud: true
+              cluster: true
+          location:
+            continent: EU
+            country: GB
+            city: London
+            provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        - replicas:
+            min: 1
+            max: 5
+            affinity:
+              cloud: true
+              cluster: true
+          location:
+            continent: EU
+            country: GB
+            city: London
+            provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        size:
+          memory: 128
+          cpu: 128
+        project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        port: 8080
+        compliance:
+        - null
+        - null
+        name: my-function
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        id:
+          description: ID of the function
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          minLength: 1
+          type: string
+        project_id:
+          description: ID of the project this function belongs to
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        version:
+          description: Function spec version
+          enum:
+          - 1.0.0
+          example: 1.0.0
+          type: string
+        name:
+          description: Name of the function
+          example: my-function
+          minLength: 1
+          type: string
+        description:
+          description: Description of what the function does
+          example: My function does this
+          type: string
+        image:
+          description: Path to container image
+          example: docker.io/my-image:latest
+          minLength: 1
+          type: string
+        revision:
+          description: Function revision
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        type:
+          $ref: '#/components/schemas/FunctionType'
+        size:
+          $ref: '#/components/schemas/FunctionSize'
+        port:
+          description: Port the application runs on
+          example: 8080
+          type: integer
+        routes:
+          description: "The public route/path to this function, only applicable to\
+            \ http type functions"
+          items:
+            $ref: '#/components/schemas/FunctionRoute'
+          type: array
+        scaling:
+          $ref: '#/components/schemas/FunctionScaling'
+        deployments:
+          description: List of deployments for this function
+          items:
+            $ref: '#/components/schemas/FunctionDeployment'
+          type: array
+        secrets:
+          description: List of environment variables for secrets
+          items:
+            $ref: '#/components/schemas/FunctionEnv'
+          type: array
+        compliance:
+          description: Tags to limit deployment
+          items:
+            $ref: '#/components/schemas/FunctionCompliance'
+          type: array
+      required:
+      - deployments
+      - description
+      - id
+      - image
+      - name
+      - port
+      - project_id
+      - revision
+      - scaling
+      - secrets
+      - size
+      - type
+      - version
+      type: object
+    FunctionBody:
+      description: Function create body
+      example:
+        image: docker.io/my-image:latest
+        scaling:
+          high: 60
+          low: 30
+          type: cpu
+        description: My function does this
+        type: http
+        version: 1.0.0
+        secrets:
+        - reference: project_id/secret_id
+          name: MY_ENV_VAR
+        - reference: project_id/secret_id
+          name: MY_ENV_VAR
+        routes:
+        - path: "/hello/{0-9+}"
+          methods:
+          - GET
+          - POST
+          weight: 50
+        - path: "/hello/{0-9+}"
+          methods:
+          - GET
+          - POST
+          weight: 50
+        deployments:
+        - replicas:
+            min: 1
+            max: 5
+            affinity:
+              cloud: true
+              cluster: true
+          location:
+            continent: EU
+            country: GB
+            city: London
+            provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        - replicas:
+            min: 1
+            max: 5
+            affinity:
+              cloud: true
+              cluster: true
+          location:
+            continent: EU
+            country: GB
+            city: London
+            provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        size:
+          memory: 128
+          cpu: 128
+        project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        port: 8080
+        compliance:
+        - null
+        - null
+        name: my-function
+      properties:
+        project_id:
+          description: ID of the project this function belongs to
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        version:
+          description: Function spec version
+          enum:
+          - 1.0.0
+          example: 1.0.0
+          type: string
+        name:
+          description: Name of the function
+          example: my-function
+          minLength: 1
+          type: string
+        description:
+          description: Description of what the function does
+          example: My function does this
+          type: string
+        image:
+          description: Path to container image
+          example: docker.io/my-image:latest
+          minLength: 1
+          type: string
+        type:
+          $ref: '#/components/schemas/FunctionType'
+        size:
+          $ref: '#/components/schemas/FunctionSize'
+        port:
+          description: Port the application runs on
+          example: 8080
+          type: integer
+        routes:
+          description: "The public route/path to this function, only applicable to\
+            \ http type functions"
+          items:
+            $ref: '#/components/schemas/FunctionRoute'
+          type: array
+        scaling:
+          $ref: '#/components/schemas/FunctionScaling'
+        deployments:
+          description: List of deployments for this function
+          items:
+            $ref: '#/components/schemas/FunctionDeploymentBody'
+          type: array
+        secrets:
+          description: List of environment variables for secrets
+          items:
+            $ref: '#/components/schemas/FunctionEnv'
+          type: array
+        compliance:
+          description: Tags to limit deployment
+          items:
+            $ref: '#/components/schemas/FunctionCompliance'
+          type: array
+      required:
+      - deployments
+      - description
+      - image
+      - name
+      - port
+      - project_id
+      - scaling
+      - secrets
+      - size
+      - type
+      - version
+      type: object
+    ListFunction:
+      description: List of functions
+      example:
+        data:
+        - image: docker.io/my-image:latest
+          scaling:
+            high: 60
+            low: 30
+            type: cpu
+          description: My function does this
+          type: http
+          version: 1.0.0
+          secrets:
+          - reference: project_id/secret_id
+            name: MY_ENV_VAR
+          - reference: project_id/secret_id
+            name: MY_ENV_VAR
+          revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          routes:
+          - path: "/hello/{0-9+}"
+            methods:
+            - GET
+            - POST
+            weight: 50
+          - path: "/hello/{0-9+}"
+            methods:
+            - GET
+            - POST
+            weight: 50
+          deployments:
+          - replicas:
+              min: 1
+              max: 5
+              affinity:
+                cloud: true
+                cluster: true
+            location:
+              continent: EU
+              country: GB
+              city: London
+              provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+            id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          - replicas:
+              min: 1
+              max: 5
+              affinity:
+                cloud: true
+                cluster: true
+            location:
+              continent: EU
+              country: GB
+              city: London
+              provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+            id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          size:
+            memory: 128
+            cpu: 128
+          project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          port: 8080
+          compliance:
+          - null
+          - null
+          name: my-function
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        - image: docker.io/my-image:latest
+          scaling:
+            high: 60
+            low: 30
+            type: cpu
+          description: My function does this
+          type: http
+          version: 1.0.0
+          secrets:
+          - reference: project_id/secret_id
+            name: MY_ENV_VAR
+          - reference: project_id/secret_id
+            name: MY_ENV_VAR
+          revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          routes:
+          - path: "/hello/{0-9+}"
+            methods:
+            - GET
+            - POST
+            weight: 50
+          - path: "/hello/{0-9+}"
+            methods:
+            - GET
+            - POST
+            weight: 50
+          deployments:
+          - replicas:
+              min: 1
+              max: 5
+              affinity:
+                cloud: true
+                cluster: true
+            location:
+              continent: EU
+              country: GB
+              city: London
+              provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+            id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          - replicas:
+              min: 1
+              max: 5
+              affinity:
+                cloud: true
+                cluster: true
+            location:
+              continent: EU
+              country: GB
+              city: London
+              provider_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+            id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          size:
+            memory: 128
+            cpu: 128
+          project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          port: 8080
+          compliance:
+          - null
+          - null
+          name: my-function
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        meta:
+          pages: 20
+          start: 20
+          end: 40
+          links:
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/Function'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
+    Provider:
+      description: List of providers
+      items:
+        $ref: '#/components/schemas/Provider_inner'
+      required:
+      - id
+      - locations
+      - name
+      type: array
     organisations_list_page_parameter:
       properties:
         before:
@@ -2701,6 +3725,83 @@ components:
       - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
       - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
       - $ref: '#/components/schemas/SecretMetaResponseDek'
+    FunctionReplicas_affinity:
+      description: Replica strategy
+      example:
+        cloud: true
+        cluster: true
+      properties:
+        cluster:
+          description: "If there are > 1 replica, make sure they're on different clusters"
+          example: true
+          type: boolean
+        cloud:
+          description: "If there are > 1 replica, make sure they're on different clouds"
+          example: true
+          type: boolean
+      required:
+      - cloud
+      - cluster
+      type: object
+    Provider_inner_locations:
+      description: Locations at varying levels this provider operates within
+      example:
+        cities:
+        - London
+        - London
+        countries:
+        - GB
+        - GB
+        continents:
+        - EU
+        - EU
+      properties:
+        continents:
+          items:
+            description: Deployment continent
+            example: EU
+            type: string
+          type: array
+        countries:
+          items:
+            description: Deployment country
+            example: GB
+            type: string
+          type: array
+        cities:
+          items:
+            description: Deployment city
+            example: London
+            type: string
+          type: array
+      type: object
+    Provider_inner:
+      example:
+        name: AWS
+        locations:
+          cities:
+          - London
+          - London
+          countries:
+          - GB
+          - GB
+          continents:
+          - EU
+          - EU
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        id:
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        name:
+          description: Name of provider
+          example: AWS
+          minLength: 1
+          type: string
+        locations:
+          $ref: '#/components/schemas/Provider_inner_locations'
+      type: object
   securitySchemes:
     token:
       scheme: bearer

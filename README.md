@@ -78,6 +78,13 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*FunctionsAPI* | [**FunctionsDelete**](docs/FunctionsAPI.md#functionsdelete) | **Delete** /functions/{function_id} | Delete function
+*FunctionsAPI* | [**FunctionsGet**](docs/FunctionsAPI.md#functionsget) | **Get** /functions/{function_id} | Get function (latest revision)
+*FunctionsAPI* | [**FunctionsRevisionsGet**](docs/FunctionsAPI.md#functionsrevisionsget) | **Get** /functions/{function_id}/revisions/{function_revision_id} | Get a specific revision of a function
+*FunctionsAPI* | [**FunctionsRevisionsList**](docs/FunctionsAPI.md#functionsrevisionslist) | **Get** /functions/{function_id}/revisions | List all revisions for a function
+*FunctionsAPI* | [**FunctionsUpdate**](docs/FunctionsAPI.md#functionsupdate) | **Put** /functions/{function_id} | Update function
+*FunctionsAPI* | [**ProjectsFunctionsCreate**](docs/FunctionsAPI.md#projectsfunctionscreate) | **Post** /projects/{project_id}/functions | Create function
+*FunctionsAPI* | [**ProjectsFunctionsList**](docs/FunctionsAPI.md#projectsfunctionslist) | **Get** /projects/{project_id}/functions | List all functions within a project
 *HostsAPI* | [**ProjectsHostsCreate**](docs/HostsAPI.md#projectshostscreate) | **Post** /projects/{project_id}/hosts | Create host for project
 *HostsAPI* | [**ProjectsHostsDelete**](docs/HostsAPI.md#projectshostsdelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
 *HostsAPI* | [**ProjectsHostsGet**](docs/HostsAPI.md#projectshostsget) | **Get** /projects/{project_id}/hosts/{hostname} | Get specific host by hostname
@@ -95,6 +102,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsGet**](docs/ProjectsAPI.md#projectsget) | **Get** /projects/{project_id} | Get project
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /projects | List projects
 *ProjectsAPI* | [**ProjectsUpdate**](docs/ProjectsAPI.md#projectsupdate) | **Put** /projects/{project_id} | Update project
+*ProvidersAPI* | [**ProvidersGet**](docs/ProvidersAPI.md#providersget) | **Get** /providers | Get available providers
 *SecretsAPI* | [**ProjectsSecretsCreate**](docs/SecretsAPI.md#projectssecretscreate) | **Post** /projects/{project_id}/secrets | Create project secret
 *SecretsAPI* | [**ProjectsSecretsDelete**](docs/SecretsAPI.md#projectssecretsdelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
 *SecretsAPI* | [**ProjectsSecretsGet**](docs/SecretsAPI.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
@@ -118,15 +126,29 @@ Class | Method | HTTP request | Description
  - [ConflictResponse](docs/ConflictResponse.md)
  - [Date](docs/Date.md)
  - [DeletedResponse](docs/DeletedResponse.md)
+ - [Function](docs/Function.md)
+ - [FunctionBody](docs/FunctionBody.md)
+ - [FunctionCompliance](docs/FunctionCompliance.md)
+ - [FunctionDeployment](docs/FunctionDeployment.md)
+ - [FunctionDeploymentBody](docs/FunctionDeploymentBody.md)
+ - [FunctionEnv](docs/FunctionEnv.md)
+ - [FunctionReplicas](docs/FunctionReplicas.md)
+ - [FunctionReplicasAffinity](docs/FunctionReplicasAffinity.md)
+ - [FunctionRoute](docs/FunctionRoute.md)
+ - [FunctionScaling](docs/FunctionScaling.md)
+ - [FunctionSize](docs/FunctionSize.md)
+ - [FunctionType](docs/FunctionType.md)
  - [Host](docs/Host.md)
  - [HostBody](docs/HostBody.md)
  - [HostBodyPatch](docs/HostBodyPatch.md)
  - [HostVerificationStatus](docs/HostVerificationStatus.md)
  - [ListAuthTokens](docs/ListAuthTokens.md)
+ - [ListFunction](docs/ListFunction.md)
  - [ListHosts](docs/ListHosts.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
  - [ListSecretResponse](docs/ListSecretResponse.md)
+ - [Location](docs/Location.md)
  - [NotFoundResponse](docs/NotFoundResponse.md)
  - [OrganisationBody](docs/OrganisationBody.md)
  - [OrganisationResponse](docs/OrganisationResponse.md)
@@ -136,6 +158,8 @@ Class | Method | HTTP request | Description
  - [ProjectBody](docs/ProjectBody.md)
  - [ProjectBodyPatch](docs/ProjectBodyPatch.md)
  - [ProjectResponse](docs/ProjectResponse.md)
+ - [ProviderInner](docs/ProviderInner.md)
+ - [ProviderInnerLocations](docs/ProviderInnerLocations.md)
  - [SecretBody](docs/SecretBody.md)
  - [SecretBodyPatch](docs/SecretBodyPatch.md)
  - [SecretCertificate](docs/SecretCertificate.md)
