@@ -3132,7 +3132,7 @@ components:
     FunctionEnv:
       description: Environment variable for function
       example:
-        reference: project_id/secret_id
+        reference: project_id/secret_id@secret_revision
         name: MY_ENV_VAR
       properties:
         name:
@@ -3141,7 +3141,7 @@ components:
           type: string
         reference:
           description: Reference to the secret to use
-          example: project_id/secret_id
+          example: project_id/secret_id@secret_revision
           type: string
       required:
       - name
@@ -3279,9 +3279,9 @@ components:
         type: http
         version: 1.0.0
         secrets:
-        - reference: project_id/secret_id
+        - reference: project_id/secret_id@secret_revision
           name: MY_ENV_VAR
-        - reference: project_id/secret_id
+        - reference: project_id/secret_id@secret_revision
           name: MY_ENV_VAR
         revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         routes:
@@ -3425,9 +3425,9 @@ components:
         type: http
         version: 1.0.0
         secrets:
-        - reference: project_id/secret_id
+        - reference: project_id/secret_id@secret_revision
           name: MY_ENV_VAR
-        - reference: project_id/secret_id
+        - reference: project_id/secret_id@secret_revision
           name: MY_ENV_VAR
         routes:
         - path: "/hello/{0-9+}"
@@ -3555,9 +3555,9 @@ components:
           type: http
           version: 1.0.0
           secrets:
-          - reference: project_id/secret_id
+          - reference: project_id/secret_id@secret_revision
             name: MY_ENV_VAR
-          - reference: project_id/secret_id
+          - reference: project_id/secret_id@secret_revision
             name: MY_ENV_VAR
           revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           routes:
@@ -3615,9 +3615,9 @@ components:
           type: http
           version: 1.0.0
           secrets:
-          - reference: project_id/secret_id
+          - reference: project_id/secret_id@secret_revision
             name: MY_ENV_VAR
-          - reference: project_id/secret_id
+          - reference: project_id/secret_id@secret_revision
             name: MY_ENV_VAR
           revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           routes:
