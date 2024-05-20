@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Host** | **string** | Hostname | 
-**Certificate** | **string** | Reference to secret certificate path | 
-**Disabled** | **bool** | If the host is disabled, then this host won&#39;t be accessible and so the deployments will not be routable on this host | 
+**Host** | **string** | Hostname, this can be the root of a domain or a subdomain | 
+**Certificate** | **string** | The secret reference to the certificate | 
+**Disabled** | **bool** | If the host is disabled, then this host won&#39;t be accessible and so the deployments will not be routable | 
 
 ## Methods
 

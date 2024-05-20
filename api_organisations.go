@@ -416,11 +416,18 @@ type ApiOrganisationsListRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	page *OrganisationsListPageParameter
+	fName *string
 }
 
 // Query parameters for pagination
 func (r ApiOrganisationsListRequest) Page(page OrganisationsListPageParameter) ApiOrganisationsListRequest {
 	r.page = &page
+	return r
+}
+
+// Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
+func (r ApiOrganisationsListRequest) FName(fName string) ApiOrganisationsListRequest {
+	r.fName = &fName
 	return r
 }
 
@@ -466,6 +473,9 @@ func (a *OrganisationsAPIService) OrganisationsListExecute(r ApiOrganisationsLis
 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.fName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

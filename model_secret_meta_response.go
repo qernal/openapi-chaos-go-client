@@ -22,7 +22,7 @@ var _ MappedNullable = &SecretMetaResponse{}
 
 // SecretMetaResponse Secret metadata response
 type SecretMetaResponse struct {
-	// Project name
+	// Secret name
 	Name string `json:"name"`
 	Type SecretMetaType `json:"type"`
 	Payload *SecretMetaResponsePayload `json:"payload,omitempty"`

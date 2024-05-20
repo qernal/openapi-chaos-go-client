@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** | Auth token uuid | 
 **UserId** | **string** | User | 
 **Name** | **string** | Name of token | 
-**ExpiryAt** | Pointer to **string** |  | [optional] 
+**ExpiryAt** | Pointer to **string** | When the token expires | [optional] 
 **Token** | Pointer to **string** | Combined token required for requesting an access token, this field is only returned once on creation or update (during regeneration). | [optional] 
 **Date** | [**Date**](Date.md) |  | 
 

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cpu** | **int32** | CPU in 0.1 vCPU increments, for a whole vCPU specify 1024 Must be in multiples of 128, with the same multiplier as memory  | 
-**Memory** | **int32** | Memory in 128 MB increments, values are integer always in MB Must be in multiples of 128, with the same multiplier as CPU  | 
+**Cpu** | **int32** | CPU in 0.1 vCPU increments, for a whole vCPU specify 1024 Must be in multiples of 128, with the same multiplier as memory from the base  | 
+**Memory** | **int32** | Memory in 128 MB increments, values are integer always in MB Must be in multiples of 128, with the same multiplier as CPU from the base  | 
 
 ## Methods
 

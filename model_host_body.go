@@ -22,11 +22,11 @@ var _ MappedNullable = &HostBody{}
 
 // HostBody Host body
 type HostBody struct {
-	// Hostname
+	// Hostname, this can be the root of a domain or a subdomain
 	Host string `json:"host"`
-	// Reference to secret certificate path
+	// The secret reference to the certificate
 	Certificate string `json:"certificate"`
-	// If the host is disabled, then this host won't be accessible and so the deployments will not be routable on this host
+	// If the host is disabled, then this host won't be accessible and so the deployments will not be routable
 	Disabled bool `json:"disabled"`
 }
 

@@ -561,11 +561,18 @@ type ApiProjectsListRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	page *OrganisationsListPageParameter
+	fName *string
 }
 
 // Query parameters for pagination
 func (r ApiProjectsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsListRequest {
 	r.page = &page
+	return r
+}
+
+// Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
+func (r ApiProjectsListRequest) FName(fName string) ApiProjectsListRequest {
+	r.fName = &fName
 	return r
 }
 
@@ -611,6 +618,9 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Lis
 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.fName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

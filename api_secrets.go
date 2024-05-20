@@ -31,7 +31,7 @@ type ApiProjectsSecretsCreateRequest struct {
 	secretBody *SecretBody
 }
 
-// Create/Update any field
+// Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
 func (r ApiProjectsSecretsCreateRequest) SecretBody(secretBody SecretBody) ApiProjectsSecretsCreateRequest {
 	r.secretBody = &secretBody
 	return r

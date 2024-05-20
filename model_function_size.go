@@ -22,9 +22,9 @@ var _ MappedNullable = &FunctionSize{}
 
 // FunctionSize Size of function, required CPU and Memory
 type FunctionSize struct {
-	// CPU in 0.1 vCPU increments, for a whole vCPU specify 1024 Must be in multiples of 128, with the same multiplier as memory 
+	// CPU in 0.1 vCPU increments, for a whole vCPU specify 1024 Must be in multiples of 128, with the same multiplier as memory from the base 
 	Cpu int32 `json:"cpu"`
-	// Memory in 128 MB increments, values are integer always in MB Must be in multiples of 128, with the same multiplier as CPU 
+	// Memory in 128 MB increments, values are integer always in MB Must be in multiples of 128, with the same multiplier as CPU from the base 
 	Memory int32 `json:"memory"`
 }
 

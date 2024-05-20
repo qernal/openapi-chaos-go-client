@@ -24,7 +24,7 @@ var _ MappedNullable = &Host{}
 type Host struct {
 	// Host id
 	Id string `json:"id"`
-	// Hostname, this can be a root or a subdomain
+	// Hostname, this can be the root of a domain or a subdomain
 	Host string `json:"host"`
 	// The secret reference to the certificate
 	Certificate *string `json:"certificate,omitempty"`
@@ -32,7 +32,7 @@ type Host struct {
 	ProjectId string `json:"project_id"`
 	// If the host is read only and cannot be removed, primarily used for *.qrnl.app domains
 	ReadOnly bool `json:"read_only"`
-	// If the host is disabled and so won't be routable
+	// If the host is disabled, then this host won't be accessible and so the deployments will not be routable
 	Disabled bool `json:"disabled"`
 	// TXT record of host to verify ownership - if this record is removed, it may become unverified as this is checked periodically to continually verify ownership
 	TxtVerification string `json:"txt_verification"`

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Certificate** | Pointer to **string** | Reference to secret certificate path | [optional] 
-**Disabled** | Pointer to **bool** | If the host is disabled, then this host won&#39;t be accessible and so the deployments will not work on this host | [optional] 
+**Certificate** | Pointer to **string** | The secret reference to the certificate | [optional] 
+**Disabled** | Pointer to **bool** | If the host is disabled, then this host won&#39;t be accessible and so the deployments will not be routable | [optional] 
 
 ## Methods
 

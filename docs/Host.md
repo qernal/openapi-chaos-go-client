@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Host id | 
-**Host** | **string** | Hostname, this can be a root or a subdomain | 
+**Host** | **string** | Hostname, this can be the root of a domain or a subdomain | 
 **Certificate** | Pointer to **string** | The secret reference to the certificate | [optional] 
 **ProjectId** | **string** | Project ID this is attached to | 
 **ReadOnly** | **bool** | If the host is read only and cannot be removed, primarily used for *.qrnl.app domains | 
-**Disabled** | **bool** | If the host is disabled and so won&#39;t be routable | 
+**Disabled** | **bool** | If the host is disabled, then this host won&#39;t be accessible and so the deployments will not be routable | 
 **TxtVerification** | **string** | TXT record of host to verify ownership - if this record is removed, it may become unverified as this is checked periodically to continually verify ownership | 
 **VerifiedAt** | Pointer to **string** | UTC datetime when the host was verified (ISO 8601 date format). | [optional] 
 **Date** | [**Date**](Date.md) |  | 

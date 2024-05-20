@@ -106,7 +106,7 @@ import (
 )
 
 func main() {
-	projectBody := *openapiclient.NewProjectBody("3069614e-adc8-47cb-a69c-decf9c5f90fc", "first api") // ProjectBody | Create/Update any field (optional)
+	projectBody := *openapiclient.NewProjectBody("3069614e-adc8-47cb-a69c-decf9c5f90fc", "first-api") // ProjectBody | Create/Update any field (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsList
 
-> ListProjectResponse ProjectsList(ctx).Page(page).Execute()
+> ListProjectResponse ProjectsList(ctx).Page(page).FName(fName).Execute()
 
 List projects
 
@@ -313,10 +313,11 @@ import (
 
 func main() {
 	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	fName := "my-proj*" // string | Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it'll be an exact match  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectsAPI.ProjectsList(context.Background()).Page(page).Execute()
+	resp, r, err := apiClient.ProjectsAPI.ProjectsList(context.Background()).Page(page).FName(fName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -338,6 +339,7 @@ Other parameters are passed through a pointer to a apiProjectsListRequest struct
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | [**OrganisationsListPageParameter**](OrganisationsListPageParameter.md) | Query parameters for pagination | 
+ **fName** | **string** | Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match  | 
 
 ### Return type
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Project name | 
+**Name** | **string** | Secret name | 
 **Type** | [**SecretMetaType**](SecretMetaType.md) |  | 
 **Payload** | Pointer to [**SecretMetaResponsePayload**](SecretMetaResponsePayload.md) |  | [optional] 
 **Revision** | **int32** | Secret revision | 

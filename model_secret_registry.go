@@ -22,7 +22,7 @@ var _ MappedNullable = &SecretRegistry{}
 
 // SecretRegistry Encrypted private container registry, `type: registry`
 type SecretRegistry struct {
-	// Url to private container repository (for docker registry use https://index.docker.io/v1/)
+	// Url to private container repository (for docker registry use docker.io)
 	Registry string `json:"registry"`
 	// Token used for auth to the registry
 	RegistryValue string `json:"registry_value"`

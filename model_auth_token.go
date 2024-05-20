@@ -28,6 +28,7 @@ type AuthToken struct {
 	UserId string `json:"user_id"`
 	// Name of token
 	Name string `json:"name"`
+	// When the token expires
 	ExpiryAt *string `json:"expiry_at,omitempty"`
 	// Combined token required for requesting an access token, this field is only returned once on creation or update (during regeneration).
 	Token *string `json:"token,omitempty"`

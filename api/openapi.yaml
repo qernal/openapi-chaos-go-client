@@ -48,6 +48,17 @@ paths:
         schema:
           $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
+      - description: |
+          Filter resource on name, if the value ends in an asterix it will be
+          treated as a partial search otherwise, it'll be an exact match
+        explode: true
+        in: query
+        name: f_name
+        required: false
+        schema:
+          example: my-proj*
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -351,6 +362,17 @@ paths:
         schema:
           $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
+      - description: |
+          Filter resource on name, if the value ends in an asterix it will be
+          treated as a partial search otherwise, it'll be an exact match
+        explode: true
+        in: query
+        name: f_name
+        required: false
+        schema:
+          example: my-proj*
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1887,6 +1909,18 @@ components:
         format: uuid
         type: string
       style: simple
+    filter_name:
+      description: |
+        Filter resource on name, if the value ends in an asterix it will be
+        treated as a partial search otherwise, it'll be an exact match
+      explode: true
+      in: query
+      name: f_name
+      required: false
+      schema:
+        example: my-proj*
+        type: string
+      style: form
   requestBodies:
     HostBody:
       content:
@@ -1933,31 +1967,14 @@ components:
     SecretBody:
       content:
         application/json:
-          examples:
-            secret-registry-create:
-              value:
-                name: FIRST_API
-                type: registry
-                payload:
-                  registry: ghcr.io
-                  secret: VGhpcyBzaG91bGQgYmUgYSBzZWN1cmUgc2VjcmV0LCBnZW5lcmF0ZSBsZW5ndGh5IGNyZWRlbnRpYWxzCg==
-            secret-certificate-create:
-              value:
-                name: FIRST_API
-                type: certificate
-                payload:
-                  domain: my-app.com
-                  secret: VGhpcyB3b3VsZCBiZSB5b3VyIGNlcnRpZmljYXRlCg==
-            secret-environment-create:
-              value:
-                name: FIRST_API
-                type: environment
-                payload:
-                  env: MY_FIRST_SECRET
-                  secret: bXkgc2VjcmV0IHZhbHVlCg==
           schema:
             $ref: '#/components/schemas/SecretBody'
-      description: Create/Update any field
+      description: |
+        Create/Update any field
+
+        The example generated may only be for one
+        of the secret types, look towards the payload section of the schema
+        for further fields, values and examples.
       required: true
     SecretBodyPatch:
       content:
@@ -2258,7 +2275,7 @@ components:
           format: uuid
           type: string
         host:
-          description: "Hostname, this can be a root or a subdomain"
+          description: "Hostname, this can be the root of a domain or a subdomain"
           example: example-domain.com
           minLength: 1
           type: string
@@ -2277,7 +2294,8 @@ components:
             \ used for *.qrnl.app domains"
           type: boolean
         disabled:
-          description: If the host is disabled and so won't be routable
+          description: "If the host is disabled, then this host won't be accessible\
+            \ and so the deployments will not be routable"
           type: boolean
         txt_verification:
           description: "TXT record of host to verify ownership - if this record is\
@@ -2354,23 +2372,23 @@ components:
     HostBody:
       description: Host body
       example:
-        host: host
+        host: example-domain.com
         certificate: projects:secrets/MY_CERT
         disabled: true
       properties:
         host:
-          description: Hostname
+          description: "Hostname, this can be the root of a domain or a subdomain"
+          example: example-domain.com
           minLength: 1
           type: string
         certificate:
-          description: Reference to secret certificate path
+          description: The secret reference to the certificate
           example: projects:secrets/MY_CERT
-          minLength: 1
           pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
-            \ and so the deployments will not be routable on this host"
+            \ and so the deployments will not be routable"
           type: boolean
       required:
       - certificate
@@ -2384,25 +2402,25 @@ components:
         disabled: true
       properties:
         certificate:
-          description: Reference to secret certificate path
+          description: The secret reference to the certificate
           example: projects:secrets/MY_CERT
-          minLength: 1
           pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
-            \ and so the deployments will not work on this host"
+            \ and so the deployments will not be routable"
           type: boolean
       type: object
     AuthTokenBody:
       description: API auth token create
       example:
-        name: TF token
+        name: tf-token
         expiry_duration: 90
       properties:
         name:
           description: Name of token
-          example: TF token
+          example: tf-token
+          pattern: "^[A-z-]+$"
           type: string
         expiry_duration:
           description: Token expiration duration in days. 0 - token will never expire
@@ -2415,12 +2433,13 @@ components:
     AuthTokenPatch:
       description: API auth token patch
       example:
-        name: My updated token
+        name: tf-token
         expiry_duration: 90
       properties:
         name:
           description: Name of token
-          example: My updated token
+          example: tf-token
+          pattern: "^[A-z-]+$"
           type: string
         expiry_duration:
           description: Token expiration duration in days. 0 - token will never expire
@@ -2453,6 +2472,7 @@ components:
           example: TF Token
           type: string
         expiry_at:
+          description: When the token expires
           example: 2023-07-22T14:50:13Z20230722T145013Z
           format: datetime
           type: string
@@ -2599,7 +2619,7 @@ components:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        name: my org
+        name: my-org
         id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
       properties:
         id:
@@ -2616,8 +2636,9 @@ components:
           type: string
         name:
           description: Organisation name
-          example: my org
+          example: my-org
           minLength: 1
+          pattern: "^[A-z-]+$"
           type: string
         date:
           $ref: '#/components/schemas/Date'
@@ -2635,13 +2656,13 @@ components:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my org
+          name: my-org
           id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         - date:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my org
+          name: my-org
           id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         meta:
           pages: 20
@@ -2665,12 +2686,13 @@ components:
     OrganisationBody:
       description: Organisation body
       example:
-        name: my org
+        name: my-org
       properties:
         name:
           description: Organisation name
-          example: my org
+          example: my-org
           minLength: 1
+          pattern: "^[A-z-]+$"
           type: string
       required:
       - name
@@ -2683,13 +2705,13 @@ components:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my project
+          name: first-api
           id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         - date:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my project
+          name: first-api
           id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
         meta:
           pages: 20
@@ -2717,7 +2739,7 @@ components:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        name: my project
+        name: first-api
         id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
       properties:
         id:
@@ -2734,8 +2756,9 @@ components:
           type: string
         name:
           description: Project name
-          example: my project
+          example: first-api
           minLength: 1
+          pattern: "^[A-z-]+$"
           type: string
         date:
           $ref: '#/components/schemas/Date'
@@ -2749,7 +2772,7 @@ components:
       description: Project body
       example:
         org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        name: first api
+        name: first-api
       properties:
         org_id:
           description: Organisation id
@@ -2759,8 +2782,9 @@ components:
           type: string
         name:
           description: Project name
-          example: first api
+          example: first-api
           minLength: 1
+          pattern: "^[A-z-]+$"
           type: string
       required:
       - name
@@ -2769,17 +2793,20 @@ components:
     ProjectBodyPatch:
       description: Project patch fields
       example:
-        org_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
+        org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        name: first-api
       properties:
         org_id:
           description: Organisation id
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           minLength: 1
           type: string
         name:
           description: Project name
+          example: first-api
           minLength: 1
+          pattern: "^[A-z-]+$"
           type: string
       type: object
     ListSecretResponse:
@@ -2793,7 +2820,7 @@ components:
             certificate: <x509 content>
           name: name
           type: registry
-          revision: 23
+          revision: 32
         - date:
             updated_at: 2023-07-22T14:50:13Z20230722T145013Z
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -2801,7 +2828,7 @@ components:
             certificate: <x509 content>
           name: name
           type: registry
-          revision: 23
+          revision: 32
         meta:
           pages: 20
           start: 20
@@ -2873,10 +2900,10 @@ components:
           certificate: <x509 content>
         name: name
         type: registry
-        revision: 23
+        revision: 32
       properties:
         name:
-          description: Project name
+          description: Secret name
           minLength: 1
           pattern: "^[A-Z_]+$"
           type: string
@@ -2886,7 +2913,7 @@ components:
           $ref: '#/components/schemas/SecretMetaResponse_payload'
         revision:
           description: Secret revision
-          example: 23
+          example: 32
           type: integer
         date:
           $ref: '#/components/schemas/Date'
@@ -2977,13 +3004,13 @@ components:
     SecretRegistry:
       description: "Encrypted private container registry, `type: registry`"
       example:
-        registry: https://index.docker.io/v1/
+        registry: ghcr.io
         registry_value: SGVsbG8gd29ybGQ=
       properties:
         registry:
           description: Url to private container repository (for docker registry use
-            https://index.docker.io/v1/)
-          example: https://index.docker.io/v1/
+            docker.io)
+          example: ghcr.io
           format: url
           type: string
         registry_value:
@@ -3000,7 +3027,7 @@ components:
       example:
         encryption: keys/dek/123
         payload:
-          registry: https://index.docker.io/v1/
+          registry: ghcr.io
           registry_value: SGVsbG8gd29ybGQ=
         name: name
         type: registry
@@ -3017,6 +3044,7 @@ components:
         encryption:
           description: Encryption entity
           example: keys/dek/123
+          pattern: "^keys\\/dek\\/[0-9]+$"
           type: string
       required:
       - encryption
@@ -3029,7 +3057,7 @@ components:
       example:
         encryption: keys/dek/123
         payload:
-          registry: https://index.docker.io/v1/
+          registry: ghcr.io
           registry_value: SGVsbG8gd29ybGQ=
         type: registry
       properties:
@@ -3040,6 +3068,7 @@ components:
         encryption:
           description: Encryption entity
           example: keys/dek/123
+          pattern: "^keys\\/dek\\/[0-9]+$"
           type: string
       required:
       - encryption
@@ -3142,6 +3171,7 @@ components:
         reference:
           description: Reference to the secret to use
           example: project_id/secret_id@secret_revision
+          pattern: "^[0-9A-f-]{36}\\/[0-9A-f-]{36}\\@[0-9]+$"
           type: string
       required:
       - name
@@ -3173,12 +3203,14 @@ components:
           description: |
             CPU in 0.1 vCPU increments, for a whole vCPU specify 1024
             Must be in multiples of 128, with the same multiplier as memory
+            from the base
           example: 128
           type: integer
         memory:
           description: |
             Memory in 128 MB increments, values are integer always in MB
             Must be in multiples of 128, with the same multiplier as CPU
+            from the base
           example: 128
           type: integer
       required:
