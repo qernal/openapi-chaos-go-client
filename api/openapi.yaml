@@ -3836,7 +3836,7 @@ components:
       type: object
   securitySchemes:
     token:
-      scheme: bearer
+      scheme: Bearer
       type: http
     cookie:
       in: cookie
