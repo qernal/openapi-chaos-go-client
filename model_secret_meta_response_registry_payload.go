@@ -22,7 +22,7 @@ var _ MappedNullable = &SecretMetaResponseRegistryPayload{}
 
 // SecretMetaResponseRegistryPayload Secret metadata registry payload
 type SecretMetaResponseRegistryPayload struct {
-	// Registry domain
+	// Private registry domain/location, when using the private docker hub registry sepcify `docker.io` > Without http scheme 
 	Registry string `json:"registry"`
 }
 

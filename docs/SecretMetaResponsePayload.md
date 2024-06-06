@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Certificate** | **string** | Public SSL certificate | 
-**Registry** | **string** | Registry domain | 
+**Registry** | **string** | Private registry domain/location, when using the private docker hub registry sepcify &#x60;docker.io&#x60; &gt; Without http scheme  | 
 **Public** | **string** | Base64 encoded DEK public key | 
 
 ## Methods

@@ -2818,7 +2818,7 @@ components:
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           payload:
             certificate: <x509 content>
-          name: name
+          name: MY_SECRET
           type: registry
           revision: 32
         - date:
@@ -2826,7 +2826,7 @@ components:
             created_at: 2023-07-22T14:50:13Z20230722T145013Z
           payload:
             certificate: <x509 content>
-          name: name
+          name: MY_SECRET
           type: registry
           revision: 32
         meta:
@@ -2856,12 +2856,13 @@ components:
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         payload:
           certificate: <x509 content>
-        name: name
+        name: MY_SECRET
         type: registry
         revision: 32
       properties:
         name:
           description: Secret name
+          example: MY_SECRET
           minLength: 1
           pattern: "^[A-Z_]+$"
           type: string
@@ -2898,12 +2899,13 @@ components:
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         payload:
           certificate: <x509 content>
-        name: name
+        name: MY_SECRET
         type: registry
         revision: 32
       properties:
         name:
           description: Secret name
+          example: MY_SECRET
           minLength: 1
           pattern: "^[A-Z_]+$"
           type: string
@@ -2941,10 +2943,11 @@ components:
       description: Secret metadata registry payload
       properties:
         registry:
-          description: Registry domain
+          description: |
+            Private registry domain/location, when using the private docker hub registry sepcify `docker.io`
+            > Without http scheme
           example: ghcr.io
-          format: string
-          minLength: 1
+          format: hostname
           type: string
       required:
       - registry
@@ -3008,10 +3011,11 @@ components:
         registry_value: SGVsbG8gd29ybGQ=
       properties:
         registry:
-          description: Url to private container repository (for docker registry use
-            docker.io)
+          description: |
+            Private registry domain/location, when using the private docker hub registry sepcify `docker.io`
+            > Without http scheme
           example: ghcr.io
-          format: url
+          format: hostname
           type: string
         registry_value:
           description: Token used for auth to the registry
@@ -3029,11 +3033,12 @@ components:
         payload:
           registry: ghcr.io
           registry_value: SGVsbG8gd29ybGQ=
-        name: name
+        name: MY_SECRET
         type: registry
       properties:
         name:
           description: Secret name
+          example: MY_SECRET
           minLength: 1
           pattern: "^[A-Z_]+$"
           type: string

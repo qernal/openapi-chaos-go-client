@@ -34,7 +34,7 @@ import (
 
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-	secretBody := *openapiclient.NewSecretBody("Name_example", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
+	secretBody := *openapiclient.NewSecretBody("MY_SECRET", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

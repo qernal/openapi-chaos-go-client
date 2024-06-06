@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Registry** | **string** | Url to private container repository (for docker registry use docker.io) | 
+**Registry** | **string** | Private registry domain/location, when using the private docker hub registry sepcify &#x60;docker.io&#x60; &gt; Without http scheme  | 
 **RegistryValue** | **string** | Token used for auth to the registry | 
 **EnvironmentValue** | **string** | Encrypted environment pairs (key - env key, value - env value) | 
 **Certificate** | **string** | Public certificate | 
