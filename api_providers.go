@@ -23,41 +23,48 @@ import (
 // ProvidersAPIService ProvidersAPI service
 type ProvidersAPIService service
 
-type ApiProvidersGetRequest struct {
+type ApiProvidersListRequest struct {
 	ctx context.Context
 	ApiService *ProvidersAPIService
+	page *OrganisationsListPageParameter
 }
 
-func (r ApiProvidersGetRequest) Execute() ([]ProviderInner, *http.Response, error) {
-	return r.ApiService.ProvidersGetExecute(r)
+// Query parameters for pagination
+func (r ApiProvidersListRequest) Page(page OrganisationsListPageParameter) ApiProvidersListRequest {
+	r.page = &page
+	return r
+}
+
+func (r ApiProvidersListRequest) Execute() (*ListProviderResponse, *http.Response, error) {
+	return r.ApiService.ProvidersListExecute(r)
 }
 
 /*
-ProvidersGet Get available providers
+ProvidersList Get available providers
 
 Retrieve a list of all providers with their respective deployed regions and cities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersGetRequest
+ @return ApiProvidersListRequest
 */
-func (a *ProvidersAPIService) ProvidersGet(ctx context.Context) ApiProvidersGetRequest {
-	return ApiProvidersGetRequest{
+func (a *ProvidersAPIService) ProvidersList(ctx context.Context) ApiProvidersListRequest {
+	return ApiProvidersListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ProviderInner
-func (a *ProvidersAPIService) ProvidersGetExecute(r ApiProvidersGetRequest) ([]ProviderInner, *http.Response, error) {
+//  @return ListProviderResponse
+func (a *ProvidersAPIService) ProvidersListExecute(r ApiProvidersListRequest) (*ListProviderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ProviderInner
+		localVarReturnValue  *ListProviderResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProvidersAPIService.ProvidersList")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -68,6 +75,9 @@ func (a *ProvidersAPIService) ProvidersGetExecute(r ApiProvidersGetRequest) ([]P
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

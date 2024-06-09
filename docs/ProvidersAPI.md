@@ -4,13 +4,13 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ProvidersGet**](ProvidersAPI.md#ProvidersGet) | **Get** /providers | Get available providers
+[**ProvidersList**](ProvidersAPI.md#ProvidersList) | **Get** /providers | Get available providers
 
 
 
-## ProvidersGet
+## ProvidersList
 
-> []ProviderInner ProvidersGet(ctx).Execute()
+> ListProviderResponse ProvidersList(ctx).Page(page).Execute()
 
 Get available providers
 
@@ -29,31 +29,36 @@ import (
 )
 
 func main() {
+	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProvidersAPI.ProvidersGet(context.Background()).Execute()
+	resp, r, err := apiClient.ProvidersAPI.ProvidersList(context.Background()).Page(page).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ProvidersAPI.ProvidersList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProvidersGet`: []ProviderInner
-	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersGet`: %v\n", resp)
+	// response from `ProvidersList`: ListProviderResponse
+	fmt.Fprintf(os.Stdout, "Response from `ProvidersAPI.ProvidersList`: %v\n", resp)
 }
 ```
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiProvidersGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiProvidersListRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | [**OrganisationsListPageParameter**](OrganisationsListPageParameter.md) | Query parameters for pagination | 
 
 ### Return type
 
-[**[]ProviderInner**](ProviderInner.md)
+[**ListProviderResponse**](ListProviderResponse.md)
 
 ### Authorization
 

@@ -22,11 +22,11 @@ func Test_openapi_chaos_client_ProvidersAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ProvidersAPIService ProvidersGet", func(t *testing.T) {
+	t.Run("Test ProvidersAPIService ProvidersList", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		resp, httpRes, err := apiClient.ProvidersAPI.ProvidersGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ProvidersAPI.ProvidersList(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

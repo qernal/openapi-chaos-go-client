@@ -44,6 +44,7 @@ docs/ListFunction.md
 docs/ListHosts.md
 docs/ListOrganisationResponse.md
 docs/ListProjectResponse.md
+docs/ListProviderResponse.md
 docs/ListSecretResponse.md
 docs/Location.md
 docs/NotFoundResponse.md
@@ -57,8 +58,8 @@ docs/ProjectBody.md
 docs/ProjectBodyPatch.md
 docs/ProjectResponse.md
 docs/ProjectsAPI.md
-docs/ProviderInner.md
-docs/ProviderInnerLocations.md
+docs/Provider.md
+docs/ProviderLocations.md
 docs/ProvidersAPI.md
 docs/SecretBody.md
 docs/SecretBodyPatch.md
@@ -111,6 +112,7 @@ model_list_function.go
 model_list_hosts.go
 model_list_organisation_response.go
 model_list_project_response.go
+model_list_provider_response.go
 model_list_secret_response.go
 model_location.go
 model_not_found_response.go
@@ -122,8 +124,8 @@ model_pagination_meta.go
 model_project_body.go
 model_project_body_patch.go
 model_project_response.go
-model_provider_inner.go
-model_provider_inner_locations.go
+model_provider.go
+model_provider_locations.go
 model_secret_body.go
 model_secret_body_patch.go
 model_secret_certificate.go

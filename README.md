@@ -102,7 +102,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ProjectsGet**](docs/ProjectsAPI.md#projectsget) | **Get** /projects/{project_id} | Get project
 *ProjectsAPI* | [**ProjectsList**](docs/ProjectsAPI.md#projectslist) | **Get** /projects | List projects
 *ProjectsAPI* | [**ProjectsUpdate**](docs/ProjectsAPI.md#projectsupdate) | **Put** /projects/{project_id} | Update project
-*ProvidersAPI* | [**ProvidersGet**](docs/ProvidersAPI.md#providersget) | **Get** /providers | Get available providers
+*ProvidersAPI* | [**ProvidersList**](docs/ProvidersAPI.md#providerslist) | **Get** /providers | Get available providers
 *SecretsAPI* | [**ProjectsSecretsCreate**](docs/SecretsAPI.md#projectssecretscreate) | **Post** /projects/{project_id}/secrets | Create project secret
 *SecretsAPI* | [**ProjectsSecretsDelete**](docs/SecretsAPI.md#projectssecretsdelete) | **Delete** /projects/{project_id}/secrets/{secret_name} | Delete project secret
 *SecretsAPI* | [**ProjectsSecretsGet**](docs/SecretsAPI.md#projectssecretsget) | **Get** /projects/{project_id}/secrets/{secret_name} | Get project secret
@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
  - [ListHosts](docs/ListHosts.md)
  - [ListOrganisationResponse](docs/ListOrganisationResponse.md)
  - [ListProjectResponse](docs/ListProjectResponse.md)
+ - [ListProviderResponse](docs/ListProviderResponse.md)
  - [ListSecretResponse](docs/ListSecretResponse.md)
  - [Location](docs/Location.md)
  - [NotFoundResponse](docs/NotFoundResponse.md)
@@ -158,8 +159,8 @@ Class | Method | HTTP request | Description
  - [ProjectBody](docs/ProjectBody.md)
  - [ProjectBodyPatch](docs/ProjectBodyPatch.md)
  - [ProjectResponse](docs/ProjectResponse.md)
- - [ProviderInner](docs/ProviderInner.md)
- - [ProviderInnerLocations](docs/ProviderInnerLocations.md)
+ - [Provider](docs/Provider.md)
+ - [ProviderLocations](docs/ProviderLocations.md)
  - [SecretBody](docs/SecretBody.md)
  - [SecretBodyPatch](docs/SecretBodyPatch.md)
  - [SecretCertificate](docs/SecretCertificate.md)

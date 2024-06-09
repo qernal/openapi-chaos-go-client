@@ -1798,13 +1798,22 @@ paths:
     get:
       description: Retrieve a list of all providers with their respective deployed
         regions and cities.
-      operationId: providers-get
+      operationId: providers-list
+      parameters:
+      - description: Query parameters for pagination
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/organisations_list_page_parameter'
+        style: deepObject
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Provider'
+                $ref: '#/components/schemas/ListProviderResponse'
           description: List providers
       security:
       - token: []
@@ -2164,11 +2173,11 @@ components:
           schema:
             $ref: '#/components/schemas/Function'
       description: Get specific function
-    Provider:
+    ListProvider:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Provider'
+            $ref: '#/components/schemas/ListProviderResponse'
       description: List providers
   schemas:
     NotFoundResponse:
@@ -3724,13 +3733,83 @@ components:
       type: object
     Provider:
       description: List of providers
-      items:
-        $ref: '#/components/schemas/Provider_inner'
+      example:
+        name: AWS
+        locations:
+          cities:
+          - London
+          - London
+          countries:
+          - GB
+          - GB
+          continents:
+          - EU
+          - EU
+        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+      properties:
+        id:
+          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+          format: uuid
+          type: string
+        name:
+          description: Name of provider
+          example: AWS
+          minLength: 1
+          type: string
+        locations:
+          $ref: '#/components/schemas/Provider_locations'
       required:
       - id
       - locations
       - name
-      type: array
+      type: object
+    ListProviderResponse:
+      description: List of providers
+      example:
+        data:
+        - name: AWS
+          locations:
+            cities:
+            - London
+            - London
+            countries:
+            - GB
+            - GB
+            continents:
+            - EU
+            - EU
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        - name: AWS
+          locations:
+            cities:
+            - London
+            - London
+            countries:
+            - GB
+            - GB
+            continents:
+            - EU
+            - EU
+          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
+        meta:
+          pages: 20
+          start: 20
+          end: 40
+          links:
+            next: "/{url}?page[after]=40&page[size]=20"
+            prev: "/{url}?page[before]=20&page[size]=20"
+          results: 200
+      properties:
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/Provider'
+          type: array
+      required:
+      - data
+      - meta
+      type: object
     organisations_list_page_parameter:
       properties:
         before:
@@ -3780,7 +3859,7 @@ components:
       - cloud
       - cluster
       type: object
-    Provider_inner_locations:
+    Provider_locations:
       description: Locations at varying levels this provider operates within
       example:
         cities:
@@ -3811,33 +3890,10 @@ components:
             example: London
             type: string
           type: array
-      type: object
-    Provider_inner:
-      example:
-        name: AWS
-        locations:
-          cities:
-          - London
-          - London
-          countries:
-          - GB
-          - GB
-          continents:
-          - EU
-          - EU
-        id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
-      properties:
-        id:
-          example: 51687d2f-07b0-4260-8ecb-f5098305fdd4
-          format: uuid
-          type: string
-        name:
-          description: Name of provider
-          example: AWS
-          minLength: 1
-          type: string
-        locations:
-          $ref: '#/components/schemas/Provider_inner_locations'
+      required:
+      - cities
+      - continents
+      - countries
       type: object
   securitySchemes:
     token:
