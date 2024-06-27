@@ -22,6 +22,7 @@ type HostVerificationStatus string
 // List of HostVerificationStatus
 const (
 	HOSTVERIFICATIONSTATUS_PENDING HostVerificationStatus = "pending"
+	HOSTVERIFICATIONSTATUS_ALREADY_VERIFIED HostVerificationStatus = "already_verified"
 	HOSTVERIFICATIONSTATUS_COMPLETED HostVerificationStatus = "completed"
 	HOSTVERIFICATIONSTATUS_FAILED HostVerificationStatus = "failed"
 )
@@ -29,6 +30,7 @@ const (
 // All allowed values of HostVerificationStatus enum
 var AllowedHostVerificationStatusEnumValues = []HostVerificationStatus{
 	"pending",
+	"already_verified",
 	"completed",
 	"failed",
 }

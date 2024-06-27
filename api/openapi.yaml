@@ -2259,6 +2259,7 @@ components:
       description: Host verification status
       enum:
       - pending
+      - already_verified
       - completed
       - failed
       example: pending

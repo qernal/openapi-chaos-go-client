@@ -5,6 +5,8 @@
 
 * `PENDING` (value: `"pending"`)
 
+* `ALREADY_VERIFIED` (value: `"already_verified"`)
+
 * `COMPLETED` (value: `"completed"`)
 
 * `FAILED` (value: `"failed"`)
