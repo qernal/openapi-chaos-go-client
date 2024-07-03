@@ -1549,20 +1549,10 @@ paths:
       summary: List all functions within a project
       tags:
       - functions
+  /functions:
     post:
       description: Create a new function
-      operationId: projects-functions-create
-      parameters:
-      - description: Project ID reference
-        explode: false
-        in: path
-        name: project_id
-        required: true
-        schema:
-          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          format: uuid
-          type: string
-        style: simple
+      operationId: functions-create
       requestBody:
         $ref: '#/components/requestBodies/FunctionBody'
       responses:

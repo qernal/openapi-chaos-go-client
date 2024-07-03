@@ -4,14 +4,80 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**FunctionsCreate**](FunctionsAPI.md#FunctionsCreate) | **Post** /functions | Create function
 [**FunctionsDelete**](FunctionsAPI.md#FunctionsDelete) | **Delete** /functions/{function_id} | Delete function
 [**FunctionsGet**](FunctionsAPI.md#FunctionsGet) | **Get** /functions/{function_id} | Get function (latest revision)
 [**FunctionsRevisionsGet**](FunctionsAPI.md#FunctionsRevisionsGet) | **Get** /functions/{function_id}/revisions/{function_revision_id} | Get a specific revision of a function
 [**FunctionsRevisionsList**](FunctionsAPI.md#FunctionsRevisionsList) | **Get** /functions/{function_id}/revisions | List all revisions for a function
 [**FunctionsUpdate**](FunctionsAPI.md#FunctionsUpdate) | **Put** /functions/{function_id} | Update function
-[**ProjectsFunctionsCreate**](FunctionsAPI.md#ProjectsFunctionsCreate) | **Post** /projects/{project_id}/functions | Create function
 [**ProjectsFunctionsList**](FunctionsAPI.md#ProjectsFunctionsList) | **Get** /projects/{project_id}/functions | List all functions within a project
 
+
+
+## FunctionsCreate
+
+> Function FunctionsCreate(ctx).FunctionBody(functionBody).Execute()
+
+Create function
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+	functionBody := *openapiclient.NewFunctionBody("51687d2f-07b0-4260-8ecb-f5098305fdd4", "1.0.0", "my-function", "My function does this", "docker.io/my-image:latest", openapiclient.FunctionType("http"), *openapiclient.NewFunctionSize(int32(128), int32(128)), int32(8080), *openapiclient.NewFunctionScaling("cpu", int32(30), int32(60)), []openapiclient.FunctionDeploymentBody{*openapiclient.NewFunctionDeploymentBody(*openapiclient.NewLocation("51687d2f-07b0-4260-8ecb-f5098305fdd4"), *openapiclient.NewFunctionReplicas(int32(1), int32(5), *openapiclient.NewFunctionReplicasAffinity(true, true)))}, []openapiclient.FunctionEnv{*openapiclient.NewFunctionEnv("MY_ENV_VAR", "project_id/secret_id@secret_revision")}) // FunctionBody | Create/Update any field
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.FunctionsAPI.FunctionsCreate(context.Background()).FunctionBody(functionBody).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.FunctionsCreate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `FunctionsCreate`: Function
+	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.FunctionsCreate`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiFunctionsCreateRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionBody** | [**FunctionBody**](FunctionBody.md) | Create/Update any field | 
+
+### Return type
+
+[**Function**](Function.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## FunctionsDelete
@@ -352,78 +418,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **function** | [**Function**](Function.md) | Update any field | 
-
-### Return type
-
-[**Function**](Function.md)
-
-### Authorization
-
-[cookie](../README.md#cookie), [token](../README.md#token)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ProjectsFunctionsCreate
-
-> Function ProjectsFunctionsCreate(ctx, projectId).FunctionBody(functionBody).Execute()
-
-Create function
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qernal/openapi-chaos-go-client"
-)
-
-func main() {
-	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-	functionBody := *openapiclient.NewFunctionBody("51687d2f-07b0-4260-8ecb-f5098305fdd4", "1.0.0", "my-function", "My function does this", "docker.io/my-image:latest", openapiclient.FunctionType("http"), *openapiclient.NewFunctionSize(int32(128), int32(128)), int32(8080), *openapiclient.NewFunctionScaling("cpu", int32(30), int32(60)), []openapiclient.FunctionDeploymentBody{*openapiclient.NewFunctionDeploymentBody(*openapiclient.NewLocation("51687d2f-07b0-4260-8ecb-f5098305fdd4"), *openapiclient.NewFunctionReplicas(int32(1), int32(5), *openapiclient.NewFunctionReplicasAffinity(true, true)))}, []openapiclient.FunctionEnv{*openapiclient.NewFunctionEnv("MY_ENV_VAR", "project_id/secret_id@secret_revision")}) // FunctionBody | Create/Update any field
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FunctionsAPI.ProjectsFunctionsCreate(context.Background(), projectId).FunctionBody(functionBody).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `FunctionsAPI.ProjectsFunctionsCreate``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ProjectsFunctionsCreate`: Function
-	fmt.Fprintf(os.Stdout, "Response from `FunctionsAPI.ProjectsFunctionsCreate`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | **string** | Project ID reference | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiProjectsFunctionsCreateRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **functionBody** | [**FunctionBody**](FunctionBody.md) | Create/Update any field | 
 
 ### Return type
 

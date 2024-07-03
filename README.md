@@ -78,12 +78,12 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*FunctionsAPI* | [**FunctionsCreate**](docs/FunctionsAPI.md#functionscreate) | **Post** /functions | Create function
 *FunctionsAPI* | [**FunctionsDelete**](docs/FunctionsAPI.md#functionsdelete) | **Delete** /functions/{function_id} | Delete function
 *FunctionsAPI* | [**FunctionsGet**](docs/FunctionsAPI.md#functionsget) | **Get** /functions/{function_id} | Get function (latest revision)
 *FunctionsAPI* | [**FunctionsRevisionsGet**](docs/FunctionsAPI.md#functionsrevisionsget) | **Get** /functions/{function_id}/revisions/{function_revision_id} | Get a specific revision of a function
 *FunctionsAPI* | [**FunctionsRevisionsList**](docs/FunctionsAPI.md#functionsrevisionslist) | **Get** /functions/{function_id}/revisions | List all revisions for a function
 *FunctionsAPI* | [**FunctionsUpdate**](docs/FunctionsAPI.md#functionsupdate) | **Put** /functions/{function_id} | Update function
-*FunctionsAPI* | [**ProjectsFunctionsCreate**](docs/FunctionsAPI.md#projectsfunctionscreate) | **Post** /projects/{project_id}/functions | Create function
 *FunctionsAPI* | [**ProjectsFunctionsList**](docs/FunctionsAPI.md#projectsfunctionslist) | **Get** /projects/{project_id}/functions | List all functions within a project
 *HostsAPI* | [**ProjectsHostsCreate**](docs/HostsAPI.md#projectshostscreate) | **Post** /projects/{project_id}/hosts | Create host for project
 *HostsAPI* | [**ProjectsHostsDelete**](docs/HostsAPI.md#projectshostsdelete) | **Delete** /projects/{project_id}/hosts/{hostname} | Delete specific host by hostname
