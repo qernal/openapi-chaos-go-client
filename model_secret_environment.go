@@ -22,7 +22,7 @@ var _ MappedNullable = &SecretEnvironment{}
 
 // SecretEnvironment Encrypted ENV secret, `type: environment`
 type SecretEnvironment struct {
-	// Encrypted environment pairs (key - env key, value - env value)
+	// Encrypted environment value
 	EnvironmentValue string `json:"environment_value"`
 }
 

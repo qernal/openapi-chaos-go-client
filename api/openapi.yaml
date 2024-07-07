@@ -2980,7 +2980,7 @@ components:
       description: "Encrypted ENV secret, `type: environment`"
       properties:
         environment_value:
-          description: "Encrypted environment pairs (key - env key, value - env value)"
+          description: Encrypted environment value
           example: SGVsbG8gd29ybGQ=
           format: base64
           type: string
@@ -3166,17 +3166,23 @@ components:
     FunctionEnv:
       description: Environment variable for function
       example:
-        reference: project_id/secret_id@secret_revision
+        reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
         name: MY_ENV_VAR
       properties:
         name:
           description: Key name
           example: MY_ENV_VAR
+          pattern: "^[A-Z_]+$"
           type: string
         reference:
-          description: Reference to the secret to use
-          example: project_id/secret_id@secret_revision
-          pattern: "^[0-9A-f-]{36}\\/[0-9A-f-]{36}\\@[0-9]+$"
+          description: |
+            Reference for the secret, it's split up into 4 main parts;
+            - [1] "projects:" - This references which resource type the secret is within
+            - [2] "0a6b9ff3-6807-4820-b94b-5e1d7efcdd93" - The project UUID the secret is within
+            - [3] "MY_SECRET" - The name of the secret
+            - [4] "0" - The revision of the secret to use
+          example: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
+          pattern: "^(projects:)[0-9A-f-]{36}\\/[A-Z_]+\\@[0-9]+$"
           type: string
       required:
       - name
@@ -3316,9 +3322,9 @@ components:
         type: http
         version: 1.0.0
         secrets:
-        - reference: project_id/secret_id@secret_revision
+        - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
           name: MY_ENV_VAR
-        - reference: project_id/secret_id@secret_revision
+        - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
           name: MY_ENV_VAR
         revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         routes:
@@ -3462,9 +3468,9 @@ components:
         type: http
         version: 1.0.0
         secrets:
-        - reference: project_id/secret_id@secret_revision
+        - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
           name: MY_ENV_VAR
-        - reference: project_id/secret_id@secret_revision
+        - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
           name: MY_ENV_VAR
         routes:
         - path: "/hello/{0-9+}"
@@ -3592,9 +3598,9 @@ components:
           type: http
           version: 1.0.0
           secrets:
-          - reference: project_id/secret_id@secret_revision
+          - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
             name: MY_ENV_VAR
-          - reference: project_id/secret_id@secret_revision
+          - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
             name: MY_ENV_VAR
           revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           routes:
@@ -3652,9 +3658,9 @@ components:
           type: http
           version: 1.0.0
           secrets:
-          - reference: project_id/secret_id@secret_revision
+          - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
             name: MY_ENV_VAR
-          - reference: project_id/secret_id@secret_revision
+          - reference: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
             name: MY_ENV_VAR
           revision: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           routes:

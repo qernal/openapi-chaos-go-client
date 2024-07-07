@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EnvironmentValue** | **string** | Encrypted environment pairs (key - env key, value - env value) | 
+**EnvironmentValue** | **string** | Encrypted environment value | 
 
 ## Methods
 
