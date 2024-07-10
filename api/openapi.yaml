@@ -2282,7 +2282,8 @@ components:
         certificate:
           description: The secret reference to the certificate
           example: projects:secrets/MY_CERT
-          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
+            \\@[0-9]+)$"
           type: string
         project_id:
           description: Project ID this is attached to
@@ -2384,7 +2385,8 @@ components:
         certificate:
           description: The secret reference to the certificate
           example: projects:secrets/MY_CERT
-          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
+            \\@[0-9]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
@@ -2404,7 +2406,8 @@ components:
         certificate:
           description: The secret reference to the certificate
           example: projects:secrets/MY_CERT
-          pattern: "^projects\\:secrets/(?<secret_name>[A-Z0-9_]+)$"
+          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
+            \\@[0-9]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
@@ -3182,7 +3185,8 @@ components:
             - [3] "MY_SECRET" - The name of the secret
             - [4] "0" - The revision of the secret to use
           example: projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0
-          pattern: "^(projects:)[0-9A-f-]{36}\\/[A-Z_]+\\@[0-9]+$"
+          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
+            \\@[0-9]+)$"
           type: string
       required:
       - name
