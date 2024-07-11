@@ -316,6 +316,17 @@ paths:
         schema:
           $ref: '#/components/schemas/organisations_list_page_parameter'
         style: deepObject
+      - description: |
+          Filter resource on name, if the value ends in an asterix it will be
+          treated as a partial search otherwise, it'll be an exact match
+        explode: true
+        in: query
+        name: f_name
+        required: false
+        schema:
+          example: my-proj*
+          type: string
+        style: form
       responses:
         "200":
           content:

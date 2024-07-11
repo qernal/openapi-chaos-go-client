@@ -29,11 +29,18 @@ type ApiOrganisationsProjectsListRequest struct {
 	ApiService *ProjectsAPIService
 	organisationId string
 	page *OrganisationsListPageParameter
+	fName *string
 }
 
 // Query parameters for pagination
 func (r ApiOrganisationsProjectsListRequest) Page(page OrganisationsListPageParameter) ApiOrganisationsProjectsListRequest {
 	r.page = &page
+	return r
+}
+
+// Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
+func (r ApiOrganisationsProjectsListRequest) FName(fName string) ApiOrganisationsProjectsListRequest {
+	r.fName = &fName
 	return r
 }
 
@@ -82,6 +89,9 @@ func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ApiOrganisations
 
 	if r.page != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	}
+	if r.fName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

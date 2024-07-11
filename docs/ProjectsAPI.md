@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## OrganisationsProjectsList
 
-> ListProjectResponse OrganisationsProjectsList(ctx, organisationId).Page(page).Execute()
+> ListProjectResponse OrganisationsProjectsList(ctx, organisationId).Page(page).FName(fName).Execute()
 
 Get all projects within an organisation
 
@@ -36,10 +36,11 @@ import (
 func main() {
 	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
 	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
+	fName := "my-proj*" // string | Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it'll be an exact match  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectsAPI.OrganisationsProjectsList(context.Background(), organisationId).Page(page).Execute()
+	resp, r, err := apiClient.ProjectsAPI.OrganisationsProjectsList(context.Background(), organisationId).Page(page).FName(fName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.OrganisationsProjectsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -66,6 +67,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **page** | [**OrganisationsListPageParameter**](OrganisationsListPageParameter.md) | Query parameters for pagination | 
+ **fName** | **string** | Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match  | 
 
 ### Return type
 
