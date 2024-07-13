@@ -35,7 +35,7 @@ import (
 
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-	hostBody := *openapiclient.NewHostBody("example-domain.com", "projects:secrets/MY_CERT", false) // HostBody | 
+	hostBody := *openapiclient.NewHostBody("example-domain.com", "projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT", false) // HostBody | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
