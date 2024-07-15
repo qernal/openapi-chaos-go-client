@@ -1778,7 +1778,7 @@ paths:
         name: function_revision_id
         required: true
         schema:
-          example: 0069614e-adc8-47cb-a69c-decf9c5f90fc
+          example: 1069614e-adc8-47cb-a69c-decf9c5f90fc
           format: uuid
           type: string
         style: simple
@@ -1915,7 +1915,7 @@ components:
       name: function_revision_id
       required: true
       schema:
-        example: 0069614e-adc8-47cb-a69c-decf9c5f90fc
+        example: 1069614e-adc8-47cb-a69c-decf9c5f90fc
         format: uuid
         type: string
       style: simple

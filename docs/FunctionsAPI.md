@@ -242,7 +242,7 @@ import (
 
 func main() {
 	functionId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Function ID reference
-	functionRevisionId := "0069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Function revision ID reference
+	functionRevisionId := "1069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Function revision ID reference
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
