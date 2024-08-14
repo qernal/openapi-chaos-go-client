@@ -44,7 +44,7 @@ type FunctionBody struct {
 	// List of environment variables for secrets
 	Secrets []FunctionEnv `json:"secrets"`
 	// Tags to limit deployment
-	Compliance []FunctionCompliance `json:"compliance,omitempty"`
+	Compliance []FunctionCompliance `json:"compliance"`
 }
 
 type _FunctionBody FunctionBody
@@ -53,7 +53,7 @@ type _FunctionBody FunctionBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFunctionBody(projectId string, version string, name string, description string, image string, type_ FunctionType, size FunctionSize, port int32, scaling FunctionScaling, deployments []FunctionDeploymentBody, secrets []FunctionEnv) *FunctionBody {
+func NewFunctionBody(projectId string, version string, name string, description string, image string, type_ FunctionType, size FunctionSize, port int32, scaling FunctionScaling, deployments []FunctionDeploymentBody, secrets []FunctionEnv, compliance []FunctionCompliance) *FunctionBody {
 	this := FunctionBody{}
 	this.ProjectId = projectId
 	this.Version = version
@@ -66,6 +66,7 @@ func NewFunctionBody(projectId string, version string, name string, description 
 	this.Scaling = scaling
 	this.Deployments = deployments
 	this.Secrets = secrets
+	this.Compliance = compliance
 	return &this
 }
 
@@ -373,34 +374,26 @@ func (o *FunctionBody) SetSecrets(v []FunctionEnv) {
 	o.Secrets = v
 }
 
-// GetCompliance returns the Compliance field value if set, zero value otherwise.
+// GetCompliance returns the Compliance field value
 func (o *FunctionBody) GetCompliance() []FunctionCompliance {
-	if o == nil || IsNil(o.Compliance) {
+	if o == nil {
 		var ret []FunctionCompliance
 		return ret
 	}
+
 	return o.Compliance
 }
 
-// GetComplianceOk returns a tuple with the Compliance field value if set, nil otherwise
+// GetComplianceOk returns a tuple with the Compliance field value
 // and a boolean to check if the value has been set.
 func (o *FunctionBody) GetComplianceOk() ([]FunctionCompliance, bool) {
-	if o == nil || IsNil(o.Compliance) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Compliance, true
 }
 
-// HasCompliance returns a boolean if a field has been set.
-func (o *FunctionBody) HasCompliance() bool {
-	if o != nil && !IsNil(o.Compliance) {
-		return true
-	}
-
-	return false
-}
-
-// SetCompliance gets a reference to the given []FunctionCompliance and assigns it to the Compliance field.
+// SetCompliance sets field value
 func (o *FunctionBody) SetCompliance(v []FunctionCompliance) {
 	o.Compliance = v
 }
@@ -429,9 +422,7 @@ func (o FunctionBody) ToMap() (map[string]interface{}, error) {
 	toSerialize["scaling"] = o.Scaling
 	toSerialize["deployments"] = o.Deployments
 	toSerialize["secrets"] = o.Secrets
-	if !IsNil(o.Compliance) {
-		toSerialize["compliance"] = o.Compliance
-	}
+	toSerialize["compliance"] = o.Compliance
 	return toSerialize, nil
 }
 
@@ -451,6 +442,7 @@ func (o *FunctionBody) UnmarshalJSON(data []byte) (err error) {
 		"scaling",
 		"deployments",
 		"secrets",
+		"compliance",
 	}
 
 	allProperties := make(map[string]interface{})

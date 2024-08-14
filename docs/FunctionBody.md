@@ -16,13 +16,13 @@ Name | Type | Description | Notes
 **Scaling** | [**FunctionScaling**](FunctionScaling.md) |  | 
 **Deployments** | [**[]FunctionDeploymentBody**](FunctionDeploymentBody.md) | List of deployments for this function | 
 **Secrets** | [**[]FunctionEnv**](FunctionEnv.md) | List of environment variables for secrets | 
-**Compliance** | Pointer to [**[]FunctionCompliance**](FunctionCompliance.md) | Tags to limit deployment | [optional] 
+**Compliance** | [**[]FunctionCompliance**](FunctionCompliance.md) | Tags to limit deployment | 
 
 ## Methods
 
 ### NewFunctionBody
 
-`func NewFunctionBody(projectId string, version string, name string, description string, image string, type_ FunctionType, size FunctionSize, port int32, scaling FunctionScaling, deployments []FunctionDeploymentBody, secrets []FunctionEnv, ) *FunctionBody`
+`func NewFunctionBody(projectId string, version string, name string, description string, image string, type_ FunctionType, size FunctionSize, port int32, scaling FunctionScaling, deployments []FunctionDeploymentBody, secrets []FunctionEnv, compliance []FunctionCompliance, ) *FunctionBody`
 
 NewFunctionBody instantiates a new FunctionBody object
 This constructor will assign default values to properties that have it defined,
@@ -301,11 +301,6 @@ and a boolean to check if the value has been set.
 
 SetCompliance sets Compliance field to given value.
 
-### HasCompliance
-
-`func (o *FunctionBody) HasCompliance() bool`
-
-HasCompliance returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

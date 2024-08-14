@@ -3589,6 +3589,7 @@ components:
             $ref: '#/components/schemas/FunctionCompliance'
           type: array
       required:
+      - compliance
       - deployments
       - description
       - image

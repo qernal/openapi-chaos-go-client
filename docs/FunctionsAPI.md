@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	functionBody := *openapiclient.NewFunctionBody("51687d2f-07b0-4260-8ecb-f5098305fdd4", "1.0.0", "my-function", "My function does this", "docker.io/my-image:latest", openapiclient.FunctionType("http"), *openapiclient.NewFunctionSize(int32(128), int32(128)), int32(8080), *openapiclient.NewFunctionScaling("cpu", int32(30), int32(60)), []openapiclient.FunctionDeploymentBody{*openapiclient.NewFunctionDeploymentBody(*openapiclient.NewLocation("51687d2f-07b0-4260-8ecb-f5098305fdd4"), *openapiclient.NewFunctionReplicas(int32(1), int32(5), *openapiclient.NewFunctionReplicasAffinity(true, true)))}, []openapiclient.FunctionEnv{*openapiclient.NewFunctionEnv("MY_ENV_VAR", "projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0")}) // FunctionBody | Create/Update any field
+	functionBody := *openapiclient.NewFunctionBody("51687d2f-07b0-4260-8ecb-f5098305fdd4", "1.0.0", "my-function", "My function does this", "docker.io/my-image:latest", openapiclient.FunctionType("http"), *openapiclient.NewFunctionSize(int32(128), int32(128)), int32(8080), *openapiclient.NewFunctionScaling("cpu", int32(30), int32(60)), []openapiclient.FunctionDeploymentBody{*openapiclient.NewFunctionDeploymentBody(*openapiclient.NewLocation("51687d2f-07b0-4260-8ecb-f5098305fdd4"), *openapiclient.NewFunctionReplicas(int32(1), int32(5), *openapiclient.NewFunctionReplicasAffinity(true, true)))}, []openapiclient.FunctionEnv{*openapiclient.NewFunctionEnv("MY_ENV_VAR", "projects:0a6b9ff3-6807-4820-b94b-5e1d7efcdd93/MY_SECRET@0")}, []openapiclient.FunctionCompliance{openapiclient.FunctionCompliance("soc2")}) // FunctionBody | Create/Update any field
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
