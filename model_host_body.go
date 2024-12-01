@@ -25,7 +25,7 @@ type HostBody struct {
 	// Hostname, this can be the root of a domain or a subdomain
 	Host string `json:"host"`
 	// The secret reference to the certificate
-	Certificate string `json:"certificate"`
+	Certificate string `json:"certificate" validate:"regexp=^projects\\\\:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+\\\\\\\\@[0-9]+)$"`
 	// If the host is disabled, then this host won't be accessible and so the deployments will not be routable
 	Disabled bool `json:"disabled"`
 }

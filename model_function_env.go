@@ -23,9 +23,9 @@ var _ MappedNullable = &FunctionEnv{}
 // FunctionEnv Environment variable for function
 type FunctionEnv struct {
 	// Key name
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
 	// Reference for the secret, it's split up into 4 main parts; - [1] \"projects:\" - This references which resource type the secret is within - [2] \"0a6b9ff3-6807-4820-b94b-5e1d7efcdd93\" - The project UUID the secret is within - [3] \"MY_SECRET\" - The name of the secret - [4] \"0\" - The revision of the secret to use 
-	Reference string `json:"reference"`
+	Reference string `json:"reference" validate:"regexp=^projects\\\\:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+\\\\\\\\@[0-9]+)$"`
 }
 
 type _FunctionEnv FunctionEnv

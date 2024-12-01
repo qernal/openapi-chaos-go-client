@@ -23,7 +23,7 @@ var _ MappedNullable = &OrganisationBody{}
 // OrganisationBody Organisation body
 type OrganisationBody struct {
 	// Organisation name
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[A-z-]+$"`
 }
 
 type _OrganisationBody OrganisationBody

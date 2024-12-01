@@ -24,7 +24,7 @@ import (
 // ProjectsAPIService ProjectsAPI service
 type ProjectsAPIService service
 
-type ApiOrganisationsProjectsListRequest struct {
+type ProjectsAPIOrganisationsProjectsListRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	organisationId string
@@ -33,18 +33,18 @@ type ApiOrganisationsProjectsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiOrganisationsProjectsListRequest) Page(page OrganisationsListPageParameter) ApiOrganisationsProjectsListRequest {
+func (r ProjectsAPIOrganisationsProjectsListRequest) Page(page OrganisationsListPageParameter) ProjectsAPIOrganisationsProjectsListRequest {
 	r.page = &page
 	return r
 }
 
 // Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
-func (r ApiOrganisationsProjectsListRequest) FName(fName string) ApiOrganisationsProjectsListRequest {
+func (r ProjectsAPIOrganisationsProjectsListRequest) FName(fName string) ProjectsAPIOrganisationsProjectsListRequest {
 	r.fName = &fName
 	return r
 }
 
-func (r ApiOrganisationsProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
+func (r ProjectsAPIOrganisationsProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsProjectsListExecute(r)
 }
 
@@ -55,10 +55,10 @@ Get all the projects linked to a specific organisation
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organisationId Organisation ID reference
- @return ApiOrganisationsProjectsListRequest
+ @return ProjectsAPIOrganisationsProjectsListRequest
 */
-func (a *ProjectsAPIService) OrganisationsProjectsList(ctx context.Context, organisationId string) ApiOrganisationsProjectsListRequest {
-	return ApiOrganisationsProjectsListRequest{
+func (a *ProjectsAPIService) OrganisationsProjectsList(ctx context.Context, organisationId string) ProjectsAPIOrganisationsProjectsListRequest {
+	return ProjectsAPIOrganisationsProjectsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		organisationId: organisationId,
@@ -67,7 +67,7 @@ func (a *ProjectsAPIService) OrganisationsProjectsList(ctx context.Context, orga
 
 // Execute executes the request
 //  @return ListProjectResponse
-func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ApiOrganisationsProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ProjectsAPIOrganisationsProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -88,10 +88,10 @@ func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ApiOrganisations
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	if r.fName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -168,19 +168,19 @@ func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ApiOrganisations
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsCreateRequest struct {
+type ProjectsAPIProjectsCreateRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	projectBody *ProjectBody
 }
 
 // Create/Update any field
-func (r ApiProjectsCreateRequest) ProjectBody(projectBody ProjectBody) ApiProjectsCreateRequest {
+func (r ProjectsAPIProjectsCreateRequest) ProjectBody(projectBody ProjectBody) ProjectsAPIProjectsCreateRequest {
 	r.projectBody = &projectBody
 	return r
 }
 
-func (r ApiProjectsCreateRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsCreateRequest) Execute() (*ProjectResponse, *http.Response, error) {
 	return r.ApiService.ProjectsCreateExecute(r)
 }
 
@@ -190,10 +190,10 @@ ProjectsCreate Create project
 Create a new project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectsCreateRequest
+ @return ProjectsAPIProjectsCreateRequest
 */
-func (a *ProjectsAPIService) ProjectsCreate(ctx context.Context) ApiProjectsCreateRequest {
-	return ApiProjectsCreateRequest{
+func (a *ProjectsAPIService) ProjectsCreate(ctx context.Context) ProjectsAPIProjectsCreateRequest {
+	return ProjectsAPIProjectsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -201,7 +201,7 @@ func (a *ProjectsAPIService) ProjectsCreate(ctx context.Context) ApiProjectsCrea
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsCreateExecute(r ProjectsAPIProjectsCreateRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -319,13 +319,13 @@ func (a *ProjectsAPIService) ProjectsCreateExecute(r ApiProjectsCreateRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsDeleteRequest struct {
+type ProjectsAPIProjectsDeleteRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	projectId string
 }
 
-func (r ApiProjectsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.ProjectsDeleteExecute(r)
 }
 
@@ -336,10 +336,10 @@ Delete project, this will also delete all the resources within the project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsDeleteRequest
+ @return ProjectsAPIProjectsDeleteRequest
 */
-func (a *ProjectsAPIService) ProjectsDelete(ctx context.Context, projectId string) ApiProjectsDeleteRequest {
-	return ApiProjectsDeleteRequest{
+func (a *ProjectsAPIService) ProjectsDelete(ctx context.Context, projectId string) ProjectsAPIProjectsDeleteRequest {
+	return ProjectsAPIProjectsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -348,7 +348,7 @@ func (a *ProjectsAPIService) ProjectsDelete(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *ProjectsAPIService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsDeleteExecute(r ProjectsAPIProjectsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -443,13 +443,13 @@ func (a *ProjectsAPIService) ProjectsDeleteExecute(r ApiProjectsDeleteRequest) (
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsGetRequest struct {
+type ProjectsAPIProjectsGetRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	projectId string
 }
 
-func (r ApiProjectsGetRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsGetRequest) Execute() (*ProjectResponse, *http.Response, error) {
 	return r.ApiService.ProjectsGetExecute(r)
 }
 
@@ -460,10 +460,10 @@ Get a specific project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsGetRequest
+ @return ProjectsAPIProjectsGetRequest
 */
-func (a *ProjectsAPIService) ProjectsGet(ctx context.Context, projectId string) ApiProjectsGetRequest {
-	return ApiProjectsGetRequest{
+func (a *ProjectsAPIService) ProjectsGet(ctx context.Context, projectId string) ProjectsAPIProjectsGetRequest {
+	return ProjectsAPIProjectsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -472,7 +472,7 @@ func (a *ProjectsAPIService) ProjectsGet(ctx context.Context, projectId string) 
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsGetExecute(r ApiProjectsGetRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsGetExecute(r ProjectsAPIProjectsGetRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -567,7 +567,7 @@ func (a *ProjectsAPIService) ProjectsGetExecute(r ApiProjectsGetRequest) (*Proje
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsListRequest struct {
+type ProjectsAPIProjectsListRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	page *OrganisationsListPageParameter
@@ -575,18 +575,18 @@ type ApiProjectsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiProjectsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsListRequest {
+func (r ProjectsAPIProjectsListRequest) Page(page OrganisationsListPageParameter) ProjectsAPIProjectsListRequest {
 	r.page = &page
 	return r
 }
 
 // Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
-func (r ApiProjectsListRequest) FName(fName string) ApiProjectsListRequest {
+func (r ProjectsAPIProjectsListRequest) FName(fName string) ProjectsAPIProjectsListRequest {
 	r.fName = &fName
 	return r
 }
 
-func (r ApiProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
 	return r.ApiService.ProjectsListExecute(r)
 }
 
@@ -596,10 +596,10 @@ ProjectsList List projects
 Get all projects for this user, paginated
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProjectsListRequest
+ @return ProjectsAPIProjectsListRequest
 */
-func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ApiProjectsListRequest {
-	return ApiProjectsListRequest{
+func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ProjectsAPIProjectsListRequest {
+	return ProjectsAPIProjectsListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -607,7 +607,7 @@ func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ApiProjectsListRe
 
 // Execute executes the request
 //  @return ListProjectResponse
-func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsListExecute(r ProjectsAPIProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -627,10 +627,10 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Lis
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	if r.fName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -696,7 +696,7 @@ func (a *ProjectsAPIService) ProjectsListExecute(r ApiProjectsListRequest) (*Lis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsUpdateRequest struct {
+type ProjectsAPIProjectsUpdateRequest struct {
 	ctx context.Context
 	ApiService *ProjectsAPIService
 	projectId string
@@ -704,12 +704,12 @@ type ApiProjectsUpdateRequest struct {
 }
 
 // Update any field
-func (r ApiProjectsUpdateRequest) ProjectBodyPatch(projectBodyPatch ProjectBodyPatch) ApiProjectsUpdateRequest {
+func (r ProjectsAPIProjectsUpdateRequest) ProjectBodyPatch(projectBodyPatch ProjectBodyPatch) ProjectsAPIProjectsUpdateRequest {
 	r.projectBodyPatch = &projectBodyPatch
 	return r
 }
 
-func (r ApiProjectsUpdateRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsUpdateRequest) Execute() (*ProjectResponse, *http.Response, error) {
 	return r.ApiService.ProjectsUpdateExecute(r)
 }
 
@@ -720,10 +720,10 @@ Update project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsUpdateRequest
+ @return ProjectsAPIProjectsUpdateRequest
 */
-func (a *ProjectsAPIService) ProjectsUpdate(ctx context.Context, projectId string) ApiProjectsUpdateRequest {
-	return ApiProjectsUpdateRequest{
+func (a *ProjectsAPIService) ProjectsUpdate(ctx context.Context, projectId string) ProjectsAPIProjectsUpdateRequest {
+	return ProjectsAPIProjectsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -732,7 +732,7 @@ func (a *ProjectsAPIService) ProjectsUpdate(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsUpdateExecute(r ApiProjectsUpdateRequest) (*ProjectResponse, *http.Response, error) {
+func (a *ProjectsAPIService) ProjectsUpdateExecute(r ProjectsAPIProjectsUpdateRequest) (*ProjectResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

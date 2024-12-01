@@ -24,18 +24,18 @@ import (
 // TokensAPIService TokensAPI service
 type TokensAPIService service
 
-type ApiAuthTokensCreateRequest struct {
+type TokensAPIAuthTokensCreateRequest struct {
 	ctx context.Context
 	ApiService *TokensAPIService
 	authTokenBody *AuthTokenBody
 }
 
-func (r ApiAuthTokensCreateRequest) AuthTokenBody(authTokenBody AuthTokenBody) ApiAuthTokensCreateRequest {
+func (r TokensAPIAuthTokensCreateRequest) AuthTokenBody(authTokenBody AuthTokenBody) TokensAPIAuthTokensCreateRequest {
 	r.authTokenBody = &authTokenBody
 	return r
 }
 
-func (r ApiAuthTokensCreateRequest) Execute() (*AuthToken, *http.Response, error) {
+func (r TokensAPIAuthTokensCreateRequest) Execute() (*AuthToken, *http.Response, error) {
 	return r.ApiService.AuthTokensCreateExecute(r)
 }
 
@@ -49,10 +49,10 @@ The `token` field is only shown once and can't be retrieved again without genera
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokensCreateRequest
+ @return TokensAPIAuthTokensCreateRequest
 */
-func (a *TokensAPIService) AuthTokensCreate(ctx context.Context) ApiAuthTokensCreateRequest {
-	return ApiAuthTokensCreateRequest{
+func (a *TokensAPIService) AuthTokensCreate(ctx context.Context) TokensAPIAuthTokensCreateRequest {
+	return TokensAPIAuthTokensCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -60,7 +60,7 @@ func (a *TokensAPIService) AuthTokensCreate(ctx context.Context) ApiAuthTokensCr
 
 // Execute executes the request
 //  @return AuthToken
-func (a *TokensAPIService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest) (*AuthToken, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensCreateExecute(r TokensAPIAuthTokensCreateRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -159,13 +159,13 @@ func (a *TokensAPIService) AuthTokensCreateExecute(r ApiAuthTokensCreateRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthTokensDeleteRequest struct {
+type TokensAPIAuthTokensDeleteRequest struct {
 	ctx context.Context
 	ApiService *TokensAPIService
 	tokenId string
 }
 
-func (r ApiAuthTokensDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r TokensAPIAuthTokensDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.AuthTokensDeleteExecute(r)
 }
 
@@ -174,10 +174,10 @@ AuthTokensDelete Delete token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tokenId Token ID reference
- @return ApiAuthTokensDeleteRequest
+ @return TokensAPIAuthTokensDeleteRequest
 */
-func (a *TokensAPIService) AuthTokensDelete(ctx context.Context, tokenId string) ApiAuthTokensDeleteRequest {
-	return ApiAuthTokensDeleteRequest{
+func (a *TokensAPIService) AuthTokensDelete(ctx context.Context, tokenId string) TokensAPIAuthTokensDeleteRequest {
+	return TokensAPIAuthTokensDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		tokenId: tokenId,
@@ -186,7 +186,7 @@ func (a *TokensAPIService) AuthTokensDelete(ctx context.Context, tokenId string)
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *TokensAPIService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensDeleteExecute(r TokensAPIAuthTokensDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -270,13 +270,13 @@ func (a *TokensAPIService) AuthTokensDeleteExecute(r ApiAuthTokensDeleteRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthTokensGetRequest struct {
+type TokensAPIAuthTokensGetRequest struct {
 	ctx context.Context
 	ApiService *TokensAPIService
 	tokenId string
 }
 
-func (r ApiAuthTokensGetRequest) Execute() (*AuthTokenMeta, *http.Response, error) {
+func (r TokensAPIAuthTokensGetRequest) Execute() (*AuthTokenMeta, *http.Response, error) {
 	return r.ApiService.AuthTokensGetExecute(r)
 }
 
@@ -285,10 +285,10 @@ AuthTokensGet Get token information
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tokenId Token ID reference
- @return ApiAuthTokensGetRequest
+ @return TokensAPIAuthTokensGetRequest
 */
-func (a *TokensAPIService) AuthTokensGet(ctx context.Context, tokenId string) ApiAuthTokensGetRequest {
-	return ApiAuthTokensGetRequest{
+func (a *TokensAPIService) AuthTokensGet(ctx context.Context, tokenId string) TokensAPIAuthTokensGetRequest {
+	return TokensAPIAuthTokensGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		tokenId: tokenId,
@@ -297,7 +297,7 @@ func (a *TokensAPIService) AuthTokensGet(ctx context.Context, tokenId string) Ap
 
 // Execute executes the request
 //  @return AuthTokenMeta
-func (a *TokensAPIService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*AuthTokenMeta, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensGetExecute(r TokensAPIAuthTokensGetRequest) (*AuthTokenMeta, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -392,19 +392,19 @@ func (a *TokensAPIService) AuthTokensGetExecute(r ApiAuthTokensGetRequest) (*Aut
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthTokensListRequest struct {
+type TokensAPIAuthTokensListRequest struct {
 	ctx context.Context
 	ApiService *TokensAPIService
 	page *OrganisationsListPageParameter
 }
 
 // Query parameters for pagination
-func (r ApiAuthTokensListRequest) Page(page OrganisationsListPageParameter) ApiAuthTokensListRequest {
+func (r TokensAPIAuthTokensListRequest) Page(page OrganisationsListPageParameter) TokensAPIAuthTokensListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiAuthTokensListRequest) Execute() (*ListAuthTokens, *http.Response, error) {
+func (r TokensAPIAuthTokensListRequest) Execute() (*ListAuthTokens, *http.Response, error) {
 	return r.ApiService.AuthTokensListExecute(r)
 }
 
@@ -412,10 +412,10 @@ func (r ApiAuthTokensListRequest) Execute() (*ListAuthTokens, *http.Response, er
 AuthTokensList List all user auth tokens
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiAuthTokensListRequest
+ @return TokensAPIAuthTokensListRequest
 */
-func (a *TokensAPIService) AuthTokensList(ctx context.Context) ApiAuthTokensListRequest {
-	return ApiAuthTokensListRequest{
+func (a *TokensAPIService) AuthTokensList(ctx context.Context) TokensAPIAuthTokensListRequest {
+	return TokensAPIAuthTokensListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -423,7 +423,7 @@ func (a *TokensAPIService) AuthTokensList(ctx context.Context) ApiAuthTokensList
 
 // Execute executes the request
 //  @return ListAuthTokens
-func (a *TokensAPIService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*ListAuthTokens, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensListExecute(r TokensAPIAuthTokensListRequest) (*ListAuthTokens, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -443,7 +443,7 @@ func (a *TokensAPIService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*L
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -520,19 +520,19 @@ func (a *TokensAPIService) AuthTokensListExecute(r ApiAuthTokensListRequest) (*L
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiAuthTokensUpdateRequest struct {
+type TokensAPIAuthTokensUpdateRequest struct {
 	ctx context.Context
 	ApiService *TokensAPIService
 	tokenId string
 	authTokenPatch *AuthTokenPatch
 }
 
-func (r ApiAuthTokensUpdateRequest) AuthTokenPatch(authTokenPatch AuthTokenPatch) ApiAuthTokensUpdateRequest {
+func (r TokensAPIAuthTokensUpdateRequest) AuthTokenPatch(authTokenPatch AuthTokenPatch) TokensAPIAuthTokensUpdateRequest {
 	r.authTokenPatch = &authTokenPatch
 	return r
 }
 
-func (r ApiAuthTokensUpdateRequest) Execute() (*AuthToken, *http.Response, error) {
+func (r TokensAPIAuthTokensUpdateRequest) Execute() (*AuthToken, *http.Response, error) {
 	return r.ApiService.AuthTokensUpdateExecute(r)
 }
 
@@ -541,10 +541,10 @@ AuthTokensUpdate Update token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param tokenId Token ID reference
- @return ApiAuthTokensUpdateRequest
+ @return TokensAPIAuthTokensUpdateRequest
 */
-func (a *TokensAPIService) AuthTokensUpdate(ctx context.Context, tokenId string) ApiAuthTokensUpdateRequest {
-	return ApiAuthTokensUpdateRequest{
+func (a *TokensAPIService) AuthTokensUpdate(ctx context.Context, tokenId string) TokensAPIAuthTokensUpdateRequest {
+	return TokensAPIAuthTokensUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		tokenId: tokenId,
@@ -553,7 +553,7 @@ func (a *TokensAPIService) AuthTokensUpdate(ctx context.Context, tokenId string)
 
 // Execute executes the request
 //  @return AuthToken
-func (a *TokensAPIService) AuthTokensUpdateExecute(r ApiAuthTokensUpdateRequest) (*AuthToken, *http.Response, error) {
+func (a *TokensAPIService) AuthTokensUpdateExecute(r TokensAPIAuthTokensUpdateRequest) (*AuthToken, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

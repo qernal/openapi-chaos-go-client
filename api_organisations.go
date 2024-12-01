@@ -24,19 +24,19 @@ import (
 // OrganisationsAPIService OrganisationsAPI service
 type OrganisationsAPIService service
 
-type ApiOrganisationsCreateRequest struct {
+type OrganisationsAPIOrganisationsCreateRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	organisationBody *OrganisationBody
 }
 
 // Create/Update any field
-func (r ApiOrganisationsCreateRequest) OrganisationBody(organisationBody OrganisationBody) ApiOrganisationsCreateRequest {
+func (r OrganisationsAPIOrganisationsCreateRequest) OrganisationBody(organisationBody OrganisationBody) OrganisationsAPIOrganisationsCreateRequest {
 	r.organisationBody = &organisationBody
 	return r
 }
 
-func (r ApiOrganisationsCreateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsCreateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsCreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ OrganisationsCreate Create organisations
 Create an organisation
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrganisationsCreateRequest
+ @return OrganisationsAPIOrganisationsCreateRequest
 */
-func (a *OrganisationsAPIService) OrganisationsCreate(ctx context.Context) ApiOrganisationsCreateRequest {
-	return ApiOrganisationsCreateRequest{
+func (a *OrganisationsAPIService) OrganisationsCreate(ctx context.Context) OrganisationsAPIOrganisationsCreateRequest {
+	return OrganisationsAPIOrganisationsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *OrganisationsAPIService) OrganisationsCreate(ctx context.Context) ApiOr
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsCreateExecute(r ApiOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsCreateExecute(r OrganisationsAPIOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -164,13 +164,13 @@ func (a *OrganisationsAPIService) OrganisationsCreateExecute(r ApiOrganisationsC
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsDeleteRequest struct {
+type OrganisationsAPIOrganisationsDeleteRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	organisationId string
 }
 
-func (r ApiOrganisationsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsDeleteExecute(r)
 }
 
@@ -181,10 +181,10 @@ Delete organisation, this will also delete all the resources within the organisa
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organisationId Organisation ID reference
- @return ApiOrganisationsDeleteRequest
+ @return OrganisationsAPIOrganisationsDeleteRequest
 */
-func (a *OrganisationsAPIService) OrganisationsDelete(ctx context.Context, organisationId string) ApiOrganisationsDeleteRequest {
-	return ApiOrganisationsDeleteRequest{
+func (a *OrganisationsAPIService) OrganisationsDelete(ctx context.Context, organisationId string) OrganisationsAPIOrganisationsDeleteRequest {
+	return OrganisationsAPIOrganisationsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		organisationId: organisationId,
@@ -193,7 +193,7 @@ func (a *OrganisationsAPIService) OrganisationsDelete(ctx context.Context, organ
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *OrganisationsAPIService) OrganisationsDeleteExecute(r ApiOrganisationsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsDeleteExecute(r OrganisationsAPIOrganisationsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -288,13 +288,13 @@ func (a *OrganisationsAPIService) OrganisationsDeleteExecute(r ApiOrganisationsD
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsGetRequest struct {
+type OrganisationsAPIOrganisationsGetRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	organisationId string
 }
 
-func (r ApiOrganisationsGetRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsGetRequest) Execute() (*OrganisationResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsGetExecute(r)
 }
 
@@ -305,10 +305,10 @@ Get a single organisation
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organisationId Organisation ID reference
- @return ApiOrganisationsGetRequest
+ @return OrganisationsAPIOrganisationsGetRequest
 */
-func (a *OrganisationsAPIService) OrganisationsGet(ctx context.Context, organisationId string) ApiOrganisationsGetRequest {
-	return ApiOrganisationsGetRequest{
+func (a *OrganisationsAPIService) OrganisationsGet(ctx context.Context, organisationId string) OrganisationsAPIOrganisationsGetRequest {
+	return OrganisationsAPIOrganisationsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		organisationId: organisationId,
@@ -317,7 +317,7 @@ func (a *OrganisationsAPIService) OrganisationsGet(ctx context.Context, organisa
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsGetExecute(r ApiOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsGetExecute(r OrganisationsAPIOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -412,7 +412,7 @@ func (a *OrganisationsAPIService) OrganisationsGetExecute(r ApiOrganisationsGetR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsListRequest struct {
+type OrganisationsAPIOrganisationsListRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	page *OrganisationsListPageParameter
@@ -420,18 +420,18 @@ type ApiOrganisationsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiOrganisationsListRequest) Page(page OrganisationsListPageParameter) ApiOrganisationsListRequest {
+func (r OrganisationsAPIOrganisationsListRequest) Page(page OrganisationsListPageParameter) OrganisationsAPIOrganisationsListRequest {
 	r.page = &page
 	return r
 }
 
 // Filter resource on name, if the value ends in an asterix it will be treated as a partial search otherwise, it&#39;ll be an exact match 
-func (r ApiOrganisationsListRequest) FName(fName string) ApiOrganisationsListRequest {
+func (r OrganisationsAPIOrganisationsListRequest) FName(fName string) OrganisationsAPIOrganisationsListRequest {
 	r.fName = &fName
 	return r
 }
 
-func (r ApiOrganisationsListRequest) Execute() (*ListOrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsListRequest) Execute() (*ListOrganisationResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsListExecute(r)
 }
 
@@ -441,10 +441,10 @@ OrganisationsList List organisations
 List organisations
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOrganisationsListRequest
+ @return OrganisationsAPIOrganisationsListRequest
 */
-func (a *OrganisationsAPIService) OrganisationsList(ctx context.Context) ApiOrganisationsListRequest {
-	return ApiOrganisationsListRequest{
+func (a *OrganisationsAPIService) OrganisationsList(ctx context.Context) OrganisationsAPIOrganisationsListRequest {
+	return OrganisationsAPIOrganisationsListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -452,7 +452,7 @@ func (a *OrganisationsAPIService) OrganisationsList(ctx context.Context) ApiOrga
 
 // Execute executes the request
 //  @return ListOrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsListExecute(r ApiOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsListExecute(r OrganisationsAPIOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -472,10 +472,10 @@ func (a *OrganisationsAPIService) OrganisationsListExecute(r ApiOrganisationsLis
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	if r.fName != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "f_name", r.fName, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -541,7 +541,7 @@ func (a *OrganisationsAPIService) OrganisationsListExecute(r ApiOrganisationsLis
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiOrganisationsUpdateRequest struct {
+type OrganisationsAPIOrganisationsUpdateRequest struct {
 	ctx context.Context
 	ApiService *OrganisationsAPIService
 	organisationId string
@@ -549,12 +549,12 @@ type ApiOrganisationsUpdateRequest struct {
 }
 
 // Create/Update any field
-func (r ApiOrganisationsUpdateRequest) OrganisationBody(organisationBody OrganisationBody) ApiOrganisationsUpdateRequest {
+func (r OrganisationsAPIOrganisationsUpdateRequest) OrganisationBody(organisationBody OrganisationBody) OrganisationsAPIOrganisationsUpdateRequest {
 	r.organisationBody = &organisationBody
 	return r
 }
 
-func (r ApiOrganisationsUpdateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsUpdateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
 	return r.ApiService.OrganisationsUpdateExecute(r)
 }
 
@@ -565,10 +565,10 @@ Update an organisation
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organisationId Organisation ID reference
- @return ApiOrganisationsUpdateRequest
+ @return OrganisationsAPIOrganisationsUpdateRequest
 */
-func (a *OrganisationsAPIService) OrganisationsUpdate(ctx context.Context, organisationId string) ApiOrganisationsUpdateRequest {
-	return ApiOrganisationsUpdateRequest{
+func (a *OrganisationsAPIService) OrganisationsUpdate(ctx context.Context, organisationId string) OrganisationsAPIOrganisationsUpdateRequest {
+	return OrganisationsAPIOrganisationsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		organisationId: organisationId,
@@ -577,7 +577,7 @@ func (a *OrganisationsAPIService) OrganisationsUpdate(ctx context.Context, organ
 
 // Execute executes the request
 //  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsUpdateExecute(r ApiOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
+func (a *OrganisationsAPIService) OrganisationsUpdateExecute(r OrganisationsAPIOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

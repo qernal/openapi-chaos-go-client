@@ -3384,8 +3384,8 @@ components:
         project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         port: 8080
         compliance:
-        - null
-        - null
+        - soc2
+        - soc2
         name: my-function
         id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
       properties:
@@ -3528,8 +3528,8 @@ components:
         project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         port: 8080
         compliance:
-        - null
-        - null
+        - soc2
+        - soc2
         name: my-function
       properties:
         project_id:
@@ -3662,8 +3662,8 @@ components:
           project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           port: 8080
           compliance:
-          - null
-          - null
+          - soc2
+          - soc2
           name: my-function
           id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         - image: docker.io/my-image:latest
@@ -3722,8 +3722,8 @@ components:
           project_id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
           port: 8080
           compliance:
-          - null
-          - null
+          - soc2
+          - soc2
           name: my-function
           id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
         meta:

@@ -27,7 +27,7 @@ type ProjectResponse struct {
 	// Organisation id
 	OrgId string `json:"org_id"`
 	// Project name
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[A-z-]+$"`
 	Date Date `json:"date"`
 }
 

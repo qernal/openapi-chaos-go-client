@@ -24,7 +24,7 @@ import (
 // SecretsAPIService SecretsAPI service
 type SecretsAPIService service
 
-type ApiProjectsSecretsCreateRequest struct {
+type SecretsAPIProjectsSecretsCreateRequest struct {
 	ctx context.Context
 	ApiService *SecretsAPIService
 	projectId string
@@ -32,12 +32,12 @@ type ApiProjectsSecretsCreateRequest struct {
 }
 
 // Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
-func (r ApiProjectsSecretsCreateRequest) SecretBody(secretBody SecretBody) ApiProjectsSecretsCreateRequest {
+func (r SecretsAPIProjectsSecretsCreateRequest) SecretBody(secretBody SecretBody) SecretsAPIProjectsSecretsCreateRequest {
 	r.secretBody = &secretBody
 	return r
 }
 
-func (r ApiProjectsSecretsCreateRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsCreateRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsCreateExecute(r)
 }
 
@@ -48,10 +48,10 @@ Create a new project secret
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsSecretsCreateRequest
+ @return SecretsAPIProjectsSecretsCreateRequest
 */
-func (a *SecretsAPIService) ProjectsSecretsCreate(ctx context.Context, projectId string) ApiProjectsSecretsCreateRequest {
-	return ApiProjectsSecretsCreateRequest{
+func (a *SecretsAPIService) ProjectsSecretsCreate(ctx context.Context, projectId string) SecretsAPIProjectsSecretsCreateRequest {
+	return SecretsAPIProjectsSecretsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -60,7 +60,7 @@ func (a *SecretsAPIService) ProjectsSecretsCreate(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r SecretsAPIProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -182,14 +182,14 @@ func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r ApiProjectsSecretsCre
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsSecretsDeleteRequest struct {
+type SecretsAPIProjectsSecretsDeleteRequest struct {
 	ctx context.Context
 	ApiService *SecretsAPIService
 	projectId string
 	secretName string
 }
 
-func (r ApiProjectsSecretsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsDeleteExecute(r)
 }
 
@@ -201,10 +201,10 @@ Delete project secret, if the secret is still linked to an active/deployed funct
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param secretName Unique secret name
- @return ApiProjectsSecretsDeleteRequest
+ @return SecretsAPIProjectsSecretsDeleteRequest
 */
-func (a *SecretsAPIService) ProjectsSecretsDelete(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsDeleteRequest {
-	return ApiProjectsSecretsDeleteRequest{
+func (a *SecretsAPIService) ProjectsSecretsDelete(ctx context.Context, projectId string, secretName string) SecretsAPIProjectsSecretsDeleteRequest {
+	return SecretsAPIProjectsSecretsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -214,7 +214,7 @@ func (a *SecretsAPIService) ProjectsSecretsDelete(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *SecretsAPIService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsDeleteExecute(r SecretsAPIProjectsSecretsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -313,14 +313,14 @@ func (a *SecretsAPIService) ProjectsSecretsDeleteExecute(r ApiProjectsSecretsDel
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsSecretsGetRequest struct {
+type SecretsAPIProjectsSecretsGetRequest struct {
 	ctx context.Context
 	ApiService *SecretsAPIService
 	projectId string
 	secretName string
 }
 
-func (r ApiProjectsSecretsGetRequest) Execute() (*SecretMetaResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsGetRequest) Execute() (*SecretMetaResponse, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsGetExecute(r)
 }
 
@@ -332,10 +332,10 @@ Get a specific project
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param secretName Unique secret name
- @return ApiProjectsSecretsGetRequest
+ @return SecretsAPIProjectsSecretsGetRequest
 */
-func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsGetRequest {
-	return ApiProjectsSecretsGetRequest{
+func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId string, secretName string) SecretsAPIProjectsSecretsGetRequest {
+	return SecretsAPIProjectsSecretsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -345,7 +345,7 @@ func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId st
 
 // Execute executes the request
 //  @return SecretMetaResponse
-func (a *SecretsAPIService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsGetExecute(r SecretsAPIProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -444,7 +444,7 @@ func (a *SecretsAPIService) ProjectsSecretsGetExecute(r ApiProjectsSecretsGetReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsSecretsListRequest struct {
+type SecretsAPIProjectsSecretsListRequest struct {
 	ctx context.Context
 	ApiService *SecretsAPIService
 	projectId string
@@ -453,18 +453,18 @@ type ApiProjectsSecretsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiProjectsSecretsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsSecretsListRequest {
+func (r SecretsAPIProjectsSecretsListRequest) Page(page OrganisationsListPageParameter) SecretsAPIProjectsSecretsListRequest {
 	r.page = &page
 	return r
 }
 
 // Type of secret to filter on
-func (r ApiProjectsSecretsListRequest) SecretType(secretType SecretMetaType) ApiProjectsSecretsListRequest {
+func (r SecretsAPIProjectsSecretsListRequest) SecretType(secretType SecretMetaType) SecretsAPIProjectsSecretsListRequest {
 	r.secretType = &secretType
 	return r
 }
 
-func (r ApiProjectsSecretsListRequest) Execute() (*ListSecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsListRequest) Execute() (*ListSecretResponse, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsListExecute(r)
 }
 
@@ -475,10 +475,10 @@ List project secrets of a specific type
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsSecretsListRequest
+ @return SecretsAPIProjectsSecretsListRequest
 */
-func (a *SecretsAPIService) ProjectsSecretsList(ctx context.Context, projectId string) ApiProjectsSecretsListRequest {
-	return ApiProjectsSecretsListRequest{
+func (a *SecretsAPIService) ProjectsSecretsList(ctx context.Context, projectId string) SecretsAPIProjectsSecretsListRequest {
+	return SecretsAPIProjectsSecretsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -487,7 +487,7 @@ func (a *SecretsAPIService) ProjectsSecretsList(ctx context.Context, projectId s
 
 // Execute executes the request
 //  @return ListSecretResponse
-func (a *SecretsAPIService) ProjectsSecretsListExecute(r ApiProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsListExecute(r SecretsAPIProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -508,10 +508,10 @@ func (a *SecretsAPIService) ProjectsSecretsListExecute(r ApiProjectsSecretsListR
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	if r.secretType != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "secret_type", r.secretType, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "secret_type", r.secretType, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -588,7 +588,7 @@ func (a *SecretsAPIService) ProjectsSecretsListExecute(r ApiProjectsSecretsListR
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsSecretsUpdateRequest struct {
+type SecretsAPIProjectsSecretsUpdateRequest struct {
 	ctx context.Context
 	ApiService *SecretsAPIService
 	projectId string
@@ -597,12 +597,12 @@ type ApiProjectsSecretsUpdateRequest struct {
 }
 
 // Update any field
-func (r ApiProjectsSecretsUpdateRequest) SecretBodyPatch(secretBodyPatch SecretBodyPatch) ApiProjectsSecretsUpdateRequest {
+func (r SecretsAPIProjectsSecretsUpdateRequest) SecretBodyPatch(secretBodyPatch SecretBodyPatch) SecretsAPIProjectsSecretsUpdateRequest {
 	r.secretBodyPatch = &secretBodyPatch
 	return r
 }
 
-func (r ApiProjectsSecretsUpdateRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsUpdateRequest) Execute() (*SecretResponse, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsUpdateExecute(r)
 }
 
@@ -614,10 +614,10 @@ Update project
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param secretName Unique secret name
- @return ApiProjectsSecretsUpdateRequest
+ @return SecretsAPIProjectsSecretsUpdateRequest
 */
-func (a *SecretsAPIService) ProjectsSecretsUpdate(ctx context.Context, projectId string, secretName string) ApiProjectsSecretsUpdateRequest {
-	return ApiProjectsSecretsUpdateRequest{
+func (a *SecretsAPIService) ProjectsSecretsUpdate(ctx context.Context, projectId string, secretName string) SecretsAPIProjectsSecretsUpdateRequest {
+	return SecretsAPIProjectsSecretsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -627,7 +627,7 @@ func (a *SecretsAPIService) ProjectsSecretsUpdate(ctx context.Context, projectId
 
 // Execute executes the request
 //  @return SecretResponse
-func (a *SecretsAPIService) ProjectsSecretsUpdateExecute(r ApiProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
+func (a *SecretsAPIService) ProjectsSecretsUpdateExecute(r SecretsAPIProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}

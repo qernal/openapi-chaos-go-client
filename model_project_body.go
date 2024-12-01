@@ -25,7 +25,7 @@ type ProjectBody struct {
 	// Organisation id
 	OrgId string `json:"org_id"`
 	// Project name
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[A-z-]+$"`
 }
 
 type _ProjectBody ProjectBody

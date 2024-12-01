@@ -23,7 +23,7 @@ type ProjectBodyPatch struct {
 	// Organisation id
 	OrgId *string `json:"org_id,omitempty"`
 	// Project name
-	Name *string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty" validate:"regexp=^[A-z-]+$"`
 }
 
 // NewProjectBodyPatch instantiates a new ProjectBodyPatch object

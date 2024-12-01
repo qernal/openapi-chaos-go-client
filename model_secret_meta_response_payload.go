@@ -13,6 +13,7 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -56,7 +57,11 @@ func (dst *SecretMetaResponsePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretMetaResponseCertificatePayload) == "{}" { // empty struct
 			dst.SecretMetaResponseCertificatePayload = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretMetaResponseCertificatePayload); err != nil {
+				dst.SecretMetaResponseCertificatePayload = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretMetaResponseCertificatePayload = nil
@@ -69,7 +74,11 @@ func (dst *SecretMetaResponsePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretMetaResponseDek) == "{}" { // empty struct
 			dst.SecretMetaResponseDek = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretMetaResponseDek); err != nil {
+				dst.SecretMetaResponseDek = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretMetaResponseDek = nil
@@ -82,7 +91,11 @@ func (dst *SecretMetaResponsePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretMetaResponseRegistryPayload) == "{}" { // empty struct
 			dst.SecretMetaResponseRegistryPayload = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretMetaResponseRegistryPayload); err != nil {
+				dst.SecretMetaResponseRegistryPayload = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretMetaResponseRegistryPayload = nil

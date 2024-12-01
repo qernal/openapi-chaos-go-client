@@ -24,19 +24,19 @@ import (
 // FunctionsAPIService FunctionsAPI service
 type FunctionsAPIService service
 
-type ApiFunctionsCreateRequest struct {
+type FunctionsAPIFunctionsCreateRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionBody *FunctionBody
 }
 
 // Create/Update any field
-func (r ApiFunctionsCreateRequest) FunctionBody(functionBody FunctionBody) ApiFunctionsCreateRequest {
+func (r FunctionsAPIFunctionsCreateRequest) FunctionBody(functionBody FunctionBody) FunctionsAPIFunctionsCreateRequest {
 	r.functionBody = &functionBody
 	return r
 }
 
-func (r ApiFunctionsCreateRequest) Execute() (*Function, *http.Response, error) {
+func (r FunctionsAPIFunctionsCreateRequest) Execute() (*Function, *http.Response, error) {
 	return r.ApiService.FunctionsCreateExecute(r)
 }
 
@@ -46,10 +46,10 @@ FunctionsCreate Create function
 Create a new function
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiFunctionsCreateRequest
+ @return FunctionsAPIFunctionsCreateRequest
 */
-func (a *FunctionsAPIService) FunctionsCreate(ctx context.Context) ApiFunctionsCreateRequest {
-	return ApiFunctionsCreateRequest{
+func (a *FunctionsAPIService) FunctionsCreate(ctx context.Context) FunctionsAPIFunctionsCreateRequest {
+	return FunctionsAPIFunctionsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -57,7 +57,7 @@ func (a *FunctionsAPIService) FunctionsCreate(ctx context.Context) ApiFunctionsC
 
 // Execute executes the request
 //  @return Function
-func (a *FunctionsAPIService) FunctionsCreateExecute(r ApiFunctionsCreateRequest) (*Function, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsCreateExecute(r FunctionsAPIFunctionsCreateRequest) (*Function, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -145,13 +145,13 @@ func (a *FunctionsAPIService) FunctionsCreateExecute(r ApiFunctionsCreateRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFunctionsDeleteRequest struct {
+type FunctionsAPIFunctionsDeleteRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionId string
 }
 
-func (r ApiFunctionsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r FunctionsAPIFunctionsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.FunctionsDeleteExecute(r)
 }
 
@@ -162,10 +162,10 @@ Delete a function (and all revisions)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param functionId Function ID reference
- @return ApiFunctionsDeleteRequest
+ @return FunctionsAPIFunctionsDeleteRequest
 */
-func (a *FunctionsAPIService) FunctionsDelete(ctx context.Context, functionId string) ApiFunctionsDeleteRequest {
-	return ApiFunctionsDeleteRequest{
+func (a *FunctionsAPIService) FunctionsDelete(ctx context.Context, functionId string) FunctionsAPIFunctionsDeleteRequest {
+	return FunctionsAPIFunctionsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		functionId: functionId,
@@ -174,7 +174,7 @@ func (a *FunctionsAPIService) FunctionsDelete(ctx context.Context, functionId st
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *FunctionsAPIService) FunctionsDeleteExecute(r ApiFunctionsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsDeleteExecute(r FunctionsAPIFunctionsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -258,13 +258,13 @@ func (a *FunctionsAPIService) FunctionsDeleteExecute(r ApiFunctionsDeleteRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFunctionsGetRequest struct {
+type FunctionsAPIFunctionsGetRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionId string
 }
 
-func (r ApiFunctionsGetRequest) Execute() (*Function, *http.Response, error) {
+func (r FunctionsAPIFunctionsGetRequest) Execute() (*Function, *http.Response, error) {
 	return r.ApiService.FunctionsGetExecute(r)
 }
 
@@ -275,10 +275,10 @@ Get a specific function (latest revision)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param functionId Function ID reference
- @return ApiFunctionsGetRequest
+ @return FunctionsAPIFunctionsGetRequest
 */
-func (a *FunctionsAPIService) FunctionsGet(ctx context.Context, functionId string) ApiFunctionsGetRequest {
-	return ApiFunctionsGetRequest{
+func (a *FunctionsAPIService) FunctionsGet(ctx context.Context, functionId string) FunctionsAPIFunctionsGetRequest {
+	return FunctionsAPIFunctionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		functionId: functionId,
@@ -287,7 +287,7 @@ func (a *FunctionsAPIService) FunctionsGet(ctx context.Context, functionId strin
 
 // Execute executes the request
 //  @return Function
-func (a *FunctionsAPIService) FunctionsGetExecute(r ApiFunctionsGetRequest) (*Function, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsGetExecute(r FunctionsAPIFunctionsGetRequest) (*Function, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -371,14 +371,14 @@ func (a *FunctionsAPIService) FunctionsGetExecute(r ApiFunctionsGetRequest) (*Fu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFunctionsRevisionsGetRequest struct {
+type FunctionsAPIFunctionsRevisionsGetRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionId string
 	functionRevisionId string
 }
 
-func (r ApiFunctionsRevisionsGetRequest) Execute() (*Function, *http.Response, error) {
+func (r FunctionsAPIFunctionsRevisionsGetRequest) Execute() (*Function, *http.Response, error) {
 	return r.ApiService.FunctionsRevisionsGetExecute(r)
 }
 
@@ -390,10 +390,10 @@ Get a specific revision of a function
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param functionId Function ID reference
  @param functionRevisionId Function revision ID reference
- @return ApiFunctionsRevisionsGetRequest
+ @return FunctionsAPIFunctionsRevisionsGetRequest
 */
-func (a *FunctionsAPIService) FunctionsRevisionsGet(ctx context.Context, functionId string, functionRevisionId string) ApiFunctionsRevisionsGetRequest {
-	return ApiFunctionsRevisionsGetRequest{
+func (a *FunctionsAPIService) FunctionsRevisionsGet(ctx context.Context, functionId string, functionRevisionId string) FunctionsAPIFunctionsRevisionsGetRequest {
+	return FunctionsAPIFunctionsRevisionsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		functionId: functionId,
@@ -403,7 +403,7 @@ func (a *FunctionsAPIService) FunctionsRevisionsGet(ctx context.Context, functio
 
 // Execute executes the request
 //  @return Function
-func (a *FunctionsAPIService) FunctionsRevisionsGetExecute(r ApiFunctionsRevisionsGetRequest) (*Function, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsRevisionsGetExecute(r FunctionsAPIFunctionsRevisionsGetRequest) (*Function, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -478,7 +478,7 @@ func (a *FunctionsAPIService) FunctionsRevisionsGetExecute(r ApiFunctionsRevisio
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFunctionsRevisionsListRequest struct {
+type FunctionsAPIFunctionsRevisionsListRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionId string
@@ -486,12 +486,12 @@ type ApiFunctionsRevisionsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiFunctionsRevisionsListRequest) Page(page OrganisationsListPageParameter) ApiFunctionsRevisionsListRequest {
+func (r FunctionsAPIFunctionsRevisionsListRequest) Page(page OrganisationsListPageParameter) FunctionsAPIFunctionsRevisionsListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiFunctionsRevisionsListRequest) Execute() (*ListFunction, *http.Response, error) {
+func (r FunctionsAPIFunctionsRevisionsListRequest) Execute() (*ListFunction, *http.Response, error) {
 	return r.ApiService.FunctionsRevisionsListExecute(r)
 }
 
@@ -502,10 +502,10 @@ List all revisions for a function
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param functionId Function ID reference
- @return ApiFunctionsRevisionsListRequest
+ @return FunctionsAPIFunctionsRevisionsListRequest
 */
-func (a *FunctionsAPIService) FunctionsRevisionsList(ctx context.Context, functionId string) ApiFunctionsRevisionsListRequest {
-	return ApiFunctionsRevisionsListRequest{
+func (a *FunctionsAPIService) FunctionsRevisionsList(ctx context.Context, functionId string) FunctionsAPIFunctionsRevisionsListRequest {
+	return FunctionsAPIFunctionsRevisionsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		functionId: functionId,
@@ -514,7 +514,7 @@ func (a *FunctionsAPIService) FunctionsRevisionsList(ctx context.Context, functi
 
 // Execute executes the request
 //  @return ListFunction
-func (a *FunctionsAPIService) FunctionsRevisionsListExecute(r ApiFunctionsRevisionsListRequest) (*ListFunction, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsRevisionsListExecute(r FunctionsAPIFunctionsRevisionsListRequest) (*ListFunction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -535,7 +535,7 @@ func (a *FunctionsAPIService) FunctionsRevisionsListExecute(r ApiFunctionsRevisi
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -591,7 +591,7 @@ func (a *FunctionsAPIService) FunctionsRevisionsListExecute(r ApiFunctionsRevisi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiFunctionsUpdateRequest struct {
+type FunctionsAPIFunctionsUpdateRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	functionId string
@@ -599,12 +599,12 @@ type ApiFunctionsUpdateRequest struct {
 }
 
 // Update any field
-func (r ApiFunctionsUpdateRequest) Function(function Function) ApiFunctionsUpdateRequest {
+func (r FunctionsAPIFunctionsUpdateRequest) Function(function Function) FunctionsAPIFunctionsUpdateRequest {
 	r.function = &function
 	return r
 }
 
-func (r ApiFunctionsUpdateRequest) Execute() (*Function, *http.Response, error) {
+func (r FunctionsAPIFunctionsUpdateRequest) Execute() (*Function, *http.Response, error) {
 	return r.ApiService.FunctionsUpdateExecute(r)
 }
 
@@ -615,10 +615,10 @@ Update a function (creates a new revision)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param functionId Function ID reference
- @return ApiFunctionsUpdateRequest
+ @return FunctionsAPIFunctionsUpdateRequest
 */
-func (a *FunctionsAPIService) FunctionsUpdate(ctx context.Context, functionId string) ApiFunctionsUpdateRequest {
-	return ApiFunctionsUpdateRequest{
+func (a *FunctionsAPIService) FunctionsUpdate(ctx context.Context, functionId string) FunctionsAPIFunctionsUpdateRequest {
+	return FunctionsAPIFunctionsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		functionId: functionId,
@@ -627,7 +627,7 @@ func (a *FunctionsAPIService) FunctionsUpdate(ctx context.Context, functionId st
 
 // Execute executes the request
 //  @return Function
-func (a *FunctionsAPIService) FunctionsUpdateExecute(r ApiFunctionsUpdateRequest) (*Function, *http.Response, error) {
+func (a *FunctionsAPIService) FunctionsUpdateExecute(r FunctionsAPIFunctionsUpdateRequest) (*Function, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -727,7 +727,7 @@ func (a *FunctionsAPIService) FunctionsUpdateExecute(r ApiFunctionsUpdateRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsFunctionsListRequest struct {
+type FunctionsAPIProjectsFunctionsListRequest struct {
 	ctx context.Context
 	ApiService *FunctionsAPIService
 	projectId string
@@ -735,12 +735,12 @@ type ApiProjectsFunctionsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiProjectsFunctionsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsFunctionsListRequest {
+func (r FunctionsAPIProjectsFunctionsListRequest) Page(page OrganisationsListPageParameter) FunctionsAPIProjectsFunctionsListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiProjectsFunctionsListRequest) Execute() (*ListFunction, *http.Response, error) {
+func (r FunctionsAPIProjectsFunctionsListRequest) Execute() (*ListFunction, *http.Response, error) {
 	return r.ApiService.ProjectsFunctionsListExecute(r)
 }
 
@@ -751,10 +751,10 @@ List all functions
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsFunctionsListRequest
+ @return FunctionsAPIProjectsFunctionsListRequest
 */
-func (a *FunctionsAPIService) ProjectsFunctionsList(ctx context.Context, projectId string) ApiProjectsFunctionsListRequest {
-	return ApiProjectsFunctionsListRequest{
+func (a *FunctionsAPIService) ProjectsFunctionsList(ctx context.Context, projectId string) FunctionsAPIProjectsFunctionsListRequest {
+	return FunctionsAPIProjectsFunctionsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -763,7 +763,7 @@ func (a *FunctionsAPIService) ProjectsFunctionsList(ctx context.Context, project
 
 // Execute executes the request
 //  @return ListFunction
-func (a *FunctionsAPIService) ProjectsFunctionsListExecute(r ApiProjectsFunctionsListRequest) (*ListFunction, *http.Response, error) {
+func (a *FunctionsAPIService) ProjectsFunctionsListExecute(r FunctionsAPIProjectsFunctionsListRequest) (*ListFunction, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -784,7 +784,7 @@ func (a *FunctionsAPIService) ProjectsFunctionsListExecute(r ApiProjectsFunction
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

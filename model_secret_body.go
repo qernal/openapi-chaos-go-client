@@ -23,11 +23,11 @@ var _ MappedNullable = &SecretBody{}
 // SecretBody Secret body
 type SecretBody struct {
 	// Secret name
-	Name string `json:"name"`
+	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
 	Type SecretCreateType `json:"type"`
 	Payload SecretCreatePayload `json:"payload"`
 	// Encryption entity
-	Encryption string `json:"encryption"`
+	Encryption string `json:"encryption" validate:"regexp=^keys\\/dek\\/[0-9]+$"`
 }
 
 type _SecretBody SecretBody

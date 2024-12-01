@@ -23,19 +23,19 @@ import (
 // ProvidersAPIService ProvidersAPI service
 type ProvidersAPIService service
 
-type ApiProvidersListRequest struct {
+type ProvidersAPIProvidersListRequest struct {
 	ctx context.Context
 	ApiService *ProvidersAPIService
 	page *OrganisationsListPageParameter
 }
 
 // Query parameters for pagination
-func (r ApiProvidersListRequest) Page(page OrganisationsListPageParameter) ApiProvidersListRequest {
+func (r ProvidersAPIProvidersListRequest) Page(page OrganisationsListPageParameter) ProvidersAPIProvidersListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiProvidersListRequest) Execute() (*ListProviderResponse, *http.Response, error) {
+func (r ProvidersAPIProvidersListRequest) Execute() (*ListProviderResponse, *http.Response, error) {
 	return r.ApiService.ProvidersListExecute(r)
 }
 
@@ -45,10 +45,10 @@ ProvidersList Get available providers
 Retrieve a list of all providers with their respective deployed regions and cities.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiProvidersListRequest
+ @return ProvidersAPIProvidersListRequest
 */
-func (a *ProvidersAPIService) ProvidersList(ctx context.Context) ApiProvidersListRequest {
-	return ApiProvidersListRequest{
+func (a *ProvidersAPIService) ProvidersList(ctx context.Context) ProvidersAPIProvidersListRequest {
+	return ProvidersAPIProvidersListRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -56,7 +56,7 @@ func (a *ProvidersAPIService) ProvidersList(ctx context.Context) ApiProvidersLis
 
 // Execute executes the request
 //  @return ListProviderResponse
-func (a *ProvidersAPIService) ProvidersListExecute(r ApiProvidersListRequest) (*ListProviderResponse, *http.Response, error) {
+func (a *ProvidersAPIService) ProvidersListExecute(r ProvidersAPIProvidersListRequest) (*ListProviderResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -76,7 +76,7 @@ func (a *ProvidersAPIService) ProvidersListExecute(r ApiProvidersListRequest) (*
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

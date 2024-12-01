@@ -24,19 +24,19 @@ import (
 // HostsAPIService HostsAPI service
 type HostsAPIService service
 
-type ApiProjectsHostsCreateRequest struct {
+type HostsAPIProjectsHostsCreateRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
 	hostBody *HostBody
 }
 
-func (r ApiProjectsHostsCreateRequest) HostBody(hostBody HostBody) ApiProjectsHostsCreateRequest {
+func (r HostsAPIProjectsHostsCreateRequest) HostBody(hostBody HostBody) HostsAPIProjectsHostsCreateRequest {
 	r.hostBody = &hostBody
 	return r
 }
 
-func (r ApiProjectsHostsCreateRequest) Execute() (*Host, *http.Response, error) {
+func (r HostsAPIProjectsHostsCreateRequest) Execute() (*Host, *http.Response, error) {
 	return r.ApiService.ProjectsHostsCreateExecute(r)
 }
 
@@ -50,10 +50,10 @@ A host can be a valid domain, either a root domain or a subdomain.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsHostsCreateRequest
+ @return HostsAPIProjectsHostsCreateRequest
 */
-func (a *HostsAPIService) ProjectsHostsCreate(ctx context.Context, projectId string) ApiProjectsHostsCreateRequest {
-	return ApiProjectsHostsCreateRequest{
+func (a *HostsAPIService) ProjectsHostsCreate(ctx context.Context, projectId string) HostsAPIProjectsHostsCreateRequest {
+	return HostsAPIProjectsHostsCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -62,7 +62,7 @@ func (a *HostsAPIService) ProjectsHostsCreate(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return Host
-func (a *HostsAPIService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsCreateExecute(r HostsAPIProjectsHostsCreateRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -173,14 +173,14 @@ func (a *HostsAPIService) ProjectsHostsCreateExecute(r ApiProjectsHostsCreateReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsHostsDeleteRequest struct {
+type HostsAPIProjectsHostsDeleteRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
 	hostname string
 }
 
-func (r ApiProjectsHostsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
+func (r HostsAPIProjectsHostsDeleteRequest) Execute() (*DeletedResponse, *http.Response, error) {
 	return r.ApiService.ProjectsHostsDeleteExecute(r)
 }
 
@@ -190,10 +190,10 @@ ProjectsHostsDelete Delete specific host by hostname
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param hostname Hostname
- @return ApiProjectsHostsDeleteRequest
+ @return HostsAPIProjectsHostsDeleteRequest
 */
-func (a *HostsAPIService) ProjectsHostsDelete(ctx context.Context, projectId string, hostname string) ApiProjectsHostsDeleteRequest {
-	return ApiProjectsHostsDeleteRequest{
+func (a *HostsAPIService) ProjectsHostsDelete(ctx context.Context, projectId string, hostname string) HostsAPIProjectsHostsDeleteRequest {
+	return HostsAPIProjectsHostsDeleteRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -203,7 +203,7 @@ func (a *HostsAPIService) ProjectsHostsDelete(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return DeletedResponse
-func (a *HostsAPIService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteRequest) (*DeletedResponse, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsDeleteExecute(r HostsAPIProjectsHostsDeleteRequest) (*DeletedResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodDelete
 		localVarPostBody     interface{}
@@ -288,14 +288,14 @@ func (a *HostsAPIService) ProjectsHostsDeleteExecute(r ApiProjectsHostsDeleteReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsHostsGetRequest struct {
+type HostsAPIProjectsHostsGetRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
 	hostname string
 }
 
-func (r ApiProjectsHostsGetRequest) Execute() (*Host, *http.Response, error) {
+func (r HostsAPIProjectsHostsGetRequest) Execute() (*Host, *http.Response, error) {
 	return r.ApiService.ProjectsHostsGetExecute(r)
 }
 
@@ -305,10 +305,10 @@ ProjectsHostsGet Get specific host by hostname
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param hostname Hostname
- @return ApiProjectsHostsGetRequest
+ @return HostsAPIProjectsHostsGetRequest
 */
-func (a *HostsAPIService) ProjectsHostsGet(ctx context.Context, projectId string, hostname string) ApiProjectsHostsGetRequest {
-	return ApiProjectsHostsGetRequest{
+func (a *HostsAPIService) ProjectsHostsGet(ctx context.Context, projectId string, hostname string) HostsAPIProjectsHostsGetRequest {
+	return HostsAPIProjectsHostsGetRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -318,7 +318,7 @@ func (a *HostsAPIService) ProjectsHostsGet(ctx context.Context, projectId string
 
 // Execute executes the request
 //  @return Host
-func (a *HostsAPIService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsGetExecute(r HostsAPIProjectsHostsGetRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -403,7 +403,7 @@ func (a *HostsAPIService) ProjectsHostsGetExecute(r ApiProjectsHostsGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsHostsListRequest struct {
+type HostsAPIProjectsHostsListRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
@@ -411,12 +411,12 @@ type ApiProjectsHostsListRequest struct {
 }
 
 // Query parameters for pagination
-func (r ApiProjectsHostsListRequest) Page(page OrganisationsListPageParameter) ApiProjectsHostsListRequest {
+func (r HostsAPIProjectsHostsListRequest) Page(page OrganisationsListPageParameter) HostsAPIProjectsHostsListRequest {
 	r.page = &page
 	return r
 }
 
-func (r ApiProjectsHostsListRequest) Execute() (*ListHosts, *http.Response, error) {
+func (r HostsAPIProjectsHostsListRequest) Execute() (*ListHosts, *http.Response, error) {
 	return r.ApiService.ProjectsHostsListExecute(r)
 }
 
@@ -425,10 +425,10 @@ ProjectsHostsList List hosts for project
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
- @return ApiProjectsHostsListRequest
+ @return HostsAPIProjectsHostsListRequest
 */
-func (a *HostsAPIService) ProjectsHostsList(ctx context.Context, projectId string) ApiProjectsHostsListRequest {
-	return ApiProjectsHostsListRequest{
+func (a *HostsAPIService) ProjectsHostsList(ctx context.Context, projectId string) HostsAPIProjectsHostsListRequest {
+	return HostsAPIProjectsHostsListRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -437,7 +437,7 @@ func (a *HostsAPIService) ProjectsHostsList(ctx context.Context, projectId strin
 
 // Execute executes the request
 //  @return ListHosts
-func (a *HostsAPIService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest) (*ListHosts, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsListExecute(r HostsAPIProjectsHostsListRequest) (*ListHosts, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
@@ -458,7 +458,7 @@ func (a *HostsAPIService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest
 	localVarFormParams := url.Values{}
 
 	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -524,7 +524,7 @@ func (a *HostsAPIService) ProjectsHostsListExecute(r ApiProjectsHostsListRequest
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsHostsUpdateRequest struct {
+type HostsAPIProjectsHostsUpdateRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
@@ -532,12 +532,12 @@ type ApiProjectsHostsUpdateRequest struct {
 	hostBodyPatch *HostBodyPatch
 }
 
-func (r ApiProjectsHostsUpdateRequest) HostBodyPatch(hostBodyPatch HostBodyPatch) ApiProjectsHostsUpdateRequest {
+func (r HostsAPIProjectsHostsUpdateRequest) HostBodyPatch(hostBodyPatch HostBodyPatch) HostsAPIProjectsHostsUpdateRequest {
 	r.hostBodyPatch = &hostBodyPatch
 	return r
 }
 
-func (r ApiProjectsHostsUpdateRequest) Execute() (*Host, *http.Response, error) {
+func (r HostsAPIProjectsHostsUpdateRequest) Execute() (*Host, *http.Response, error) {
 	return r.ApiService.ProjectsHostsUpdateExecute(r)
 }
 
@@ -547,10 +547,10 @@ ProjectsHostsUpdate Update specific host by hostname
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param hostname Hostname
- @return ApiProjectsHostsUpdateRequest
+ @return HostsAPIProjectsHostsUpdateRequest
 */
-func (a *HostsAPIService) ProjectsHostsUpdate(ctx context.Context, projectId string, hostname string) ApiProjectsHostsUpdateRequest {
-	return ApiProjectsHostsUpdateRequest{
+func (a *HostsAPIService) ProjectsHostsUpdate(ctx context.Context, projectId string, hostname string) HostsAPIProjectsHostsUpdateRequest {
+	return HostsAPIProjectsHostsUpdateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -560,7 +560,7 @@ func (a *HostsAPIService) ProjectsHostsUpdate(ctx context.Context, projectId str
 
 // Execute executes the request
 //  @return Host
-func (a *HostsAPIService) ProjectsHostsUpdateExecute(r ApiProjectsHostsUpdateRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsUpdateExecute(r HostsAPIProjectsHostsUpdateRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -650,14 +650,14 @@ func (a *HostsAPIService) ProjectsHostsUpdateExecute(r ApiProjectsHostsUpdateReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiProjectsHostsVerifyCreateRequest struct {
+type HostsAPIProjectsHostsVerifyCreateRequest struct {
 	ctx context.Context
 	ApiService *HostsAPIService
 	projectId string
 	hostname string
 }
 
-func (r ApiProjectsHostsVerifyCreateRequest) Execute() (*Host, *http.Response, error) {
+func (r HostsAPIProjectsHostsVerifyCreateRequest) Execute() (*Host, *http.Response, error) {
 	return r.ApiService.ProjectsHostsVerifyCreateExecute(r)
 }
 
@@ -667,10 +667,10 @@ ProjectsHostsVerifyCreate Schedule host verification task
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param projectId Project ID reference
  @param hostname Hostname
- @return ApiProjectsHostsVerifyCreateRequest
+ @return HostsAPIProjectsHostsVerifyCreateRequest
 */
-func (a *HostsAPIService) ProjectsHostsVerifyCreate(ctx context.Context, projectId string, hostname string) ApiProjectsHostsVerifyCreateRequest {
-	return ApiProjectsHostsVerifyCreateRequest{
+func (a *HostsAPIService) ProjectsHostsVerifyCreate(ctx context.Context, projectId string, hostname string) HostsAPIProjectsHostsVerifyCreateRequest {
+	return HostsAPIProjectsHostsVerifyCreateRequest{
 		ApiService: a,
 		ctx: ctx,
 		projectId: projectId,
@@ -680,7 +680,7 @@ func (a *HostsAPIService) ProjectsHostsVerifyCreate(ctx context.Context, project
 
 // Execute executes the request
 //  @return Host
-func (a *HostsAPIService) ProjectsHostsVerifyCreateExecute(r ApiProjectsHostsVerifyCreateRequest) (*Host, *http.Response, error) {
+func (a *HostsAPIService) ProjectsHostsVerifyCreateExecute(r HostsAPIProjectsHostsVerifyCreateRequest) (*Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}

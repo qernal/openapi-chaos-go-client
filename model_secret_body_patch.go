@@ -25,7 +25,7 @@ type SecretBodyPatch struct {
 	Type SecretCreateType `json:"type"`
 	Payload SecretCreatePayload `json:"payload"`
 	// Encryption entity
-	Encryption string `json:"encryption"`
+	Encryption string `json:"encryption" validate:"regexp=^keys\\/dek\\/[0-9]+$"`
 }
 
 type _SecretBodyPatch SecretBodyPatch

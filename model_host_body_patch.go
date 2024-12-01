@@ -21,7 +21,7 @@ var _ MappedNullable = &HostBodyPatch{}
 // HostBodyPatch Host body update
 type HostBodyPatch struct {
 	// The secret reference to the certificate
-	Certificate *string `json:"certificate,omitempty"`
+	Certificate *string `json:"certificate,omitempty" validate:"regexp=^projects\\\\:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+\\\\\\\\@[0-9]+)$"`
 	// If the host is disabled, then this host won't be accessible and so the deployments will not be routable
 	Disabled *bool `json:"disabled,omitempty"`
 }

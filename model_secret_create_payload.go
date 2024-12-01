@@ -13,6 +13,7 @@ package openapi_chaos_client
 
 import (
 	"encoding/json"
+	"gopkg.in/validator.v2"
 	"fmt"
 )
 
@@ -56,7 +57,11 @@ func (dst *SecretCreatePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretCertificate) == "{}" { // empty struct
 			dst.SecretCertificate = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretCertificate); err != nil {
+				dst.SecretCertificate = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretCertificate = nil
@@ -69,7 +74,11 @@ func (dst *SecretCreatePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretEnvironment) == "{}" { // empty struct
 			dst.SecretEnvironment = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretEnvironment); err != nil {
+				dst.SecretEnvironment = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretEnvironment = nil
@@ -82,7 +91,11 @@ func (dst *SecretCreatePayload) UnmarshalJSON(data []byte) error {
 		if string(jsonSecretRegistry) == "{}" { // empty struct
 			dst.SecretRegistry = nil
 		} else {
-			match++
+			if err = validator.Validate(dst.SecretRegistry); err != nil {
+				dst.SecretRegistry = nil
+			} else {
+				match++
+			}
 		}
 	} else {
 		dst.SecretRegistry = nil
