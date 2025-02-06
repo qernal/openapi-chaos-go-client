@@ -92,7 +92,7 @@ Class | Method | HTTP request | Description
 *HostsAPI* | [**ProjectsHostsUpdate**](docs/HostsAPI.md#projectshostsupdate) | **Put** /projects/{project_id}/hosts/{hostname} | Update specific host by hostname
 *HostsAPI* | [**ProjectsHostsVerifyCreate**](docs/HostsAPI.md#projectshostsverifycreate) | **Post** /projects/{project_id}/hosts/{hostname}/verify | Schedule host verification task
 *LogsAPI* | [**LogsList**](docs/LogsAPI.md#logslist) | **Get** /logs | Get logs
-*MetricsAPI* | [**MetricsAggregationsList**](docs/MetricsAPI.md#metricsaggregationslist) | **Get** /metrics/aggregations/{metric_type} | Get metrics
+*MetricsAPI* | [**MetricsAggregationsList**](docs/MetricsAPI.md#metricsaggregationslist) | **Get** /metrics/aggregations/{metric_aggregation_type} | Get metrics
 *OrganisationsAPI* | [**OrganisationsCreate**](docs/OrganisationsAPI.md#organisationscreate) | **Post** /organisations | Create organisations
 *OrganisationsAPI* | [**OrganisationsDelete**](docs/OrganisationsAPI.md#organisationsdelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
 *OrganisationsAPI* | [**OrganisationsGet**](docs/OrganisationsAPI.md#organisationsget) | **Get** /organisations/{organisation_id} | Get an organisation

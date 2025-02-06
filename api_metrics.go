@@ -28,17 +28,10 @@ type MetricsAPIMetricsAggregationsListRequest struct {
 	ctx context.Context
 	ApiService *MetricsAPIService
 	metricType string
-	page *OrganisationsListPageParameter
 	fProject *string
 	fFunction *string
 	fTimestamps *LogsListFTimestampsParameter
 	fHistogramInterval *int32
-}
-
-// Query parameters for pagination
-func (r MetricsAPIMetricsAggregationsListRequest) Page(page OrganisationsListPageParameter) MetricsAPIMetricsAggregationsListRequest {
-	r.page = &page
-	return r
 }
 
 // Project uuid reference
@@ -104,16 +97,13 @@ func (a *MetricsAPIService) MetricsAggregationsListExecute(r MetricsAPIMetricsAg
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/metrics/aggregations/{metric_type}"
+	localVarPath := localBasePath + "/metrics/aggregations/{metric_aggregation_type}"
 	localVarPath = strings.Replace(localVarPath, "{"+"metric_type"+"}", url.PathEscape(parameterValueToString(r.metricType, "metricType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.page != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "deepObject", "")
-	}
 	if r.fProject != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "f_project", r.fProject, "form", "")
 	}

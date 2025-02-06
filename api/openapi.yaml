@@ -1918,7 +1918,7 @@ paths:
       summary: Get logs
       tags:
       - logs
-  /metrics/aggregations/{metric_type}:
+  /metrics/aggregations/{metric_aggregation_type}:
     get:
       description: |
         Retrieve metrics for a specific project or function. Use the query parameter to request a metrics report.
@@ -1944,14 +1944,6 @@ paths:
           example: httprequests
           type: string
         style: simple
-      - description: Query parameters for pagination
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          $ref: '#/components/schemas/organisations_list_page_parameter'
-        style: deepObject
       - description: Project uuid reference
         explode: true
         in: query
