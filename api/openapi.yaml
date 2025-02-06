@@ -1935,7 +1935,7 @@ paths:
           > Note: aggregations cannot return more than 300 data points
         explode: false
         in: path
-        name: metric_type
+        name: metric_aggregation_type
         required: true
         schema:
           enum:
@@ -2114,7 +2114,7 @@ components:
         > Note: aggregations cannot return more than 300 data points
       explode: false
       in: path
-      name: metric_type
+      name: metric_aggregation_type
       required: true
       schema:
         enum:

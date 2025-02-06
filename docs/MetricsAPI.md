@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## MetricsAggregationsList
 
-> MetricsAggregationsList200Response MetricsAggregationsList(ctx, metricType).FProject(fProject).FFunction(fFunction).FTimestamps(fTimestamps).FHistogramInterval(fHistogramInterval).Execute()
+> MetricsAggregationsList200Response MetricsAggregationsList(ctx, metricAggregationType).FProject(fProject).FFunction(fFunction).FTimestamps(fTimestamps).FHistogramInterval(fHistogramInterval).Execute()
 
 Get metrics
 
@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	metricType := "httprequests" // string | Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  > Note: aggregations cannot return more than 300 data points 
+	metricAggregationType := "httprequests" // string | Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  > Note: aggregations cannot return more than 300 data points 
 	fProject := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project uuid reference (optional)
 	fFunction := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Function uuid reference (optional)
 	fTimestamps := *openapiclient.NewLogsListFTimestampsParameter() // LogsListFTimestampsParameter | Timestamp restriction for query (optional)
@@ -37,7 +37,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MetricsAPI.MetricsAggregationsList(context.Background(), metricType).FProject(fProject).FFunction(fFunction).FTimestamps(fTimestamps).FHistogramInterval(fHistogramInterval).Execute()
+	resp, r, err := apiClient.MetricsAPI.MetricsAggregationsList(context.Background(), metricAggregationType).FProject(fProject).FFunction(fFunction).FTimestamps(fTimestamps).FHistogramInterval(fHistogramInterval).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MetricsAPI.MetricsAggregationsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**metricType** | **string** | Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  &gt; Note: aggregations cannot return more than 300 data points  | 
+**metricAggregationType** | **string** | Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  &gt; Note: aggregations cannot return more than 300 data points  | 
 
 ### Other Parameters
 

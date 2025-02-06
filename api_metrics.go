@@ -27,7 +27,7 @@ type MetricsAPIService service
 type MetricsAPIMetricsAggregationsListRequest struct {
 	ctx context.Context
 	ApiService *MetricsAPIService
-	metricType string
+	metricAggregationType string
 	fProject *string
 	fFunction *string
 	fTimestamps *LogsListFTimestampsParameter
@@ -71,14 +71,14 @@ Retrieve metrics for a specific project or function. Use the query parameter to 
 
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param metricType Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  > Note: aggregations cannot return more than 300 data points 
+ @param metricAggregationType Metric aggregation type, types can be used with either a project or a function filter.  - httprequests: Aggregated HTTP requests - resourcestats: Aggregated resource stats (such as CPU, Memory and Network)  > Note: aggregations cannot return more than 300 data points 
  @return MetricsAPIMetricsAggregationsListRequest
 */
-func (a *MetricsAPIService) MetricsAggregationsList(ctx context.Context, metricType string) MetricsAPIMetricsAggregationsListRequest {
+func (a *MetricsAPIService) MetricsAggregationsList(ctx context.Context, metricAggregationType string) MetricsAPIMetricsAggregationsListRequest {
 	return MetricsAPIMetricsAggregationsListRequest{
 		ApiService: a,
 		ctx: ctx,
-		metricType: metricType,
+		metricAggregationType: metricAggregationType,
 	}
 }
 
@@ -98,7 +98,7 @@ func (a *MetricsAPIService) MetricsAggregationsListExecute(r MetricsAPIMetricsAg
 	}
 
 	localVarPath := localBasePath + "/metrics/aggregations/{metric_aggregation_type}"
-	localVarPath = strings.Replace(localVarPath, "{"+"metric_type"+"}", url.PathEscape(parameterValueToString(r.metricType, "metricType")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"metric_aggregation_type"+"}", url.PathEscape(parameterValueToString(r.metricAggregationType, "metricAggregationType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
