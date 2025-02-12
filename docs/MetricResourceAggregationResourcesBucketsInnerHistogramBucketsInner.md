@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **DocCount** | Pointer to **int32** | Number of documents in the bucket | [optional] 
 **Counter** | Pointer to [**MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerCounter**](MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerCounter.md) |  | [optional] 
 **Gauge** | Pointer to [**MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerGauge**](MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerGauge.md) |  | [optional] 
-**Key** | Pointer to **int64** | Histogram key (typically unix timestamp) | [optional] 
+**Key** | Pointer to **float32** | Histogram key (typically unix timestamp) | [optional] 
 **KeyAsString** | Pointer to **string** | Histogram key as string/date-time | [optional] 
 
 ## Methods
@@ -106,20 +106,20 @@ HasGauge returns a boolean if a field has been set.
 
 ### GetKey
 
-`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKey() int64`
+`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKey() float32`
 
 GetKey returns the Key field if non-nil, zero value otherwise.
 
 ### GetKeyOk
 
-`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKeyOk() (*int64, bool)`
+`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKeyOk() (*float32, bool)`
 
 GetKeyOk returns a tuple with the Key field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetKey
 
-`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) SetKey(v int64)`
+`func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) SetKey(v float32)`
 
 SetKey sets Key field to given value.
 
