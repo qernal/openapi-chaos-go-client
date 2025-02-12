@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Buckets** | Pointer to [**[]MetricResourceAggregationResourcesBucketsInner**](MetricResourceAggregationResourcesBucketsInner.md) | Array of unqiue resources | [optional] 
+**Buckets** | Pointer to [**[]MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner**](MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner.md) | Array of resource usage by interval  &gt; Note: A metric will have either a &#x60;counter&#x60; or &#x60;gauge&#x60; value  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetBuckets
 
-`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBuckets() []MetricResourceAggregationResourcesBucketsInner`
+`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBuckets() []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner`
 
 GetBuckets returns the Buckets field if non-nil, zero value otherwise.
 
 ### GetBucketsOk
 
-`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBucketsOk() (*[]MetricResourceAggregationResourcesBucketsInner, bool)`
+`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBucketsOk() (*[]MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner, bool)`
 
 GetBucketsOk returns a tuple with the Buckets field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBuckets
 
-`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) SetBuckets(v []MetricResourceAggregationResourcesBucketsInner)`
+`func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) SetBuckets(v []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner)`
 
 SetBuckets sets Buckets field to given value.
 

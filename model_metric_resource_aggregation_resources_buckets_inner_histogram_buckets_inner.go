@@ -25,7 +25,7 @@ type MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner struct 
 	Counter *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerCounter `json:"counter,omitempty"`
 	Gauge *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInnerGauge `json:"gauge,omitempty"`
 	// Histogram key (typically unix timestamp)
-	Key *float32 `json:"key,omitempty"`
+	Key *int64 `json:"key,omitempty"`
 	// Histogram key as string/date-time
 	KeyAsString *string `json:"key_as_string,omitempty"`
 }
@@ -144,9 +144,9 @@ func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) Se
 }
 
 // GetKey returns the Key field value if set, zero value otherwise.
-func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKey() float32 {
+func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKey() int64 {
 	if o == nil || IsNil(o.Key) {
-		var ret float32
+		var ret int64
 		return ret
 	}
 	return *o.Key
@@ -154,7 +154,7 @@ func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) Ge
 
 // GetKeyOk returns a tuple with the Key field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKeyOk() (*float32, bool) {
+func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) GetKeyOk() (*int64, bool) {
 	if o == nil || IsNil(o.Key) {
 		return nil, false
 	}
@@ -170,8 +170,8 @@ func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) Ha
 	return false
 }
 
-// SetKey gets a reference to the given float32 and assigns it to the Key field.
-func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) SetKey(v float32) {
+// SetKey gets a reference to the given int64 and assigns it to the Key field.
+func (o *MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) SetKey(v int64) {
 	o.Key = &v
 }
 

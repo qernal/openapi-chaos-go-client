@@ -4535,7 +4535,8 @@ components:
         key:
           description: Histogram key (typically unix timestamp)
           example: 1738108800000
-          type: number
+          format: int64
+          type: integer
         key_as_string:
           description: Histogram key as string/date-time
           example: 2025-01-29T00:00:00Z
@@ -4727,9 +4728,12 @@ components:
       description: Histogram of http status code usage
       properties:
         buckets:
-          description: Array of unqiue resources
+          description: |
+            Array of resource usage by interval
+
+            > Note: A metric will have either a `counter` or `gauge` value
           items:
-            $ref: '#/components/schemas/MetricResourceAggregation_resources_buckets_inner'
+            $ref: '#/components/schemas/MetricResourceAggregation_resources_buckets_inner_histogram_buckets_inner'
           type: array
       type: object
     MetricHttpAggregation_http_codes_buckets_inner:

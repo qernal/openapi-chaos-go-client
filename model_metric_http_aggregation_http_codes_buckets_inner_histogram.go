@@ -20,8 +20,8 @@ var _ MappedNullable = &MetricHttpAggregationHttpCodesBucketsInnerHistogram{}
 
 // MetricHttpAggregationHttpCodesBucketsInnerHistogram Histogram of http status code usage
 type MetricHttpAggregationHttpCodesBucketsInnerHistogram struct {
-	// Array of unqiue resources
-	Buckets []MetricResourceAggregationResourcesBucketsInner `json:"buckets,omitempty"`
+	// Array of resource usage by interval  > Note: A metric will have either a `counter` or `gauge` value 
+	Buckets []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner `json:"buckets,omitempty"`
 }
 
 // NewMetricHttpAggregationHttpCodesBucketsInnerHistogram instantiates a new MetricHttpAggregationHttpCodesBucketsInnerHistogram object
@@ -42,9 +42,9 @@ func NewMetricHttpAggregationHttpCodesBucketsInnerHistogramWithDefaults() *Metri
 }
 
 // GetBuckets returns the Buckets field value if set, zero value otherwise.
-func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBuckets() []MetricResourceAggregationResourcesBucketsInner {
+func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBuckets() []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner {
 	if o == nil || IsNil(o.Buckets) {
-		var ret []MetricResourceAggregationResourcesBucketsInner
+		var ret []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner
 		return ret
 	}
 	return o.Buckets
@@ -52,7 +52,7 @@ func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBuckets() []Met
 
 // GetBucketsOk returns a tuple with the Buckets field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBucketsOk() ([]MetricResourceAggregationResourcesBucketsInner, bool) {
+func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) GetBucketsOk() ([]MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner, bool) {
 	if o == nil || IsNil(o.Buckets) {
 		return nil, false
 	}
@@ -68,8 +68,8 @@ func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) HasBuckets() bool 
 	return false
 }
 
-// SetBuckets gets a reference to the given []MetricResourceAggregationResourcesBucketsInner and assigns it to the Buckets field.
-func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) SetBuckets(v []MetricResourceAggregationResourcesBucketsInner) {
+// SetBuckets gets a reference to the given []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner and assigns it to the Buckets field.
+func (o *MetricHttpAggregationHttpCodesBucketsInnerHistogram) SetBuckets(v []MetricResourceAggregationResourcesBucketsInnerHistogramBucketsInner) {
 	o.Buckets = v
 }
 
