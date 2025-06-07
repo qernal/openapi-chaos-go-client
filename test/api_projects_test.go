@@ -88,6 +88,35 @@ func Test_openapi_chaos_client_ProjectsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ProjectsAPIService ProjectsQuotasGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+		var quotaEntityQuota string
+
+		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsQuotasGet(context.Background(), projectId, quotaEntityQuota).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ProjectsAPIService ProjectsQuotasList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var projectId string
+
+		resp, httpRes, err := apiClient.ProjectsAPI.ProjectsQuotasList(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ProjectsAPIService ProjectsUpdate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

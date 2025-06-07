@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**OrganisationsDelete**](OrganisationsAPI.md#OrganisationsDelete) | **Delete** /organisations/{organisation_id} | Delete an organisation
 [**OrganisationsGet**](OrganisationsAPI.md#OrganisationsGet) | **Get** /organisations/{organisation_id} | Get an organisation
 [**OrganisationsList**](OrganisationsAPI.md#OrganisationsList) | **Get** /organisations | List organisations
+[**OrganisationsQuotasGet**](OrganisationsAPI.md#OrganisationsQuotasGet) | **Get** /organisations/{organisation_id}/quotas/{quota_entity_quota} | Get specific organisation quota
+[**OrganisationsQuotasList**](OrganisationsAPI.md#OrganisationsQuotasList) | **Get** /organisations/{organisation_id}/quotas | List organisation quotas
 [**OrganisationsUpdate**](OrganisationsAPI.md#OrganisationsUpdate) | **Put** /organisations/{organisation_id} | Update an organisation
 
 
@@ -271,6 +273,149 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListOrganisationResponse**](ListOrganisationResponse.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrganisationsQuotasGet
+
+> []Quota OrganisationsQuotasGet(ctx, organisationId, quotaEntityQuota).Execute()
+
+Get specific organisation quota
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+	quotaEntityQuota := "projects_secrets" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsQuotasGet(context.Background(), organisationId, quotaEntityQuota).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsQuotasGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsQuotasGet`: []Quota
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsQuotasGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organisationId** | **string** | Organisation ID reference | 
+**quotaEntityQuota** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrganisationsQuotasGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]Quota**](Quota.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## OrganisationsQuotasList
+
+> []Quota OrganisationsQuotasList(ctx, organisationId).Execute()
+
+List organisation quotas
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganisationsAPI.OrganisationsQuotasList(context.Background(), organisationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsQuotasList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `OrganisationsQuotasList`: []Quota
+	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsQuotasList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organisationId** | **string** | Organisation ID reference | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiOrganisationsQuotasListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]Quota**](Quota.md)
 
 ### Authorization
 

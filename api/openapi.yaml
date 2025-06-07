@@ -17,6 +17,8 @@ security:
 - token: []
 - cookie: []
 tags:
+- description: User operations
+  name: users
 - description: "Project operations, projects belong to an organisation"
   name: projects
 - description: "Organisations are a hierarchy top-level for a user, they allow for\
@@ -39,6 +41,113 @@ tags:
 - description: Metrics and aggregations for functions and projects
   name: metrics
 paths:
+  /users/{user_id}/quotas:
+    get:
+      description: Get the quotas for a user
+      operationId: users-quotas-list
+      parameters:
+      - description: User ID reference
+        explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List user quotas
+      tags:
+      - users
+      - quotas
+  /users/{user_id}/quotas/{quota_entity_quota}:
+    get:
+      description: Get a specific quota for a user
+      operationId: users-quotas-get
+      parameters:
+      - description: User ID reference
+        explode: false
+        in: path
+        name: user_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: quota_entity_quota
+        required: true
+        schema:
+          description: Specific quota to filter by
+          example: projects_secrets
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Get specific user quota
+      tags:
+      - users
+      - quotas
   /organisations:
     get:
       description: List organisations
@@ -364,6 +473,113 @@ paths:
       summary: Get all projects within an organisation
       tags:
       - projects
+  /organisations/{organisation_id}/quotas:
+    get:
+      description: Get the quotas for an organisation
+      operationId: organisations-quotas-list
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List organisation quotas
+      tags:
+      - organisations
+      - quotas
+  /organisations/{organisation_id}/quotas/{quota_entity_quota}:
+    get:
+      description: Get a specific quota for an organisation
+      operationId: organisations-quotas-get
+      parameters:
+      - description: Organisation ID reference
+        explode: false
+        in: path
+        name: organisation_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: quota_entity_quota
+        required: true
+        schema:
+          description: Specific quota to filter by
+          example: projects_secrets
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Get specific organisation quota
+      tags:
+      - organisations
+      - quotas
   /projects:
     get:
       description: "Get all projects for this user, paginated"
@@ -1298,6 +1514,113 @@ paths:
       summary: Schedule host verification task
       tags:
       - hosts
+  /projects/{project_id}/quotas:
+    get:
+      description: Get the quotas for a project
+      operationId: projects-quotas-list
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List project quotas
+      tags:
+      - projects
+      - quotas
+  /projects/{project_id}/quotas/{quota_entity_quota}:
+    get:
+      description: Get a specific quota for a project
+      operationId: projects-quotas-get
+      parameters:
+      - description: Project ID reference
+        explode: false
+        in: path
+        name: project_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: quota_entity_quota
+        required: true
+        schema:
+          description: Specific quota to filter by
+          example: projects_secrets
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListQuotas'
+          description: List quotas
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Get specific project quota
+      tags:
+      - projects
+      - quotas
   /auth/tokens:
     get:
       operationId: auth-tokens-list
@@ -2018,6 +2341,17 @@ components:
       schema:
         $ref: '#/components/schemas/organisations_list_page_parameter'
       style: deepObject
+    user_id:
+      description: User ID reference
+      explode: false
+      in: path
+      name: user_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
     organisation_id:
       description: Organisation ID reference
       explode: false
@@ -2121,6 +2455,16 @@ components:
         - httprequests
         - resourcestats
         example: httprequests
+        type: string
+      style: simple
+    quota_entity_quota:
+      explode: false
+      in: path
+      name: quota_entity_quota
+      required: true
+      schema:
+        description: Specific quota to filter by
+        example: projects_secrets
         type: string
       style: simple
     filter_name:
@@ -2462,6 +2806,12 @@ components:
           schema:
             $ref: '#/components/schemas/metrics_aggregations_list_200_response'
       description: Metric aggregation
+    ListQuotas:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListQuotas'
+      description: List quotas
   schemas:
     NotFoundResponse:
       description: Resource not found
@@ -4286,6 +4636,47 @@ components:
       properties:
         http_codes:
           $ref: '#/components/schemas/MetricHttpAggregation_http_codes'
+      type: object
+    ListQuotas:
+      description: List of quota limits and usage
+      items:
+        $ref: '#/components/schemas/Quota'
+      type: array
+    Quota:
+      description: Quota usage
+      example:
+        usage: 50
+        name: projects_functions_cpu_cores
+        limit: 100
+        description: Number of CPU cores for projects functions per project
+        type: project
+      properties:
+        name:
+          description: Quota name
+          example: projects_functions_cpu_cores
+          type: string
+        description:
+          description: Quota description
+          example: Number of CPU cores for projects functions per project
+          type: string
+        limit:
+          description: Quota limit
+          example: 100
+          type: integer
+        usage:
+          description: Quota usage
+          example: 50
+          type: integer
+        type:
+          description: Quota type (group)
+          example: project
+          type: string
+      required:
+      - description
+      - limit
+      - name
+      - type
+      - usage
       type: object
     organisations_list_page_parameter:
       properties:

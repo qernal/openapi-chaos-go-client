@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**ProjectsDelete**](ProjectsAPI.md#ProjectsDelete) | **Delete** /projects/{project_id} | Delete project
 [**ProjectsGet**](ProjectsAPI.md#ProjectsGet) | **Get** /projects/{project_id} | Get project
 [**ProjectsList**](ProjectsAPI.md#ProjectsList) | **Get** /projects | List projects
+[**ProjectsQuotasGet**](ProjectsAPI.md#ProjectsQuotasGet) | **Get** /projects/{project_id}/quotas/{quota_entity_quota} | Get specific project quota
+[**ProjectsQuotasList**](ProjectsAPI.md#ProjectsQuotasList) | **Get** /projects/{project_id}/quotas | List project quotas
 [**ProjectsUpdate**](ProjectsAPI.md#ProjectsUpdate) | **Put** /projects/{project_id} | Update project
 
 
@@ -346,6 +348,149 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListProjectResponse**](ListProjectResponse.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProjectsQuotasGet
+
+> []Quota ProjectsQuotasGet(ctx, projectId, quotaEntityQuota).Execute()
+
+Get specific project quota
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+	quotaEntityQuota := "projects_secrets" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsQuotasGet(context.Background(), projectId, quotaEntityQuota).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsQuotasGet``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsQuotasGet`: []Quota
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsQuotasGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** | Project ID reference | 
+**quotaEntityQuota** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProjectsQuotasGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**[]Quota**](Quota.md)
+
+### Authorization
+
+[cookie](../README.md#cookie), [token](../README.md#token)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ProjectsQuotasList
+
+> []Quota ProjectsQuotasList(ctx, projectId).Execute()
+
+List project quotas
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qernal/openapi-chaos-go-client"
+)
+
+func main() {
+	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectsAPI.ProjectsQuotasList(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsQuotasList``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ProjectsQuotasList`: []Quota
+	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsQuotasList`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**projectId** | **string** | Project ID reference | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiProjectsQuotasListRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]Quota**](Quota.md)
 
 ### Authorization
 

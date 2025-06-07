@@ -10,8 +10,10 @@ api_metrics.go
 api_organisations.go
 api_projects.go
 api_providers.go
+api_quotas.go
 api_secrets.go
 api_tokens.go
+api_users.go
 client.go
 configuration.go
 docs/AuthToken.md
@@ -81,6 +83,8 @@ docs/ProjectsAPI.md
 docs/Provider.md
 docs/ProviderLocations.md
 docs/ProvidersAPI.md
+docs/Quota.md
+docs/QuotasAPI.md
 docs/SecretBody.md
 docs/SecretBodyPatch.md
 docs/SecretCertificate.md
@@ -99,6 +103,7 @@ docs/SecretResponsePayload.md
 docs/SecretsAPI.md
 docs/TokensAPI.md
 docs/UnauthorisedResponse.md
+docs/UsersAPI.md
 git_push.sh
 go.mod
 go.sum
@@ -162,6 +167,7 @@ model_project_body_patch.go
 model_project_response.go
 model_provider.go
 model_provider_locations.go
+model_quota.go
 model_secret_body.go
 model_secret_body_patch.go
 model_secret_certificate.go
@@ -186,6 +192,8 @@ test/api_metrics_test.go
 test/api_organisations_test.go
 test/api_projects_test.go
 test/api_providers_test.go
+test/api_quotas_test.go
 test/api_secrets_test.go
 test/api_tokens_test.go
+test/api_users_test.go
 utils.go
