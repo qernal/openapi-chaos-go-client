@@ -1,9 +1,8 @@
 openapi: 3.0.0
 info:
   contact:
-    email: support@qernal.com
-  description: Central Management API - publicly exposed set of APIs for managing
-    deployments
+    email: help@qernal.support
+  description: Central Management API - publicly exposed set of APIs for cloud resources
   title: Chaos
   version: 1.0.0
   x-logo:
