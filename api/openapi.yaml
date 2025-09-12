@@ -18,6 +18,10 @@ security:
 tags:
 - description: User operations
   name: users
+- description: Billing operations for accounts and payment methods
+  name: billing
+- description: Quota limits and usage
+  name: quotas
 - description: "Project operations, projects belong to an organisation"
   name: projects
 - description: "Organisations are a hierarchy top-level for a user, they allow for\
@@ -147,6 +151,517 @@ paths:
       tags:
       - users
       - quotas
+  /billing/accounts:
+    get:
+      description: "List all billing accounts for this user, paginated"
+      operationId: billing-accounts-list
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBillingAccounts'
+          description: List billing accounts
+        "401":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List billing accounts
+      tags:
+      - billing
+    post:
+      description: Create a new billing account
+      operationId: billing-accounts-create
+      requestBody:
+        $ref: '#/components/requestBodies/BillingAccountBody'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAccount'
+          description: Get billing account
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "401":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Create billing account
+      tags:
+      - billing
+  /billing/accounts/{billing_account_id}:
+    delete:
+      description: Delete a specific billing account if it is no longer attached to
+        any organizations or projects and has no outstanding balances or invoice payments.
+      operationId: billing-accounts-delete
+      parameters:
+      - description: Billing account ID reference
+        explode: false
+        in: path
+        name: billing_account_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Delete billing account
+      tags:
+      - billing
+    get:
+      description: Get a specific billing account
+      operationId: billing-accounts-get
+      parameters:
+      - description: Billing account ID reference
+        explode: false
+        in: path
+        name: billing_account_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAccount'
+          description: Get billing account
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Get billing account
+      tags:
+      - billing
+    put:
+      description: Update the details of a specific billing account.
+      operationId: billing-accounts-update
+      parameters:
+      - description: Billing account ID reference
+        explode: false
+        in: path
+        name: billing_account_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/BillingAccountBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingAccount'
+          description: Get billing account
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Update billing account
+      tags:
+      - billing
+  /billing/accounts/{billing_account_id}/payment-methods:
+    get:
+      description: Retrieve a list of payment methods associated with a specific billing
+        account.
+      operationId: accounts-payment-methods-list
+      parameters:
+      - description: Billing account ID reference
+        explode: false
+        in: path
+        name: billing_account_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListPaymentMethods'
+          description: List payment methods
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: List payment methods for a billing account
+      tags:
+      - billing
+    post:
+      description: Create a new payment method associated with a specific billing
+        account.
+      operationId: accounts-payment-methods-create
+      parameters:
+      - description: Billing account ID reference
+        explode: false
+        in: path
+        name: billing_account_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/PaymentMethodBody'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethodCreate'
+          description: Create payment method
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+        "409":
+          content:
+            application/json:
+              examples:
+                generic-conflict-response:
+                  value:
+                    message: "Conflict, Resource already exists"
+              schema:
+                $ref: '#/components/schemas/ConflictResponse'
+          description: Resource Conflict
+      security:
+      - token: []
+      - cookie: []
+      summary: Create a new payment method for a billing account
+      tags:
+      - billing
+  /billing/payment-methods/{billing_payment_method_id}:
+    delete:
+      description: Remove a specific payment method entirely if there are no associated
+        resources and no pending partial invoices.
+      operationId: payment-methods-delete
+      parameters:
+      - description: Payment method ID reference
+        explode: false
+        in: path
+        name: billing_payment_method_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                generic-deleted-response:
+                  value:
+                    message: Resource deleted
+              schema:
+                $ref: '#/components/schemas/DeletedResponse'
+          description: Resource deleted
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Delete a specific payment method
+      tags:
+      - billing
+    get:
+      description: "Get metadata (such as state, active, declined, cancelled, etc.)\
+        \ for a specific payment method."
+      operationId: payment-methods-get
+      parameters:
+      - description: Payment method ID reference
+        explode: false
+        in: path
+        name: billing_payment_method_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+          description: Get payment method
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Retrieve metadata for a specific payment method
+      tags:
+      - billing
+    put:
+      description: Update the details of a specific payment method.
+      operationId: payment-methods-update
+      parameters:
+      - description: Payment method ID reference
+        explode: false
+        in: path
+        name: billing_payment_method_id
+        required: true
+        schema:
+          example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/PaymentMethodBody'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentMethod'
+          description: Get payment method
+        "404":
+          content:
+            application/json:
+              examples:
+                generic-not-found-response:
+                  value:
+                    message: Resource not found
+              schema:
+                $ref: '#/components/schemas/NotFoundResponse'
+          description: Resource Not Found
+        "400":
+          content:
+            application/json:
+              examples:
+                generic-bad-request-response:
+                  value:
+                    message: Missing fields
+                    fields:
+                      generic_field: Valid field required
+              schema:
+                $ref: '#/components/schemas/BadRequestResponse'
+          description: Resource Bad Request
+        "403":
+          content:
+            application/json:
+              examples:
+                generic-unauthorised-response:
+                  value:
+                    message: Unauthorised
+              schema:
+                $ref: '#/components/schemas/UnauthorisedResponse'
+          description: Unauthorised
+      security:
+      - token: []
+      - cookie: []
+      summary: Update a specific payment method
+      tags:
+      - billing
   /organisations:
     get:
       description: List organisations
@@ -2466,6 +2981,28 @@ components:
         example: projects_secrets
         type: string
       style: simple
+    billing_account_id:
+      description: Billing account ID reference
+      explode: false
+      in: path
+      name: billing_account_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
+    billing_payment_method_id:
+      description: Payment method ID reference
+      explode: false
+      in: path
+      name: billing_payment_method_id
+      required: true
+      schema:
+        example: 3069614e-adc8-47cb-a69c-decf9c5f90fc
+        format: uuid
+        type: string
+      style: simple
     filter_name:
       description: |
         Filter resource on name, if the value ends in an asterix it will be
@@ -2619,6 +3156,20 @@ components:
           schema:
             $ref: '#/components/schemas/Function'
       description: Update any field
+      required: true
+    BillingAccountBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BillingAccountBody'
+      description: Create/Update any field
+      required: true
+    PaymentMethodBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentMethodBody'
+      description: Create/Update any field
       required: true
   responses:
     NoContent:
@@ -2811,6 +3362,36 @@ components:
           schema:
             $ref: '#/components/schemas/ListQuotas'
       description: List quotas
+    ListBillingAccounts:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListBillingAccounts'
+      description: List billing accounts
+    BillingAccount:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BillingAccount'
+      description: Get billing account
+    ListPaymentMethods:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ListPaymentMethods'
+      description: List payment methods
+    PaymentMethod:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentMethod'
+      description: Get payment method
+    PaymentMethodCreate:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PaymentMethodCreate'
+      description: Create payment method
   schemas:
     NotFoundResponse:
       description: Resource not found
@@ -4677,6 +5258,233 @@ components:
       - type
       - usage
       type: object
+    ListBillingAccounts:
+      description: List of billing accounts
+      items:
+        $ref: '#/components/schemas/BillingAccount'
+      type: array
+    BillingAccount:
+      description: Billing account
+      example:
+        balance: 100.5
+        updated_at: 2023-01-01T00:00:00Z
+        user_id: 641adf03-0bd2-42e6-9166-cb57008d60eb
+        name: Business Account
+        created_at: 2023-01-01T00:00:00Z
+        id: 123e4567-e89b-12d3-a456-426614174000
+        state: active
+      properties:
+        id:
+          description: Unique identifier for the billing account
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          type: string
+        user_id:
+          description: User ID associated with the billing account
+          example: 641adf03-0bd2-42e6-9166-cb57008d60eb
+          format: uuid
+          type: string
+        name:
+          description: Name of the billing account
+          example: Business Account
+          type: string
+        state:
+          description: Current state of the billing account - new accounts are created
+            with state "created" until a card is added
+          enum:
+          - created
+          - active
+          - inactive
+          - suspended
+          - deleted
+          example: active
+          type: string
+        balance:
+          description: Current balance of the billing account
+          example: 100.5
+          format: float
+          type: number
+        created_at:
+          description: Timestamp when the billing account was created
+          example: 2023-01-01T00:00:00Z
+          format: date-time
+          type: string
+        updated_at:
+          description: Timestamp when the billing account was last updated
+          example: 2023-01-01T00:00:00Z
+          format: date-time
+          type: string
+      type: object
+    BillingAccountBody:
+      description: Billing account body
+      example:
+        name: Business Account
+      properties:
+        name:
+          description: Name of the billing account
+          example: Business Account
+          type: string
+      required:
+      - name
+      type: object
+    PaymentMethod:
+      description: Payment method
+      example:
+        address:
+          country: US
+          address_line2: Suite 400
+          address_line1: 123 Main St
+          city: Metropolis
+          county: CA
+          last_name: Doe
+          organisation: Acme Corp
+          phone_number: +1-555-123-4567
+          title: Mr
+          postal_code: "[\"10001\",\"SW1A 1AA\"]"
+          first_name: John
+        name: Amex Business Gold
+        id: 71afba61-e7b4-4072-a2b4-099c8c2cfcba
+        state: active
+        billing_account: 123e4567-e89b-12d3-a456-426614174000
+      properties:
+        id:
+          description: Unique identifier for the payment method
+          example: 71afba61-e7b4-4072-a2b4-099c8c2cfcba
+          format: uuid
+          type: string
+        billing_account:
+          description: Unique identifier for the billing account
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          type: string
+        name:
+          description: Name on the payment method
+          example: Amex Business Gold
+          type: string
+        state:
+          description: Current state of the payment method
+          enum:
+          - active
+          - inactive
+          - suspended
+          - deleted
+          example: active
+          type: string
+        address:
+          $ref: '#/components/schemas/PaymentMethod_address'
+      type: object
+    PaymentMethodBody:
+      description: Payment method body
+      example:
+        country: US
+        address_line2: Suite 400
+        address_line1: 123 Main St
+        city: Metropolis
+        name: Amex Business Gold
+        county: CA
+        last_name: Doe
+        organisation: Acme Corp
+        phone_number: +1-555-123-4567
+        title: Mr
+        postal_code: "[\"10001\",\"SW1A 1AA\"]"
+        first_name: John
+      properties:
+        name:
+          description: Name on the payment method
+          example: Amex Business Gold
+          type: string
+        title:
+          description: Title of the cardholder
+          example: Mr
+          type: string
+        first_name:
+          description: First name of the cardholder
+          example: John
+          type: string
+        last_name:
+          description: Last name of the cardholder
+          example: Doe
+          type: string
+        organisation:
+          description: "Organisation name, if applicable"
+          example: Acme Corp
+          type: string
+        address_line1:
+          description: First line of the address
+          example: 123 Main St
+          type: string
+        address_line2:
+          description: "Second line of the address, if applicable"
+          example: Suite 400
+          type: string
+        city:
+          description: City of the address
+          example: Metropolis
+          type: string
+        county:
+          description: County or state of the address
+          example: CA
+          type: string
+        postal_code:
+          description: Postal or ZIP code of the address
+          example: "[\"10001\",\"SW1A 1AA\"]"
+          type: string
+        country:
+          description: Country of the address (ISO 3166-1 alpha-2 code)
+          example: US
+          type: string
+        phone_number:
+          description: Contact phone number associated with the payment method
+          example: +1-555-123-4567
+          type: string
+      type: object
+    PaymentMethodCreate:
+      description: Payment method create response
+      example:
+        payment_method_id: 71afba61-e7b4-4072-a2b4-099c8c2cfcba
+        billing_account_id: 123e4567-e89b-12d3-a456-426614174000
+        name: Amex Business Gold
+        description: description
+        links:
+          expires_at: 2023-01-02T00:00:00Z
+          created_at: 2023-01-01T00:00:00Z
+          checkout: https://checkout.paymentprovider.com/pay
+        state: active
+      properties:
+        payment_method_id:
+          description: Unique identifier for the payment method
+          example: 71afba61-e7b4-4072-a2b4-099c8c2cfcba
+          format: uuid
+          type: string
+        billing_account_id:
+          description: Unique identifier for the billing account
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          type: string
+        name:
+          description: Name on the payment method
+          example: Amex Business Gold
+          type: string
+        description:
+          description: Description of this order (e.g. payment authorisation)
+          type: string
+        state:
+          description: Current state of the payment method
+          enum:
+          - active
+          - inactive
+          - suspended
+          - deleted
+          example: active
+          type: string
+        links:
+          $ref: '#/components/schemas/PaymentMethodCreate_links'
+      type: object
+    ListPaymentMethods:
+      description: List of payment methods
+      items:
+        $ref: '#/components/schemas/PaymentMethod'
+      type: array
     organisations_list_page_parameter:
       properties:
         before:
@@ -5163,6 +5971,89 @@ components:
           description: Sum of other document counts
           example: 0
           type: integer
+      type: object
+    PaymentMethod_address:
+      description: Billing address associated with the payment method
+      example:
+        country: US
+        address_line2: Suite 400
+        address_line1: 123 Main St
+        city: Metropolis
+        county: CA
+        last_name: Doe
+        organisation: Acme Corp
+        phone_number: +1-555-123-4567
+        title: Mr
+        postal_code: "[\"10001\",\"SW1A 1AA\"]"
+        first_name: John
+      properties:
+        title:
+          description: Title of the cardholder
+          example: Mr
+          type: string
+        first_name:
+          description: First name of the cardholder
+          example: John
+          type: string
+        last_name:
+          description: Last name of the cardholder
+          example: Doe
+          type: string
+        organisation:
+          description: "Organisation name, if applicable"
+          example: Acme Corp
+          type: string
+        address_line1:
+          description: First line of the address
+          example: 123 Main St
+          type: string
+        address_line2:
+          description: "Second line of the address, if applicable"
+          example: Suite 400
+          type: string
+        city:
+          description: City of the address
+          example: Metropolis
+          type: string
+        county:
+          description: County or state of the address
+          example: CA
+          type: string
+        postal_code:
+          description: Postal or ZIP code of the address
+          example: "[\"10001\",\"SW1A 1AA\"]"
+          type: string
+        country:
+          description: Country of the address (ISO 3166-1 alpha-2 code)
+          example: US
+          type: string
+        phone_number:
+          description: Contact phone number associated with the payment method
+          example: +1-555-123-4567
+          type: string
+      type: object
+    PaymentMethodCreate_links:
+      description: "Links related to the payment method, such as checkout URL"
+      example:
+        expires_at: 2023-01-02T00:00:00Z
+        created_at: 2023-01-01T00:00:00Z
+        checkout: https://checkout.paymentprovider.com/pay
+      properties:
+        checkout:
+          description: URL for the payment method checkout
+          example: https://checkout.paymentprovider.com/pay
+          format: uri
+          type: string
+        created_at:
+          description: Timestamp when the checkout link was created
+          example: 2023-01-01T00:00:00Z
+          format: date-time
+          type: string
+        expires_at:
+          description: Timestamp when the checkout link expires
+          example: 2023-01-02T00:00:00Z
+          format: date-time
+          type: string
       type: object
   securitySchemes:
     token:

@@ -78,6 +78,16 @@ All URIs are relative to *https://chaos.qernal.com/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*BillingAPI* | [**AccountsPaymentMethodsCreate**](docs/BillingAPI.md#accountspaymentmethodscreate) | **Post** /billing/accounts/{billing_account_id}/payment-methods | Create a new payment method for a billing account
+*BillingAPI* | [**AccountsPaymentMethodsList**](docs/BillingAPI.md#accountspaymentmethodslist) | **Get** /billing/accounts/{billing_account_id}/payment-methods | List payment methods for a billing account
+*BillingAPI* | [**BillingAccountsCreate**](docs/BillingAPI.md#billingaccountscreate) | **Post** /billing/accounts | Create billing account
+*BillingAPI* | [**BillingAccountsDelete**](docs/BillingAPI.md#billingaccountsdelete) | **Delete** /billing/accounts/{billing_account_id} | Delete billing account
+*BillingAPI* | [**BillingAccountsGet**](docs/BillingAPI.md#billingaccountsget) | **Get** /billing/accounts/{billing_account_id} | Get billing account
+*BillingAPI* | [**BillingAccountsList**](docs/BillingAPI.md#billingaccountslist) | **Get** /billing/accounts | List billing accounts
+*BillingAPI* | [**BillingAccountsUpdate**](docs/BillingAPI.md#billingaccountsupdate) | **Put** /billing/accounts/{billing_account_id} | Update billing account
+*BillingAPI* | [**PaymentMethodsDelete**](docs/BillingAPI.md#paymentmethodsdelete) | **Delete** /billing/payment-methods/{billing_payment_method_id} | Delete a specific payment method
+*BillingAPI* | [**PaymentMethodsGet**](docs/BillingAPI.md#paymentmethodsget) | **Get** /billing/payment-methods/{billing_payment_method_id} | Retrieve metadata for a specific payment method
+*BillingAPI* | [**PaymentMethodsUpdate**](docs/BillingAPI.md#paymentmethodsupdate) | **Put** /billing/payment-methods/{billing_payment_method_id} | Update a specific payment method
 *FunctionsAPI* | [**FunctionsCreate**](docs/FunctionsAPI.md#functionscreate) | **Post** /functions | Create function
 *FunctionsAPI* | [**FunctionsDelete**](docs/FunctionsAPI.md#functionsdelete) | **Delete** /functions/{function_id} | Delete function
 *FunctionsAPI* | [**FunctionsGet**](docs/FunctionsAPI.md#functionsget) | **Get** /functions/{function_id} | Get function (latest revision)
@@ -137,6 +147,8 @@ Class | Method | HTTP request | Description
  - [AuthTokenPatch](docs/AuthTokenPatch.md)
  - [BadRequestResponse](docs/BadRequestResponse.md)
  - [BadRequestResponseFields](docs/BadRequestResponseFields.md)
+ - [BillingAccount](docs/BillingAccount.md)
+ - [BillingAccountBody](docs/BillingAccountBody.md)
  - [ConflictResponse](docs/ConflictResponse.md)
  - [Date](docs/Date.md)
  - [DeletedResponse](docs/DeletedResponse.md)
@@ -186,6 +198,11 @@ Class | Method | HTTP request | Description
  - [OrganisationsListPageParameter](docs/OrganisationsListPageParameter.md)
  - [PaginationLinks](docs/PaginationLinks.md)
  - [PaginationMeta](docs/PaginationMeta.md)
+ - [PaymentMethod](docs/PaymentMethod.md)
+ - [PaymentMethodAddress](docs/PaymentMethodAddress.md)
+ - [PaymentMethodBody](docs/PaymentMethodBody.md)
+ - [PaymentMethodCreate](docs/PaymentMethodCreate.md)
+ - [PaymentMethodCreateLinks](docs/PaymentMethodCreateLinks.md)
  - [ProjectBody](docs/ProjectBody.md)
  - [ProjectBodyPatch](docs/ProjectBodyPatch.md)
  - [ProjectResponse](docs/ProjectResponse.md)

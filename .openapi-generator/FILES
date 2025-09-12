@@ -3,6 +3,7 @@
 .travis.yml
 README.md
 api/openapi.yaml
+api_billing.go
 api_functions.go
 api_hosts.go
 api_logs.go
@@ -22,6 +23,9 @@ docs/AuthTokenMeta.md
 docs/AuthTokenPatch.md
 docs/BadRequestResponse.md
 docs/BadRequestResponseFields.md
+docs/BillingAPI.md
+docs/BillingAccount.md
+docs/BillingAccountBody.md
 docs/ConflictResponse.md
 docs/Date.md
 docs/DeletedResponse.md
@@ -76,6 +80,11 @@ docs/OrganisationsAPI.md
 docs/OrganisationsListPageParameter.md
 docs/PaginationLinks.md
 docs/PaginationMeta.md
+docs/PaymentMethod.md
+docs/PaymentMethodAddress.md
+docs/PaymentMethodBody.md
+docs/PaymentMethodCreate.md
+docs/PaymentMethodCreateLinks.md
 docs/ProjectBody.md
 docs/ProjectBodyPatch.md
 docs/ProjectResponse.md
@@ -113,6 +122,8 @@ model_auth_token_meta.go
 model_auth_token_patch.go
 model_bad_request_response.go
 model_bad_request_response_fields.go
+model_billing_account.go
+model_billing_account_body.go
 model_conflict_response.go
 model_date.go
 model_deleted_response.go
@@ -162,6 +173,11 @@ model_organisation_response.go
 model_organisations_list_page_parameter.go
 model_pagination_links.go
 model_pagination_meta.go
+model_payment_method.go
+model_payment_method_address.go
+model_payment_method_body.go
+model_payment_method_create.go
+model_payment_method_create_links.go
 model_project_body.go
 model_project_body_patch.go
 model_project_response.go
@@ -185,6 +201,7 @@ model_secret_response.go
 model_secret_response_payload.go
 model_unauthorised_response.go
 response.go
+test/api_billing_test.go
 test/api_functions_test.go
 test/api_hosts_test.go
 test/api_logs_test.go
