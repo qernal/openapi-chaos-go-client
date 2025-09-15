@@ -404,7 +404,7 @@ func (r TokensAPIAuthTokensListRequest) Page(page OrganisationsListPageParameter
 	return r
 }
 
-func (r TokensAPIAuthTokensListRequest) Execute() (*ListAuthTokens, *http.Response, error) {
+func (r TokensAPIAuthTokensListRequest) Execute() ([]AuthTokenMeta, *http.Response, error) {
 	return r.ApiService.AuthTokensListExecute(r)
 }
 
@@ -422,13 +422,13 @@ func (a *TokensAPIService) AuthTokensList(ctx context.Context) TokensAPIAuthToke
 }
 
 // Execute executes the request
-//  @return ListAuthTokens
-func (a *TokensAPIService) AuthTokensListExecute(r TokensAPIAuthTokensListRequest) (*ListAuthTokens, *http.Response, error) {
+//  @return []AuthTokenMeta
+func (a *TokensAPIService) AuthTokensListExecute(r TokensAPIAuthTokensListRequest) ([]AuthTokenMeta, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListAuthTokens
+		localVarReturnValue  []AuthTokenMeta
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TokensAPIService.AuthTokensList")

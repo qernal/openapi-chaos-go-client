@@ -17,37 +17,37 @@ import (
 	"fmt"
 )
 
-// checks if the SecretMetaResponseDek type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretMetaResponseDek{}
+// checks if the SecretMetaDek type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretMetaDek{}
 
-// SecretMetaResponseDek DEK secret, `type: dek`
-type SecretMetaResponseDek struct {
+// SecretMetaDek DEK secret, `type: dek`
+type SecretMetaDek struct {
 	// Base64 encoded DEK public key
 	Public string `json:"public"`
 }
 
-type _SecretMetaResponseDek SecretMetaResponseDek
+type _SecretMetaDek SecretMetaDek
 
-// NewSecretMetaResponseDek instantiates a new SecretMetaResponseDek object
+// NewSecretMetaDek instantiates a new SecretMetaDek object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretMetaResponseDek(public string) *SecretMetaResponseDek {
-	this := SecretMetaResponseDek{}
+func NewSecretMetaDek(public string) *SecretMetaDek {
+	this := SecretMetaDek{}
 	this.Public = public
 	return &this
 }
 
-// NewSecretMetaResponseDekWithDefaults instantiates a new SecretMetaResponseDek object
+// NewSecretMetaDekWithDefaults instantiates a new SecretMetaDek object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretMetaResponseDekWithDefaults() *SecretMetaResponseDek {
-	this := SecretMetaResponseDek{}
+func NewSecretMetaDekWithDefaults() *SecretMetaDek {
+	this := SecretMetaDek{}
 	return &this
 }
 
 // GetPublic returns the Public field value
-func (o *SecretMetaResponseDek) GetPublic() string {
+func (o *SecretMetaDek) GetPublic() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SecretMetaResponseDek) GetPublic() string {
 
 // GetPublicOk returns a tuple with the Public field value
 // and a boolean to check if the value has been set.
-func (o *SecretMetaResponseDek) GetPublicOk() (*string, bool) {
+func (o *SecretMetaDek) GetPublicOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,11 +66,11 @@ func (o *SecretMetaResponseDek) GetPublicOk() (*string, bool) {
 }
 
 // SetPublic sets field value
-func (o *SecretMetaResponseDek) SetPublic(v string) {
+func (o *SecretMetaDek) SetPublic(v string) {
 	o.Public = v
 }
 
-func (o SecretMetaResponseDek) MarshalJSON() ([]byte, error) {
+func (o SecretMetaDek) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -78,13 +78,13 @@ func (o SecretMetaResponseDek) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretMetaResponseDek) ToMap() (map[string]interface{}, error) {
+func (o SecretMetaDek) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["public"] = o.Public
 	return toSerialize, nil
 }
 
-func (o *SecretMetaResponseDek) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretMetaDek) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -106,53 +106,53 @@ func (o *SecretMetaResponseDek) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretMetaResponseDek := _SecretMetaResponseDek{}
+	varSecretMetaDek := _SecretMetaDek{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretMetaResponseDek)
+	err = decoder.Decode(&varSecretMetaDek)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretMetaResponseDek(varSecretMetaResponseDek)
+	*o = SecretMetaDek(varSecretMetaDek)
 
 	return err
 }
 
-type NullableSecretMetaResponseDek struct {
-	value *SecretMetaResponseDek
+type NullableSecretMetaDek struct {
+	value *SecretMetaDek
 	isSet bool
 }
 
-func (v NullableSecretMetaResponseDek) Get() *SecretMetaResponseDek {
+func (v NullableSecretMetaDek) Get() *SecretMetaDek {
 	return v.value
 }
 
-func (v *NullableSecretMetaResponseDek) Set(val *SecretMetaResponseDek) {
+func (v *NullableSecretMetaDek) Set(val *SecretMetaDek) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretMetaResponseDek) IsSet() bool {
+func (v NullableSecretMetaDek) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretMetaResponseDek) Unset() {
+func (v *NullableSecretMetaDek) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretMetaResponseDek(val *SecretMetaResponseDek) *NullableSecretMetaResponseDek {
-	return &NullableSecretMetaResponseDek{value: val, isSet: true}
+func NewNullableSecretMetaDek(val *SecretMetaDek) *NullableSecretMetaDek {
+	return &NullableSecretMetaDek{value: val, isSet: true}
 }
 
-func (v NullableSecretMetaResponseDek) MarshalJSON() ([]byte, error) {
+func (v NullableSecretMetaDek) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretMetaResponseDek) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretMetaDek) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

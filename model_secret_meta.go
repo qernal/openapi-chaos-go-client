@@ -17,28 +17,28 @@ import (
 	"fmt"
 )
 
-// checks if the SecretResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretResponse{}
+// checks if the SecretMeta type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretMeta{}
 
-// SecretResponse Secret response
-type SecretResponse struct {
+// SecretMeta Secret metadata response/object
+type SecretMeta struct {
 	// Secret name
 	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
-	Type SecretCreateType `json:"type"`
-	Payload *SecretResponsePayload `json:"payload,omitempty"`
+	Type SecretMetaType `json:"type"`
+	Payload *SecretMetaPayload `json:"payload,omitempty"`
 	// Secret revision
 	Revision int32 `json:"revision"`
 	Date Date `json:"date"`
 }
 
-type _SecretResponse SecretResponse
+type _SecretMeta SecretMeta
 
-// NewSecretResponse instantiates a new SecretResponse object
+// NewSecretMeta instantiates a new SecretMeta object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretResponse(name string, type_ SecretCreateType, revision int32, date Date) *SecretResponse {
-	this := SecretResponse{}
+func NewSecretMeta(name string, type_ SecretMetaType, revision int32, date Date) *SecretMeta {
+	this := SecretMeta{}
 	this.Name = name
 	this.Type = type_
 	this.Revision = revision
@@ -46,16 +46,16 @@ func NewSecretResponse(name string, type_ SecretCreateType, revision int32, date
 	return &this
 }
 
-// NewSecretResponseWithDefaults instantiates a new SecretResponse object
+// NewSecretMetaWithDefaults instantiates a new SecretMeta object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretResponseWithDefaults() *SecretResponse {
-	this := SecretResponse{}
+func NewSecretMetaWithDefaults() *SecretMeta {
+	this := SecretMeta{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *SecretResponse) GetName() string {
+func (o *SecretMeta) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -66,7 +66,7 @@ func (o *SecretResponse) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetNameOk() (*string, bool) {
+func (o *SecretMeta) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,14 +74,14 @@ func (o *SecretResponse) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *SecretResponse) SetName(v string) {
+func (o *SecretMeta) SetName(v string) {
 	o.Name = v
 }
 
 // GetType returns the Type field value
-func (o *SecretResponse) GetType() SecretCreateType {
+func (o *SecretMeta) GetType() SecretMetaType {
 	if o == nil {
-		var ret SecretCreateType
+		var ret SecretMetaType
 		return ret
 	}
 
@@ -90,7 +90,7 @@ func (o *SecretResponse) GetType() SecretCreateType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetTypeOk() (*SecretCreateType, bool) {
+func (o *SecretMeta) GetTypeOk() (*SecretMetaType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,14 +98,14 @@ func (o *SecretResponse) GetTypeOk() (*SecretCreateType, bool) {
 }
 
 // SetType sets field value
-func (o *SecretResponse) SetType(v SecretCreateType) {
+func (o *SecretMeta) SetType(v SecretMetaType) {
 	o.Type = v
 }
 
 // GetPayload returns the Payload field value if set, zero value otherwise.
-func (o *SecretResponse) GetPayload() SecretResponsePayload {
+func (o *SecretMeta) GetPayload() SecretMetaPayload {
 	if o == nil || IsNil(o.Payload) {
-		var ret SecretResponsePayload
+		var ret SecretMetaPayload
 		return ret
 	}
 	return *o.Payload
@@ -113,7 +113,7 @@ func (o *SecretResponse) GetPayload() SecretResponsePayload {
 
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetPayloadOk() (*SecretResponsePayload, bool) {
+func (o *SecretMeta) GetPayloadOk() (*SecretMetaPayload, bool) {
 	if o == nil || IsNil(o.Payload) {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *SecretResponse) GetPayloadOk() (*SecretResponsePayload, bool) {
 }
 
 // HasPayload returns a boolean if a field has been set.
-func (o *SecretResponse) HasPayload() bool {
+func (o *SecretMeta) HasPayload() bool {
 	if o != nil && !IsNil(o.Payload) {
 		return true
 	}
@@ -129,13 +129,13 @@ func (o *SecretResponse) HasPayload() bool {
 	return false
 }
 
-// SetPayload gets a reference to the given SecretResponsePayload and assigns it to the Payload field.
-func (o *SecretResponse) SetPayload(v SecretResponsePayload) {
+// SetPayload gets a reference to the given SecretMetaPayload and assigns it to the Payload field.
+func (o *SecretMeta) SetPayload(v SecretMetaPayload) {
 	o.Payload = &v
 }
 
 // GetRevision returns the Revision field value
-func (o *SecretResponse) GetRevision() int32 {
+func (o *SecretMeta) GetRevision() int32 {
 	if o == nil {
 		var ret int32
 		return ret
@@ -146,7 +146,7 @@ func (o *SecretResponse) GetRevision() int32 {
 
 // GetRevisionOk returns a tuple with the Revision field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetRevisionOk() (*int32, bool) {
+func (o *SecretMeta) GetRevisionOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -154,12 +154,12 @@ func (o *SecretResponse) GetRevisionOk() (*int32, bool) {
 }
 
 // SetRevision sets field value
-func (o *SecretResponse) SetRevision(v int32) {
+func (o *SecretMeta) SetRevision(v int32) {
 	o.Revision = v
 }
 
 // GetDate returns the Date field value
-func (o *SecretResponse) GetDate() Date {
+func (o *SecretMeta) GetDate() Date {
 	if o == nil {
 		var ret Date
 		return ret
@@ -170,7 +170,7 @@ func (o *SecretResponse) GetDate() Date {
 
 // GetDateOk returns a tuple with the Date field value
 // and a boolean to check if the value has been set.
-func (o *SecretResponse) GetDateOk() (*Date, bool) {
+func (o *SecretMeta) GetDateOk() (*Date, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -178,11 +178,11 @@ func (o *SecretResponse) GetDateOk() (*Date, bool) {
 }
 
 // SetDate sets field value
-func (o *SecretResponse) SetDate(v Date) {
+func (o *SecretMeta) SetDate(v Date) {
 	o.Date = v
 }
 
-func (o SecretResponse) MarshalJSON() ([]byte, error) {
+func (o SecretMeta) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -190,7 +190,7 @@ func (o SecretResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretResponse) ToMap() (map[string]interface{}, error) {
+func (o SecretMeta) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
@@ -202,7 +202,7 @@ func (o SecretResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SecretResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretMeta) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -227,53 +227,53 @@ func (o *SecretResponse) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretResponse := _SecretResponse{}
+	varSecretMeta := _SecretMeta{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretResponse)
+	err = decoder.Decode(&varSecretMeta)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretResponse(varSecretResponse)
+	*o = SecretMeta(varSecretMeta)
 
 	return err
 }
 
-type NullableSecretResponse struct {
-	value *SecretResponse
+type NullableSecretMeta struct {
+	value *SecretMeta
 	isSet bool
 }
 
-func (v NullableSecretResponse) Get() *SecretResponse {
+func (v NullableSecretMeta) Get() *SecretMeta {
 	return v.value
 }
 
-func (v *NullableSecretResponse) Set(val *SecretResponse) {
+func (v *NullableSecretMeta) Set(val *SecretMeta) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretResponse) IsSet() bool {
+func (v NullableSecretMeta) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretResponse) Unset() {
+func (v *NullableSecretMeta) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretResponse(val *SecretResponse) *NullableSecretResponse {
-	return &NullableSecretResponse{value: val, isSet: true}
+func NewNullableSecretMeta(val *SecretMeta) *NullableSecretMeta {
+	return &NullableSecretMeta{value: val, isSet: true}
 }
 
-func (v NullableSecretResponse) MarshalJSON() ([]byte, error) {
+func (v NullableSecretMeta) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretMeta) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

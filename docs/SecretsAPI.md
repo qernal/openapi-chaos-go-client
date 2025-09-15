@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ProjectsSecretsCreate
 
-> SecretResponse ProjectsSecretsCreate(ctx, projectId).SecretBody(secretBody).Execute()
+> Secret ProjectsSecretsCreate(ctx, projectId).SecretBody(secretBody).Execute()
 
 Create project secret
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsSecretsCreate`: SecretResponse
+	// response from `ProjectsSecretsCreate`: Secret
 	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsCreate`: %v\n", resp)
 }
 ```
@@ -68,7 +68,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsSecretsGet
 
-> SecretMetaResponse ProjectsSecretsGet(ctx, projectId, secretName).Execute()
+> SecretMeta ProjectsSecretsGet(ctx, projectId, secretName).Execute()
 
 Get project secret
 
@@ -188,7 +188,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsSecretsGet`: SecretMetaResponse
+	// response from `ProjectsSecretsGet`: SecretMeta
 	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsGet`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretMetaResponse**](SecretMetaResponse.md)
+[**SecretMeta**](SecretMeta.md)
 
 ### Authorization
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsSecretsList
 
-> ListSecretResponse ProjectsSecretsList(ctx, projectId).Page(page).SecretType(secretType).Execute()
+> []Secret ProjectsSecretsList(ctx, projectId).Page(page).SecretType(secretType).Execute()
 
 List project secrets of a specific type
 
@@ -262,7 +262,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsSecretsList`: ListSecretResponse
+	// response from `ProjectsSecretsList`: []Secret
 	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsList`: %v\n", resp)
 }
 ```
@@ -288,7 +288,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListSecretResponse**](ListSecretResponse.md)
+[**[]Secret**](Secret.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsSecretsUpdate
 
-> SecretResponse ProjectsSecretsUpdate(ctx, projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
+> Secret ProjectsSecretsUpdate(ctx, projectId, secretName).SecretBodyPatch(secretBodyPatch).Execute()
 
 Update project secret
 
@@ -336,7 +336,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsSecretsUpdate`: SecretResponse
+	// response from `ProjectsSecretsUpdate`: Secret
 	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsUpdate`: %v\n", resp)
 }
 ```
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretResponse**](SecretResponse.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 

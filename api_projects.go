@@ -44,7 +44,7 @@ func (r ProjectsAPIOrganisationsProjectsListRequest) FName(fName string) Project
 	return r
 }
 
-func (r ProjectsAPIOrganisationsProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
+func (r ProjectsAPIOrganisationsProjectsListRequest) Execute() ([]Project, *http.Response, error) {
 	return r.ApiService.OrganisationsProjectsListExecute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *ProjectsAPIService) OrganisationsProjectsList(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return ListProjectResponse
-func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ProjectsAPIOrganisationsProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+//  @return []Project
+func (a *ProjectsAPIService) OrganisationsProjectsListExecute(r ProjectsAPIOrganisationsProjectsListRequest) ([]Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListProjectResponse
+		localVarReturnValue  []Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.OrganisationsProjectsList")
@@ -180,7 +180,7 @@ func (r ProjectsAPIProjectsCreateRequest) ProjectBody(projectBody ProjectBody) P
 	return r
 }
 
-func (r ProjectsAPIProjectsCreateRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsCreateRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.ProjectsCreateExecute(r)
 }
 
@@ -200,13 +200,13 @@ func (a *ProjectsAPIService) ProjectsCreate(ctx context.Context) ProjectsAPIProj
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsCreateExecute(r ProjectsAPIProjectsCreateRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectsAPIService) ProjectsCreateExecute(r ProjectsAPIProjectsCreateRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarReturnValue  *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsCreate")
@@ -449,7 +449,7 @@ type ProjectsAPIProjectsGetRequest struct {
 	projectId string
 }
 
-func (r ProjectsAPIProjectsGetRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsGetRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.ProjectsGetExecute(r)
 }
 
@@ -471,13 +471,13 @@ func (a *ProjectsAPIService) ProjectsGet(ctx context.Context, projectId string) 
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsGetExecute(r ProjectsAPIProjectsGetRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectsAPIService) ProjectsGetExecute(r ProjectsAPIProjectsGetRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarReturnValue  *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsGet")
@@ -586,7 +586,7 @@ func (r ProjectsAPIProjectsListRequest) FName(fName string) ProjectsAPIProjectsL
 	return r
 }
 
-func (r ProjectsAPIProjectsListRequest) Execute() (*ListProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsListRequest) Execute() ([]Project, *http.Response, error) {
 	return r.ApiService.ProjectsListExecute(r)
 }
 
@@ -606,13 +606,13 @@ func (a *ProjectsAPIService) ProjectsList(ctx context.Context) ProjectsAPIProjec
 }
 
 // Execute executes the request
-//  @return ListProjectResponse
-func (a *ProjectsAPIService) ProjectsListExecute(r ProjectsAPIProjectsListRequest) (*ListProjectResponse, *http.Response, error) {
+//  @return []Project
+func (a *ProjectsAPIService) ProjectsListExecute(r ProjectsAPIProjectsListRequest) ([]Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListProjectResponse
+		localVarReturnValue  []Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsList")
@@ -961,7 +961,7 @@ func (r ProjectsAPIProjectsUpdateRequest) ProjectBodyPatch(projectBodyPatch Proj
 	return r
 }
 
-func (r ProjectsAPIProjectsUpdateRequest) Execute() (*ProjectResponse, *http.Response, error) {
+func (r ProjectsAPIProjectsUpdateRequest) Execute() (*Project, *http.Response, error) {
 	return r.ApiService.ProjectsUpdateExecute(r)
 }
 
@@ -983,13 +983,13 @@ func (a *ProjectsAPIService) ProjectsUpdate(ctx context.Context, projectId strin
 }
 
 // Execute executes the request
-//  @return ProjectResponse
-func (a *ProjectsAPIService) ProjectsUpdateExecute(r ProjectsAPIProjectsUpdateRequest) (*ProjectResponse, *http.Response, error) {
+//  @return Project
+func (a *ProjectsAPIService) ProjectsUpdateExecute(r ProjectsAPIProjectsUpdateRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ProjectResponse
+		localVarReturnValue  *Project
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ProjectsAPIService.ProjectsUpdate")

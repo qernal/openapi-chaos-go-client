@@ -1,46 +1,67 @@
-# SecretMetaResponseRegistryPayload
+# SecretPayload
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Certificate** | **string** | Public SSL certificate | 
 **Registry** | **string** | Private registry domain/location, when using the private docker hub registry sepcify &#x60;docker.io&#x60; &gt; Without http scheme  | 
 
 ## Methods
 
-### NewSecretMetaResponseRegistryPayload
+### NewSecretPayload
 
-`func NewSecretMetaResponseRegistryPayload(registry string, ) *SecretMetaResponseRegistryPayload`
+`func NewSecretPayload(certificate string, registry string, ) *SecretPayload`
 
-NewSecretMetaResponseRegistryPayload instantiates a new SecretMetaResponseRegistryPayload object
+NewSecretPayload instantiates a new SecretPayload object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSecretMetaResponseRegistryPayloadWithDefaults
+### NewSecretPayloadWithDefaults
 
-`func NewSecretMetaResponseRegistryPayloadWithDefaults() *SecretMetaResponseRegistryPayload`
+`func NewSecretPayloadWithDefaults() *SecretPayload`
 
-NewSecretMetaResponseRegistryPayloadWithDefaults instantiates a new SecretMetaResponseRegistryPayload object
+NewSecretPayloadWithDefaults instantiates a new SecretPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetCertificate
+
+`func (o *SecretPayload) GetCertificate() string`
+
+GetCertificate returns the Certificate field if non-nil, zero value otherwise.
+
+### GetCertificateOk
+
+`func (o *SecretPayload) GetCertificateOk() (*string, bool)`
+
+GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCertificate
+
+`func (o *SecretPayload) SetCertificate(v string)`
+
+SetCertificate sets Certificate field to given value.
+
+
 ### GetRegistry
 
-`func (o *SecretMetaResponseRegistryPayload) GetRegistry() string`
+`func (o *SecretPayload) GetRegistry() string`
 
 GetRegistry returns the Registry field if non-nil, zero value otherwise.
 
 ### GetRegistryOk
 
-`func (o *SecretMetaResponseRegistryPayload) GetRegistryOk() (*string, bool)`
+`func (o *SecretPayload) GetRegistryOk() (*string, bool)`
 
 GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistry
 
-`func (o *SecretMetaResponseRegistryPayload) SetRegistry(v string)`
+`func (o *SecretPayload) SetRegistry(v string)`
 
 SetRegistry sets Registry field to given value.
 

@@ -17,37 +17,37 @@ import (
 	"fmt"
 )
 
-// checks if the SecretMetaResponseRegistryPayload type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretMetaResponseRegistryPayload{}
+// checks if the SecretMetaRegistryPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretMetaRegistryPayload{}
 
-// SecretMetaResponseRegistryPayload Secret metadata registry payload
-type SecretMetaResponseRegistryPayload struct {
+// SecretMetaRegistryPayload Secret metadata registry payload
+type SecretMetaRegistryPayload struct {
 	// Private registry domain/location, when using the private docker hub registry sepcify `docker.io` > Without http scheme 
 	Registry string `json:"registry"`
 }
 
-type _SecretMetaResponseRegistryPayload SecretMetaResponseRegistryPayload
+type _SecretMetaRegistryPayload SecretMetaRegistryPayload
 
-// NewSecretMetaResponseRegistryPayload instantiates a new SecretMetaResponseRegistryPayload object
+// NewSecretMetaRegistryPayload instantiates a new SecretMetaRegistryPayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretMetaResponseRegistryPayload(registry string) *SecretMetaResponseRegistryPayload {
-	this := SecretMetaResponseRegistryPayload{}
+func NewSecretMetaRegistryPayload(registry string) *SecretMetaRegistryPayload {
+	this := SecretMetaRegistryPayload{}
 	this.Registry = registry
 	return &this
 }
 
-// NewSecretMetaResponseRegistryPayloadWithDefaults instantiates a new SecretMetaResponseRegistryPayload object
+// NewSecretMetaRegistryPayloadWithDefaults instantiates a new SecretMetaRegistryPayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretMetaResponseRegistryPayloadWithDefaults() *SecretMetaResponseRegistryPayload {
-	this := SecretMetaResponseRegistryPayload{}
+func NewSecretMetaRegistryPayloadWithDefaults() *SecretMetaRegistryPayload {
+	this := SecretMetaRegistryPayload{}
 	return &this
 }
 
 // GetRegistry returns the Registry field value
-func (o *SecretMetaResponseRegistryPayload) GetRegistry() string {
+func (o *SecretMetaRegistryPayload) GetRegistry() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SecretMetaResponseRegistryPayload) GetRegistry() string {
 
 // GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
-func (o *SecretMetaResponseRegistryPayload) GetRegistryOk() (*string, bool) {
+func (o *SecretMetaRegistryPayload) GetRegistryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,11 +66,11 @@ func (o *SecretMetaResponseRegistryPayload) GetRegistryOk() (*string, bool) {
 }
 
 // SetRegistry sets field value
-func (o *SecretMetaResponseRegistryPayload) SetRegistry(v string) {
+func (o *SecretMetaRegistryPayload) SetRegistry(v string) {
 	o.Registry = v
 }
 
-func (o SecretMetaResponseRegistryPayload) MarshalJSON() ([]byte, error) {
+func (o SecretMetaRegistryPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -78,13 +78,13 @@ func (o SecretMetaResponseRegistryPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretMetaResponseRegistryPayload) ToMap() (map[string]interface{}, error) {
+func (o SecretMetaRegistryPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["registry"] = o.Registry
 	return toSerialize, nil
 }
 
-func (o *SecretMetaResponseRegistryPayload) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretMetaRegistryPayload) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -106,53 +106,53 @@ func (o *SecretMetaResponseRegistryPayload) UnmarshalJSON(data []byte) (err erro
 		}
 	}
 
-	varSecretMetaResponseRegistryPayload := _SecretMetaResponseRegistryPayload{}
+	varSecretMetaRegistryPayload := _SecretMetaRegistryPayload{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretMetaResponseRegistryPayload)
+	err = decoder.Decode(&varSecretMetaRegistryPayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretMetaResponseRegistryPayload(varSecretMetaResponseRegistryPayload)
+	*o = SecretMetaRegistryPayload(varSecretMetaRegistryPayload)
 
 	return err
 }
 
-type NullableSecretMetaResponseRegistryPayload struct {
-	value *SecretMetaResponseRegistryPayload
+type NullableSecretMetaRegistryPayload struct {
+	value *SecretMetaRegistryPayload
 	isSet bool
 }
 
-func (v NullableSecretMetaResponseRegistryPayload) Get() *SecretMetaResponseRegistryPayload {
+func (v NullableSecretMetaRegistryPayload) Get() *SecretMetaRegistryPayload {
 	return v.value
 }
 
-func (v *NullableSecretMetaResponseRegistryPayload) Set(val *SecretMetaResponseRegistryPayload) {
+func (v *NullableSecretMetaRegistryPayload) Set(val *SecretMetaRegistryPayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretMetaResponseRegistryPayload) IsSet() bool {
+func (v NullableSecretMetaRegistryPayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretMetaResponseRegistryPayload) Unset() {
+func (v *NullableSecretMetaRegistryPayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretMetaResponseRegistryPayload(val *SecretMetaResponseRegistryPayload) *NullableSecretMetaResponseRegistryPayload {
-	return &NullableSecretMetaResponseRegistryPayload{value: val, isSet: true}
+func NewNullableSecretMetaRegistryPayload(val *SecretMetaRegistryPayload) *NullableSecretMetaRegistryPayload {
+	return &NullableSecretMetaRegistryPayload{value: val, isSet: true}
 }
 
-func (v NullableSecretMetaResponseRegistryPayload) MarshalJSON() ([]byte, error) {
+func (v NullableSecretMetaRegistryPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretMetaResponseRegistryPayload) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretMetaRegistryPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

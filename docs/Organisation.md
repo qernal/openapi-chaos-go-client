@@ -1,109 +1,109 @@
-# ProjectResponse
+# Organisation
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Project id | 
-**OrgId** | **string** | Organisation id | 
-**Name** | **string** | Project name | 
+**Id** | **string** | Organisation id | 
+**UserId** | **string** | User id | 
+**Name** | **string** | Organisation name | 
 **Date** | [**Date**](Date.md) |  | 
 
 ## Methods
 
-### NewProjectResponse
+### NewOrganisation
 
-`func NewProjectResponse(id string, orgId string, name string, date Date, ) *ProjectResponse`
+`func NewOrganisation(id string, userId string, name string, date Date, ) *Organisation`
 
-NewProjectResponse instantiates a new ProjectResponse object
+NewOrganisation instantiates a new Organisation object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewProjectResponseWithDefaults
+### NewOrganisationWithDefaults
 
-`func NewProjectResponseWithDefaults() *ProjectResponse`
+`func NewOrganisationWithDefaults() *Organisation`
 
-NewProjectResponseWithDefaults instantiates a new ProjectResponse object
+NewOrganisationWithDefaults instantiates a new Organisation object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ProjectResponse) GetId() string`
+`func (o *Organisation) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ProjectResponse) GetIdOk() (*string, bool)`
+`func (o *Organisation) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ProjectResponse) SetId(v string)`
+`func (o *Organisation) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
-### GetOrgId
+### GetUserId
 
-`func (o *ProjectResponse) GetOrgId() string`
+`func (o *Organisation) GetUserId() string`
 
-GetOrgId returns the OrgId field if non-nil, zero value otherwise.
+GetUserId returns the UserId field if non-nil, zero value otherwise.
 
-### GetOrgIdOk
+### GetUserIdOk
 
-`func (o *ProjectResponse) GetOrgIdOk() (*string, bool)`
+`func (o *Organisation) GetUserIdOk() (*string, bool)`
 
-GetOrgIdOk returns a tuple with the OrgId field if it's non-nil, zero value otherwise
+GetUserIdOk returns a tuple with the UserId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOrgId
+### SetUserId
 
-`func (o *ProjectResponse) SetOrgId(v string)`
+`func (o *Organisation) SetUserId(v string)`
 
-SetOrgId sets OrgId field to given value.
+SetUserId sets UserId field to given value.
 
 
 ### GetName
 
-`func (o *ProjectResponse) GetName() string`
+`func (o *Organisation) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ProjectResponse) GetNameOk() (*string, bool)`
+`func (o *Organisation) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ProjectResponse) SetName(v string)`
+`func (o *Organisation) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetDate
 
-`func (o *ProjectResponse) GetDate() Date`
+`func (o *Organisation) GetDate() Date`
 
 GetDate returns the Date field if non-nil, zero value otherwise.
 
 ### GetDateOk
 
-`func (o *ProjectResponse) GetDateOk() (*Date, bool)`
+`func (o *Organisation) GetDateOk() (*Date, bool)`
 
 GetDateOk returns a tuple with the Date field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDate
 
-`func (o *ProjectResponse) SetDate(v Date)`
+`func (o *Organisation) SetDate(v Date)`
 
 SetDate sets Date field to given value.
 

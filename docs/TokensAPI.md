@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 
 ## AuthTokensList
 
-> ListAuthTokens AuthTokensList(ctx).Page(page).Execute()
+> []AuthTokenMeta AuthTokensList(ctx).Page(page).Execute()
 
 List all user auth tokens
 
@@ -242,7 +242,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TokensAPI.AuthTokensList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `AuthTokensList`: ListAuthTokens
+	// response from `AuthTokensList`: []AuthTokenMeta
 	fmt.Fprintf(os.Stdout, "Response from `TokensAPI.AuthTokensList`: %v\n", resp)
 }
 ```
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListAuthTokens**](ListAuthTokens.md)
+[**[]AuthTokenMeta**](AuthTokenMeta.md)
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-# SecretMetaResponseCertificatePayload
+# SecretMetaCertificatePayload
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSecretMetaResponseCertificatePayload
+### NewSecretMetaCertificatePayload
 
-`func NewSecretMetaResponseCertificatePayload(certificate string, ) *SecretMetaResponseCertificatePayload`
+`func NewSecretMetaCertificatePayload(certificate string, ) *SecretMetaCertificatePayload`
 
-NewSecretMetaResponseCertificatePayload instantiates a new SecretMetaResponseCertificatePayload object
+NewSecretMetaCertificatePayload instantiates a new SecretMetaCertificatePayload object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSecretMetaResponseCertificatePayloadWithDefaults
+### NewSecretMetaCertificatePayloadWithDefaults
 
-`func NewSecretMetaResponseCertificatePayloadWithDefaults() *SecretMetaResponseCertificatePayload`
+`func NewSecretMetaCertificatePayloadWithDefaults() *SecretMetaCertificatePayload`
 
-NewSecretMetaResponseCertificatePayloadWithDefaults instantiates a new SecretMetaResponseCertificatePayload object
+NewSecretMetaCertificatePayloadWithDefaults instantiates a new SecretMetaCertificatePayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetCertificate
 
-`func (o *SecretMetaResponseCertificatePayload) GetCertificate() string`
+`func (o *SecretMetaCertificatePayload) GetCertificate() string`
 
 GetCertificate returns the Certificate field if non-nil, zero value otherwise.
 
 ### GetCertificateOk
 
-`func (o *SecretMetaResponseCertificatePayload) GetCertificateOk() (*string, bool)`
+`func (o *SecretMetaCertificatePayload) GetCertificateOk() (*string, bool)`
 
 GetCertificateOk returns a tuple with the Certificate field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCertificate
 
-`func (o *SecretMetaResponseCertificatePayload) SetCertificate(v string)`
+`func (o *SecretMetaCertificatePayload) SetCertificate(v string)`
 
 SetCertificate sets Certificate field to given value.
 

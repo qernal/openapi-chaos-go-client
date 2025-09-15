@@ -37,7 +37,7 @@ func (r SecretsAPIProjectsSecretsCreateRequest) SecretBody(secretBody SecretBody
 	return r
 }
 
-func (r SecretsAPIProjectsSecretsCreateRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsCreateRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsCreateExecute(r)
 }
 
@@ -59,13 +59,13 @@ func (a *SecretsAPIService) ProjectsSecretsCreate(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r SecretsAPIProjectsSecretsCreateRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *SecretsAPIService) ProjectsSecretsCreateExecute(r SecretsAPIProjectsSecretsCreateRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarReturnValue  *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsCreate")
@@ -320,7 +320,7 @@ type SecretsAPIProjectsSecretsGetRequest struct {
 	secretName string
 }
 
-func (r SecretsAPIProjectsSecretsGetRequest) Execute() (*SecretMetaResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsGetRequest) Execute() (*SecretMeta, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsGetExecute(r)
 }
 
@@ -344,13 +344,13 @@ func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId st
 }
 
 // Execute executes the request
-//  @return SecretMetaResponse
-func (a *SecretsAPIService) ProjectsSecretsGetExecute(r SecretsAPIProjectsSecretsGetRequest) (*SecretMetaResponse, *http.Response, error) {
+//  @return SecretMeta
+func (a *SecretsAPIService) ProjectsSecretsGetExecute(r SecretsAPIProjectsSecretsGetRequest) (*SecretMeta, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SecretMetaResponse
+		localVarReturnValue  *SecretMeta
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsGet")
@@ -464,7 +464,7 @@ func (r SecretsAPIProjectsSecretsListRequest) SecretType(secretType SecretMetaTy
 	return r
 }
 
-func (r SecretsAPIProjectsSecretsListRequest) Execute() (*ListSecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsListRequest) Execute() ([]Secret, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsListExecute(r)
 }
 
@@ -486,13 +486,13 @@ func (a *SecretsAPIService) ProjectsSecretsList(ctx context.Context, projectId s
 }
 
 // Execute executes the request
-//  @return ListSecretResponse
-func (a *SecretsAPIService) ProjectsSecretsListExecute(r SecretsAPIProjectsSecretsListRequest) (*ListSecretResponse, *http.Response, error) {
+//  @return []Secret
+func (a *SecretsAPIService) ProjectsSecretsListExecute(r SecretsAPIProjectsSecretsListRequest) ([]Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListSecretResponse
+		localVarReturnValue  []Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsList")
@@ -602,7 +602,7 @@ func (r SecretsAPIProjectsSecretsUpdateRequest) SecretBodyPatch(secretBodyPatch 
 	return r
 }
 
-func (r SecretsAPIProjectsSecretsUpdateRequest) Execute() (*SecretResponse, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsUpdateRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsUpdateExecute(r)
 }
 
@@ -626,13 +626,13 @@ func (a *SecretsAPIService) ProjectsSecretsUpdate(ctx context.Context, projectId
 }
 
 // Execute executes the request
-//  @return SecretResponse
-func (a *SecretsAPIService) ProjectsSecretsUpdateExecute(r SecretsAPIProjectsSecretsUpdateRequest) (*SecretResponse, *http.Response, error) {
+//  @return Secret
+func (a *SecretsAPIService) ProjectsSecretsUpdateExecute(r SecretsAPIProjectsSecretsUpdateRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SecretResponse
+		localVarReturnValue  *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsUpdate")

@@ -416,7 +416,7 @@ func (r HostsAPIProjectsHostsListRequest) Page(page OrganisationsListPageParamet
 	return r
 }
 
-func (r HostsAPIProjectsHostsListRequest) Execute() (*ListHosts, *http.Response, error) {
+func (r HostsAPIProjectsHostsListRequest) Execute() ([]Host, *http.Response, error) {
 	return r.ApiService.ProjectsHostsListExecute(r)
 }
 
@@ -436,13 +436,13 @@ func (a *HostsAPIService) ProjectsHostsList(ctx context.Context, projectId strin
 }
 
 // Execute executes the request
-//  @return ListHosts
-func (a *HostsAPIService) ProjectsHostsListExecute(r HostsAPIProjectsHostsListRequest) (*ListHosts, *http.Response, error) {
+//  @return []Host
+func (a *HostsAPIService) ProjectsHostsListExecute(r HostsAPIProjectsHostsListRequest) ([]Host, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListHosts
+		localVarReturnValue  []Host
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HostsAPIService.ProjectsHostsList")

@@ -1,4 +1,4 @@
-# SecretMetaResponseDek
+# SecretMetaDek
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSecretMetaResponseDek
+### NewSecretMetaDek
 
-`func NewSecretMetaResponseDek(public string, ) *SecretMetaResponseDek`
+`func NewSecretMetaDek(public string, ) *SecretMetaDek`
 
-NewSecretMetaResponseDek instantiates a new SecretMetaResponseDek object
+NewSecretMetaDek instantiates a new SecretMetaDek object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSecretMetaResponseDekWithDefaults
+### NewSecretMetaDekWithDefaults
 
-`func NewSecretMetaResponseDekWithDefaults() *SecretMetaResponseDek`
+`func NewSecretMetaDekWithDefaults() *SecretMetaDek`
 
-NewSecretMetaResponseDekWithDefaults instantiates a new SecretMetaResponseDek object
+NewSecretMetaDekWithDefaults instantiates a new SecretMetaDek object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPublic
 
-`func (o *SecretMetaResponseDek) GetPublic() string`
+`func (o *SecretMetaDek) GetPublic() string`
 
 GetPublic returns the Public field if non-nil, zero value otherwise.
 
 ### GetPublicOk
 
-`func (o *SecretMetaResponseDek) GetPublicOk() (*string, bool)`
+`func (o *SecretMetaDek) GetPublicOk() (*string, bool)`
 
 GetPublicOk returns a tuple with the Public field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPublic
 
-`func (o *SecretMetaResponseDek) SetPublic(v string)`
+`func (o *SecretMetaDek) SetPublic(v string)`
 
 SetPublic sets Public field to given value.
 

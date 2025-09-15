@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## OrganisationsCreate
 
-> OrganisationResponse OrganisationsCreate(ctx).OrganisationBody(organisationBody).Execute()
+> Organisation OrganisationsCreate(ctx).OrganisationBody(organisationBody).Execute()
 
 Create organisations
 
@@ -44,7 +44,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrganisationsCreate`: OrganisationResponse
+	// response from `OrganisationsCreate`: Organisation
 	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsCreate`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganisationResponse**](OrganisationResponse.md)
+[**Organisation**](Organisation.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## OrganisationsGet
 
-> OrganisationResponse OrganisationsGet(ctx, organisationId).Execute()
+> Organisation OrganisationsGet(ctx, organisationId).Execute()
 
 Get an organisation
 
@@ -180,7 +180,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrganisationsGet`: OrganisationResponse
+	// response from `OrganisationsGet`: Organisation
 	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganisationResponse**](OrganisationResponse.md)
+[**Organisation**](Organisation.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## OrganisationsList
 
-> ListOrganisationResponse OrganisationsList(ctx).Page(page).FName(fName).Execute()
+> []Organisation OrganisationsList(ctx).Page(page).FName(fName).Execute()
 
 List organisations
 
@@ -251,7 +251,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrganisationsList`: ListOrganisationResponse
+	// response from `OrganisationsList`: []Organisation
 	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsList`: %v\n", resp)
 }
 ```
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListOrganisationResponse**](ListOrganisationResponse.md)
+[**[]Organisation**](Organisation.md)
 
 ### Authorization
 
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 
 ## OrganisationsUpdate
 
-> OrganisationResponse OrganisationsUpdate(ctx, organisationId).OrganisationBody(organisationBody).Execute()
+> Organisation OrganisationsUpdate(ctx, organisationId).OrganisationBody(organisationBody).Execute()
 
 Update an organisation
 
@@ -462,7 +462,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganisationsAPI.OrganisationsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrganisationsUpdate`: OrganisationResponse
+	// response from `OrganisationsUpdate`: Organisation
 	fmt.Fprintf(os.Stdout, "Response from `OrganisationsAPI.OrganisationsUpdate`: %v\n", resp)
 }
 ```
@@ -487,7 +487,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganisationResponse**](OrganisationResponse.md)
+[**Organisation**](Organisation.md)
 
 ### Authorization
 

@@ -691,8 +691,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListOrganisationResponse'
+                items:
+                  $ref: '#/components/schemas/Organisation'
+                type: array
           description: List organisations
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "403":
           content:
             application/json:
@@ -719,7 +734,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganisationResponse'
+                $ref: '#/components/schemas/Organisation'
           description: Get organisation
         "400":
           content:
@@ -831,7 +846,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganisationResponse'
+                $ref: '#/components/schemas/Organisation'
           description: Get organisation
         "404":
           content:
@@ -880,7 +895,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganisationResponse'
+                $ref: '#/components/schemas/Organisation'
           description: Get organisation
         "404":
           content:
@@ -959,8 +974,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListProjectResponse'
+                items:
+                  $ref: '#/components/schemas/Project'
+                type: array
           description: List projects
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "404":
           content:
             application/json:
@@ -1123,8 +1153,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListProjectResponse'
+                items:
+                  $ref: '#/components/schemas/Project'
+                type: array
           description: List projects
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "403":
           content:
             application/json:
@@ -1151,7 +1196,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Get project
         "404":
           content:
@@ -1273,7 +1318,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Get project
         "404":
           content:
@@ -1322,7 +1367,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ProjectResponse'
+                $ref: '#/components/schemas/Project'
           description: Get project
         "404":
           content:
@@ -1398,8 +1443,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListSecretResponse'
+                items:
+                  $ref: '#/components/schemas/Secret'
+                type: array
           description: List secrets
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "404":
           content:
             application/json:
@@ -1447,7 +1507,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Get secret
         "404":
           content:
@@ -1619,7 +1679,7 @@ paths:
                       created_at: 2023-07-22T14:50:13Z20230722T145013Z
                       updated_at: 2023-07-22T14:50:13Z20230722T145013Z
               schema:
-                $ref: '#/components/schemas/SecretMetaResponse'
+                $ref: '#/components/schemas/SecretMeta'
           description: Get secret metadata
         "404":
           content:
@@ -1679,7 +1739,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SecretResponse'
+                $ref: '#/components/schemas/Secret'
           description: Get secret
         "404":
           content:
@@ -1746,8 +1806,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListHosts'
+                items:
+                  $ref: '#/components/schemas/Host'
+                type: array
           description: List of project hosts
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "404":
           content:
             application/json:
@@ -2152,8 +2227,23 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ListAuthTokens'
+                items:
+                  $ref: '#/components/schemas/AuthTokenMeta'
+                type: array
           description: List of auth token meta
+          headers:
+            Pagination-Total-Count:
+              $ref: '#/components/headers/Pagination-Total-Count'
+            Pagination-Page-Size:
+              $ref: '#/components/headers/Pagination-Page-Size'
+            Pagination-Page-After:
+              $ref: '#/components/headers/Pagination-Page-After'
+            Pagination-Page-Before:
+              $ref: '#/components/headers/Pagination-Page-Before'
+            Pagination-Total-Pages:
+              $ref: '#/components/headers/Pagination-Total-Pages'
+            Link:
+              $ref: '#/components/headers/Link'
         "404":
           content:
             application/json:
@@ -2845,6 +2935,60 @@ paths:
       tags:
       - metrics
 components:
+  headers:
+    Pagination-Total-Count:
+      description: Total number of items available
+      example: 100
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    Pagination-Page-Size:
+      description: |
+        Number of items returned in the current page.
+        This is defined by the `page[size]` query parameter, if not specified it defaults to 20 and has a maximum of 100.
+      example: 20
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    Pagination-Page-After:
+      description: |
+        The 'after' cursor for the current page, to be used to fetch the next page.
+        This is defined by the `page[after]` query parameter.
+      example: 20
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    Pagination-Page-Before:
+      description: |
+        The 'before' cursor for the current page, to be used to fetch the previous page.
+        This is defined by the `page[before]` query parameter.
+      example: 0
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    Pagination-Total-Pages:
+      description: Total number of pages/iterations available based on the current
+        page size
+      example: 5
+      explode: false
+      schema:
+        type: integer
+      style: simple
+    Link:
+      description: |
+        Pagination links in RFC 8288 Web Linking format.
+        Relations used are; first, prev, next, last.
+      example: |
+        <https://chaos.qernal.com/v1/projects?page[size]=20&page[after]=20&page[before]=40>; rel="next",
+        <https://chaos.qernal.com/v1/projects?page[size]=20&page[after]=40&page[before]=60>; rel="last"
+      explode: false
+      schema:
+        type: string
+      style: simple
   parameters:
     pagination_page:
       description: Query parameters for pagination
@@ -3232,12 +3376,27 @@ components:
           schema:
             $ref: '#/components/schemas/Host'
       description: Porject host
-    ListHosts:
+    HostsList:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListHosts'
+            items:
+              $ref: '#/components/schemas/Host'
+            type: array
       description: List of project hosts
+      headers:
+        Pagination-Total-Count:
+          $ref: '#/components/headers/Pagination-Total-Count'
+        Pagination-Page-Size:
+          $ref: '#/components/headers/Pagination-Page-Size'
+        Pagination-Page-After:
+          $ref: '#/components/headers/Pagination-Page-After'
+        Pagination-Page-Before:
+          $ref: '#/components/headers/Pagination-Page-Before'
+        Pagination-Total-Pages:
+          $ref: '#/components/headers/Pagination-Total-Pages'
+        Link:
+          $ref: '#/components/headers/Link'
     AuthToken:
       content:
         application/json:
@@ -3254,43 +3413,103 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListAuthTokens'
+            items:
+              $ref: '#/components/schemas/AuthTokenMeta'
+            type: array
       description: List of auth token meta
-    ListOrganisations:
+      headers:
+        Pagination-Total-Count:
+          $ref: '#/components/headers/Pagination-Total-Count'
+        Pagination-Page-Size:
+          $ref: '#/components/headers/Pagination-Page-Size'
+        Pagination-Page-After:
+          $ref: '#/components/headers/Pagination-Page-After'
+        Pagination-Page-Before:
+          $ref: '#/components/headers/Pagination-Page-Before'
+        Pagination-Total-Pages:
+          $ref: '#/components/headers/Pagination-Total-Pages'
+        Link:
+          $ref: '#/components/headers/Link'
+    OrganisationsList:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListOrganisationResponse'
+            items:
+              $ref: '#/components/schemas/Organisation'
+            type: array
       description: List organisations
+      headers:
+        Pagination-Total-Count:
+          $ref: '#/components/headers/Pagination-Total-Count'
+        Pagination-Page-Size:
+          $ref: '#/components/headers/Pagination-Page-Size'
+        Pagination-Page-After:
+          $ref: '#/components/headers/Pagination-Page-After'
+        Pagination-Page-Before:
+          $ref: '#/components/headers/Pagination-Page-Before'
+        Pagination-Total-Pages:
+          $ref: '#/components/headers/Pagination-Total-Pages'
+        Link:
+          $ref: '#/components/headers/Link'
     Organisation:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/OrganisationResponse'
+            $ref: '#/components/schemas/Organisation'
       description: Get organisation
-    ListProjects:
+    ProjectsList:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListProjectResponse'
+            items:
+              $ref: '#/components/schemas/Project'
+            type: array
       description: List projects
+      headers:
+        Pagination-Total-Count:
+          $ref: '#/components/headers/Pagination-Total-Count'
+        Pagination-Page-Size:
+          $ref: '#/components/headers/Pagination-Page-Size'
+        Pagination-Page-After:
+          $ref: '#/components/headers/Pagination-Page-After'
+        Pagination-Page-Before:
+          $ref: '#/components/headers/Pagination-Page-Before'
+        Pagination-Total-Pages:
+          $ref: '#/components/headers/Pagination-Total-Pages'
+        Link:
+          $ref: '#/components/headers/Link'
     Project:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ProjectResponse'
+            $ref: '#/components/schemas/Project'
       description: Get project
-    ListSecrets:
+    SecretsList:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/ListSecretResponse'
+            items:
+              $ref: '#/components/schemas/Secret'
+            type: array
       description: List secrets
+      headers:
+        Pagination-Total-Count:
+          $ref: '#/components/headers/Pagination-Total-Count'
+        Pagination-Page-Size:
+          $ref: '#/components/headers/Pagination-Page-Size'
+        Pagination-Page-After:
+          $ref: '#/components/headers/Pagination-Page-After'
+        Pagination-Page-Before:
+          $ref: '#/components/headers/Pagination-Page-Before'
+        Pagination-Total-Pages:
+          $ref: '#/components/headers/Pagination-Total-Pages'
+        Link:
+          $ref: '#/components/headers/Link'
     Secret:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/SecretResponse'
+            $ref: '#/components/schemas/Secret'
       description: Get secret
     SecretMeta:
       content:
@@ -3324,7 +3543,7 @@ components:
                   created_at: 2023-07-22T14:50:13Z20230722T145013Z
                   updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           schema:
-            $ref: '#/components/schemas/SecretMetaResponse'
+            $ref: '#/components/schemas/SecretMeta'
       description: Get secret metadata
     ListFunction:
       content:
@@ -3356,13 +3575,13 @@ components:
           schema:
             $ref: '#/components/schemas/metrics_aggregations_list_200_response'
       description: Metric aggregation
-    ListQuotas:
+    QuotasList:
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/ListQuotas'
       description: List quotas
-    ListBillingAccounts:
+    BillingAccountsList:
       content:
         application/json:
           schema:
@@ -3374,7 +3593,7 @@ components:
           schema:
             $ref: '#/components/schemas/BillingAccount'
       description: Get billing account
-    ListPaymentMethods:
+    PaymentMethodsList:
       content:
         application/json:
           schema:
@@ -3546,53 +3765,6 @@ components:
       - txt_verification
       - verification_status
       type: object
-    ListHosts:
-      description: List of projects hosts
-      example:
-        data:
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          read_only: true
-          verified_at: 2023-07-22T14:50:13Z20230722T145013Z
-          host: example-domain.com
-          certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
-          disabled: true
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
-          verification_status: pending
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          read_only: true
-          verified_at: 2023-07-22T14:50:13Z20230722T145013Z
-          host: example-domain.com
-          certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
-          disabled: true
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
-          verification_status: pending
-        meta:
-          pages: 20
-          start: 20
-          end: 40
-          links:
-            next: "/{url}?page[after]=40&page[size]=20"
-            prev: "/{url}?page[before]=20&page[size]=20"
-          results: 200
-      properties:
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/Host'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
     HostBody:
       description: Host body
       example:
@@ -3751,43 +3923,6 @@ components:
       - name
       - user_id
       type: object
-    ListAuthTokens:
-      description: List of auth tokens
-      example:
-        data:
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-          name: TF Token
-          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
-          expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          user_id: a01594c7-3ebf-4ad1-8565-a7895e9c2d49
-          name: TF Token
-          id: 51687d2f-07b0-4260-8ecb-f5098305fdd4
-          expiry_at: 2023-07-22T14:50:13Z20230722T145013Z
-        meta:
-          pages: 20
-          start: 20
-          end: 40
-          links:
-            next: "/{url}?page[after]=40&page[size]=20"
-            prev: "/{url}?page[before]=20&page[size]=20"
-          results: 200
-      properties:
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/AuthTokenMeta'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
     PaginationMeta:
       description: Meta object for pagination use
       example:
@@ -3838,8 +3973,8 @@ components:
       - next
       - prev
       type: object
-    OrganisationResponse:
-      description: Organisation response
+    Organisation:
+      description: Organisation response/object
       example:
         date:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -3874,41 +4009,6 @@ components:
       - name
       - user_id
       type: object
-    ListOrganisationResponse:
-      description: List organisations schema
-      example:
-        data:
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my-org
-          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          user_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: my-org
-          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        meta:
-          pages: 20
-          start: 20
-          end: 40
-          links:
-            next: "/{url}?page[after]=40&page[size]=20"
-            prev: "/{url}?page[before]=20&page[size]=20"
-          results: 200
-      properties:
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/OrganisationResponse'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
     OrganisationBody:
       description: Organisation body
       example:
@@ -3923,43 +4023,8 @@ components:
       required:
       - name
       type: object
-    ListProjectResponse:
-      description: List of projects
-      example:
-        data:
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: first-api
-          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          org_id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-          name: first-api
-          id: 3069614e-adc8-47cb-a69c-decf9c5f90fc
-        meta:
-          pages: 20
-          start: 20
-          end: 40
-          links:
-            next: "/{url}?page[after]=40&page[size]=20"
-            prev: "/{url}?page[before]=20&page[size]=20"
-          results: 200
-      properties:
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/ProjectResponse'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
-    ProjectResponse:
-      description: Project response
+    Project:
+      description: Project response/object
       example:
         date:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -4035,47 +4100,8 @@ components:
           pattern: "^[A-z-]+$"
           type: string
       type: object
-    ListSecretResponse:
-      description: List of secrets
-      example:
-        data:
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          payload:
-            certificate: <x509 content>
-          name: MY_SECRET
-          type: registry
-          revision: 32
-        - date:
-            updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            created_at: 2023-07-22T14:50:13Z20230722T145013Z
-          payload:
-            certificate: <x509 content>
-          name: MY_SECRET
-          type: registry
-          revision: 32
-        meta:
-          pages: 20
-          start: 20
-          end: 40
-          links:
-            next: "/{url}?page[after]=40&page[size]=20"
-            prev: "/{url}?page[before]=20&page[size]=20"
-          results: 200
-      properties:
-        meta:
-          $ref: '#/components/schemas/PaginationMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/SecretMetaResponse'
-          type: array
-      required:
-      - data
-      - meta
-      type: object
-    SecretResponse:
-      description: Secret response
+    Secret:
+      description: Secret response/object
       example:
         date:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -4095,7 +4121,7 @@ components:
         type:
           $ref: '#/components/schemas/SecretCreateType'
         payload:
-          $ref: '#/components/schemas/SecretResponse_payload'
+          $ref: '#/components/schemas/Secret_payload'
         revision:
           description: Secret revision
           example: 32
@@ -4117,8 +4143,8 @@ components:
       - dek
       example: registry
       type: string
-    SecretMetaResponse:
-      description: Secret metadata response
+    SecretMeta:
+      description: Secret metadata response/object
       example:
         date:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
@@ -4138,7 +4164,7 @@ components:
         type:
           $ref: '#/components/schemas/SecretMetaType'
         payload:
-          $ref: '#/components/schemas/SecretMetaResponse_payload'
+          $ref: '#/components/schemas/SecretMeta_payload'
         revision:
           description: Secret revision
           example: 32
@@ -4151,7 +4177,7 @@ components:
       - revision
       - type
       type: object
-    SecretMetaResponseCertificatePayload:
+    SecretMetaCertificatePayload:
       description: Secret metadata certificate payload
       example:
         certificate: <x509 content>
@@ -4165,7 +4191,7 @@ components:
       required:
       - certificate
       type: object
-    SecretMetaResponseRegistryPayload:
+    SecretMetaRegistryPayload:
       description: Secret metadata registry payload
       properties:
         registry:
@@ -4178,7 +4204,7 @@ components:
       required:
       - registry
       type: object
-    SecretMetaResponseDek:
+    SecretMetaDek:
       description: "DEK secret, `type: dek`"
       properties:
         public:
@@ -5522,15 +5548,15 @@ components:
         email:
           type: string
       type: object
-    SecretResponse_payload:
+    Secret_payload:
       oneOf:
-      - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
-      - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
-    SecretMetaResponse_payload:
+      - $ref: '#/components/schemas/SecretMetaCertificatePayload'
+      - $ref: '#/components/schemas/SecretMetaRegistryPayload'
+    SecretMeta_payload:
       oneOf:
-      - $ref: '#/components/schemas/SecretMetaResponseCertificatePayload'
-      - $ref: '#/components/schemas/SecretMetaResponseRegistryPayload'
-      - $ref: '#/components/schemas/SecretMetaResponseDek'
+      - $ref: '#/components/schemas/SecretMetaCertificatePayload'
+      - $ref: '#/components/schemas/SecretMetaRegistryPayload'
+      - $ref: '#/components/schemas/SecretMetaDek'
     FunctionReplicas_affinity:
       description: Replica strategy
       example:

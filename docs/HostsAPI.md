@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsHostsList
 
-> ListHosts ProjectsHostsList(ctx, projectId).Page(page).Execute()
+> []Host ProjectsHostsList(ctx, projectId).Page(page).Execute()
 
 List hosts for project
 
@@ -256,7 +256,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HostsAPI.ProjectsHostsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsHostsList`: ListHosts
+	// response from `ProjectsHostsList`: []Host
 	fmt.Fprintf(os.Stdout, "Response from `HostsAPI.ProjectsHostsList`: %v\n", resp)
 }
 ```
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListHosts**](ListHosts.md)
+[**[]Host**](Host.md)
 
 ### Authorization
 

@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 ## OrganisationsProjectsList
 
-> ListProjectResponse OrganisationsProjectsList(ctx, organisationId).Page(page).FName(fName).Execute()
+> []Project OrganisationsProjectsList(ctx, organisationId).Page(page).FName(fName).Execute()
 
 Get all projects within an organisation
 
@@ -47,7 +47,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.OrganisationsProjectsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `OrganisationsProjectsList`: ListProjectResponse
+	// response from `OrganisationsProjectsList`: []Project
 	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.OrganisationsProjectsList`: %v\n", resp)
 }
 ```
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListProjectResponse**](ListProjectResponse.md)
+[**[]Project**](Project.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsCreate
 
-> ProjectResponse ProjectsCreate(ctx).ProjectBody(projectBody).Execute()
+> Project ProjectsCreate(ctx).ProjectBody(projectBody).Execute()
 
 Create project
 
@@ -119,7 +119,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsCreate`: ProjectResponse
+	// response from `ProjectsCreate`: Project
 	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsCreate`: %v\n", resp)
 }
 ```
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsGet
 
-> ProjectResponse ProjectsGet(ctx, projectId).Execute()
+> Project ProjectsGet(ctx, projectId).Execute()
 
 Get project
 
@@ -255,7 +255,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsGet`: ProjectResponse
+	// response from `ProjectsGet`: Project
 	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsGet`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsList
 
-> ListProjectResponse ProjectsList(ctx).Page(page).FName(fName).Execute()
+> []Project ProjectsList(ctx).Page(page).FName(fName).Execute()
 
 List projects
 
@@ -326,7 +326,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsList`: ListProjectResponse
+	// response from `ProjectsList`: []Project
 	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsList`: %v\n", resp)
 }
 ```
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListProjectResponse**](ListProjectResponse.md)
+[**[]Project**](Project.md)
 
 ### Authorization
 
@@ -508,7 +508,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsUpdate
 
-> ProjectResponse ProjectsUpdate(ctx, projectId).ProjectBodyPatch(projectBodyPatch).Execute()
+> Project ProjectsUpdate(ctx, projectId).ProjectBodyPatch(projectBodyPatch).Execute()
 
 Update project
 
@@ -537,7 +537,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ProjectsAPI.ProjectsUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsUpdate`: ProjectResponse
+	// response from `ProjectsUpdate`: Project
 	fmt.Fprintf(os.Stdout, "Response from `ProjectsAPI.ProjectsUpdate`: %v\n", resp)
 }
 ```
@@ -562,7 +562,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ProjectResponse**](ProjectResponse.md)
+[**Project**](Project.md)
 
 ### Authorization
 

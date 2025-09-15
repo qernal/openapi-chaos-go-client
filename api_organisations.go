@@ -36,7 +36,7 @@ func (r OrganisationsAPIOrganisationsCreateRequest) OrganisationBody(organisatio
 	return r
 }
 
-func (r OrganisationsAPIOrganisationsCreateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsCreateRequest) Execute() (*Organisation, *http.Response, error) {
 	return r.ApiService.OrganisationsCreateExecute(r)
 }
 
@@ -56,13 +56,13 @@ func (a *OrganisationsAPIService) OrganisationsCreate(ctx context.Context) Organ
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsCreateExecute(r OrganisationsAPIOrganisationsCreateRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return Organisation
+func (a *OrganisationsAPIService) OrganisationsCreateExecute(r OrganisationsAPIOrganisationsCreateRequest) (*Organisation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *Organisation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsCreate")
@@ -294,7 +294,7 @@ type OrganisationsAPIOrganisationsGetRequest struct {
 	organisationId string
 }
 
-func (r OrganisationsAPIOrganisationsGetRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsGetRequest) Execute() (*Organisation, *http.Response, error) {
 	return r.ApiService.OrganisationsGetExecute(r)
 }
 
@@ -316,13 +316,13 @@ func (a *OrganisationsAPIService) OrganisationsGet(ctx context.Context, organisa
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsGetExecute(r OrganisationsAPIOrganisationsGetRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return Organisation
+func (a *OrganisationsAPIService) OrganisationsGetExecute(r OrganisationsAPIOrganisationsGetRequest) (*Organisation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *Organisation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsGet")
@@ -431,7 +431,7 @@ func (r OrganisationsAPIOrganisationsListRequest) FName(fName string) Organisati
 	return r
 }
 
-func (r OrganisationsAPIOrganisationsListRequest) Execute() (*ListOrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsListRequest) Execute() ([]Organisation, *http.Response, error) {
 	return r.ApiService.OrganisationsListExecute(r)
 }
 
@@ -451,13 +451,13 @@ func (a *OrganisationsAPIService) OrganisationsList(ctx context.Context) Organis
 }
 
 // Execute executes the request
-//  @return ListOrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsListExecute(r OrganisationsAPIOrganisationsListRequest) (*ListOrganisationResponse, *http.Response, error) {
+//  @return []Organisation
+func (a *OrganisationsAPIService) OrganisationsListExecute(r OrganisationsAPIOrganisationsListRequest) ([]Organisation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ListOrganisationResponse
+		localVarReturnValue  []Organisation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsList")
@@ -806,7 +806,7 @@ func (r OrganisationsAPIOrganisationsUpdateRequest) OrganisationBody(organisatio
 	return r
 }
 
-func (r OrganisationsAPIOrganisationsUpdateRequest) Execute() (*OrganisationResponse, *http.Response, error) {
+func (r OrganisationsAPIOrganisationsUpdateRequest) Execute() (*Organisation, *http.Response, error) {
 	return r.ApiService.OrganisationsUpdateExecute(r)
 }
 
@@ -828,13 +828,13 @@ func (a *OrganisationsAPIService) OrganisationsUpdate(ctx context.Context, organ
 }
 
 // Execute executes the request
-//  @return OrganisationResponse
-func (a *OrganisationsAPIService) OrganisationsUpdateExecute(r OrganisationsAPIOrganisationsUpdateRequest) (*OrganisationResponse, *http.Response, error) {
+//  @return Organisation
+func (a *OrganisationsAPIService) OrganisationsUpdateExecute(r OrganisationsAPIOrganisationsUpdateRequest) (*Organisation, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *OrganisationResponse
+		localVarReturnValue  *Organisation
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganisationsAPIService.OrganisationsUpdate")

@@ -17,45 +17,45 @@ import (
 	"fmt"
 )
 
-// checks if the ProjectResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ProjectResponse{}
+// checks if the Organisation type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Organisation{}
 
-// ProjectResponse Project response
-type ProjectResponse struct {
-	// Project id
-	Id string `json:"id"`
+// Organisation Organisation response/object
+type Organisation struct {
 	// Organisation id
-	OrgId string `json:"org_id"`
-	// Project name
+	Id string `json:"id"`
+	// User id
+	UserId string `json:"user_id"`
+	// Organisation name
 	Name string `json:"name" validate:"regexp=^[A-z-]+$"`
 	Date Date `json:"date"`
 }
 
-type _ProjectResponse ProjectResponse
+type _Organisation Organisation
 
-// NewProjectResponse instantiates a new ProjectResponse object
+// NewOrganisation instantiates a new Organisation object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectResponse(id string, orgId string, name string, date Date) *ProjectResponse {
-	this := ProjectResponse{}
+func NewOrganisation(id string, userId string, name string, date Date) *Organisation {
+	this := Organisation{}
 	this.Id = id
-	this.OrgId = orgId
+	this.UserId = userId
 	this.Name = name
 	this.Date = date
 	return &this
 }
 
-// NewProjectResponseWithDefaults instantiates a new ProjectResponse object
+// NewOrganisationWithDefaults instantiates a new Organisation object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewProjectResponseWithDefaults() *ProjectResponse {
-	this := ProjectResponse{}
+func NewOrganisationWithDefaults() *Organisation {
+	this := Organisation{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *ProjectResponse) GetId() string {
+func (o *Organisation) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -66,7 +66,7 @@ func (o *ProjectResponse) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ProjectResponse) GetIdOk() (*string, bool) {
+func (o *Organisation) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,36 +74,36 @@ func (o *ProjectResponse) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *ProjectResponse) SetId(v string) {
+func (o *Organisation) SetId(v string) {
 	o.Id = v
 }
 
-// GetOrgId returns the OrgId field value
-func (o *ProjectResponse) GetOrgId() string {
+// GetUserId returns the UserId field value
+func (o *Organisation) GetUserId() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.OrgId
+	return o.UserId
 }
 
-// GetOrgIdOk returns a tuple with the OrgId field value
+// GetUserIdOk returns a tuple with the UserId field value
 // and a boolean to check if the value has been set.
-func (o *ProjectResponse) GetOrgIdOk() (*string, bool) {
+func (o *Organisation) GetUserIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.OrgId, true
+	return &o.UserId, true
 }
 
-// SetOrgId sets field value
-func (o *ProjectResponse) SetOrgId(v string) {
-	o.OrgId = v
+// SetUserId sets field value
+func (o *Organisation) SetUserId(v string) {
+	o.UserId = v
 }
 
 // GetName returns the Name field value
-func (o *ProjectResponse) GetName() string {
+func (o *Organisation) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -114,7 +114,7 @@ func (o *ProjectResponse) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *ProjectResponse) GetNameOk() (*string, bool) {
+func (o *Organisation) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +122,12 @@ func (o *ProjectResponse) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *ProjectResponse) SetName(v string) {
+func (o *Organisation) SetName(v string) {
 	o.Name = v
 }
 
 // GetDate returns the Date field value
-func (o *ProjectResponse) GetDate() Date {
+func (o *Organisation) GetDate() Date {
 	if o == nil {
 		var ret Date
 		return ret
@@ -138,7 +138,7 @@ func (o *ProjectResponse) GetDate() Date {
 
 // GetDateOk returns a tuple with the Date field value
 // and a boolean to check if the value has been set.
-func (o *ProjectResponse) GetDateOk() (*Date, bool) {
+func (o *Organisation) GetDateOk() (*Date, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,11 +146,11 @@ func (o *ProjectResponse) GetDateOk() (*Date, bool) {
 }
 
 // SetDate sets field value
-func (o *ProjectResponse) SetDate(v Date) {
+func (o *Organisation) SetDate(v Date) {
 	o.Date = v
 }
 
-func (o ProjectResponse) MarshalJSON() ([]byte, error) {
+func (o Organisation) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -158,22 +158,22 @@ func (o ProjectResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ProjectResponse) ToMap() (map[string]interface{}, error) {
+func (o Organisation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["org_id"] = o.OrgId
+	toSerialize["user_id"] = o.UserId
 	toSerialize["name"] = o.Name
 	toSerialize["date"] = o.Date
 	return toSerialize, nil
 }
 
-func (o *ProjectResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *Organisation) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"org_id",
+		"user_id",
 		"name",
 		"date",
 	}
@@ -192,53 +192,53 @@ func (o *ProjectResponse) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varProjectResponse := _ProjectResponse{}
+	varOrganisation := _Organisation{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectResponse)
+	err = decoder.Decode(&varOrganisation)
 
 	if err != nil {
 		return err
 	}
 
-	*o = ProjectResponse(varProjectResponse)
+	*o = Organisation(varOrganisation)
 
 	return err
 }
 
-type NullableProjectResponse struct {
-	value *ProjectResponse
+type NullableOrganisation struct {
+	value *Organisation
 	isSet bool
 }
 
-func (v NullableProjectResponse) Get() *ProjectResponse {
+func (v NullableOrganisation) Get() *Organisation {
 	return v.value
 }
 
-func (v *NullableProjectResponse) Set(val *ProjectResponse) {
+func (v *NullableOrganisation) Set(val *Organisation) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableProjectResponse) IsSet() bool {
+func (v NullableOrganisation) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableProjectResponse) Unset() {
+func (v *NullableOrganisation) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableProjectResponse(val *ProjectResponse) *NullableProjectResponse {
-	return &NullableProjectResponse{value: val, isSet: true}
+func NewNullableOrganisation(val *Organisation) *NullableOrganisation {
+	return &NullableOrganisation{value: val, isSet: true}
 }
 
-func (v NullableProjectResponse) MarshalJSON() ([]byte, error) {
+func (v NullableOrganisation) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableProjectResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganisation) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
