@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
  - [NotFoundResponse](docs/NotFoundResponse.md)
  - [Organisation](docs/Organisation.md)
  - [OrganisationBody](docs/OrganisationBody.md)
+ - [OrganisationBodyPatch](docs/OrganisationBodyPatch.md)
  - [OrganisationsListPageParameter](docs/OrganisationsListPageParameter.md)
  - [PaginationLinks](docs/PaginationLinks.md)
  - [PaginationMeta](docs/PaginationMeta.md)

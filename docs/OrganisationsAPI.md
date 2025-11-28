@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	organisationBody := *openapiclient.NewOrganisationBody("my-org") // OrganisationBody | Create/Update any field (optional)
+	organisationBody := *openapiclient.NewOrganisationBody("my-org", "3069614e-adc8-47cb-a69c-decf9c5f90fc") // OrganisationBody | Create/Update any field (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -453,7 +453,7 @@ import (
 
 func main() {
 	organisationId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Organisation ID reference
-	organisationBody := *openapiclient.NewOrganisationBody("my-org") // OrganisationBody | Create/Update any field (optional)
+	organisationBody := *openapiclient.NewOrganisationBody("my-org", "3069614e-adc8-47cb-a69c-decf9c5f90fc") // OrganisationBody | Create/Update any field (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

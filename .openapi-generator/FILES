@@ -71,6 +71,7 @@ docs/MetricsAggregationsList200Response.md
 docs/NotFoundResponse.md
 docs/Organisation.md
 docs/OrganisationBody.md
+docs/OrganisationBodyPatch.md
 docs/OrganisationsAPI.md
 docs/OrganisationsListPageParameter.md
 docs/PaginationLinks.md
@@ -160,6 +161,7 @@ model_metrics_aggregations_list_200_response.go
 model_not_found_response.go
 model_organisation.go
 model_organisation_body.go
+model_organisation_body_patch.go
 model_organisations_list_page_parameter.go
 model_pagination_links.go
 model_pagination_meta.go

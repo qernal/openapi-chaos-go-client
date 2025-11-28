@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Organisation id | 
 **UserId** | **string** | User id | 
+**BillingAccountId** | Pointer to **string** | Billing account id | [optional] 
 **Name** | **string** | Organisation name | 
 **Date** | [**Date**](Date.md) |  | 
 
@@ -67,6 +68,31 @@ and a boolean to check if the value has been set.
 
 SetUserId sets UserId field to given value.
 
+
+### GetBillingAccountId
+
+`func (o *Organisation) GetBillingAccountId() string`
+
+GetBillingAccountId returns the BillingAccountId field if non-nil, zero value otherwise.
+
+### GetBillingAccountIdOk
+
+`func (o *Organisation) GetBillingAccountIdOk() (*string, bool)`
+
+GetBillingAccountIdOk returns a tuple with the BillingAccountId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingAccountId
+
+`func (o *Organisation) SetBillingAccountId(v string)`
+
+SetBillingAccountId sets BillingAccountId field to given value.
+
+### HasBillingAccountId
+
+`func (o *Organisation) HasBillingAccountId() bool`
+
+HasBillingAccountId returns a boolean if a field has been set.
 
 ### GetName
 

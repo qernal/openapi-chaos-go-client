@@ -24,6 +24,8 @@ var _ MappedNullable = &OrganisationBody{}
 type OrganisationBody struct {
 	// Organisation name
 	Name string `json:"name" validate:"regexp=^[A-z-]+$"`
+	// Billing account id
+	BillingAccountId string `json:"billing_account_id"`
 }
 
 type _OrganisationBody OrganisationBody
@@ -32,9 +34,10 @@ type _OrganisationBody OrganisationBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganisationBody(name string) *OrganisationBody {
+func NewOrganisationBody(name string, billingAccountId string) *OrganisationBody {
 	this := OrganisationBody{}
 	this.Name = name
+	this.BillingAccountId = billingAccountId
 	return &this
 }
 
@@ -70,6 +73,30 @@ func (o *OrganisationBody) SetName(v string) {
 	o.Name = v
 }
 
+// GetBillingAccountId returns the BillingAccountId field value
+func (o *OrganisationBody) GetBillingAccountId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BillingAccountId
+}
+
+// GetBillingAccountIdOk returns a tuple with the BillingAccountId field value
+// and a boolean to check if the value has been set.
+func (o *OrganisationBody) GetBillingAccountIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BillingAccountId, true
+}
+
+// SetBillingAccountId sets field value
+func (o *OrganisationBody) SetBillingAccountId(v string) {
+	o.BillingAccountId = v
+}
+
 func (o OrganisationBody) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -81,6 +108,7 @@ func (o OrganisationBody) MarshalJSON() ([]byte, error) {
 func (o OrganisationBody) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	toSerialize["billing_account_id"] = o.BillingAccountId
 	return toSerialize, nil
 }
 
@@ -90,6 +118,7 @@ func (o *OrganisationBody) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"billing_account_id",
 	}
 
 	allProperties := make(map[string]interface{})
