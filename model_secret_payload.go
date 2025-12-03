@@ -19,21 +19,29 @@ import (
 
 // SecretPayload - struct for SecretPayload
 type SecretPayload struct {
-	SecretMetaCertificatePayload *SecretMetaCertificatePayload
-	SecretMetaRegistryPayload *SecretMetaRegistryPayload
+	SecretCertificatePayload *SecretCertificatePayload
+	SecretDekPayload *SecretDekPayload
+	SecretRegistryPayload *SecretRegistryPayload
 }
 
-// SecretMetaCertificatePayloadAsSecretPayload is a convenience function that returns SecretMetaCertificatePayload wrapped in SecretPayload
-func SecretMetaCertificatePayloadAsSecretPayload(v *SecretMetaCertificatePayload) SecretPayload {
+// SecretCertificatePayloadAsSecretPayload is a convenience function that returns SecretCertificatePayload wrapped in SecretPayload
+func SecretCertificatePayloadAsSecretPayload(v *SecretCertificatePayload) SecretPayload {
 	return SecretPayload{
-		SecretMetaCertificatePayload: v,
+		SecretCertificatePayload: v,
 	}
 }
 
-// SecretMetaRegistryPayloadAsSecretPayload is a convenience function that returns SecretMetaRegistryPayload wrapped in SecretPayload
-func SecretMetaRegistryPayloadAsSecretPayload(v *SecretMetaRegistryPayload) SecretPayload {
+// SecretDekPayloadAsSecretPayload is a convenience function that returns SecretDekPayload wrapped in SecretPayload
+func SecretDekPayloadAsSecretPayload(v *SecretDekPayload) SecretPayload {
 	return SecretPayload{
-		SecretMetaRegistryPayload: v,
+		SecretDekPayload: v,
+	}
+}
+
+// SecretRegistryPayloadAsSecretPayload is a convenience function that returns SecretRegistryPayload wrapped in SecretPayload
+func SecretRegistryPayloadAsSecretPayload(v *SecretRegistryPayload) SecretPayload {
+	return SecretPayload{
+		SecretRegistryPayload: v,
 	}
 }
 
@@ -41,45 +49,68 @@ func SecretMetaRegistryPayloadAsSecretPayload(v *SecretMetaRegistryPayload) Secr
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *SecretPayload) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into SecretMetaCertificatePayload
-	err = newStrictDecoder(data).Decode(&dst.SecretMetaCertificatePayload)
-	if err == nil {
-		jsonSecretMetaCertificatePayload, _ := json.Marshal(dst.SecretMetaCertificatePayload)
-		if string(jsonSecretMetaCertificatePayload) == "{}" { // empty struct
-			dst.SecretMetaCertificatePayload = nil
-		} else {
-			if err = validator.Validate(dst.SecretMetaCertificatePayload); err != nil {
-				dst.SecretMetaCertificatePayload = nil
-			} else {
-				match++
-			}
-		}
-	} else {
-		dst.SecretMetaCertificatePayload = nil
+	// this object is nullable so check if the payload is null or empty string
+	if string(data) == "" || string(data) == "{}" {
+		return nil
 	}
 
-	// try to unmarshal data into SecretMetaRegistryPayload
-	err = newStrictDecoder(data).Decode(&dst.SecretMetaRegistryPayload)
+	match := 0
+	// try to unmarshal data into SecretCertificatePayload
+	err = newStrictDecoder(data).Decode(&dst.SecretCertificatePayload)
 	if err == nil {
-		jsonSecretMetaRegistryPayload, _ := json.Marshal(dst.SecretMetaRegistryPayload)
-		if string(jsonSecretMetaRegistryPayload) == "{}" { // empty struct
-			dst.SecretMetaRegistryPayload = nil
+		jsonSecretCertificatePayload, _ := json.Marshal(dst.SecretCertificatePayload)
+		if string(jsonSecretCertificatePayload) == "{}" { // empty struct
+			dst.SecretCertificatePayload = nil
 		} else {
-			if err = validator.Validate(dst.SecretMetaRegistryPayload); err != nil {
-				dst.SecretMetaRegistryPayload = nil
+			if err = validator.Validate(dst.SecretCertificatePayload); err != nil {
+				dst.SecretCertificatePayload = nil
 			} else {
 				match++
 			}
 		}
 	} else {
-		dst.SecretMetaRegistryPayload = nil
+		dst.SecretCertificatePayload = nil
+	}
+
+	// try to unmarshal data into SecretDekPayload
+	err = newStrictDecoder(data).Decode(&dst.SecretDekPayload)
+	if err == nil {
+		jsonSecretDekPayload, _ := json.Marshal(dst.SecretDekPayload)
+		if string(jsonSecretDekPayload) == "{}" { // empty struct
+			dst.SecretDekPayload = nil
+		} else {
+			if err = validator.Validate(dst.SecretDekPayload); err != nil {
+				dst.SecretDekPayload = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.SecretDekPayload = nil
+	}
+
+	// try to unmarshal data into SecretRegistryPayload
+	err = newStrictDecoder(data).Decode(&dst.SecretRegistryPayload)
+	if err == nil {
+		jsonSecretRegistryPayload, _ := json.Marshal(dst.SecretRegistryPayload)
+		if string(jsonSecretRegistryPayload) == "{}" { // empty struct
+			dst.SecretRegistryPayload = nil
+		} else {
+			if err = validator.Validate(dst.SecretRegistryPayload); err != nil {
+				dst.SecretRegistryPayload = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.SecretRegistryPayload = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.SecretMetaCertificatePayload = nil
-		dst.SecretMetaRegistryPayload = nil
+		dst.SecretCertificatePayload = nil
+		dst.SecretDekPayload = nil
+		dst.SecretRegistryPayload = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(SecretPayload)")
 	} else if match == 1 {
@@ -91,12 +122,16 @@ func (dst *SecretPayload) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src SecretPayload) MarshalJSON() ([]byte, error) {
-	if src.SecretMetaCertificatePayload != nil {
-		return json.Marshal(&src.SecretMetaCertificatePayload)
+	if src.SecretCertificatePayload != nil {
+		return json.Marshal(&src.SecretCertificatePayload)
 	}
 
-	if src.SecretMetaRegistryPayload != nil {
-		return json.Marshal(&src.SecretMetaRegistryPayload)
+	if src.SecretDekPayload != nil {
+		return json.Marshal(&src.SecretDekPayload)
+	}
+
+	if src.SecretRegistryPayload != nil {
+		return json.Marshal(&src.SecretRegistryPayload)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -107,12 +142,16 @@ func (obj *SecretPayload) GetActualInstance() (interface{}) {
 	if obj == nil {
 		return nil
 	}
-	if obj.SecretMetaCertificatePayload != nil {
-		return obj.SecretMetaCertificatePayload
+	if obj.SecretCertificatePayload != nil {
+		return obj.SecretCertificatePayload
 	}
 
-	if obj.SecretMetaRegistryPayload != nil {
-		return obj.SecretMetaRegistryPayload
+	if obj.SecretDekPayload != nil {
+		return obj.SecretDekPayload
+	}
+
+	if obj.SecretRegistryPayload != nil {
+		return obj.SecretRegistryPayload
 	}
 
 	// all schemas are nil

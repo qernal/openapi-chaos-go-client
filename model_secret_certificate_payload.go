@@ -17,37 +17,37 @@ import (
 	"fmt"
 )
 
-// checks if the SecretMetaCertificatePayload type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretMetaCertificatePayload{}
+// checks if the SecretCertificatePayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretCertificatePayload{}
 
-// SecretMetaCertificatePayload Secret metadata certificate payload
-type SecretMetaCertificatePayload struct {
-	// Public SSL certificate
+// SecretCertificatePayload Secret metadata certificate payload
+type SecretCertificatePayload struct {
+	// Public TLS certificate
 	Certificate string `json:"certificate"`
 }
 
-type _SecretMetaCertificatePayload SecretMetaCertificatePayload
+type _SecretCertificatePayload SecretCertificatePayload
 
-// NewSecretMetaCertificatePayload instantiates a new SecretMetaCertificatePayload object
+// NewSecretCertificatePayload instantiates a new SecretCertificatePayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretMetaCertificatePayload(certificate string) *SecretMetaCertificatePayload {
-	this := SecretMetaCertificatePayload{}
+func NewSecretCertificatePayload(certificate string) *SecretCertificatePayload {
+	this := SecretCertificatePayload{}
 	this.Certificate = certificate
 	return &this
 }
 
-// NewSecretMetaCertificatePayloadWithDefaults instantiates a new SecretMetaCertificatePayload object
+// NewSecretCertificatePayloadWithDefaults instantiates a new SecretCertificatePayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretMetaCertificatePayloadWithDefaults() *SecretMetaCertificatePayload {
-	this := SecretMetaCertificatePayload{}
+func NewSecretCertificatePayloadWithDefaults() *SecretCertificatePayload {
+	this := SecretCertificatePayload{}
 	return &this
 }
 
 // GetCertificate returns the Certificate field value
-func (o *SecretMetaCertificatePayload) GetCertificate() string {
+func (o *SecretCertificatePayload) GetCertificate() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -58,7 +58,7 @@ func (o *SecretMetaCertificatePayload) GetCertificate() string {
 
 // GetCertificateOk returns a tuple with the Certificate field value
 // and a boolean to check if the value has been set.
-func (o *SecretMetaCertificatePayload) GetCertificateOk() (*string, bool) {
+func (o *SecretCertificatePayload) GetCertificateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -66,11 +66,11 @@ func (o *SecretMetaCertificatePayload) GetCertificateOk() (*string, bool) {
 }
 
 // SetCertificate sets field value
-func (o *SecretMetaCertificatePayload) SetCertificate(v string) {
+func (o *SecretCertificatePayload) SetCertificate(v string) {
 	o.Certificate = v
 }
 
-func (o SecretMetaCertificatePayload) MarshalJSON() ([]byte, error) {
+func (o SecretCertificatePayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -78,13 +78,13 @@ func (o SecretMetaCertificatePayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretMetaCertificatePayload) ToMap() (map[string]interface{}, error) {
+func (o SecretCertificatePayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["certificate"] = o.Certificate
 	return toSerialize, nil
 }
 
-func (o *SecretMetaCertificatePayload) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretCertificatePayload) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -106,53 +106,53 @@ func (o *SecretMetaCertificatePayload) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretMetaCertificatePayload := _SecretMetaCertificatePayload{}
+	varSecretCertificatePayload := _SecretCertificatePayload{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretMetaCertificatePayload)
+	err = decoder.Decode(&varSecretCertificatePayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretMetaCertificatePayload(varSecretMetaCertificatePayload)
+	*o = SecretCertificatePayload(varSecretCertificatePayload)
 
 	return err
 }
 
-type NullableSecretMetaCertificatePayload struct {
-	value *SecretMetaCertificatePayload
+type NullableSecretCertificatePayload struct {
+	value *SecretCertificatePayload
 	isSet bool
 }
 
-func (v NullableSecretMetaCertificatePayload) Get() *SecretMetaCertificatePayload {
+func (v NullableSecretCertificatePayload) Get() *SecretCertificatePayload {
 	return v.value
 }
 
-func (v *NullableSecretMetaCertificatePayload) Set(val *SecretMetaCertificatePayload) {
+func (v *NullableSecretCertificatePayload) Set(val *SecretCertificatePayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretMetaCertificatePayload) IsSet() bool {
+func (v NullableSecretCertificatePayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretMetaCertificatePayload) Unset() {
+func (v *NullableSecretCertificatePayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretMetaCertificatePayload(val *SecretMetaCertificatePayload) *NullableSecretMetaCertificatePayload {
-	return &NullableSecretMetaCertificatePayload{value: val, isSet: true}
+func NewNullableSecretCertificatePayload(val *SecretCertificatePayload) *NullableSecretCertificatePayload {
+	return &NullableSecretCertificatePayload{value: val, isSet: true}
 }
 
-func (v NullableSecretMetaCertificatePayload) MarshalJSON() ([]byte, error) {
+func (v NullableSecretCertificatePayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretMetaCertificatePayload) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretCertificatePayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

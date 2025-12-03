@@ -17,40 +17,40 @@ import (
 	"fmt"
 )
 
-// checks if the SecretRegistry type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretRegistry{}
+// checks if the SecretBodyRegistryPayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretBodyRegistryPayload{}
 
-// SecretRegistry Encrypted private container registry, `type: registry`
-type SecretRegistry struct {
+// SecretBodyRegistryPayload Encrypted private container registry, `type: registry`
+type SecretBodyRegistryPayload struct {
 	// Private registry domain/location, when using the private docker hub registry sepcify `docker.io` > Without http scheme 
 	Registry string `json:"registry"`
 	// Token used for auth to the registry
 	RegistryValue string `json:"registry_value"`
 }
 
-type _SecretRegistry SecretRegistry
+type _SecretBodyRegistryPayload SecretBodyRegistryPayload
 
-// NewSecretRegistry instantiates a new SecretRegistry object
+// NewSecretBodyRegistryPayload instantiates a new SecretBodyRegistryPayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretRegistry(registry string, registryValue string) *SecretRegistry {
-	this := SecretRegistry{}
+func NewSecretBodyRegistryPayload(registry string, registryValue string) *SecretBodyRegistryPayload {
+	this := SecretBodyRegistryPayload{}
 	this.Registry = registry
 	this.RegistryValue = registryValue
 	return &this
 }
 
-// NewSecretRegistryWithDefaults instantiates a new SecretRegistry object
+// NewSecretBodyRegistryPayloadWithDefaults instantiates a new SecretBodyRegistryPayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretRegistryWithDefaults() *SecretRegistry {
-	this := SecretRegistry{}
+func NewSecretBodyRegistryPayloadWithDefaults() *SecretBodyRegistryPayload {
+	this := SecretBodyRegistryPayload{}
 	return &this
 }
 
 // GetRegistry returns the Registry field value
-func (o *SecretRegistry) GetRegistry() string {
+func (o *SecretBodyRegistryPayload) GetRegistry() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *SecretRegistry) GetRegistry() string {
 
 // GetRegistryOk returns a tuple with the Registry field value
 // and a boolean to check if the value has been set.
-func (o *SecretRegistry) GetRegistryOk() (*string, bool) {
+func (o *SecretBodyRegistryPayload) GetRegistryOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *SecretRegistry) GetRegistryOk() (*string, bool) {
 }
 
 // SetRegistry sets field value
-func (o *SecretRegistry) SetRegistry(v string) {
+func (o *SecretBodyRegistryPayload) SetRegistry(v string) {
 	o.Registry = v
 }
 
 // GetRegistryValue returns the RegistryValue field value
-func (o *SecretRegistry) GetRegistryValue() string {
+func (o *SecretBodyRegistryPayload) GetRegistryValue() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *SecretRegistry) GetRegistryValue() string {
 
 // GetRegistryValueOk returns a tuple with the RegistryValue field value
 // and a boolean to check if the value has been set.
-func (o *SecretRegistry) GetRegistryValueOk() (*string, bool) {
+func (o *SecretBodyRegistryPayload) GetRegistryValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,11 +93,11 @@ func (o *SecretRegistry) GetRegistryValueOk() (*string, bool) {
 }
 
 // SetRegistryValue sets field value
-func (o *SecretRegistry) SetRegistryValue(v string) {
+func (o *SecretBodyRegistryPayload) SetRegistryValue(v string) {
 	o.RegistryValue = v
 }
 
-func (o SecretRegistry) MarshalJSON() ([]byte, error) {
+func (o SecretBodyRegistryPayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -105,14 +105,14 @@ func (o SecretRegistry) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretRegistry) ToMap() (map[string]interface{}, error) {
+func (o SecretBodyRegistryPayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["registry"] = o.Registry
 	toSerialize["registry_value"] = o.RegistryValue
 	return toSerialize, nil
 }
 
-func (o *SecretRegistry) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretBodyRegistryPayload) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -135,53 +135,53 @@ func (o *SecretRegistry) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretRegistry := _SecretRegistry{}
+	varSecretBodyRegistryPayload := _SecretBodyRegistryPayload{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretRegistry)
+	err = decoder.Decode(&varSecretBodyRegistryPayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretRegistry(varSecretRegistry)
+	*o = SecretBodyRegistryPayload(varSecretBodyRegistryPayload)
 
 	return err
 }
 
-type NullableSecretRegistry struct {
-	value *SecretRegistry
+type NullableSecretBodyRegistryPayload struct {
+	value *SecretBodyRegistryPayload
 	isSet bool
 }
 
-func (v NullableSecretRegistry) Get() *SecretRegistry {
+func (v NullableSecretBodyRegistryPayload) Get() *SecretBodyRegistryPayload {
 	return v.value
 }
 
-func (v *NullableSecretRegistry) Set(val *SecretRegistry) {
+func (v *NullableSecretBodyRegistryPayload) Set(val *SecretBodyRegistryPayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretRegistry) IsSet() bool {
+func (v NullableSecretBodyRegistryPayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretRegistry) Unset() {
+func (v *NullableSecretBodyRegistryPayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretRegistry(val *SecretRegistry) *NullableSecretRegistry {
-	return &NullableSecretRegistry{value: val, isSet: true}
+func NewNullableSecretBodyRegistryPayload(val *SecretBodyRegistryPayload) *NullableSecretBodyRegistryPayload {
+	return &NullableSecretBodyRegistryPayload{value: val, isSet: true}
 }
 
-func (v NullableSecretRegistry) MarshalJSON() ([]byte, error) {
+func (v NullableSecretBodyRegistryPayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretRegistry) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretBodyRegistryPayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

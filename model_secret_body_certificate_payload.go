@@ -17,40 +17,40 @@ import (
 	"fmt"
 )
 
-// checks if the SecretCertificate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretCertificate{}
+// checks if the SecretBodyCertificatePayload type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretBodyCertificatePayload{}
 
-// SecretCertificate Encrypted SSL private key and plain certificate. Certificate expected in x509 pem format, key expected in pkcs8 or pkcs1 pem format. `type: certificate`
-type SecretCertificate struct {
-	// Public certificate
+// SecretBodyCertificatePayload Encrypted TLS private key and plain certificate. Certificate expected in x509 pem format, key expected in pkcs8 or pkcs1 pem format. `type: certificate`
+type SecretBodyCertificatePayload struct {
+	// Public TLS certificate
 	Certificate string `json:"certificate"`
 	// Encrypted certificate private key
 	CertificateValue string `json:"certificate_value"`
 }
 
-type _SecretCertificate SecretCertificate
+type _SecretBodyCertificatePayload SecretBodyCertificatePayload
 
-// NewSecretCertificate instantiates a new SecretCertificate object
+// NewSecretBodyCertificatePayload instantiates a new SecretBodyCertificatePayload object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretCertificate(certificate string, certificateValue string) *SecretCertificate {
-	this := SecretCertificate{}
+func NewSecretBodyCertificatePayload(certificate string, certificateValue string) *SecretBodyCertificatePayload {
+	this := SecretBodyCertificatePayload{}
 	this.Certificate = certificate
 	this.CertificateValue = certificateValue
 	return &this
 }
 
-// NewSecretCertificateWithDefaults instantiates a new SecretCertificate object
+// NewSecretBodyCertificatePayloadWithDefaults instantiates a new SecretBodyCertificatePayload object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretCertificateWithDefaults() *SecretCertificate {
-	this := SecretCertificate{}
+func NewSecretBodyCertificatePayloadWithDefaults() *SecretBodyCertificatePayload {
+	this := SecretBodyCertificatePayload{}
 	return &this
 }
 
 // GetCertificate returns the Certificate field value
-func (o *SecretCertificate) GetCertificate() string {
+func (o *SecretBodyCertificatePayload) GetCertificate() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -61,7 +61,7 @@ func (o *SecretCertificate) GetCertificate() string {
 
 // GetCertificateOk returns a tuple with the Certificate field value
 // and a boolean to check if the value has been set.
-func (o *SecretCertificate) GetCertificateOk() (*string, bool) {
+func (o *SecretBodyCertificatePayload) GetCertificateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,12 +69,12 @@ func (o *SecretCertificate) GetCertificateOk() (*string, bool) {
 }
 
 // SetCertificate sets field value
-func (o *SecretCertificate) SetCertificate(v string) {
+func (o *SecretBodyCertificatePayload) SetCertificate(v string) {
 	o.Certificate = v
 }
 
 // GetCertificateValue returns the CertificateValue field value
-func (o *SecretCertificate) GetCertificateValue() string {
+func (o *SecretBodyCertificatePayload) GetCertificateValue() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -85,7 +85,7 @@ func (o *SecretCertificate) GetCertificateValue() string {
 
 // GetCertificateValueOk returns a tuple with the CertificateValue field value
 // and a boolean to check if the value has been set.
-func (o *SecretCertificate) GetCertificateValueOk() (*string, bool) {
+func (o *SecretBodyCertificatePayload) GetCertificateValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,11 +93,11 @@ func (o *SecretCertificate) GetCertificateValueOk() (*string, bool) {
 }
 
 // SetCertificateValue sets field value
-func (o *SecretCertificate) SetCertificateValue(v string) {
+func (o *SecretBodyCertificatePayload) SetCertificateValue(v string) {
 	o.CertificateValue = v
 }
 
-func (o SecretCertificate) MarshalJSON() ([]byte, error) {
+func (o SecretBodyCertificatePayload) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -105,14 +105,14 @@ func (o SecretCertificate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretCertificate) ToMap() (map[string]interface{}, error) {
+func (o SecretBodyCertificatePayload) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["certificate"] = o.Certificate
 	toSerialize["certificate_value"] = o.CertificateValue
 	return toSerialize, nil
 }
 
-func (o *SecretCertificate) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretBodyCertificatePayload) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -135,53 +135,53 @@ func (o *SecretCertificate) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretCertificate := _SecretCertificate{}
+	varSecretBodyCertificatePayload := _SecretBodyCertificatePayload{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretCertificate)
+	err = decoder.Decode(&varSecretBodyCertificatePayload)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretCertificate(varSecretCertificate)
+	*o = SecretBodyCertificatePayload(varSecretBodyCertificatePayload)
 
 	return err
 }
 
-type NullableSecretCertificate struct {
-	value *SecretCertificate
+type NullableSecretBodyCertificatePayload struct {
+	value *SecretBodyCertificatePayload
 	isSet bool
 }
 
-func (v NullableSecretCertificate) Get() *SecretCertificate {
+func (v NullableSecretBodyCertificatePayload) Get() *SecretBodyCertificatePayload {
 	return v.value
 }
 
-func (v *NullableSecretCertificate) Set(val *SecretCertificate) {
+func (v *NullableSecretBodyCertificatePayload) Set(val *SecretBodyCertificatePayload) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretCertificate) IsSet() bool {
+func (v NullableSecretBodyCertificatePayload) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretCertificate) Unset() {
+func (v *NullableSecretBodyCertificatePayload) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretCertificate(val *SecretCertificate) *NullableSecretCertificate {
-	return &NullableSecretCertificate{value: val, isSet: true}
+func NewNullableSecretBodyCertificatePayload(val *SecretBodyCertificatePayload) *NullableSecretBodyCertificatePayload {
+	return &NullableSecretBodyCertificatePayload{value: val, isSet: true}
 }
 
-func (v NullableSecretCertificate) MarshalJSON() ([]byte, error) {
+func (v NullableSecretBodyCertificatePayload) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretCertificate) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretBodyCertificatePayload) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

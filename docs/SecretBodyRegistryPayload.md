@@ -1,4 +1,4 @@
-# SecretRegistry
+# SecretBodyRegistryPayload
 
 ## Properties
 
@@ -9,59 +9,59 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewSecretRegistry
+### NewSecretBodyRegistryPayload
 
-`func NewSecretRegistry(registry string, registryValue string, ) *SecretRegistry`
+`func NewSecretBodyRegistryPayload(registry string, registryValue string, ) *SecretBodyRegistryPayload`
 
-NewSecretRegistry instantiates a new SecretRegistry object
+NewSecretBodyRegistryPayload instantiates a new SecretBodyRegistryPayload object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSecretRegistryWithDefaults
+### NewSecretBodyRegistryPayloadWithDefaults
 
-`func NewSecretRegistryWithDefaults() *SecretRegistry`
+`func NewSecretBodyRegistryPayloadWithDefaults() *SecretBodyRegistryPayload`
 
-NewSecretRegistryWithDefaults instantiates a new SecretRegistry object
+NewSecretBodyRegistryPayloadWithDefaults instantiates a new SecretBodyRegistryPayload object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetRegistry
 
-`func (o *SecretRegistry) GetRegistry() string`
+`func (o *SecretBodyRegistryPayload) GetRegistry() string`
 
 GetRegistry returns the Registry field if non-nil, zero value otherwise.
 
 ### GetRegistryOk
 
-`func (o *SecretRegistry) GetRegistryOk() (*string, bool)`
+`func (o *SecretBodyRegistryPayload) GetRegistryOk() (*string, bool)`
 
 GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistry
 
-`func (o *SecretRegistry) SetRegistry(v string)`
+`func (o *SecretBodyRegistryPayload) SetRegistry(v string)`
 
 SetRegistry sets Registry field to given value.
 
 
 ### GetRegistryValue
 
-`func (o *SecretRegistry) GetRegistryValue() string`
+`func (o *SecretBodyRegistryPayload) GetRegistryValue() string`
 
 GetRegistryValue returns the RegistryValue field if non-nil, zero value otherwise.
 
 ### GetRegistryValueOk
 
-`func (o *SecretRegistry) GetRegistryValueOk() (*string, bool)`
+`func (o *SecretBodyRegistryPayload) GetRegistryValueOk() (*string, bool)`
 
 GetRegistryValueOk returns a tuple with the RegistryValue field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetRegistryValue
 
-`func (o *SecretRegistry) SetRegistryValue(v string)`
+`func (o *SecretBodyRegistryPayload) SetRegistryValue(v string)`
 
 SetRegistryValue sets RegistryValue field to given value.
 

@@ -5,15 +5,15 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Secret name | 
-**Type** | [**SecretCreateType**](SecretCreateType.md) |  | 
-**Payload** | [**SecretCreatePayload**](SecretCreatePayload.md) |  | 
+**Type** | [**SecretBodyType**](SecretBodyType.md) |  | 
+**Payload** | [**SecretBodyPayload**](SecretBodyPayload.md) |  | 
 **Encryption** | **string** | Encryption entity | 
 
 ## Methods
 
 ### NewSecretBody
 
-`func NewSecretBody(name string, type_ SecretCreateType, payload SecretCreatePayload, encryption string, ) *SecretBody`
+`func NewSecretBody(name string, type_ SecretBodyType, payload SecretBodyPayload, encryption string, ) *SecretBody`
 
 NewSecretBody instantiates a new SecretBody object
 This constructor will assign default values to properties that have it defined,
@@ -50,40 +50,40 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *SecretBody) GetType() SecretCreateType`
+`func (o *SecretBody) GetType() SecretBodyType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *SecretBody) GetTypeOk() (*SecretCreateType, bool)`
+`func (o *SecretBody) GetTypeOk() (*SecretBodyType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *SecretBody) SetType(v SecretCreateType)`
+`func (o *SecretBody) SetType(v SecretBodyType)`
 
 SetType sets Type field to given value.
 
 
 ### GetPayload
 
-`func (o *SecretBody) GetPayload() SecretCreatePayload`
+`func (o *SecretBody) GetPayload() SecretBodyPayload`
 
 GetPayload returns the Payload field if non-nil, zero value otherwise.
 
 ### GetPayloadOk
 
-`func (o *SecretBody) GetPayloadOk() (*SecretCreatePayload, bool)`
+`func (o *SecretBody) GetPayloadOk() (*SecretBodyPayload, bool)`
 
 GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPayload
 
-`func (o *SecretBody) SetPayload(v SecretCreatePayload)`
+`func (o *SecretBody) SetPayload(v SecretBodyPayload)`
 
 SetPayload sets Payload field to given value.
 

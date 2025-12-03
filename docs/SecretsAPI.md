@@ -34,7 +34,7 @@ import (
 
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-	secretBody := *openapiclient.NewSecretBody("MY_SECRET", openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
+	secretBody := *openapiclient.NewSecretBody("MY_SECRET", openapiclient.SecretBodyType("registry"), openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ## ProjectsSecretsGet
 
-> SecretMeta ProjectsSecretsGet(ctx, projectId, secretName).Execute()
+> Secret ProjectsSecretsGet(ctx, projectId, secretName).Execute()
 
 Get project secret
 
@@ -188,7 +188,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `SecretsAPI.ProjectsSecretsGet``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ProjectsSecretsGet`: SecretMeta
+	// response from `ProjectsSecretsGet`: Secret
 	fmt.Fprintf(os.Stdout, "Response from `SecretsAPI.ProjectsSecretsGet`: %v\n", resp)
 }
 ```
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SecretMeta**](SecretMeta.md)
+[**Secret**](Secret.md)
 
 ### Authorization
 
@@ -253,7 +253,7 @@ import (
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
 	page := *openapiclient.NewOrganisationsListPageParameter() // OrganisationsListPageParameter | Query parameters for pagination (optional)
-	secretType := openapiclient.SecretMetaType("registry") // SecretMetaType | Type of secret to filter on (optional)
+	secretType := openapiclient.SecretType("registry") // SecretType | Type of secret to filter on (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **page** | [**OrganisationsListPageParameter**](OrganisationsListPageParameter.md) | Query parameters for pagination | 
- **secretType** | [**SecretMetaType**](SecretMetaType.md) | Type of secret to filter on | 
+ **secretType** | [**SecretType**](SecretType.md) | Type of secret to filter on | 
 
 ### Return type
 
@@ -327,7 +327,7 @@ import (
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
 	secretName := "MY_SECRET" // string | Unique secret name
-	secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretCreateType("registry"), openapiclient.SecretCreatePayload{SecretCertificate: openapiclient.NewSecretCertificate("<x509 certificate pem format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
+	secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretBodyType("registry"), openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

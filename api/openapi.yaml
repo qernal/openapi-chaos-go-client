@@ -1436,7 +1436,7 @@ paths:
         name: secret_type
         required: false
         schema:
-          $ref: '#/components/schemas/SecretMetaType'
+          $ref: '#/components/schemas/SecretType'
         style: form
       responses:
         "200":
@@ -1650,37 +1650,9 @@ paths:
         "200":
           content:
             application/json:
-              examples:
-                secret-meta-registry:
-                  value:
-                    name: FIRST_SECRET
-                    type: registry
-                    payload:
-                      registry: ghcr.io
-                    date:
-                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-                secret-meta-certificate:
-                  value:
-                    name: FIRST_SECRET
-                    type: certificate
-                    payload:
-                      domain: ghcr.io
-                    date:
-                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-                secret-meta-environment:
-                  value:
-                    name: FIRST_SECRET
-                    type: enviornment
-                    payload:
-                      env: MY_SECRET_NAME
-                    date:
-                      created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                      updated_at: 2023-07-22T14:50:13Z20230722T145013Z
               schema:
-                $ref: '#/components/schemas/SecretMeta'
-          description: Get secret metadata
+                $ref: '#/components/schemas/Secret'
+          description: Get secret
         "404":
           content:
             application/json:
@@ -3039,7 +3011,7 @@ components:
       name: secret_type
       required: false
       schema:
-        $ref: '#/components/schemas/SecretMetaType'
+        $ref: '#/components/schemas/SecretType'
       style: form
     secret_name:
       description: Unique secret name
@@ -3511,40 +3483,6 @@ components:
           schema:
             $ref: '#/components/schemas/Secret'
       description: Get secret
-    SecretMeta:
-      content:
-        application/json:
-          examples:
-            secret-meta-registry:
-              value:
-                name: FIRST_SECRET
-                type: registry
-                payload:
-                  registry: ghcr.io
-                date:
-                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            secret-meta-certificate:
-              value:
-                name: FIRST_SECRET
-                type: certificate
-                payload:
-                  domain: ghcr.io
-                date:
-                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-            secret-meta-environment:
-              value:
-                name: FIRST_SECRET
-                type: enviornment
-                payload:
-                  env: MY_SECRET_NAME
-                date:
-                  created_at: 2023-07-22T14:50:13Z20230722T145013Z
-                  updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-          schema:
-            $ref: '#/components/schemas/SecretMeta'
-      description: Get secret metadata
     ListFunction:
       content:
         application/json:
@@ -4150,7 +4088,7 @@ components:
           pattern: "^[A-Z_]+$"
           type: string
         type:
-          $ref: '#/components/schemas/SecretCreateType'
+          $ref: '#/components/schemas/SecretType'
         payload:
           $ref: '#/components/schemas/Secret_payload'
         revision:
@@ -4165,7 +4103,7 @@ components:
       - revision
       - type
       type: object
-    SecretMetaType:
+    SecretType:
       description: "Secrets types: registry, certificate, environment, dek"
       enum:
       - registry
@@ -4174,47 +4112,15 @@ components:
       - dek
       example: registry
       type: string
-    SecretMeta:
-      description: Secret metadata response/object
-      example:
-        date:
-          updated_at: 2023-07-22T14:50:13Z20230722T145013Z
-          created_at: 2023-07-22T14:50:13Z20230722T145013Z
-        payload:
-          certificate: <x509 content>
-        name: MY_SECRET
-        type: registry
-        revision: 32
-      properties:
-        name:
-          description: Secret name
-          example: MY_SECRET
-          minLength: 1
-          pattern: "^[A-Z_]+$"
-          type: string
-        type:
-          $ref: '#/components/schemas/SecretMetaType'
-        payload:
-          $ref: '#/components/schemas/SecretMeta_payload'
-        revision:
-          description: Secret revision
-          example: 32
-          type: integer
-        date:
-          $ref: '#/components/schemas/Date'
-      required:
-      - date
-      - name
-      - revision
-      - type
-      type: object
-    SecretMetaCertificatePayload:
+    SecretEnvironmentPayload:
+      description: Secret metadata environment payload
+    SecretCertificatePayload:
       description: Secret metadata certificate payload
       example:
         certificate: <x509 content>
       properties:
         certificate:
-          description: Public SSL certificate
+          description: Public TLS certificate
           example: <x509 content>
           format: string
           minLength: 1
@@ -4222,7 +4128,7 @@ components:
       required:
       - certificate
       type: object
-    SecretMetaRegistryPayload:
+    SecretRegistryPayload:
       description: Secret metadata registry payload
       properties:
         registry:
@@ -4235,23 +4141,23 @@ components:
       required:
       - registry
       type: object
-    SecretMetaDek:
+    SecretDekPayload:
       description: "DEK secret, `type: dek`"
       properties:
-        public:
-          description: Base64 encoded DEK public key
+        dek:
+          description: Base64 encoded Data Encryption Key (DEK)
           type: string
       required:
-      - public
+      - dek
       type: object
-    SecretCreatePayload:
+    SecretBodyPayload:
       description: Payload for secret
       oneOf:
-      - $ref: '#/components/schemas/SecretRegistry'
-      - $ref: '#/components/schemas/SecretEnvironment'
-      - $ref: '#/components/schemas/SecretCertificate'
+      - $ref: '#/components/schemas/SecretBodyRegistryPayload'
+      - $ref: '#/components/schemas/SecretBodyEnvironmentPayload'
+      - $ref: '#/components/schemas/SecretBodyCertificatePayload'
       type: object
-    SecretCreateType:
+    SecretBodyType:
       description: "Secrets types: registry, certificate, environment"
       enum:
       - registry
@@ -4259,7 +4165,7 @@ components:
       - environment
       example: registry
       type: string
-    SecretEnvironment:
+    SecretBodyEnvironmentPayload:
       description: "Encrypted ENV secret, `type: environment`"
       properties:
         environment_value:
@@ -4270,13 +4176,15 @@ components:
       required:
       - environment_value
       type: object
-    SecretCertificate:
-      description: "Encrypted SSL private key and plain certificate. Certificate expected\
+    SecretBodyCertificatePayload:
+      description: "Encrypted TLS private key and plain certificate. Certificate expected\
         \ in x509 pem format, key expected in pkcs8 or pkcs1 pem format. `type: certificate`"
       properties:
         certificate:
-          description: Public certificate
-          example: <x509 certificate pem format>
+          description: Public TLS certificate
+          example: <x509 content>
+          format: string
+          minLength: 1
           type: string
         certificate_value:
           description: Encrypted certificate private key
@@ -4287,7 +4195,7 @@ components:
       - certificate
       - certificate_value
       type: object
-    SecretRegistry:
+    SecretBodyRegistryPayload:
       description: "Encrypted private container registry, `type: registry`"
       example:
         registry: ghcr.io
@@ -4326,9 +4234,9 @@ components:
           pattern: "^[A-Z_]+$"
           type: string
         type:
-          $ref: '#/components/schemas/SecretCreateType'
+          $ref: '#/components/schemas/SecretBodyType'
         payload:
-          $ref: '#/components/schemas/SecretCreatePayload'
+          $ref: '#/components/schemas/SecretBodyPayload'
         encryption:
           description: Encryption entity
           example: keys/dek/123
@@ -4350,9 +4258,9 @@ components:
         type: registry
       properties:
         type:
-          $ref: '#/components/schemas/SecretCreateType'
+          $ref: '#/components/schemas/SecretBodyType'
         payload:
-          $ref: '#/components/schemas/SecretCreatePayload'
+          $ref: '#/components/schemas/SecretBodyPayload'
         encryption:
           description: Encryption entity
           example: keys/dek/123
@@ -5580,14 +5488,11 @@ components:
           type: string
       type: object
     Secret_payload:
+      nullable: true
       oneOf:
-      - $ref: '#/components/schemas/SecretMetaCertificatePayload'
-      - $ref: '#/components/schemas/SecretMetaRegistryPayload'
-    SecretMeta_payload:
-      oneOf:
-      - $ref: '#/components/schemas/SecretMetaCertificatePayload'
-      - $ref: '#/components/schemas/SecretMetaRegistryPayload'
-      - $ref: '#/components/schemas/SecretMetaDek'
+      - $ref: '#/components/schemas/SecretCertificatePayload'
+      - $ref: '#/components/schemas/SecretRegistryPayload'
+      - $ref: '#/components/schemas/SecretDekPayload'
     FunctionReplicas_affinity:
       description: Replica strategy
       example:

@@ -24,8 +24,8 @@ var _ MappedNullable = &SecretBody{}
 type SecretBody struct {
 	// Secret name
 	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
-	Type SecretCreateType `json:"type"`
-	Payload SecretCreatePayload `json:"payload"`
+	Type SecretBodyType `json:"type"`
+	Payload SecretBodyPayload `json:"payload"`
 	// Encryption entity
 	Encryption string `json:"encryption" validate:"regexp=^keys\\/dek\\/[0-9]+$"`
 }
@@ -36,7 +36,7 @@ type _SecretBody SecretBody
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretBody(name string, type_ SecretCreateType, payload SecretCreatePayload, encryption string) *SecretBody {
+func NewSecretBody(name string, type_ SecretBodyType, payload SecretBodyPayload, encryption string) *SecretBody {
 	this := SecretBody{}
 	this.Name = name
 	this.Type = type_
@@ -78,9 +78,9 @@ func (o *SecretBody) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *SecretBody) GetType() SecretCreateType {
+func (o *SecretBody) GetType() SecretBodyType {
 	if o == nil {
-		var ret SecretCreateType
+		var ret SecretBodyType
 		return ret
 	}
 
@@ -89,7 +89,7 @@ func (o *SecretBody) GetType() SecretCreateType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SecretBody) GetTypeOk() (*SecretCreateType, bool) {
+func (o *SecretBody) GetTypeOk() (*SecretBodyType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -97,14 +97,14 @@ func (o *SecretBody) GetTypeOk() (*SecretCreateType, bool) {
 }
 
 // SetType sets field value
-func (o *SecretBody) SetType(v SecretCreateType) {
+func (o *SecretBody) SetType(v SecretBodyType) {
 	o.Type = v
 }
 
 // GetPayload returns the Payload field value
-func (o *SecretBody) GetPayload() SecretCreatePayload {
+func (o *SecretBody) GetPayload() SecretBodyPayload {
 	if o == nil {
-		var ret SecretCreatePayload
+		var ret SecretBodyPayload
 		return ret
 	}
 
@@ -113,7 +113,7 @@ func (o *SecretBody) GetPayload() SecretCreatePayload {
 
 // GetPayloadOk returns a tuple with the Payload field value
 // and a boolean to check if the value has been set.
-func (o *SecretBody) GetPayloadOk() (*SecretCreatePayload, bool) {
+func (o *SecretBody) GetPayloadOk() (*SecretBodyPayload, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -121,7 +121,7 @@ func (o *SecretBody) GetPayloadOk() (*SecretCreatePayload, bool) {
 }
 
 // SetPayload sets field value
-func (o *SecretBody) SetPayload(v SecretCreatePayload) {
+func (o *SecretBody) SetPayload(v SecretBodyPayload) {
 	o.Payload = v
 }
 

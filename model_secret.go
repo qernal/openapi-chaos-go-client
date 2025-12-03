@@ -24,8 +24,8 @@ var _ MappedNullable = &Secret{}
 type Secret struct {
 	// Secret name
 	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
-	Type SecretCreateType `json:"type"`
-	Payload *SecretPayload `json:"payload,omitempty"`
+	Type SecretType `json:"type"`
+	Payload NullableSecretPayload `json:"payload,omitempty"`
 	// Secret revision
 	Revision int32 `json:"revision"`
 	Date Date `json:"date"`
@@ -37,7 +37,7 @@ type _Secret Secret
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecret(name string, type_ SecretCreateType, revision int32, date Date) *Secret {
+func NewSecret(name string, type_ SecretType, revision int32, date Date) *Secret {
 	this := Secret{}
 	this.Name = name
 	this.Type = type_
@@ -79,9 +79,9 @@ func (o *Secret) SetName(v string) {
 }
 
 // GetType returns the Type field value
-func (o *Secret) GetType() SecretCreateType {
+func (o *Secret) GetType() SecretType {
 	if o == nil {
-		var ret SecretCreateType
+		var ret SecretType
 		return ret
 	}
 
@@ -90,7 +90,7 @@ func (o *Secret) GetType() SecretCreateType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *Secret) GetTypeOk() (*SecretCreateType, bool) {
+func (o *Secret) GetTypeOk() (*SecretType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,40 +98,50 @@ func (o *Secret) GetTypeOk() (*SecretCreateType, bool) {
 }
 
 // SetType sets field value
-func (o *Secret) SetType(v SecretCreateType) {
+func (o *Secret) SetType(v SecretType) {
 	o.Type = v
 }
 
-// GetPayload returns the Payload field value if set, zero value otherwise.
+// GetPayload returns the Payload field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Secret) GetPayload() SecretPayload {
-	if o == nil || IsNil(o.Payload) {
+	if o == nil || IsNil(o.Payload.Get()) {
 		var ret SecretPayload
 		return ret
 	}
-	return *o.Payload
+	return *o.Payload.Get()
 }
 
 // GetPayloadOk returns a tuple with the Payload field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Secret) GetPayloadOk() (*SecretPayload, bool) {
-	if o == nil || IsNil(o.Payload) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Payload, true
+	return o.Payload.Get(), o.Payload.IsSet()
 }
 
 // HasPayload returns a boolean if a field has been set.
 func (o *Secret) HasPayload() bool {
-	if o != nil && !IsNil(o.Payload) {
+	if o != nil && o.Payload.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPayload gets a reference to the given SecretPayload and assigns it to the Payload field.
+// SetPayload gets a reference to the given NullableSecretPayload and assigns it to the Payload field.
 func (o *Secret) SetPayload(v SecretPayload) {
-	o.Payload = &v
+	o.Payload.Set(&v)
+}
+// SetPayloadNil sets the value for Payload to be an explicit nil
+func (o *Secret) SetPayloadNil() {
+	o.Payload.Set(nil)
+}
+
+// UnsetPayload ensures that no value is present for Payload, not even an explicit nil
+func (o *Secret) UnsetPayload() {
+	o.Payload.Unset()
 }
 
 // GetRevision returns the Revision field value
@@ -194,8 +204,8 @@ func (o Secret) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Payload) {
-		toSerialize["payload"] = o.Payload
+	if o.Payload.IsSet() {
+		toSerialize["payload"] = o.Payload.Get()
 	}
 	toSerialize["revision"] = o.Revision
 	toSerialize["date"] = o.Date

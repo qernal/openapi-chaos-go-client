@@ -320,7 +320,7 @@ type SecretsAPIProjectsSecretsGetRequest struct {
 	secretName string
 }
 
-func (r SecretsAPIProjectsSecretsGetRequest) Execute() (*SecretMeta, *http.Response, error) {
+func (r SecretsAPIProjectsSecretsGetRequest) Execute() (*Secret, *http.Response, error) {
 	return r.ApiService.ProjectsSecretsGetExecute(r)
 }
 
@@ -344,13 +344,13 @@ func (a *SecretsAPIService) ProjectsSecretsGet(ctx context.Context, projectId st
 }
 
 // Execute executes the request
-//  @return SecretMeta
-func (a *SecretsAPIService) ProjectsSecretsGetExecute(r SecretsAPIProjectsSecretsGetRequest) (*SecretMeta, *http.Response, error) {
+//  @return Secret
+func (a *SecretsAPIService) ProjectsSecretsGetExecute(r SecretsAPIProjectsSecretsGetRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *SecretMeta
+		localVarReturnValue  *Secret
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SecretsAPIService.ProjectsSecretsGet")
@@ -449,7 +449,7 @@ type SecretsAPIProjectsSecretsListRequest struct {
 	ApiService *SecretsAPIService
 	projectId string
 	page *OrganisationsListPageParameter
-	secretType *SecretMetaType
+	secretType *SecretType
 }
 
 // Query parameters for pagination
@@ -459,7 +459,7 @@ func (r SecretsAPIProjectsSecretsListRequest) Page(page OrganisationsListPagePar
 }
 
 // Type of secret to filter on
-func (r SecretsAPIProjectsSecretsListRequest) SecretType(secretType SecretMetaType) SecretsAPIProjectsSecretsListRequest {
+func (r SecretsAPIProjectsSecretsListRequest) SecretType(secretType SecretType) SecretsAPIProjectsSecretsListRequest {
 	r.secretType = &secretType
 	return r
 }

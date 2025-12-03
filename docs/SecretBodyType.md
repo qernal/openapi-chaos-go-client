@@ -1,4 +1,4 @@
-# SecretCreateType
+# SecretBodyType
 
 ## Enum
 

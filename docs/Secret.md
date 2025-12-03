@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Secret name | 
-**Type** | [**SecretCreateType**](SecretCreateType.md) |  | 
-**Payload** | Pointer to [**SecretPayload**](SecretPayload.md) |  | [optional] 
+**Type** | [**SecretType**](SecretType.md) |  | 
+**Payload** | Pointer to [**NullableSecretPayload**](SecretPayload.md) |  | [optional] 
 **Revision** | **int32** | Secret revision | 
 **Date** | [**Date**](Date.md) |  | 
 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewSecret
 
-`func NewSecret(name string, type_ SecretCreateType, revision int32, date Date, ) *Secret`
+`func NewSecret(name string, type_ SecretType, revision int32, date Date, ) *Secret`
 
 NewSecret instantiates a new Secret object
 This constructor will assign default values to properties that have it defined,
@@ -51,20 +51,20 @@ SetName sets Name field to given value.
 
 ### GetType
 
-`func (o *Secret) GetType() SecretCreateType`
+`func (o *Secret) GetType() SecretType`
 
 GetType returns the Type field if non-nil, zero value otherwise.
 
 ### GetTypeOk
 
-`func (o *Secret) GetTypeOk() (*SecretCreateType, bool)`
+`func (o *Secret) GetTypeOk() (*SecretType, bool)`
 
 GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetType
 
-`func (o *Secret) SetType(v SecretCreateType)`
+`func (o *Secret) SetType(v SecretType)`
 
 SetType sets Type field to given value.
 
@@ -94,6 +94,16 @@ SetPayload sets Payload field to given value.
 
 HasPayload returns a boolean if a field has been set.
 
+### SetPayloadNil
+
+`func (o *Secret) SetPayloadNil(b bool)`
+
+ SetPayloadNil sets the value for Payload to be an explicit nil
+
+### UnsetPayload
+`func (o *Secret) UnsetPayload()`
+
+UnsetPayload ensures that no value is present for Payload, not even an explicit nil
 ### GetRevision
 
 `func (o *Secret) GetRevision() int32`
