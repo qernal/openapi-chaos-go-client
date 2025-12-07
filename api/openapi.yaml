@@ -4076,16 +4076,16 @@ components:
           updated_at: 2023-07-22T14:50:13Z20230722T145013Z
           created_at: 2023-07-22T14:50:13Z20230722T145013Z
         payload:
-          certificate: <x509 content>
-        name: MY_SECRET
+          certificate: <x509 content in PEM format>
+        name: MY_SECRET_25
         type: registry
         revision: 32
       properties:
         name:
           description: Secret name
-          example: MY_SECRET
+          example: MY_SECRET_25
           minLength: 1
-          pattern: "^[A-Z_]+$"
+          pattern: "^[A-Z0-9_]+$"
           type: string
         type:
           $ref: '#/components/schemas/SecretType'
@@ -4117,11 +4117,11 @@ components:
     SecretCertificatePayload:
       description: Secret metadata certificate payload
       example:
-        certificate: <x509 content>
+        certificate: <x509 content in PEM format>
       properties:
         certificate:
           description: Public TLS certificate
-          example: <x509 content>
+          example: <x509 content in PEM format>
           format: string
           minLength: 1
           type: string
@@ -4182,7 +4182,7 @@ components:
       properties:
         certificate:
           description: Public TLS certificate
-          example: <x509 content>
+          example: <x509 content in PEM format>
           format: string
           minLength: 1
           type: string
@@ -4220,18 +4220,18 @@ components:
     SecretBody:
       description: Secret body
       example:
-        encryption: keys/dek/123
+        encryption: keys/DEK/123
         payload:
           registry: ghcr.io
           registry_value: SGVsbG8gd29ybGQ=
-        name: MY_SECRET
+        name: MY_SECRET_25
         type: registry
       properties:
         name:
           description: Secret name
-          example: MY_SECRET
+          example: MY_SECRET_25
           minLength: 1
-          pattern: "^[A-Z_]+$"
+          pattern: "^[A-Z0-9_]+$"
           type: string
         type:
           $ref: '#/components/schemas/SecretBodyType'
@@ -4239,8 +4239,8 @@ components:
           $ref: '#/components/schemas/SecretBodyPayload'
         encryption:
           description: Encryption entity
-          example: keys/dek/123
-          pattern: "^keys\\/dek\\/[0-9]+$"
+          example: keys/DEK/123
+          pattern: "^keys\\/DEK\\/[0-9]+$"
           type: string
       required:
       - encryption
@@ -4251,25 +4251,21 @@ components:
     SecretBodyPatch:
       description: Secret body patch fields
       example:
-        encryption: keys/dek/123
+        encryption: keys/DEK/123
         payload:
           registry: ghcr.io
           registry_value: SGVsbG8gd29ybGQ=
-        type: registry
       properties:
-        type:
-          $ref: '#/components/schemas/SecretBodyType'
         payload:
           $ref: '#/components/schemas/SecretBodyPayload'
         encryption:
           description: Encryption entity
-          example: keys/dek/123
-          pattern: "^keys\\/dek\\/[0-9]+$"
+          example: keys/DEK/123
+          pattern: "^keys\\/DEK\\/[0-9]+$"
           type: string
       required:
       - encryption
       - payload
-      - type
       type: object
     Location:
       description: Location of allowed clusters

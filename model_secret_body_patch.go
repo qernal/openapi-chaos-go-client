@@ -22,10 +22,9 @@ var _ MappedNullable = &SecretBodyPatch{}
 
 // SecretBodyPatch Secret body patch fields
 type SecretBodyPatch struct {
-	Type SecretBodyType `json:"type"`
 	Payload SecretBodyPayload `json:"payload"`
 	// Encryption entity
-	Encryption string `json:"encryption" validate:"regexp=^keys\\/dek\\/[0-9]+$"`
+	Encryption string `json:"encryption" validate:"regexp=^keys\\/DEK\\/[0-9]+$"`
 }
 
 type _SecretBodyPatch SecretBodyPatch
@@ -34,9 +33,8 @@ type _SecretBodyPatch SecretBodyPatch
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretBodyPatch(type_ SecretBodyType, payload SecretBodyPayload, encryption string) *SecretBodyPatch {
+func NewSecretBodyPatch(payload SecretBodyPayload, encryption string) *SecretBodyPatch {
 	this := SecretBodyPatch{}
-	this.Type = type_
 	this.Payload = payload
 	this.Encryption = encryption
 	return &this
@@ -48,30 +46,6 @@ func NewSecretBodyPatch(type_ SecretBodyType, payload SecretBodyPayload, encrypt
 func NewSecretBodyPatchWithDefaults() *SecretBodyPatch {
 	this := SecretBodyPatch{}
 	return &this
-}
-
-// GetType returns the Type field value
-func (o *SecretBodyPatch) GetType() SecretBodyType {
-	if o == nil {
-		var ret SecretBodyType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *SecretBodyPatch) GetTypeOk() (*SecretBodyType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *SecretBodyPatch) SetType(v SecretBodyType) {
-	o.Type = v
 }
 
 // GetPayload returns the Payload field value
@@ -132,7 +106,6 @@ func (o SecretBodyPatch) MarshalJSON() ([]byte, error) {
 
 func (o SecretBodyPatch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["type"] = o.Type
 	toSerialize["payload"] = o.Payload
 	toSerialize["encryption"] = o.Encryption
 	return toSerialize, nil
@@ -143,7 +116,6 @@ func (o *SecretBodyPatch) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"type",
 		"payload",
 		"encryption",
 	}

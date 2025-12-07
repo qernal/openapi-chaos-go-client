@@ -23,7 +23,7 @@ var _ MappedNullable = &Secret{}
 // Secret Secret response/object
 type Secret struct {
 	// Secret name
-	Name string `json:"name" validate:"regexp=^[A-Z_]+$"`
+	Name string `json:"name" validate:"regexp=^[A-Z0-9_]+$"`
 	Type SecretType `json:"type"`
 	Payload NullableSecretPayload `json:"payload,omitempty"`
 	// Secret revision

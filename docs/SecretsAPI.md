@@ -34,7 +34,7 @@ import (
 
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
-	secretBody := *openapiclient.NewSecretBody("MY_SECRET", openapiclient.SecretBodyType("registry"), openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
+	secretBody := *openapiclient.NewSecretBody("MY_SECRET_25", openapiclient.SecretBodyType("registry"), openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content in PEM format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/DEK/123") // SecretBody | Create/Update any field  The example generated may only be for one of the secret types, look towards the payload section of the schema for further fields, values and examples. 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -327,7 +327,7 @@ import (
 func main() {
 	projectId := "3069614e-adc8-47cb-a69c-decf9c5f90fc" // string | Project ID reference
 	secretName := "MY_SECRET" // string | Unique secret name
-	secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretBodyType("registry"), openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/dek/123") // SecretBodyPatch | Update any field
+	secretBodyPatch := *openapiclient.NewSecretBodyPatch(openapiclient.SecretBodyPayload{SecretBodyCertificatePayload: openapiclient.NewSecretBodyCertificatePayload("<x509 content in PEM format>", "<base64 encrypted pkcs8 or pkcs1 pem format>")}, "keys/DEK/123") // SecretBodyPatch | Update any field
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
