@@ -27,7 +27,7 @@ type Host struct {
 	// Hostname, this can be the root of a domain or a subdomain
 	Host string `json:"host"`
 	// The secret reference to the certificate
-	Certificate *string `json:"certificate,omitempty" validate:"regexp=^projects\\\\:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+\\\\\\\\@[0-9]+)$"`
+	Certificate *string `json:"certificate,omitempty" validate:"regexp=^projects:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+)@(?<revision>[0-9]+)$"`
 	// Project ID this is attached to
 	ProjectId string `json:"project_id"`
 	// If the host is read only and cannot be removed, primarily used for *.qrnl.app domains

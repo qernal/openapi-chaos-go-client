@@ -3644,7 +3644,7 @@ components:
         read_only: true
         verified_at: 2023-07-22T14:50:13Z20230722T145013Z
         host: example-domain.com
-        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
+        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
         disabled: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         txt_verification: qernal=my.app=KSjfasiqwePdsakm12kdas3
@@ -3661,9 +3661,8 @@ components:
           type: string
         certificate:
           description: The secret reference to the certificate
-          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
-          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
-            \\@[0-9]+)$"
+          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
+          pattern: "^projects:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+)@(?<revision>[0-9]+)$"
           type: string
         project_id:
           description: Project ID this is attached to
@@ -3707,7 +3706,7 @@ components:
       description: Host body
       example:
         host: example-domain.com
-        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
+        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
         disabled: true
       properties:
         host:
@@ -3717,9 +3716,8 @@ components:
           type: string
         certificate:
           description: The secret reference to the certificate
-          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
-          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
-            \\@[0-9]+)$"
+          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
+          pattern: "^projects:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+)@(?<revision>[0-9]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
@@ -3733,14 +3731,13 @@ components:
     HostBodyPatch:
       description: Host body update
       example:
-        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
+        certificate: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
         disabled: true
       properties:
         certificate:
           description: The secret reference to the certificate
-          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT
-          pattern: "^projects\\:(?<project_id>[a-z0-9-]{36})/(?<secret_name>[A-Z0-9_]+\\\
-            \\@[0-9]+)$"
+          example: projects:d8f6ede4-e3a4-414d-b6c3-b8a972773e56/MY_CERT@0
+          pattern: "^projects:(?<project_id>[a-z0-9-]{36})\\/(?<secret_name>[A-Z0-9_]+)@(?<revision>[0-9]+)$"
           type: string
         disabled:
           description: "If the host is disabled, then this host won't be accessible\
